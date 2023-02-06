@@ -5,16 +5,23 @@ import Social from "./Social";
 
 const Footer = () => {
 	return (
-		<Container>
-			<Social />
-		</Container>
+		<Spacer>
+			<Container>
+				<Social />
+			</Container>
+		</Spacer>
 	);
 };
 
+const Spacer = styled.div`
+	width: 100%;
+	height: calc(100vh - (8rem + 8px));
+`;
 const Container = styled.div`
 	position: fixed;
-	bottom: 2rem;
-	left: 2rem;
+	bottom: 0;
+	height: 8rem;
+	right: 2rem;
 `;
 
 export default Footer;

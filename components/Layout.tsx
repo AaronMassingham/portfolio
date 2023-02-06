@@ -16,16 +16,16 @@ const Layout = ({ children }: Props) => {
 };
 
 const Wrapper = styled.div`
-	padding: calc(8rem + 8px) 2rem 0 2rem;
-	height: 100dvh;
-	height: 100vh;
+	min-height: 100dvh;
+	min-height: 100vh;
+	height: auto;
 `;
 const Main = styled.div`
 	padding: 0 2rem;
-	@media only screen and (min-device-width: 768px) {
+	@media only screen and (min-width: 768px) {
 		padding: 0 4rem;
 	}
-	@media only screen and (min-device-width: 1200px) {
+	@media only screen and (min-width: 1200px) {
 		padding: 0 8rem;
 	}
 `;

@@ -31,17 +31,23 @@ const Social = () => {
 
 const Container = styled.ul`
 	list-style: none;
-	padding: 0;
+	padding: 0 0 2rem 0;
 	margin: 0;
 	width: 1rem;
+	height: 100%;
+	display: flex;
+	justify-content: space-between;
+	flex-direction: column;
 	& > li {
-		padding-top: 1.5rem;
 		& svg {
 			max-height: 1rem;
 		}
 		&:first-of-type {
 			padding-top: 0;
 		}
+	}
+	svg {
+		mix-blend-mode: difference;
 	}
 `;
 

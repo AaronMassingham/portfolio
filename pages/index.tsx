@@ -3,6 +3,32 @@ import Head from "next/head";
 
 //Components
 import Hero from "@components/components/Hero";
+import BlockQuote from "@components/components/blocks/BlockQuote";
+import PortfolioItem from "@components/components/blocks/portfolio/PortfolioItem";
+
+const projects = [
+	{
+		projectTitle: "Graft Haus",
+		link: "https://www.grafthaus.co.uk",
+		testimonial: "Aaron is pretty good",
+		testimonialAuthor: "Tony",
+		services: ["Web design", "Web development", "Wordpress"],
+		images: [
+			{
+				orientation: "portrait",
+				url: "https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-1.jpg",
+			},
+			{
+				orientation: "landscape",
+				url: "https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-1.jpg",
+			},
+			{
+				orientation: "portrait",
+				url: "https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-1.jpg",
+			},
+		],
+	},
+];
 
 const Home: NextPage = () => {
 	return (
@@ -14,6 +40,29 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Hero />
+			<BlockQuote title="Works">
+				I find visual solutions that scream for attention, Then build them using
+				current web technologies.
+			</BlockQuote>
+
+			{projects.map((item, index) => (
+				<PortfolioItem
+					key={index}
+					link={item.link}
+					index={index + 1}
+					testimonial={item.testimonial}
+					testimonialAuthor={item.testimonialAuthor}
+					projectTitle={item.projectTitle}
+					services={item.services}
+				>
+					{item.images.map((image, index) => (
+						<div key={index}>
+							<div>{image.url}</div>
+							<div>{image.orientation}</div>
+						</div>
+					))}
+				</PortfolioItem>
+			))}
 		</>
 	);
 };

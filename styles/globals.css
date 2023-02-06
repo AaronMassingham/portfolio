@@ -3,13 +3,15 @@
 	--darkGrey: #35322e;
 
 	--primaryBackground: #f2f0ed;
+
+	--fs-xl: clamp(3rem, 5vw + 1rem, 6rem);
 }
 
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	outline: 1px solid orange;
+	/* outline: 1px solid orange; */
 }
 
 html {
@@ -19,9 +21,11 @@ html,
 body {
 	max-width: 100vw;
 	overflow-x: clip;
+	overscroll-behavior: none;
 }
 
-body {
+body,
+section {
 	color: var(--darkGrey);
 	background: var(--primaryBackground);
 }
@@ -38,4 +42,11 @@ h4,
 h5 {
 	text-transform: uppercase;
 	color: var(--darkestGrey);
+}
+
+h1 {
+	line-height: 1;
+}
+h2 {
+	font-weight: 800;
 }

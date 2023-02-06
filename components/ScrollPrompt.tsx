@@ -7,18 +7,21 @@ const ScrollPrompt = () => {
 			y: [0, 42],
 			opacity: [0, 1],
 			scale: [0.8, 1],
-			transition: {
-				duration: 1,
-				repeat: Infinity,
-				ease: "easeInOut",
-				repeatType: "reverse",
-			},
 		},
 	};
 
 	return (
 		<Container>
-			<Dot variants={variant} animate="animate" />
+			<Dot
+				variants={variant}
+				animate="animate"
+				transition={{
+					duration: 1,
+					repeat: Infinity,
+					ease: "easeInOut",
+					repeatType: "mirror",
+				}}
+			/>
 		</Container>
 	);
 };
