@@ -1,19 +1,17 @@
+import { ShrikhandFont } from "@components/utils/FancyFont";
 import { ReactNode } from "react";
 import styled from "styled-components";
 
 const BlockQuote = ({ children, title }: Props) => {
 	return (
 		<Container>
-			<h2>{title}</h2>
+			<h2 className={ShrikhandFont.className}>{title}</h2>
 			<div>{children}</div>
 		</Container>
 	);
 };
 
 const Container = styled.div`
-	display: flex;
-	flex-direction: column;
-	justify-content: flex-end;
 	& h2 {
 		font-size: var(--fs-xl);
 	}

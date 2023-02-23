@@ -1,11 +1,12 @@
-import React, { useState } from "react";
+import React from "react";
+import styled from "styled-components";
 
 const Modal = ({ children, setModalToggle }: Props) => {
 	return (
-		<div>
+		<ModalContainer>
 			<button onClick={() => setModalToggle(false)}>Close</button>
 			<div>{children}</div>
-		</div>
+		</ModalContainer>
 	);
 };
 
@@ -13,5 +14,17 @@ type Props = {
 	children: React.ReactNode;
 	setModalToggle: React.Dispatch<React.SetStateAction<boolean>>;
 };
+
+const ModalContainer = styled.div`
+	position: absolute;
+	z-index: 20;
+	background: black;
+	color: white;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	padding: var(--headerH) 2rem 0 2rem;
+`;
 
 export default Modal;

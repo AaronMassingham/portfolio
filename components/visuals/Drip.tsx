@@ -1,9 +1,8 @@
 import { motion } from "framer-motion";
 import styled from "styled-components";
 
-const Drip = () => {
+const Drip = ({ color }: Props) => {
 	const randomisedDelay = Math.random() * 5;
-	console.log(randomisedDelay);
 
 	const variants = {
 		animate: {
@@ -31,24 +30,29 @@ const Drip = () => {
 		},
 	};
 	return (
-		<Main variants={variants} animate="animate">
-			<Drop variants={childVariants} animate="animate" />
+		<Main color={color} variants={variants} animate="animate">
+			<Drop color={color} variants={childVariants} animate="animate" />
 		</Main>
 	);
+};
+
+type Props = {
+	color?: string;
 };
 
 const Main = styled(motion.div)`
 	width: 7px;
 	height: 17px;
-	background: var(--darkestGrey);
+	background: ${(props) => (props.color ? props.color : "var(--darkestGrey)")};
 	transform-origin: top;
 	position: relative;
 	&:before {
 		content: " ";
 		width: 100%;
 		height: 7px;
-		aspect-ration: 1/1;
-		background: var(--darkestGrey);
+		aspect-ratio: 1/1;
+		background: ${(props) =>
+			props.color ? props.color : "var(--darkestGrey)"};
 		border-radius: 100%;
 		position: absolute;
 		left: 0;
@@ -58,8 +62,8 @@ const Main = styled(motion.div)`
 const Drop = styled(motion.div)`
 	width: 100%;
 	height: 7px;
-	aspect-ration: 1/1;
-	background: var(--darkestGrey);
+	aspect-ratio: 1/1;
+	background: ${(props) => (props.color ? props.color : "var(--darkestGrey)")};
 	border-radius: 100%;
 	position: absolute;
 	left: 0;

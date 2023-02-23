@@ -1,45 +1,36 @@
 import { motion } from "framer-motion";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 
 //Components
 import Drip from "./Drip";
 
-const Drips = () => {
+const Drips = ({ color }: Props) => {
 	return (
 		<Container>
-			<Corner />
-			<Drip />
-			<Spacer />
-			<Drip />
-			<Spacer />
-			<Drip />
-			<Corner />
+			<Corner color={color} />
+			<Drip color={color} />
+			<Spacer color={color} />
+			<Drip color={color} />
+			<Spacer color={color} />
+			<Drip color={color} />
+			<Corner color={color} />
 		</Container>
 	);
 };
 
-const Corner = styled(motion.div)`
+type Props = {
+	color?: string;
+};
+
+const Corner = styled(motion.div)<Props>`
 	width: 7px;
 	height: 7px;
-	background: var(--darkestGrey);
-	&:before,
-	&:after {
-		position: absolute;
-		z-index: 4;
-		background: var(--primaryBackground);
-		width: 14px;
-		height: 14px;
-		content: "";
-		top: 0;
-		border-radius: 50%;
+	background: ${(props) => (props.color ? props.color : "var(--darkestGrey)")};
+	&:first-of-type {
+		clip-path: path("M7,7c0-3.9-3.1-7-7-7h0l7,0V7L7,7z");
 	}
-	&:before {
-		top: 0;
-		left: -7px;
-	}
-	&:after {
-		top: 0;
-		right: -7px;
+	&:last-of-type {
+		clip-path: path("M0,7c0-3.9,3.1-7,7-7h0L0,0V7L0,7z");
 	}
 `;
 const Container = styled(motion.div)`
@@ -48,24 +39,17 @@ const Container = styled(motion.div)`
 	overflow: hidden;
 	display: flex;
 	flex-direction: row;
+	justify-content: space-around;
 	position: relative;
+	pointer-events: none;
 `;
 
-const Spacer = styled(motion.div)`
+const Spacer = styled(motion.div)<Props>`
 	width: 7px;
 	height: 14px;
-	background: var(--darkestGrey);
+	background: ${(props) => (props.color ? props.color : "var(--darkestGrey)")};
 	position: relative;
-	&:before {
-		content: "";
-		background: var(--primaryBackground);
-		top: 3.5px;
-		left: 0;
-		width: 7px;
-		height: 14px;
-		position: absolute;
-		border-radius: 7px;
-	}
+	clip-path: path("M0,0v7c0,0,0-0.1,0-0.1c0-4.5,7-4.5,7,0C7,6.9,7,7,7,7V0H0z");
 `;
 
 export default Drips;

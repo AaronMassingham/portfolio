@@ -2,18 +2,16 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const ScrollPrompt = () => {
-	const variant = {
+	const dotAnimation = {
 		animate: {
-			y: [0, 42],
-			opacity: [0, 1],
-			scale: [0.8, 1],
+			y: [2, 42],
 		},
 	};
 
 	return (
 		<Container>
 			<Dot
-				variants={variant}
+				variants={dotAnimation}
 				animate="animate"
 				transition={{
 					duration: 1,
@@ -27,15 +25,15 @@ const ScrollPrompt = () => {
 };
 
 const Container = styled(motion.div)`
-	width: 8px;
-	border-radius: 4px;
+	width: 6px;
+	border-radius: var(--borderWidth);
 	background: var(--darkestGrey);
 	height: 50px;
-	padding: 2px;
+	padding: 1px;
 `;
 const Dot = styled(motion.div)`
 	background: var(--primaryBackground);
-	width: 100%;
+	width: 4px;
 	aspect-ratio: 1/1;
 	height: auto;
 	border-radius: 100%;

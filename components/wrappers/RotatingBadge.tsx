@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-const WorkCircle = ({ children }: Props) => {
+const RotatingBadge = ({ children }: Props) => {
 	const variants = {
 		animate: {
 			rotate: -360,
@@ -29,13 +29,14 @@ const WorkCircle = ({ children }: Props) => {
 };
 
 const Container = styled.div`
-	position: absolute;
+	overflow: visible;
+	z-index: 5;
 	display: grid;
 	place-items: center;
-	aspect-ratio: 1/1;
+	padding: 5px;
 	height: 100%;
+	aspect-ratio: 1/1;
 	overflow: hidden;
-
 	& > * {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
@@ -47,7 +48,7 @@ const Svg = styled(motion.svg)`
 	height: 100%;
 	pointer-events: none;
 	path {
-		fill: var(--darkestGrey);
+		fill: var(--darkGrey);
 	}
 `;
 
@@ -55,4 +56,4 @@ interface Props {
 	children?: ReactNode;
 }
 
-export default WorkCircle;
+export default RotatingBadge;

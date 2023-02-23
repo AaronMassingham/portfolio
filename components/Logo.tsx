@@ -3,31 +3,40 @@ import styled from "styled-components";
 const Logo = () => {
 	return (
 		<Container>
-			<Svg viewBox="0 0 68 68">
-				<circle cx="32" cy="33" r="29" />
-				<path d="M3.7,44.8l9.1-23.6h50.1 M33,64.9L20.4,40.4h-7.3 M16.8,29.1l-1.9,5.6h49.8" />
+			<Svg viewBox="0 0 60 60">
+				<circle cx="30" cy="30" r="30" />
+				<path d="M53.7,17.8H11.9c-1,0-2,0.6-2.4,1.6L3.6,34.8" />
+				<polyline points="56.6,31.7 12.3,31.7 14.3,25.9 16.8,31.7 	" />
+				<path d="M27.9,56.7l-7.7-17.5c-0.4-0.9-1.3-1.5-2.3-1.5h-5.7c-1,0-2,0.6-2.3,1.6l-2.2,5.4" />
 			</Svg>
 		</Container>
 	);
 };
 
-const Svg = styled.svg`
-	circle {
-		fill: #0c0c0b;
-	}
-	path {
-		fill: none;
-		stroke: #f2f0ed;
-		stroke-width: 2;
-		stroke-linecap: round;
-		stroke-miterlimit: 10;
-	}
-`;
 const Container = styled.div`
-	max-width: 5rem;
+	max-width: var(--headerH);
+	max-height: var(--headerH);
 	width: 100%;
 	height: 100%;
-	padding-top: 0.5rem;
+	padding: 2px;
+`;
+
+const Svg = styled.svg`
+	height: 100%;
+	display: block;
+	circle {
+		fill: var(--darkGrey);
+	}
+	path,
+	polyline {
+		fill: none;
+		stroke: var(--primaryBackground);
+
+		stroke-width: 2;
+		stroke-linecap: round;
+		stroke-linejoin: round;
+		stroke-miterlimit: 10;
+	}
 `;
 
 export default Logo;

@@ -2,18 +2,20 @@ import styled from "styled-components";
 
 //Components
 import ScrollPrompt from "./ScrollPrompt";
-import Drips from "./visuals/Drips";
-import WorkCircle from "./wrappers/WorkCircle";
+import WorkCircle from "./wrappers/RotatingBadge";
+
+//Fonts
+import { ShrikhandFont } from "../utils/FancyFont";
 
 const Hero = () => {
 	return (
 		<Container>
-			<HeroMascot></HeroMascot>
 			<Strap>
-				I'm Aaron, a creative designer
-				<br />
-				and web developer.
+				<span className={ShrikhandFont.className}>
+					I'm Aaron, I create visual experiences.
+				</span>
 			</Strap>
+
 			<PromptContainer>
 				<WorkCircle>
 					<ScrollPrompt />
@@ -23,51 +25,40 @@ const Hero = () => {
 	);
 };
 
-const HeroMascot = styled.div`
-	@media only screen and (min-width: 768px) {
-		width: 100%;
-		flex: 1;
-		display: flex;
-		justify-content: center;
-		align-items: center;
-	}
-`;
 const Container = styled.section`
 	display: flex;
-	height: -webkit-fill-available;
-	align-items: center;
-	justify-content: center;
+	height: 100vh;
+	align-items: flex-start;
+	justify-content: space-between;
 	flex-direction: column;
 	@media only screen and (min-width: 768px) {
-		align-items: flex-start;
-		justify-content: space-between;
-		flex-direction: column;
 	}
 `;
 const Strap = styled.h1`
+	padding: 2rem;
+	max-width: 100%;
 	text-align: center;
-	color: var(--darkGrey);
-	@media only screen and (max-width: 768px) {
-		padding-top: 2rem;
+	margin: auto;
+	color: var(--primaryBackground);
+	font-size: 10vw;
+	& > h2 {
+		text-align: center;
 	}
 	@media only screen and (min-width: 768px) {
-		justify-self: flex-end;
-		text-align: left;
-		height: 8rem;
-		display: flex;
-		align-items: center;
-		margin-bottom: 12rem;
+		max-width: 75%;
+		font-size: 8vw;
 	}
 `;
 const PromptContainer = styled.div`
-	position: absolute;
+	position: relative;
 	bottom: 0;
 	right: 0;
+	align-self: center;
 	justify-content: center;
 	align-items: center;
 	display: flex;
 	height: 10rem;
-	width: 100%;
+	width: 10rem;
 	margin-bottom: 2rem;
 `;
 

@@ -15,12 +15,12 @@ const Footer = () => {
 
 const Spacer = styled.div`
 	width: 100%;
-	height: calc(100vh - (8rem + 8px));
+	height: calc(100vh - (8rem + var(--borderWidth)));
 `;
 const Container = styled.div`
 	position: fixed;
+	z-index: 10;
 	bottom: 0;
-	height: 8rem;
 	right: 2rem;
 `;
 

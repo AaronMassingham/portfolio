@@ -31,24 +31,30 @@ const Social = () => {
 
 const Container = styled.ul`
 	list-style: none;
-	padding: 0 0 2rem 0;
+	padding: 0 2rem 2rem 0;
 	margin: 0;
 	width: 1rem;
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
 	flex-direction: column;
+	gap: 1rem;
 	& > li {
+		width: 2rem;
+		height: 2rem;
+		background: var(--darkGrey);
+		border-radius: 100%;
+		& a {
+			width: 100%;
+			height: 100%;
+
+			display: grid;
+			place-items: center;
+		}
 		& svg {
-			max-height: 1rem;
+			color: var(--primaryBackground);
+			height: 1rem;
 		}
-		&:first-of-type {
-			padding-top: 0;
-		}
-	}
-	svg {
-		mix-blend-mode: difference;
-	}
 `;
 
 export default Social;
