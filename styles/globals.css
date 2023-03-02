@@ -1,15 +1,17 @@
 :root {
-	--darkestGrey: #111111;
-	--darkGrey: #111111;
+	--darkestGrey: #35322e;
+	--darkGrey: #35322e;
 	--pink: #ef89b2;
-	--primaryBackground: #e8dcd1;
+	--primaryBackground: #d3a885;
 
-	--fs-xl: clamp(3rem, 5vw + 1rem, 6rem);
+	--fs-xlDisplay: clamp(6rem, 6vw + 3rem, 6rem);
+	--fs-xl: clamp(3rem, 5vw + 2rem, 6rem);
 	--fs-lg: clamp(2rem, 4vw + 1rem, 5rem);
+	--fs-md: clamp(1.5rem, 2vw + 1rem, 4rem);
 	--headerH: 4rem;
-	--sitePadding: 0 2rem;
-	--border: 4px solid var(--darkestGrey);
-	--borderWidth: 4px;
+	--sitePadding: 2rem;
+	--border: 2px solid var(--darkestGrey);
+	--borderWidth: 2px;
 
 	--white: #ffffff;
 }
@@ -39,7 +41,6 @@ body {
 
 body {
 	background: var(--primaryBackground);
-	font-family: "openSans";
 	font-weight: 400;
 	min-height: 100vh;
 	min-height: stretch;
@@ -67,26 +68,41 @@ h5 {
 h1,
 h2 {
 	line-height: 1;
+}
+
+.strokedLightkBg {
 	color: var(--primaryBackground);
-	text-shadow: 1px 1px 0 var(--darkGrey), 2px 2px 0px var(--darkGrey),
-		3px 3px 0px var(--darkGrey), 4px 4px 0px var(--darkGrey);
-	-webkit-text-stroke: calc(var(--borderWidth) / 2) var(--darkestGrey);
-	font-weight: 800;
+	text-shadow: 1px 1px 0 var(--darkGrey), 2px 2px 0px var(--darkGrey);
+	-webkit-text-stroke: calc(var(--borderWidth) / 2) var(--darkGrey);
+}
+.strokedDarkBg {
+	color: var(--darkGrey);
+	text-shadow: 1px 1px 0 var(--primaryBackground),
+		2px 2px 0px var(--primaryBackground);
+	-webkit-text-stroke: 1px var(--primaryBackground);
 }
 
 h1 {
-	font-size: 8vw;
+	font-size: var(--fs-xl);
 }
 
 h2 {
 	font-size: var(--fs-lg);
 }
 
+h3 {
+	font-size: var(--fs-md);
+	line-height: 1;
+}
+
+.stack > * + * {
+	margin-block-start: 1.25rem;
+}
+
 @media screen and (min-width: 768px) {
 	h1,
 	h2 {
 		line-height: 0.9;
-		-webkit-text-stroke: calc(var(--borderWidth) / 2 + 1px) var(--darkestGrey);
 	}
 }
 
@@ -94,6 +110,16 @@ h2 {
 	h1,
 	h2 {
 		line-height: 0.8;
-		-webkit-text-stroke: var(--borderWidth) var(--darkestGrey);
+	}
+
+	.strokedLightkBg {
+		text-shadow: 1px 1px 0 var(--darkGrey), 2px 2px 0px var(--darkGrey),
+			3px 3px 0px var(--darkGrey);
+		-webkit-text-stroke: var(--borderWidth) var(--darkGrey);
+	}
+	.strokedDarkBg {
+		text-shadow: 1px 1px 0 var(--primaryBackground),
+			2px 2px 0px var(--primaryBackground), 3px 3px 0px var(--primaryBackground);
+		-webkit-text-stroke: 1px var(--primaryBackground);
 	}
 }

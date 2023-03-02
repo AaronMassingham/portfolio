@@ -26,7 +26,7 @@ const ScrollPrompt = () => {
 
 const Container = styled(motion.div)`
 	width: 6px;
-	border-radius: var(--borderWidth);
+	border-radius: 6px;
 	background: var(--darkestGrey);
 	height: 50px;
 	padding: 1px;

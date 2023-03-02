@@ -3,9 +3,9 @@ import type { AppProps } from "next/app";
 import { AnimatePresence, motion } from "framer-motion";
 
 //Fonts
-import { Open_Sans, Modak } from "@next/font/google";
+import { Open_Sans, Modak, Raleway } from "@next/font/google";
 
-const openSans = Open_Sans({
+const openSans = Raleway({
 	subsets: ["latin"],
 	weight: ["300", "400", "700", "800"],
 	display: "swap",

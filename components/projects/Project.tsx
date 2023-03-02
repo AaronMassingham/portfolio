@@ -6,15 +6,16 @@ import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import BlockQuote from "../blocks/BlockQuote";
 
 //Hooks
-import useMediaQuery from "@components/lib/useMediaQuery";
+import { useContainerDimensions } from "@components/lib/useContainerDimensions";
 
 const Project = ({
 	children,
 	staticChildren,
-	height,
+	numberOfProjectBlocks,
 	itemNumber,
 	itemsTotal,
 }: Props) => {
+	//Check
 	const checkIndexIsFirst = itemNumber === 0;
 	const checkIndexIsLast = itemNumber === itemsTotal;
 
@@ -56,9 +57,9 @@ const Project = ({
 			leftCurtain
 		),
 		{
-			stiffness: 100,
-			damping: 30,
-			restDelta: 0.001,
+			stiffness: 50,
+			damping: 15,
+			restDelta: 0.5,
 		}
 	);
 	const xR = useSpring(
@@ -68,28 +69,34 @@ const Project = ({
 			rightCurtain
 		),
 		{
-			stiffness: 100,
-			damping: 30,
-			restDelta: 0.001,
+			stiffness: 50,
+			damping: 15,
+			restDelta: 0.5,
 		}
 	);
 
-	return (
-		<Container height={height} ref={scrollRef}>
-			<Sticky style={{ x: xL }}>
-				<Border isFirst={checkIndexIsFirst ? true : false} />
+	let setContainerHeight;
+	if (itemNumber === 0) {
+		setContainerHeight = numberOfProjectBlocks * 100 + 100;
+	} else if (itemNumber === itemsTotal) {
+		setContainerHeight = numberOfProjectBlocks * 100 + 100;
+	} else {
+		setContainerHeight = numberOfProjectBlocks * 100;
+	}
 
-				<Content>{children}</Content>
+	return (
+		<Container height={setContainerHeight} ref={scrollRef}>
+			<Sticky style={{ x: xL }}>
+				{/* <Border isFirst={checkIndexIsFirst ? true : false} /> */}
+
+				{children}
 			</Sticky>
 			<Static style={{ x: xR }}>
 				<StaticContent>{staticChildren}</StaticContent>
-				<BorderLeft isFirst={checkIndexIsFirst ? true : false}>
-					<div />
-				</BorderLeft>
 			</Static>
 			{checkIndexIsFirst && (
 				<SectionTitle>
-					<BlockQuote title="Works">
+					<BlockQuote title="Projects">
 						I find visual solutions, then build them using current web
 						technologies.
 					</BlockQuote>
@@ -98,59 +105,59 @@ const Project = ({
 
 			{checkIndexIsLast && (
 				<SectionTitle>
-					<BlockQuote title="Who am I?">
-						I've been doing this for over a decade.
-					</BlockQuote>
+					<BlockQuote title="Not bad, eh?"></BlockQuote>
 				</SectionTitle>
 			)}
 		</Container>
 	);
 };
 
-type BorderProps = {
-	isFirst: boolean;
-};
+// type BorderProps = {
+// 	isFirst: boolean;
+// };
 type Props = {
 	children: React.ReactNode;
-	height?: number;
 	itemNumber?: number;
 	itemsTotal?: number;
-	staticChildren?: React.ReactNode;
+	numberOfProjectBlocks: number;
+	staticChildren: React.ReactNode;
 };
 
-const Border = styled.div<BorderProps>`
-	height: ${(props) =>
-		props.isFirst ? "calc(100vh - (var(--headerH) + 5px))" : "100%"};
-	transform: translateY(
-		${(props) => (props.isFirst ? "calc(var(--headerH) + 5px)" : "")}
-	);
-	position: absolute;
-	top: 0;
-	right: -2px;
-	width: 100%;
-	pointer-events: none;
-	overflow: clip;
-	width: 4px;
-	border-radius: 4px;
-	background-color: var(--darkestGrey);
-`;
+type ContainerProps = {
+	height: number;
+};
 
-const BorderLeft = styled(Border)`
-	left: -2px;
-	right: unset;
-	height: 100%;
-	overflow: clip;
-	background-color: unset;
-	> div {
-		height: ${(props) =>
-			props.isFirst ? "calc(100vh - (var(--headerH) + 5px))" : "100%"};
-		width: 100%;
-		position: sticky;
-		top: 0;
-		border-radius: 4px;
-		background-color: var(--darkestGrey);
-	}
-`;
+// const Border = styled.div<BorderProps>`
+// 	height: ${(props) =>
+// 		props.isFirst ? "calc(100vh - var(--headerH))" : "100%"};
+// 	transform: translateY(${(props) => (props.isFirst ? "var(--headerH)" : "")});
+// 	position: absolute;
+// 	top: 0;
+// 	right: -2px;
+// 	width: 100%;
+// 	pointer-events: none;
+// 	overflow: clip;
+// 	width: 4px;
+// 	border-radius: 4px;
+// 	background-color: var(--darkestGrey);
+// `;
+
+// const BorderLeft = styled(Border)`
+// 	left: -2px;
+// 	right: unset;
+// 	height: 100%;
+// 	overflow: clip;
+// 	background-color: unset;
+// 	> div {
+// 		height: ${(props) =>
+// 			props.isFirst ? "calc(100vh - (var(--headerH) + 5px))" : "100%"};
+// 		width: 100%;
+// 		position: sticky;
+// 		top: 0;
+// 		border-radius: 4px;
+// 		background-color: var(--darkestGrey);
+// 	}
+// `;
 
 const SectionTitle = styled.section`
 	position: absolute;
@@ -164,8 +171,9 @@ const SectionTitle = styled.section`
 	align-items: flex-start;
 	& > div {
 		position: sticky;
-		top: 10vh;
-		height: 90vh;
+		top: calc(var(--headerH) - 4px);
+		height: calc(100vh - var(--headerH));
+		width: 100%;
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
@@ -178,19 +186,20 @@ const SectionTitle = styled.section`
 	}
 `;
 
-const Container = styled.section<Props>`
-	height: ${(props) => (props.height ? props.height + "px" : "auto")};
+const Container = styled.section<ContainerProps>`
+	height: ${(props) => (props.height ? props.height + "vh" : "auto")};
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	position: relative;
+	z-index: 4;
 `;
 
-const Static = styled(motion.div)<Props>`
+const Static = styled(motion.div)`
 	position: relative;
 	z-index: 2;
 	height: 100%;
-	background-color: var(--primaryBackground);
+	background-color: var(--darkGrey);
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
@@ -212,13 +221,13 @@ const Content = styled(motion.div)`
 	align-items: center;
 	width: 100%;
 	height: 100%;
-	padding: var(--sitePadding);
+	padding: 0 var(--sitePadding);
 `;
 
 const StaticContent = styled(Content)`
 	flex-direction: column;
-	justify-content: space-between;
-	padding: 100vh var(--sitePadding);
+	justify-content: center;
+	padding: 0 var(--sitePadding);
 	gap: 5vh;
 `;
 
@@ -234,7 +243,7 @@ const Sticky = styled(motion.div)`
 	}
 	@media screen and (min-width: 768px) {
 		width: calc(50% + var(--borderWidth));
-		background-color: var(--primaryBackground);
+		background-color: var(--darkGrey);
 	}
 `;
 

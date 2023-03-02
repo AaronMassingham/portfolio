@@ -1,5 +1,5 @@
 import styled from "styled-components";
-
+import { motion } from "framer-motion";
 import ImageBlock from "./blocks/ImageBlock";
 import ColorsBlock from "./blocks/ColorsBlock";
 import TextBlock from "./blocks/TextBlock";
@@ -14,12 +14,25 @@ const ProjectBlocks = ({ data }: Props) => {
 	return (
 		<>
 			{data.map((item) => (
-				<Container style={{ border: "1px solid black", padding: "2rem" }}>
+				<Container
+					initial={{ opacity: 0, scale: 0.9 }}
+					whileInView={{
+						opacity: 0.05,
+						scale: 1,
+					}}
+					viewport={{ amount: 0.5 }}
+					transition={{
+						duration: 1,
+						ease: [0.25, 0.85, 0.19, 1],
+					}}
+				>
 					<div>Type - {item.component}</div>
 					{item.colors && (
 						<ul>
-							{item.colors.map((color) => (
-								<li style={{ backgroundColor: `${color}` }}>{color}</li>
+							{item.colors.map((color, index) => (
+								<li key={index} style={{ backgroundColor: `${color}` }}>
+									{color}
+								</li>
 							))}
 						</ul>
 					)}
@@ -40,8 +53,15 @@ type Props = {
 	}>;
 };
 
-const Container = styled.div`
-	min-height: 90vh;
+const Container = styled(motion.div)`
+	min-height: 70vh;
+	background-color: var(--primaryBackground);
+
+	width: 80%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	border-radius: 3rem;
 `;
 
 export default ProjectBlocks;

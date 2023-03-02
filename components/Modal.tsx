@@ -18,8 +18,8 @@ type Props = {
 const ModalContainer = styled.div`
 	position: absolute;
 	z-index: 20;
-	background: black;
-	color: white;
+	background: var(--darkGrey);
+	color: var(--primaryBackground);
 	top: 0;
 	left: 0;
 	bottom: 0;

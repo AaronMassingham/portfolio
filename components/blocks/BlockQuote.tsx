@@ -5,7 +5,7 @@ import styled from "styled-components";
 const BlockQuote = ({ children, title }: Props) => {
 	return (
 		<Container>
-			<h2 className={ShrikhandFont.className}>{title}</h2>
+			<h2 className={`${ShrikhandFont.className} strokedLightkBg`}>{title}</h2>
 			<div>{children}</div>
 		</Container>
 	);
@@ -13,7 +13,7 @@ const BlockQuote = ({ children, title }: Props) => {
 
 const Container = styled.div`
 	& h2 {
-		font-size: var(--fs-xl);
+		font-size: var(--fs-lg);
 	}
 	& > div {
 		width: clamp(200px, 400px, 100%);

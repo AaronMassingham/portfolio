@@ -1,4 +1,6 @@
 import styled from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faHand } from "@fortawesome/free-solid-svg-icons";
 
 //Components
 import ScrollPrompt from "./ScrollPrompt";
@@ -10,12 +12,16 @@ import { ShrikhandFont } from "../utils/FancyFont";
 const Hero = () => {
 	return (
 		<Container>
-			<Strap>
-				<span className={ShrikhandFont.className}>
-					I'm Aaron, I create visual experiences.
-				</span>
-			</Strap>
-
+			<Headline>
+				<Strapline>I'm Aaron</Strapline>
+				<h1 className={`${ShrikhandFont.className} strokedLightkBg`}>
+					I help create
+					<br />
+					frontend
+					<br />
+					experiences.
+				</h1>
+			</Headline>
 			<PromptContainer>
 				<WorkCircle>
 					<ScrollPrompt />
@@ -31,24 +37,35 @@ const Container = styled.section`
 	align-items: flex-start;
 	justify-content: space-between;
 	flex-direction: column;
-	@media only screen and (min-width: 768px) {
-	}
 `;
-const Strap = styled.h1`
-	padding: 2rem;
+
+const Headline = styled.div`
+	position: relative;
+	padding: 3rem 2rem 2rem 2rem;
 	max-width: 100%;
 	text-align: center;
 	margin: auto;
-	color: var(--primaryBackground);
-	font-size: 10vw;
-	& > h2 {
-		text-align: center;
-	}
 	@media only screen and (min-width: 768px) {
 		max-width: 75%;
-		font-size: 8vw;
+	}
+	& h1 {
+		font-size: var(--fs-xlDisplay);
 	}
 `;
+
+const Strapline = styled.div`
+	text-transform: uppercase;
+	font-weight: 500;
+	font-size: 1.5rem;
+	display: flex;
+	position: absolute;
+	top: 0;
+	left: 0;
+	justify-content: center;
+	width: 100%;
+	align-items: center;
+`;
+
 const PromptContainer = styled.div`
 	position: relative;
 	bottom: 0;
