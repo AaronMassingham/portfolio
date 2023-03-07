@@ -24,7 +24,7 @@ const Container = styled.div`
 	width: 100%;
 	height: 100%;
 	@media screen and (max-width: 768px) {
-		border-bottom: var(--border);
+		border-bottom: 2px solid var(--pink);
 	}
 	& h4 {
 		font-size: 1rem;
@@ -32,7 +32,7 @@ const Container = styled.div`
 		font-weight: bold;
 		padding: 1rem 0 1rem 0;
 		@media screen and (min-width: 768px) {
-			border-bottom: var(--border);
+			border-bottom: 2px solid var(--pink);
 			padding: 2rem 0 1rem 0;
 		}
 	}

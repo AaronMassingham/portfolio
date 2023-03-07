@@ -22,7 +22,7 @@ type Props = {
 };
 
 const Container = styled.section`
-	height: 150vh;
+	height: 100vh;
 	display: grid;
 	@media screen and (min-width: 768px) {
 		min-height: 100vh;
@@ -30,13 +30,12 @@ const Container = styled.section`
 `;
 
 const Sticky = styled.div`
-	height: 10vh;
-	width: 100%;
 	position: sticky;
-	top: var(--headerH);
+	top: 0;
+	padding-top: var(--headerH);
 	background: var(--primaryBackground);
-	margin-bottom: 10vh;
-	border-bottom: var(--borderWidth) solid var(--darkGrey);
+
+	border-bottom: var(--borderWidth) solid var(--white);
 	z-index: 2;
 	& > div {
 		height: 20vh;
@@ -44,28 +43,12 @@ const Sticky = styled.div`
 		justify-content: center;
 		align-items: center;
 		@media screen and (min-width: 768px) {
-			height: 40vh;
-		}
-		& h2 {
-			position: relative;
-			&:before {
-				position: absolute;
-				top: -30%;
-				left: -20%;
-				width: 140%;
-				height: 140%;
-				background: var(--primaryBackground);
-				content: " ";
-				z-index: -1;
-				border-radius: 5rem;
-				border: var(--border);
-			}
 		}
 	}
 	@media screen and (min-width: 768px) {
 		height: 10vh;
 		& > div {
-			height: 20vh;
+			height: 0;
 		}
 	}
 `;

@@ -117,7 +117,7 @@ const Project = ({
 
 			{checkIndexIsLast && (
 				<SectionTitle>
-					<BlockQuote title="Not bad, eh?"></BlockQuote>
+					<BlockQuote title="Not bad, eh?">Keep scrolling</BlockQuote>
 				</SectionTitle>
 			)}
 		</Container>
@@ -215,11 +215,11 @@ const Static = styled(motion.div)<CurtainProps>`
 	position: relative;
 	z-index: 2;
 	height: 100%;
-	background-color: var(--darkGrey);
+	background-color: var(--white);
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
-	outline: 1px solid;
+	outline: 1px solid var(--white);
 	@media screen and (max-width: 768px) {
 		position: absolute;
 		width: 100%;
@@ -239,7 +239,7 @@ const Static = styled(motion.div)<CurtainProps>`
 				position: absolute;
 				top: -200vh;
 				left: 0;
-				background: var(--darkGrey);
+				background: var(--white);
 				width: 100%;
 				height: 200vh;
 			}
@@ -262,13 +262,13 @@ const Sticky = styled(motion.div)<CurtainProps>`
 	top: 0;
 	z-index: 3;
 	padding: var(--sitePadding);
-	padding-top: calc(var(--headerH) + var(--sitePadding));
-	outline: 1px solid;
+	padding-top: calc(var(--headerH) + 2rem);
+	outline: 1px solid var(--white);
 	@media screen and (max-width: 768px) {
 	}
 	@media screen and (min-width: 768px) {
 		width: calc(50% + var(--borderWidth));
-		background-color: var(--darkGrey);
+		background-color: var(--white);
 	}
 
 	${(props) =>
@@ -279,7 +279,7 @@ const Sticky = styled(motion.div)<CurtainProps>`
 				position: absolute;
 				top: -200vh;
 				left: 0;
-				background: var(--darkGrey);
+				background: var(--white);
 				width: 100%;
 				height: 200vh;
 			}

@@ -29,12 +29,14 @@ const RotatingBadge = ({ children }: Props) => {
 };
 
 const Container = styled.div`
+	background-color: var(--pink);
+	border-radius: 100%;
 	overflow: visible;
 	z-index: 5;
 	display: grid;
 	place-items: center;
 	padding: 5px;
-	height: 100%;
+	height: 10rem;
 	aspect-ratio: 1/1;
 	overflow: hidden;
 	& > * {
@@ -48,7 +50,7 @@ const Svg = styled(motion.svg)`
 	height: 100%;
 	pointer-events: none;
 	path {
-		fill: var(--darkGrey);
+		fill: var(--primaryBackground);
 	}
 `;
 

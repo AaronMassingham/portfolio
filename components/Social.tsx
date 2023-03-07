@@ -31,18 +31,19 @@ const Social = () => {
 
 const Container = styled.ul`
 	list-style: none;
-	padding: 0 2rem 2rem 0;
+	justify-self:flex-end;
 	margin: 0;
-	width: 1rem;
+	width: auto;
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
-	flex-direction: column;
+	flex-direction: row;
 	gap: 1rem;
 	& > li {
 		width: 2rem;
 		height: 2rem;
-		background: var(--darkGrey);
+		border: 2px solid var(--white);
+		background:var(--primaryBackground);
 		border-radius: 100%;
 		& a {
 			width: 100%;
@@ -52,7 +53,7 @@ const Container = styled.ul`
 			place-items: center;
 		}
 		& svg {
-			color: var(--primaryBackground);
+			color: white;
 			height: 1rem;
 		}
 `;

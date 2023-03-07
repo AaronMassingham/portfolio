@@ -88,9 +88,6 @@ const Container = styled(motion.div)`
 `;
 
 const Content = styled(motion.div)`
-	& h3 {
-		color: var(--darkGrey);
-	}
 	@media screen and (max-width: 768px) {
 		display: flex;
 		& > button {

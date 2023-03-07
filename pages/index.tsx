@@ -16,6 +16,8 @@ import StickyTitleBlock from "@components/components/StickyTitleBlock";
 import Table from "@components/components/Table";
 import Columns from "@components/components/wrappers/Columns";
 
+import TextMarquee from "@components/components/TextMarqueeAlt";
+
 const projects = [
 	{
 		id: 1,
@@ -179,18 +181,39 @@ const Home: NextPage = () => {
 				</Project>
 			))}
 
-			<StickyTitleBlock title="Who">
-				<Columns>
-					<h3 className={ShrikhandFont.className}>
-						10 years of learning has got me this far and I look forward to the
-						journey ahead.
-					</h3>
-					<div
-						className="stack"
-						dangerouslySetInnerHTML={{ __html: aboutMe.bio }}
-					/>
-				</Columns>
-			</StickyTitleBlock>
+			<Test>
+				<div className="test2">
+					<TextMarquee content={["me", "me", "me", "me", "me"]} />
+				</div>
+				<div className="stack">
+					<h3>A decade of chasing creativity and usability.</h3>
+					<div className="stack">
+						<p>
+							I'm a strong believer in the power of collaboration and I strive
+							to create an environment that encourages open dialogue and
+							creative problem solving. I'm eager to work with a variety of
+							people to develop ideas and bring them to life.
+						</p>
+						<p>
+							I have a taste for animation on the web and I'm learning to bring
+							more vibrant user experiences to the table.
+						</p>
+					</div>
+					<h3>Designer</h3>
+					<Grid>
+						{aboutMe.design.map((item, index) => (
+							<Table key={index} data={item} />
+						))}
+					</Grid>
+					<h3>Developer</h3>
+					<Grid>
+						{aboutMe.developer.map((item, index) => (
+							<Table key={index} data={item} />
+						))}
+					</Grid>
+				</div>
+			</Test>
+			{/* 
 			<StickyTitleBlock title="Skills">
 				<Flex>
 					<div>
@@ -210,13 +233,38 @@ const Home: NextPage = () => {
 						</Grid>
 					</div>
 				</Flex>
-			</StickyTitleBlock>
+			</StickyTitleBlock> */}
 		</>
 	);
 };
 
 type GridProps = {};
 
+const Test = styled.div`
+	position: relative;
+	display: flex;
+	flex-direction: column;
+
+	min-height: 200vh;
+
+	gap: 5rem;
+
+	& > .stack {
+		padding: var(--sitePadding);
+		max-width: 1200px;
+		align-self: center;
+		& h3 {
+			padding-top: 2rem;
+		}
+	}
+
+	& .test2 {
+		height: calc(100vh - var(--headerH));
+		position: sticky;
+		top: var(--headerH);
+		width: 100%;
+	}
+`;
 const Flex = styled.div`
 	display: flex;
 	flex-direction: column;

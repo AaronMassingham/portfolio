@@ -8,75 +8,77 @@ import WorkCircle from "./wrappers/RotatingBadge";
 
 //Fonts
 import { ShrikhandFont } from "../utils/FancyFont";
+import TextMarquee from "./TextMarqueeAlt";
 
 const Hero = () => {
+	const marqueeContent = [
+		"UI Design",
+		"Web design",
+		"Branding",
+		"Frontend Dev",
+	];
+
 	return (
 		<Container>
 			<Headline>
 				<Strapline>I&apos;m Aaron</Strapline>
-				<h1 className={`${ShrikhandFont.className} strokedLightkBg`}>
-					I help create
-					<br />
-					frontend
-					<br />
-					experiences.
-				</h1>
+				<h1>I help create visual frontend experiences.</h1>
 			</Headline>
 			<PromptContainer>
 				<WorkCircle>
 					<ScrollPrompt />
 				</WorkCircle>
 			</PromptContainer>
+			<TextMarquee content={marqueeContent} />
 		</Container>
 	);
 };
 
 const Container = styled.section`
 	display: flex;
-	height: 100vh;
+	height: 75vh;
 	align-items: flex-start;
-	justify-content: space-between;
+	justify-content: center;
 	flex-direction: column;
+	padding: 2rem var(--sitePadding);
 `;
 
 const Headline = styled.div`
 	position: relative;
-	padding: 3rem 2rem 2rem 2rem;
+	padding: 3rem 0 0 0;
 	max-width: 100%;
-	text-align: center;
-	margin: auto;
-	@media only screen and (min-width: 768px) {
-		max-width: 75%;
-	}
-	& h1 {
-		font-size: var(--fs-xlDisplay);
-	}
+	text-align: left;
+	margin: auto 0;
+	max-width: 60%;
 `;
 
 const Strapline = styled.div`
 	text-transform: uppercase;
-	font-weight: 500;
+	font-weight: 300;
 	font-size: 1.5rem;
-	display: flex;
 	position: absolute;
 	top: 0;
 	left: 0;
 	justify-content: center;
 	width: 100%;
 	align-items: center;
+	color: var(--white);
+	padding-left: 3px;
+	opacity: 0.6;
 `;
 
 const PromptContainer = styled.div`
-	position: relative;
+	position: absolute;
 	bottom: 0;
 	right: 0;
 	align-self: center;
 	justify-content: center;
 	align-items: center;
 	display: flex;
-	height: 10rem;
-	width: 10rem;
-	margin-bottom: 2rem;
+	height: 25vh;
+	width: 100%;
+	display: grid;
+	place-items: center;
 `;
 
 export default Hero;

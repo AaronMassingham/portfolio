@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 //Components
-import Social from "./Social";
 import StickyTitleBlock from "./StickyTitleBlock";
 
 //Fonts
@@ -11,10 +10,6 @@ const Footer = () => {
 	return (
 		<>
 			<Container>
-				<SocialContainer>
-					<Social />
-				</SocialContainer>
-
 				<StickyTitleBlock title="Let's talk!">
 					<h3 className={`${ShrikhandFont.className} strokedLightkBg`}>
 						Do I fit the bill?
@@ -35,17 +30,6 @@ const Container = styled.div`
 	place-self: end;
 
 	position: relative;
-`;
-const Spacer = styled.div`
-	width: 100%;
-	height: calc(100vh - (var(--headerH) + var(--borderWidth)));
-	display: grid;
-`;
-const SocialContainer = styled.div`
-	position: fixed;
-	z-index: 10;
-	bottom: 0;
-	right: 2rem;
 `;
 
 export default Footer;

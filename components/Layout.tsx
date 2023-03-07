@@ -7,7 +7,7 @@ import Footer from "./Footer";
 const Layout = ({ children }: Props) => {
 	return (
 		<>
-			<Wrapper>
+			{/* <Wrapper>
 				<BorderTwo>
 					<div className="topleft" />
 					<div className="topright" />
@@ -16,7 +16,7 @@ const Layout = ({ children }: Props) => {
 				</BorderTwo>
 
 				<Border />
-			</Wrapper>
+			</Wrapper> */}
 			<Header />
 			<Main>{children}</Main>
 			<Footer />
