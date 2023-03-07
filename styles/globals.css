@@ -4,10 +4,10 @@
 	--pink: #ef89b2;
 	--primaryBackground: #d3a885;
 
-	--fs-xlDisplay: clamp(6rem, 6vw + 3rem, 6rem);
+	--fs-xlDisplay: clamp(4rem, 3vw + 3rem, 6rem);
 	--fs-xl: clamp(3rem, 5vw + 2rem, 6rem);
-	--fs-lg: clamp(2rem, 4vw + 1rem, 5rem);
-	--fs-md: clamp(1.5rem, 2vw + 1rem, 4rem);
+	--fs-lg: clamp(4rem, 4vw + 1rem, 5rem);
+	--fs-md: clamp(3rem, 2vw + 1rem, 4rem);
 	--headerH: 4rem;
 	--sitePadding: 2rem;
 	--border: 2px solid var(--darkestGrey);
@@ -109,7 +109,7 @@ h3 {
 @media screen and (min-width: 1200px) {
 	h1,
 	h2 {
-		line-height: 0.8;
+		line-height: 0.9;
 	}
 
 	.strokedLightkBg {

@@ -1,7 +1,20 @@
-import React from "react";
+const ColorsBlock = ({ block }: Props) => {
+	return (
+		<ul>
+			{block.colors.map((color, index) => (
+				<li key={index} style={{ backgroundColor: `${color}` }}>
+					{color}
+				</li>
+			))}
+		</ul>
+	);
+};
 
-const ColorsBlock = () => {
-	return <div>Colors Component</div>;
+type Props = {
+	block: {
+		id: number;
+		colors: Array<String>;
+	};
 };
 
 export default ColorsBlock;

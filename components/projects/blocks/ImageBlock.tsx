@@ -1,7 +1,12 @@
-import React from "react";
+const ImageBlock = ({ block }: Props) => {
+	return <div>{block.imageUrl}</div>;
+};
 
-const ImageBlock = () => {
-	return <div>Image Component</div>;
+type Props = {
+	block: {
+		id: number;
+		imageUrl?: string;
+	};
 };
 
 export default ImageBlock;
