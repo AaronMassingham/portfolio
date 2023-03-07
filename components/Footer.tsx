@@ -4,6 +4,9 @@ import styled from "styled-components";
 import Social from "./Social";
 import StickyTitleBlock from "./StickyTitleBlock";
 
+//Fonts
+import { ShrikhandFont } from "../utils/FancyFont";
+
 const Footer = () => {
 	return (
 		<>
@@ -12,7 +15,12 @@ const Footer = () => {
 					<Social />
 				</SocialContainer>
 
-				<StickyTitleBlock title="Let's talk!"></StickyTitleBlock>
+				<StickyTitleBlock title="Let's talk!">
+					<h3 className={`${ShrikhandFont.className} strokedLightkBg`}>
+						Do I fit the bill?
+					</h3>
+					<a href="mailto:aaron.massingham@outlook.com">Email Me</a>
+				</StickyTitleBlock>
 			</Container>
 		</>
 	);

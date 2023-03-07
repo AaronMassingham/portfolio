@@ -13,7 +13,7 @@ const Hero = () => {
 	return (
 		<Container>
 			<Headline>
-				<Strapline>I'm Aaron</Strapline>
+				<Strapline>I&apos;m Aaron</Strapline>
 				<h1 className={`${ShrikhandFont.className} strokedLightkBg`}>
 					I help create
 					<br />

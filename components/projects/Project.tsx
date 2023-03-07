@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 
 //Components
@@ -86,12 +86,24 @@ const Project = ({
 
 	return (
 		<Container height={setContainerHeight} ref={scrollRef}>
-			<Sticky style={{ x: xL }}>
+			<Sticky
+				style={{ x: xL }}
+				hasOverflowCurtain={
+					checkIndexIsFirst || checkIndexIsLast ? true : undefined
+				}
+				overflowLast={checkIndexIsLast ? true : undefined}
+			>
 				{/* <Border isFirst={checkIndexIsFirst ? true : false} /> */}
 
 				{children}
 			</Sticky>
-			<Static style={{ x: xR }}>
+			<Static
+				style={{ x: xR }}
+				hasOverflowCurtain={
+					checkIndexIsFirst || checkIndexIsLast ? true : undefined
+				}
+				overflowLast={checkIndexIsLast ? true : undefined}
+			>
 				<StaticContent>{staticChildren}</StaticContent>
 			</Static>
 			{checkIndexIsFirst && (
@@ -125,6 +137,10 @@ type Props = {
 
 type ContainerProps = {
 	height: number;
+};
+type CurtainProps = {
+	hasOverflowCurtain?: boolean;
+	overflowLast?: boolean;
 };
 
 // const Border = styled.div<BorderProps>`
@@ -195,7 +211,7 @@ const Container = styled.section<ContainerProps>`
 	z-index: 4;
 `;
 
-const Static = styled(motion.div)`
+const Static = styled(motion.div)<CurtainProps>`
 	position: relative;
 	z-index: 2;
 	height: 100%;
@@ -203,6 +219,7 @@ const Static = styled(motion.div)`
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
+	outline: 1px solid;
 	@media screen and (max-width: 768px) {
 		position: absolute;
 		width: 100%;
@@ -213,6 +230,68 @@ const Static = styled(motion.div)`
 	@media screen and (min-width: 768px) {
 		width: 50%;
 	}
+
+	${(props) =>
+		props.hasOverflowCurtain &&
+		css`
+			&:before {
+				content: " ";
+				position: absolute;
+				top: -200vh;
+				left: 0;
+				background: var(--darkGrey);
+				width: 100%;
+				height: 200vh;
+			}
+		`}
+
+	${(props) =>
+		props.overflowLast &&
+		css`
+			&:before {
+				top: unset;
+				bottom: -200vh;
+			}
+		`}
+`;
+
+const Sticky = styled(motion.div)<CurtainProps>`
+	width: 100%;
+	height: 100vh;
+	position: sticky;
+	top: 0;
+	z-index: 3;
+	padding: var(--sitePadding);
+	padding-top: calc(var(--headerH) + var(--sitePadding));
+	outline: 1px solid;
+	@media screen and (max-width: 768px) {
+	}
+	@media screen and (min-width: 768px) {
+		width: calc(50% + var(--borderWidth));
+		background-color: var(--darkGrey);
+	}
+
+	${(props) =>
+		props.hasOverflowCurtain &&
+		css`
+			&:before {
+				content: " ";
+				position: absolute;
+				top: -200vh;
+				left: 0;
+				background: var(--darkGrey);
+				width: 100%;
+				height: 200vh;
+			}
+		`}
+	${(props) =>
+		props.overflowLast &&
+		css`
+			&:before {
+				top: unset;
+				bottom: -200vh;
+			}
+		`}
 `;
 
 const Content = styled(motion.div)`
@@ -229,22 +308,6 @@ const StaticContent = styled(Content)`
 	justify-content: center;
 	padding: 0 var(--sitePadding);
 	gap: 5vh;
-`;
-
-const Sticky = styled(motion.div)`
-	width: 100%;
-	height: 100vh;
-	position: sticky;
-	top: 0;
-	z-index: 3;
-
-	@media screen and (max-width: 768px) {
-		padding-top: 5rem;
-	}
-	@media screen and (min-width: 768px) {
-		width: calc(50% + var(--borderWidth));
-		background-color: var(--darkGrey);
-	}
 `;
 
 export default Project;

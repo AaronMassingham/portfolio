@@ -10,7 +10,6 @@ import Modal from "@components/components/Modal";
 import TextMarquee from "../TextMarquee";
 
 const ProjectDetails = ({
-	index,
 	testimonial,
 	testimonialAuthor,
 	projectTitle,
@@ -28,7 +27,7 @@ const ProjectDetails = ({
 						<a
 							href={link}
 							target="_blank"
-							rel="noopener"
+							rel="noreferrer"
 							aria-label="Vist Graft Haus website (opens in a new tab)"
 						>
 							{projectTitle}
@@ -77,16 +76,14 @@ type Props = {
 
 const Container = styled(motion.div)`
 	width: 100%;
-	height: 100%;
+	height: -webkit-fill-available;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
 	flex-direction: column;
-	padding: calc(var(--headerH) + 2rem) var(--sitePadding) 2rem;
 	@media screen and (max-width: 768px) {
 		position: relative;
 		height: 100%;
-		padding: 2rem var(--sitePadding);
 	}
 `;
 

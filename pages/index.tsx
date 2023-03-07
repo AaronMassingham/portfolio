@@ -27,14 +27,18 @@ const projects = [
 		tech: ["PHP", "Advanced Custom Fields"],
 		details: [
 			{
+				id: 1,
 				component: "colors",
 				colors: ["red", "blue", "green"],
 			},
 			{
+				id: 2,
 				component: "image",
-				url: "https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-1.jpg",
+				imageUrl:
+					"https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-1.jpg",
 			},
 			{
+				id: 3,
 				component: "text",
 				content: "This is how I did this bit",
 			},
@@ -55,22 +59,18 @@ const projects = [
 		tech: ["Next Js", "Chakra UI", "TypeScript", "Framer Motion"],
 		details: [
 			{
+				id: 1,
 				component: "colors",
 				colors: ["orange", "pink", "cyan"],
 			},
 			{
+				id: 2,
 				component: "image",
-				url: "https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-2.jpg",
+				imageUrl:
+					"https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-2.jpg",
 			},
 			{
-				component: "image",
-				url: "https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-2.jpg",
-			},
-			{
-				component: "image",
-				url: "https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-2.jpg",
-			},
-			{
+				id: 3,
 				component: "text",
 				content: "This is how I did this bit",
 			},
@@ -91,14 +91,18 @@ const projects = [
 		],
 		details: [
 			{
+				id: 1,
 				component: "colors",
 				colors: ["purple", "gray", "yellow"],
 			},
 			{
+				id: 2,
 				component: "image",
-				url: "https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-3.jpg",
+				imageUrl:
+					"https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-3.jpg",
 			},
 			{
+				id: 3,
 				component: "text",
 				content: "This is how I did this bit",
 			},

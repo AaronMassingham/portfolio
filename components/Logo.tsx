@@ -18,9 +18,9 @@ const Div = styled.div`
 	background: red;
 	position: absolute;
 	aspect-ratio: 1/1;
-	height: calc(100% - 4px);
-	top: 2px;
-	left: 2px;
+	height: calc(100% - var(--borderWidth));
+	top: calc(var(--borderWidth) / 2);
+	left: calc(var(--borderWidth) / 2);
 	border-radius: 2rem 2rem 2rem 0;
 	background-color: var(--darkGrey);
 `;
