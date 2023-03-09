@@ -1,14 +1,12 @@
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHand } from "@fortawesome/free-solid-svg-icons";
 
 //Components
 import ScrollPrompt from "./ScrollPrompt";
 import WorkCircle from "./wrappers/RotatingBadge";
+import Heading from "./Heading";
 
 //Fonts
-import { ShrikhandFont } from "../utils/FancyFont";
-import TextMarquee from "./TextMarqueeAlt";
+import BigRibbon from "./BigRibbon";
 
 const Hero = () => {
 	const marqueeContent = [
@@ -21,26 +19,30 @@ const Hero = () => {
 	return (
 		<Container>
 			<Headline>
-				<Strapline>I&apos;m Aaron</Strapline>
-				<h1>I help create visual frontend experiences.</h1>
+				<Strapline>
+					I&apos;m Aaron <span>&#128075;</span>
+				</Strapline>
+				<Heading headingLevel="h1">
+					I help build visual frontend experiences.
+				</Heading>
 			</Headline>
 			<PromptContainer>
 				<WorkCircle>
 					<ScrollPrompt />
 				</WorkCircle>
 			</PromptContainer>
-			<TextMarquee content={marqueeContent} />
+			<BigRibbon content={marqueeContent} />
 		</Container>
 	);
 };
 
 const Container = styled.section`
 	display: flex;
-	height: 75vh;
+	height: 100vh;
 	align-items: flex-start;
 	justify-content: center;
 	flex-direction: column;
-	padding: 2rem var(--sitePadding);
+	padding: 2rem var(--sitePadding) 25vh var(--sitePadding);
 `;
 
 const Headline = styled.div`
@@ -49,7 +51,12 @@ const Headline = styled.div`
 	max-width: 100%;
 	text-align: left;
 	margin: auto 0;
-	max-width: 60%;
+	@media screen and (max-width: 768px) {
+		text-align: center;
+	}
+	@media screen and (min-width: 768px) {
+		//max-width: 60%;
+	}
 `;
 
 const Strapline = styled.div`
@@ -62,14 +69,17 @@ const Strapline = styled.div`
 	justify-content: center;
 	width: 100%;
 	align-items: center;
-	color: var(--white);
+	color: var(--pink);
 	padding-left: 3px;
-	opacity: 0.6;
+	& span {
+		-webkit-filter: hue-rotate(-75deg);
+		filter: hue-rotate(-75deg);
+	}
 `;
 
 const PromptContainer = styled.div`
 	position: absolute;
-	bottom: 0;
+	bottom: 7rem;
 	right: 0;
 	align-self: center;
 	justify-content: center;
@@ -79,6 +89,9 @@ const PromptContainer = styled.div`
 	width: 100%;
 	display: grid;
 	place-items: center;
+	@media screen and (max-width: 768px) {
+		bottom: 7rem;
+	}
 `;
 
 export default Hero;

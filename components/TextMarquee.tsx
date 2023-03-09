@@ -44,19 +44,19 @@ const TextMarquee = ({ content }: ContentProps) => {
 };
 
 const Text = styled(motion.div)`
-	padding: 0 2rem;
+	padding: 0 1rem;
+	opacity: 0.5;
 `;
 
 const Marquee = styled(motion.div)`
 	position: relative;
-	width: 300px;
+	width: 250px;
 	overflow: clip;
-	background-color: var(--darkestGrey);
-	color: var(--primaryBackground);
-
+	background-color: var(--primaryBackground);
+	color: var(--white);
+	border: 2px solid var(--white);
 	text-transform: uppercase;
 	border-radius: 100px;
-	margin: 0 auto;
 	height: 2rem;
 	display: flex;
 	align-items: center;
@@ -78,6 +78,10 @@ const Marquee = styled(motion.div)`
 	}
 	&:after {
 		right: 0;
+	}
+
+	@media screen and (min-width: 768px) {
+		width: 300px;
 	}
 `;
 const Track = styled(motion.div)`

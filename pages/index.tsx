@@ -2,21 +2,15 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import styled from "styled-components";
 
-//Fonts
-import { ShrikhandFont } from "../utils/FancyFont";
-
 //Components
 import Hero from "@components/components/Hero";
-
 import Project from "@components/components/projects/Project";
 import ProjectDetails from "@components/components/projects/ProjectDetails";
 import ProjectBlocks from "@components/components/projects/ProjectBlocks";
-
-import StickyTitleBlock from "@components/components/StickyTitleBlock";
 import Table from "@components/components/Table";
-import Columns from "@components/components/wrappers/Columns";
-
-import TextMarquee from "@components/components/TextMarqueeAlt";
+import BlockQuote from "@components/components/blocks/BlockQuote";
+import BigRibbon from "@components/components/BigRibbon";
+import Heading from "@components/components/Heading";
 
 const projects = [
 	{
@@ -80,7 +74,7 @@ const projects = [
 	},
 	{
 		id: 3,
-		projectTitle: "Wayne Anthony's",
+		projectTitle: "Wayne Anthony",
 		link: "https://www.wayneanthonys.co.uk",
 		testimonial: "Yeah ZEN MATE",
 		testimonialAuthor: "Wayne",
@@ -121,13 +115,7 @@ const aboutMe = {
 		},
 		{
 			title: "Competencies",
-			list: [
-				"Branding",
-				"Wireframing",
-				"UI Design",
-				"Web Design",
-				"Social Media Materials",
-			],
+			list: ["Branding", "Wireframing", "UI Design", "Web Design", "Graphics"],
 		},
 	],
 
@@ -141,9 +129,12 @@ const aboutMe = {
 			list: ["HTML5", "CSS3", "JavaScript", "SVG"],
 		},
 
-		{ title: "Libraries", list: ["Framer Motion", "GSAP", "Chakra UI"] },
-		{ title: "How I style", list: ["CSS Modules", "Styled-components"] },
-		{ title: "Frameworks", list: ["React Js", "Next Js", "Gatsby Js"] },
+		{
+			title: "Libraries",
+			list: ["React Js", "Framer Motion", "GSAP", "Chakra UI"],
+		},
+		{ title: "Styling", list: ["CSS Modules", "Styled-components"] },
+		{ title: "Frameworks", list: ["Next Js", "Gatsby Js"] },
 		{ title: "VC", list: ["GitHub"] },
 	],
 };
@@ -161,6 +152,13 @@ const Home: NextPage = () => {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Hero />
+
+			<SectionTitle>
+				<BlockQuote headingLevel="h2" title="Projects">
+					I find visual solutions, then build them using current web
+					technologies.
+				</BlockQuote>
+			</SectionTitle>
 
 			{projects.map((item, index) => (
 				<Project
@@ -181,119 +179,125 @@ const Home: NextPage = () => {
 				</Project>
 			))}
 
-			<Test>
-				<div className="test2">
-					<TextMarquee content={["me", "me", "me", "me", "me"]} />
+			<SectionTitleExtended>
+				<BlockQuote headingLevel="h2" title="Not bad, eh?">
+					Reach out for more commercial
+					<br />
+					examples of my work
+				</BlockQuote>
+			</SectionTitleExtended>
+
+			<AboutContainer>
+				<div className="marqeeContainer">
+					<BigRibbon content={["About", "About", "About"]} />
 				</div>
 				<div className="stack">
-					<h3>A decade of chasing creativity and usability.</h3>
-					<div className="stack">
-						<p>
-							I'm a strong believer in the power of collaboration and I strive
-							to create an environment that encourages open dialogue and
-							creative problem solving. I'm eager to work with a variety of
-							people to develop ideas and bring them to life.
-						</p>
-						<p>
-							I have a taste for animation on the web and I'm learning to bring
-							more vibrant user experiences to the table.
-						</p>
-					</div>
-					<h3>Designer</h3>
+					<Heading headingLevel="h3">Me.</Heading>
+					<p>
+						I&apos;m a strong believer in the power of collaboration and I
+						strive to create an environment that encourages open dialogue and
+						creative problem solving. I&apos;m eager to work with a variety of
+						people to develop ideas and bring them to life.
+					</p>
+					<p>
+						I have a taste for animation on the web and I&apos;m learning to
+						bring more vibrant user experiences to the table.
+					</p>
+
+					<Heading headingLevel="h4">Designer</Heading>
 					<Grid>
 						{aboutMe.design.map((item, index) => (
 							<Table key={index} data={item} />
 						))}
 					</Grid>
-					<h3>Developer</h3>
+					<Heading headingLevel="h4">Developer</Heading>
 					<Grid>
 						{aboutMe.developer.map((item, index) => (
 							<Table key={index} data={item} />
 						))}
 					</Grid>
 				</div>
-			</Test>
-			{/* 
-			<StickyTitleBlock title="Skills">
-				<Flex>
-					<div>
-						<h3 className={ShrikhandFont.className}>Designer</h3>
-						<Grid>
-							{aboutMe.design.map((item, index) => (
-								<Table key={index} data={item} />
-							))}
-						</Grid>
-					</div>
-					<div>
-						<h3 className={ShrikhandFont.className}>Developer</h3>
-						<Grid>
-							{aboutMe.developer.map((item, index) => (
-								<Table key={index} data={item} />
-							))}
-						</Grid>
-					</div>
-				</Flex>
-			</StickyTitleBlock> */}
+			</AboutContainer>
 		</>
 	);
 };
 
-type GridProps = {};
-
-const Test = styled.div`
+const AboutContainer = styled.section`
 	position: relative;
 	display: flex;
 	flex-direction: column;
+	min-height: calc(200vh + 300px);
 
-	min-height: 200vh;
+	& h3 {
+		padding-top: 2rem;
+	}
+	& h4 {
+		padding-top: 5rem;
+	}
 
-	gap: 5rem;
-
-	& > .stack {
+	& .stack {
 		padding: var(--sitePadding);
 		max-width: 1200px;
 		align-self: center;
-		& h3 {
-			padding-top: 2rem;
-		}
+		padding-bottom: 600px;
 	}
 
-	& .test2 {
+	& .marqeeContainer {
 		height: calc(100vh - var(--headerH));
 		position: sticky;
 		top: var(--headerH);
+
 		width: 100%;
 	}
 `;
-const Flex = styled.div`
-	display: flex;
-	flex-direction: column;
-	gap: 4rem;
-	& h2 {
-		column-span: all;
-		padding-bottom: 1rem;
-	}
-	& > div {
-		flex: 1;
-	}
-	@media screen and (min-width: 990px) {
-		flex-direction: row;
-	}
-`;
 
-const Grid = styled.div<GridProps>`
+const Grid = styled.div`
 	display: grid;
 	place-items: start;
 
 	grid-row-gap: 0;
 	grid-column-gap: 2rem;
-	grid-template-columns: repeat(
-		auto-fit,
-		minmax(min(100%/2, max(100%/3)), 1fr)
-	);
+	grid-template-columns: 100%;
+
 	@media screen and (min-width: 768px) {
 		grid-column-gap: 2rem;
+		grid-template-columns: repeat(
+			auto-fit,
+			minmax(min(100%/1, max(100%/3)), 1fr)
+		);
 	}
+`;
+
+const SectionTitle = styled.section`
+	z-index: 1;
+	width: 100%;
+	height: 300vh;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 0 0 -200vh 0;
+
+	& > div {
+		position: sticky;
+		top: calc(var(--headerH) - 4px);
+		height: calc(100vh - var(--headerH));
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	& div > * {
+		margin: 0 auto;
+		text-align: center;
+		padding: 1rem 0;
+	}
+`;
+
+const SectionTitleExtended = styled(SectionTitle)`
+	margin: -200vh 0 -100vh 0;
 `;
 
 export default Home;

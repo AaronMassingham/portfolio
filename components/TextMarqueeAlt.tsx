@@ -10,7 +10,7 @@ const TextMarquee = ({ content }: ContentProps) => {
 	const marqueeVariants = {
 		animate: {
 			transition: {
-				staggerChildren: 50,
+				staggerChildren: 75,
 			},
 		},
 	};
@@ -22,7 +22,7 @@ const TextMarquee = ({ content }: ContentProps) => {
 				x: {
 					repeat: Infinity,
 					repeatType: "loop",
-					duration: 100,
+					duration: 150,
 					ease: "linear",
 				},
 			},

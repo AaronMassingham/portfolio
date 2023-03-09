@@ -1,11 +1,12 @@
 import { ShrikhandFont } from "@components/utils/FancyFont";
 import { ReactNode } from "react";
 import styled from "styled-components";
+import Heading from "../Heading";
 
-const BlockQuote = ({ children, title }: Props) => {
+const BlockQuote = ({ children, title, headingLevel }: Props) => {
 	return (
 		<Container>
-			<h2>{title}</h2>
+			<Heading headingLevel={headingLevel}>{title}</Heading>
 			<div>{children}</div>
 		</Container>
 	);
@@ -17,7 +18,7 @@ const Container = styled.div`
 	}
 	& > div {
 		width: clamp(200px, 400px, 100%);
-		color: var(--pink);
+
 		text-transform: uppercase;
 	}
 `;
@@ -25,6 +26,7 @@ const Container = styled.div`
 interface Props {
 	children?: ReactNode;
 	title?: string;
+	headingLevel: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
 }
 
 export default BlockQuote;

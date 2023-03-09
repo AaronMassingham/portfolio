@@ -38,11 +38,13 @@ const Container = styled.ul`
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
-	gap: 1rem;
+	gap: .5rem;
+	margin-left: auto;
+	
 	& > li {
 		width: 2rem;
 		height: 2rem;
-		border: 2px solid var(--white);
+		box-shadow: var(--shadow);
 		background:var(--primaryBackground);
 		border-radius: 100%;
 		& a {
