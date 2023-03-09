@@ -1,24 +1,27 @@
 :root {
-	--darkestGrey: #35322e;
-	--darkGrey: #35322e;
-	--pink: #ef89b2;
-	--primaryBackground: #d3a885;
+	--darkestGrey: #eae4ea;
+	--primaryBackground: #161615;
 
 	--fs-xlDisplay: clamp(4rem, 3vw + 3rem, 6rem);
-	--fs-xl: clamp(3rem, 5vw + 2rem, 6rem);
+	--fs-xl: clamp(3rem, 5vw + 2rem, 4rem);
 	--fs-lg: clamp(4rem, 4vw + 1rem, 5rem);
-	--fs-md: clamp(3rem, 2vw + 1rem, 4rem);
-	--headerH: 4rem;
+	--fs-md: clamp(2.5rem, 2vw + 1rem, 4rem);
+	--fs-sm: clamp(2rem, 2vw + 1rem, 2rem);
+	--fs-xs: clamp(1.1rem, 2vw + 1rem, 1.5rem);
+	--headerH: 6rem;
 	--sitePadding: 2rem;
 	--border: 2px solid var(--darkestGrey);
 	--borderWidth: 2px;
 
-	--white: #ffffff;
+	--shadow: 0px 12px 15px -6px rgba(0, 0, 0, 0.35);
+
+	--pink: #ff4ad0;
+	--white: #e9e4ea;
 }
 
 @media screen and (min-width: 768px) {
 	:root {
-		--sitePadding: 5rem;
+		--sitePadding: 8rem;
 	}
 }
 
@@ -30,8 +33,7 @@
 }
 
 html {
-	background-color: var(--darkestGrey);
-	height: stretch;
+	background-color: var(--pink);
 }
 html,
 body {
@@ -42,12 +44,10 @@ body {
 body {
 	background: var(--primaryBackground);
 	font-weight: 400;
-	min-height: 100vh;
-	min-height: stretch;
 }
 body,
 section {
-	color: var(--darkGrey);
+	color: var(--white);
 }
 
 a {
@@ -60,23 +60,30 @@ h2,
 h3,
 h4,
 h5 {
-	color: var(--darkGrey);
-	font-weight: 400;
-	/* text-transform: uppercase; */
+	color: var(--white);
+	font-weight: 900;
+	text-transform: uppercase;
 }
 
 h1,
-h2 {
+h2,
+h3,
+h4,
+h5 {
 	line-height: 1;
 }
 
-.strokedLightkBg {
+p {
+	line-height: 1.5;
+}
+
+.strokedLightBg {
 	color: var(--primaryBackground);
-	text-shadow: 1px 1px 0 var(--darkGrey), 2px 2px 0px var(--darkGrey);
-	-webkit-text-stroke: calc(var(--borderWidth) / 2) var(--darkGrey);
+	text-shadow: 1px 1px 0 var(--white), 2px 2px 0px var(--white);
+	-webkit-text-stroke: calc(var(--borderWidth)) var(--white);
 }
 .strokedDarkBg {
-	color: var(--darkGrey);
+	color: var(--white);
 	text-shadow: 1px 1px 0 var(--primaryBackground),
 		2px 2px 0px var(--primaryBackground);
 	-webkit-text-stroke: 1px var(--primaryBackground);
@@ -92,7 +99,12 @@ h2 {
 
 h3 {
 	font-size: var(--fs-md);
-	line-height: 1;
+}
+h4 {
+	font-size: var(--fs-sm);
+}
+h5 {
+	font-size: var(--fs-xs);
 }
 
 .stack > * + * {
@@ -107,6 +119,9 @@ h3 {
 }
 
 @media screen and (min-width: 1200px) {
+	h1 {
+		font-size: var(--fs-xlDisplay);
+	}
 	h1,
 	h2 {
 		line-height: 0.9;

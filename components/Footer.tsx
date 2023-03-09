@@ -1,51 +1,91 @@
 import styled from "styled-components";
 
 //Components
-import Social from "./Social";
-import StickyTitleBlock from "./StickyTitleBlock";
-
-//Fonts
-import { ShrikhandFont } from "../utils/FancyFont";
+import BlockQuote from "./blocks/BlockQuote";
+import BigRibbon from "./BigRibbon";
 
 const Footer = () => {
 	return (
 		<>
 			<Container>
-				<SocialContainer>
-					<Social />
-				</SocialContainer>
-
-				<StickyTitleBlock title="Let's talk!">
-					<h3 className={`${ShrikhandFont.className} strokedLightkBg`}>
-						Do I fit the bill?
-					</h3>
-					<a href="mailto:aaron.massingham@outlook.com">Email Me</a>
-				</StickyTitleBlock>
+				<SectionTitle>
+					<BlockQuote headingLevel="h2" title="Reach Out">
+						Starting an exciting project
+						<br />
+						and need a hand? I&apos;m your guy.
+					</BlockQuote>
+				</SectionTitle>
+				<SectionTitleExtended>
+					<BlockQuote headingLevel="h2" title="Reach Out">
+						Contact details here
+						<br />
+						<br />
+					</BlockQuote>
+				</SectionTitleExtended>
 			</Container>
 		</>
 	);
 };
 
 const Container = styled.div`
-	background: var(--darkGrey);
 	width: stretch;
-	margin: 0 var(--borderWidth) 0 var(--borderWidth);
 	transform: translateY(-var(--borderWidth));
-	height: 100vh;
+	height: 200vh;
 	place-self: end;
 
 	position: relative;
 `;
-const Spacer = styled.div`
+
+const SectionTitle = styled.section`
+	z-index: 1;
 	width: 100%;
-	height: calc(100vh - (var(--headerH) + var(--borderWidth)));
-	display: grid;
+	height: 200vh;
+
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 0 0 -200vh 0;
+
+	& > div {
+		background-color: var(--primaryBackground);
+		position: sticky;
+		top: calc(var(--headerH) - 4px);
+		height: calc(100vh - var(--headerH));
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	& div > * {
+		margin: 0 auto;
+		text-align: center;
+		padding: 1rem 0;
+	}
 `;
-const SocialContainer = styled.div`
-	position: fixed;
-	z-index: 10;
+
+const SectionTitleExtended = styled(SectionTitle)`
+	background: var(--pink);
+	position: absolute;
 	bottom: 0;
-	right: 2rem;
+	height: 60vh;
+
+	top: unset;
+	z-index: 10;
+	clip-path: inset(0 0 0 0);
+
+	margin: 0;
+	& > div {
+		background-color: transparent;
+		position: fixed;
+		color: var(--primaryBackground);
+	}
+	& h2,
+	p {
+		color: var(--primaryBackground);
+	}
 `;
 
 export default Footer;

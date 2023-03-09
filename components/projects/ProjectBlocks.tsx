@@ -12,7 +12,7 @@ const ProjectBlocks = ({ data }: Props) => {
 					key={block.id}
 					initial={{ opacity: 0, scale: 0.9 }}
 					whileInView={{
-						opacity: 0.05,
+						opacity: 1,
 						scale: 1,
 					}}
 					viewport={{ amount: 0.5 }}
@@ -40,8 +40,6 @@ type Props = {
 
 const Container = styled(motion.div)`
 	min-height: 70vh;
-	background-color: var(--primaryBackground);
-
 	width: 80%;
 	display: flex;
 	justify-content: center;

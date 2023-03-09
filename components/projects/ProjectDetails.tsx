@@ -8,6 +8,7 @@ import { ShrikhandFont } from "@components/utils/FancyFont";
 //Components
 import Modal from "@components/components/Modal";
 import TextMarquee from "../TextMarquee";
+import Heading from "../Heading";
 
 const ProjectDetails = ({
 	testimonial,
@@ -15,6 +16,7 @@ const ProjectDetails = ({
 	projectTitle,
 	services,
 	link,
+	index,
 }: Props) => {
 	const [modalToggle, setModalToggle] = useState(false);
 
@@ -22,8 +24,10 @@ const ProjectDetails = ({
 		<>
 			<Container>
 				<Content>
-					<h3 className={`${ShrikhandFont.className} strokedDarkBg`}>
-						{/* <Number className="strokedDarkBg">0{index}</Number> */}
+					<Heading headingLevel="h3">
+						<Number className={`${ShrikhandFont.className} strokedLightBg`}>
+							0{index}
+						</Number>
 						<a
 							href={link}
 							target="_blank"
@@ -32,13 +36,13 @@ const ProjectDetails = ({
 						>
 							{projectTitle}
 						</a>
-					</h3>
-					<button onClick={() => setModalToggle(true)}>testimonial</button>
-				</Content>
+					</Heading>
 
-				<List>
-					<TextMarquee content={services} />
-				</List>
+					<List>
+						<button onClick={() => setModalToggle(true)}>testimonial</button>
+						<TextMarquee content={services} />
+					</List>
+				</Content>
 			</Container>
 			{modalToggle && (
 				<Modal setModalToggle={setModalToggle}>
@@ -59,55 +63,64 @@ type Props = {
 	link: string;
 };
 
-// const Number = styled.span`
-// 	@media screen and (min-width: 768px) {
-// 		position: absolute;
-// 		width: 100%;
-// 		bottom: 0;
-// 		left: 0;
-// 		line-height: 0.7;
-// 		font-size: 25vw;
-// 		opacity: 0.05;
-// 		pointer-events: none;
-// 		letter-spacing: -1rem;
-// 		color: var(--darkGrey) !important;
-// 	}
-// `;
+const Number = styled.span`
+	width: 100%;
+	bottom: 0;
+	left: 0;
+	line-height: 0.7;
+	font-size: 3rem;
+	opacity: 0.1;
+	pointer-events: none;
+
+	@media screen and (min-width: 768px) {
+		margin-right: 2rem;
+		font-size: inherit;
+	}
+`;
 
 const Container = styled(motion.div)`
 	width: 100%;
+	height: 100%;
 	height: -webkit-fill-available;
 	display: flex;
 	justify-content: space-between;
 	align-items: flex-start;
 	flex-direction: column;
-	@media screen and (max-width: 768px) {
-		position: relative;
-		height: 100%;
-	}
+	position: relative;
 `;
 
 const Content = styled(motion.div)`
 	& h3 {
-		color: var(--darkGrey);
-	}
-	@media screen and (max-width: 768px) {
 		display: flex;
-		& > button {
-			margin-left: auto;
+		flex-direction: row;
+		justify-content: space-between;
+		align-items: center;
+		span {
+			width: 5rem;
 		}
+	}
+
+	& button {
+		background-color: var(--primaryBackground);
+		color: var(--pink);
+		border: 2px solid var(--pink);
+		text-transform: uppercase;
+		border-radius: 100px;
+		height: 2rem;
+		padding: 0 1rem;
+		font-size: inherit;
+		font-weight: 300;
 	}
 `;
 
 const List = styled.div`
-	@media screen and (max-width: 768px) {
-		position: absolute;
-		bottom: 0;
-	}
-	@media screen and (min-width: 768px) {
-		justify-content: center;
-		align-items: center;
-	}
+	position: absolute;
+	width: 100%;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	bottom: 0;
+	right: 0;
 `;
 
 export default ProjectDetails;

@@ -3,17 +3,19 @@ import styled from "styled-components";
 
 //Components
 import Logo from "./Logo";
-import Drips from "./visuals/Drips";
+import Social from "./Social";
+import Drips from "./_bin/visuals/Drips";
 
 const Header = () => {
 	return (
 		<Container>
 			<Logo />
 
+			<Social />
 			<HireMe>
 				<Link href="">Hire Me</Link>
 				{/* <DripContainer>
-					<Drips />
+					<Drips color="var(--pink)" />
 				</DripContainer> */}
 			</HireMe>
 		</Container>
@@ -25,17 +27,13 @@ const Container = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
+	padding: 2rem calc(var(--sitePadding) / 3);
+	height: var(--headerH);
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
-	border-radius: 2rem 2rem 0 0;
 	z-index: 11;
-	height: calc(var(--headerH) + var(--borderWidth));
-	background-color: var(--primaryBackground);
-	border: var(--border);
-
-	height: var(--headerH);
 `;
 
 // const DripContainer = styled.div`
@@ -44,23 +42,26 @@ const Container = styled.div`
 // 	top: 100%;
 // 	right: calc(50% - 25px);
 // 	pointer-events: none;
+// 	margin-top: -0.5px;
 // `;
-const HireMe = styled.div`
-	text-transform: uppercase;
-	font-weight: 300;
-	height: calc(100% - (var(--borderWidth)));
-	background-color: var(--darkGrey);
-	position: relative;
-	border-radius: 2rem 2rem 0 2rem;
 
-	margin-right: calc(var(--borderWidth) / 2);
+const HireMe = styled.div`
+	position: relative;
+	text-transform: uppercase;
+	font-weight: 400;
 	top: 0;
 	width: auto;
-	padding: 0 2rem;
+	padding: 0 1rem;
+	color: var(--pink);
+	height: 2rem;
+	border-radius: 4rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	color: var(--primaryBackground);
+	background-color: var(--primaryBackground);
+	border: 2px solid var(--pink);
+	margin-left: 1rem;
+	box-shadow: var(--shadow);
 `;
 
 export default Header;

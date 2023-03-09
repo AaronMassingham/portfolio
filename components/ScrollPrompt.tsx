@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const ScrollPrompt = () => {
 	const dotAnimation = {
 		animate: {
-			y: [2, 42],
+			y: [2, 38],
 		},
 	};
 
@@ -25,18 +25,19 @@ const ScrollPrompt = () => {
 };
 
 const Container = styled(motion.div)`
-	width: 6px;
-	border-radius: 6px;
-	background: var(--darkestGrey);
+	width: 10px;
+	border-radius: 10px;
+	border: 1px solid var(--pink);
 	height: 50px;
 	padding: 1px;
 `;
 const Dot = styled(motion.div)`
-	background: var(--primaryBackground);
+	background-color: var(--pink);
 	width: 4px;
 	aspect-ratio: 1/1;
 	height: auto;
 	border-radius: 100%;
+	margin: auto;
 `;
 
 export default ScrollPrompt;

@@ -9,27 +9,16 @@ const Logo = () => {
 				<polyline points="56.6,31.7 12.3,31.7 14.3,25.9 16.8,31.7 	" />
 				<path d="M27.9,56.7l-7.7-17.5c-0.4-0.9-1.3-1.5-2.3-1.5h-5.7c-1,0-2,0.6-2.3,1.6l-2.2,5.4" />
 			</Svg>
-			<Div />
 		</Container>
 	);
 };
 
-const Div = styled.div`
-	background: red;
-	position: absolute;
-	aspect-ratio: 1/1;
-	height: calc(100% - var(--borderWidth));
-	top: calc(var(--borderWidth) / 2);
-	left: calc(var(--borderWidth) / 2);
-	border-radius: 2rem 2rem 2rem 0;
-	background-color: var(--darkGrey);
-`;
 const Container = styled.div`
-	max-width: var(--headerH);
-	max-height: var(--headerH);
-	width: 100%;
-	height: 100%;
-	padding: 2px;
+	height: 4rem;
+	border-radius: 100%;
+	background-color: var(--primaryBackground);
+	box-shadow: var(--shadow);
+	border: 2px solid var(--pink);
 `;
 
 const Svg = styled.svg`
@@ -38,16 +27,15 @@ const Svg = styled.svg`
 	position: relative;
 	z-index: 1;
 	circle {
-		fill: var(--darkGrey);
+		fill: none;
 	}
 	path,
 	polyline {
 		fill: none;
-		stroke: var(--primaryBackground);
+		stroke: var(--pink);
 
-		stroke-width: 2;
+		stroke-width: 1px;
 		stroke-linecap: round;
-		stroke-linejoin: round;
 		stroke-miterlimit: 10;
 	}
 `;

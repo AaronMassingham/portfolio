@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
+import { ShrikhandFont } from "@components/utils/FancyFont";
 
 interface ContentProps {
 	content: string[];
@@ -10,7 +10,7 @@ const TextMarquee = ({ content }: ContentProps) => {
 	const marqueeVariants = {
 		animate: {
 			transition: {
-				staggerChildren: 10,
+				staggerChildren: 75,
 			},
 		},
 	};
@@ -22,7 +22,7 @@ const TextMarquee = ({ content }: ContentProps) => {
 				x: {
 					repeat: Infinity,
 					repeatType: "loop",
-					duration: 20,
+					duration: 150,
 					ease: "linear",
 				},
 			},
@@ -30,7 +30,9 @@ const TextMarquee = ({ content }: ContentProps) => {
 	};
 
 	const mappedData = content.map((item, index) => (
-		<Text key={index}>{item}</Text>
+		<Text className={`${ShrikhandFont.className} strokedLightBg`} key={index}>
+			{item}
+		</Text>
 	));
 
 	return (
@@ -44,52 +46,31 @@ const TextMarquee = ({ content }: ContentProps) => {
 };
 
 const Text = styled(motion.div)`
-	padding: 0 1rem;
-	opacity: 0.5;
+	padding: 0 5rem;
+	opacity: 0.2;
 `;
 
 const Marquee = styled(motion.div)`
-	position: relative;
-	width: 250px;
-	overflow: clip;
-	background-color: var(--primaryBackground);
-	color: var(--white);
-	border: 2px solid var(--white);
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	height: 25vh;
+	width: 100%;
 	text-transform: uppercase;
-	border-radius: 100px;
-	height: 2rem;
+	margin: 0 auto;
 	display: flex;
 	align-items: center;
-	&:before,
-	&:after {
-		pointer-events: none;
-		top: 0;
-		position: absolute;
-		width: 2rem;
-		height: 100%;
-		z-index: 3;
-		content: " ";
-		@media (min-width: 768px) {
-			width: 4rem;
-		}
-	}
-	&:before {
-		left: 0;
-	}
-	&:after {
-		right: 0;
-	}
-
-	@media screen and (min-width: 768px) {
-		width: 300px;
-	}
+	overflow-x: clip;
+	overflow-y: visible;
 `;
 const Track = styled(motion.div)`
 	position: absolute;
-	right: -150px;
+	right: -100%;
 	white-space: nowrap;
 	display: flex;
 	justify-content: center;
+	font-size: 18vw;
+	line-height: 1;
 `;
 
 export default TextMarquee;

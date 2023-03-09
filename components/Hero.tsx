@@ -1,32 +1,37 @@
 import styled from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faHand } from "@fortawesome/free-solid-svg-icons";
 
 //Components
 import ScrollPrompt from "./ScrollPrompt";
 import WorkCircle from "./wrappers/RotatingBadge";
+import Heading from "./Heading";
 
 //Fonts
-import { ShrikhandFont } from "../utils/FancyFont";
+import BigRibbon from "./BigRibbon";
 
 const Hero = () => {
+	const marqueeContent = [
+		"UI Design",
+		"Web design",
+		"Branding",
+		"Frontend Dev",
+	];
+
 	return (
 		<Container>
 			<Headline>
-				<Strapline>I&apos;m Aaron</Strapline>
-				<h1 className={`${ShrikhandFont.className} strokedLightkBg`}>
-					I help create
-					<br />
-					frontend
-					<br />
-					experiences.
-				</h1>
+				<Strapline>
+					I&apos;m Aaron <span>&#128075;</span>
+				</Strapline>
+				<Heading headingLevel="h1">
+					I help build visual frontend experiences.
+				</Heading>
 			</Headline>
 			<PromptContainer>
 				<WorkCircle>
 					<ScrollPrompt />
 				</WorkCircle>
 			</PromptContainer>
+			<BigRibbon content={marqueeContent} />
 		</Container>
 	);
 };
@@ -35,48 +40,58 @@ const Container = styled.section`
 	display: flex;
 	height: 100vh;
 	align-items: flex-start;
-	justify-content: space-between;
+	justify-content: center;
 	flex-direction: column;
+	padding: 2rem var(--sitePadding) 25vh var(--sitePadding);
 `;
 
 const Headline = styled.div`
 	position: relative;
-	padding: 3rem 2rem 2rem 2rem;
+	padding: 3rem 0 0 0;
 	max-width: 100%;
-	text-align: center;
-	margin: auto;
-	@media only screen and (min-width: 768px) {
-		max-width: 75%;
+	text-align: left;
+	margin: auto 0;
+	@media screen and (max-width: 768px) {
+		text-align: center;
 	}
-	& h1 {
-		font-size: var(--fs-xlDisplay);
+	@media screen and (min-width: 768px) {
+		//max-width: 60%;
 	}
 `;
 
 const Strapline = styled.div`
 	text-transform: uppercase;
-	font-weight: 500;
+	font-weight: 300;
 	font-size: 1.5rem;
-	display: flex;
 	position: absolute;
 	top: 0;
 	left: 0;
 	justify-content: center;
 	width: 100%;
 	align-items: center;
+	color: var(--pink);
+	padding-left: 3px;
+	& span {
+		-webkit-filter: hue-rotate(-75deg);
+		filter: hue-rotate(-75deg);
+	}
 `;
 
 const PromptContainer = styled.div`
-	position: relative;
-	bottom: 0;
+	position: absolute;
+	bottom: 7rem;
 	right: 0;
 	align-self: center;
 	justify-content: center;
 	align-items: center;
 	display: flex;
-	height: 10rem;
-	width: 10rem;
-	margin-bottom: 2rem;
+	height: 25vh;
+	width: 100%;
+	display: grid;
+	place-items: center;
+	@media screen and (max-width: 768px) {
+		bottom: 7rem;
+	}
 `;
 
 export default Hero;
