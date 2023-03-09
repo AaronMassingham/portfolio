@@ -13,7 +13,7 @@ const Project = ({
 	itemsTotal,
 }: Props) => {
 	//Check
-	// const checkIndexIsFirst = itemNumber === 0;
+	const checkIndexIsFirst = itemNumber === 0;
 	// const checkIndexIsLast = itemNumber === itemsTotal;
 
 	let setContainerHeight;
@@ -25,7 +25,7 @@ const Project = ({
 		setContainerHeight = numberOfProjectBlocks * 100;
 	}
 
-	const viewportOptions = { margin: "-49% 0% -49% 0%" };
+	const viewportOptions = { margin: "100% 0% -100% 0%" };
 	const transitionOptions = {
 		duration: 0.5,
 		when: "beforeChildren",
@@ -58,12 +58,18 @@ const Project = ({
 			transition={transitionOptions}
 			height={setContainerHeight}
 		>
+			<OverFlowPanel />
 			<Sticky variants={childVariants} transition={transitionOptions}>
 				{children}
 			</Sticky>
 			<Static>
 				<StaticContent>{staticChildren}</StaticContent>
 			</Static>
+			<BorderBottom
+				whileInView={{ scaleX: [0, 1] }}
+				transition={{ duration: 1, ease: "easeInOut" }}
+				viewport={{ margin: "-5% 0% -5% 0%" }}
+			/>
 		</Container>
 	);
 };
@@ -79,6 +85,21 @@ type Props = {
 type ContainerProps = {
 	height: number;
 };
+
+const BorderBottom = styled(motion.div)`
+	position: absolute;
+	bottom: -1px;
+	width: 100%;
+	height: 2px;
+	background-color: var(--pink);
+`;
+const OverFlowPanel = styled(motion.div)`
+	height: 100vh;
+	background: var(--primaryBackground);
+	position: absolute;
+	width: 100%;
+	top: -100vh;
+`;
 
 const Container = styled(motion.section)<ContainerProps>`
 	height: ${(props) => (props.height ? props.height + "vh" : "auto")};
@@ -96,12 +117,10 @@ const Sticky = styled(motion.div)`
 	position: sticky;
 	top: 0;
 	z-index: 3;
-
 	padding: calc(var(--headerH) + 2rem) var(--sitePadding) 2rem
 		var(--sitePadding);
 	@media screen and (min-width: 768px) {
 		width: 50%;
-
 		padding: calc(var(--headerH) + 2rem) 0 4rem var(--sitePadding);
 	}
 `;

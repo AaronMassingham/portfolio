@@ -71,9 +71,9 @@ const Number = styled.span`
 	font-size: 3rem;
 	opacity: 0.1;
 	pointer-events: none;
-
+	padding-right: 1rem;
 	@media screen and (min-width: 768px) {
-		margin-right: 2rem;
+		padding-right: 2rem;
 		font-size: inherit;
 	}
 `;
@@ -95,9 +95,6 @@ const Content = styled(motion.div)`
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		span {
-			width: 5rem;
-		}
 	}
 
 	& button {

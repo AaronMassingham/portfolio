@@ -6,24 +6,71 @@ import { ShrikhandFont } from "@components/utils/FancyFont";
 import { useContainerDimensions } from "@components/lib/useContainerDimensions";
 
 interface ContentProps {
-	content: string[];
+	content: string;
 }
 
 const BigRibbon = ({ content }: ContentProps) => {
 	const containerRef = useRef(null);
 	const { width } = useContainerDimensions(containerRef);
 
-	const calculatedDuration = width / 100;
-	console.log(calculatedDuration);
+	const variants = {
+		hidden: {
+			opacity: 0,
+			y: -290,
+		},
+		animate: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 0.5,
+				when: "beforeChildren",
+				staggerChildren: 0.05,
+			},
+		},
+	};
+	const childVariants = {
+		hidden: {
+			opacity: 0,
+			y: 290,
+		},
+		animate: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 1,
+				ease: "easeOut",
+			},
+		},
+	};
 
-	const mappedData = content.map((item, index) => (
-		<Text className={`${ShrikhandFont.className} strokedLightBg`} key={index}>
+	const calculatedDuration = width / 100;
+
+	var array = `${content} ${content}`;
+
+	var arrayNew = array.split("");
+
+	const mappedData = arrayNew.map((item, index) => (
+		<motion.div
+			style={{
+				overflow: "visible",
+				whiteSpace: "pre",
+			}}
+			variants={childVariants}
+			key={index}
+		>
 			{item}
-		</Text>
+		</motion.div>
 	));
 
+	console.log(mappedData);
+
 	return (
-		<Container>
+		<Container
+			variants={variants}
+			initial="hidden"
+			whileInView="animate"
+			viewport={{ margin: "0% 10% 0% 10%" }}
+		>
 			<LoopContainer
 				animate={{ x: [0, -width] }}
 				transition={{
@@ -32,9 +79,15 @@ const BigRibbon = ({ content }: ContentProps) => {
 					ease: "linear",
 				}}
 			>
-				<Content ref={containerRef}>{mappedData}</Content>
+				<Content ref={containerRef}>
+					<Text className={`${ShrikhandFont.className} strokedLightBg`}>
+						{mappedData}
+					</Text>
+				</Content>
 				<ContentAlt offset={width} aria-hidden="true">
-					{mappedData}
+					<Text className={`${ShrikhandFont.className} strokedLightBg`}>
+						{mappedData}
+					</Text>
 				</ContentAlt>
 			</LoopContainer>
 		</Container>
@@ -47,26 +100,34 @@ type ContentAltProps = {
 
 //variants={variants} animate="animate"
 
-const Container = styled.div`
+const Container = styled(motion.div)`
 	width: 100vw;
 	right: 0;
-	height: 300px;
+	height: 150px;
 	position: absolute;
 	bottom: 0;
 	overflow: hidden;
+	@media screen and (min-width: 768px) {
+		height: 300px;
+	}
 `;
 const LoopContainer = styled(motion.div)`
-	width: 100%;
+	width: auto;
 	position: relative;
-	font-size: 300px;
+	font-size: 150px;
 	display: flex;
+	@media screen and (min-width: 768px) {
+		font-size: 300px;
+	}
 `;
 
 const Text = styled.div`
-	padding: 0 5rem;
 	opacity: 0.1;
 	display: inline;
 	text-transform: uppercase;
+	padding: 0 2rem;
+	display: flex;
+	flex-direction: row;
 `;
 
 const Content = styled.div`

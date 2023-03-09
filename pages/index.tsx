@@ -180,16 +180,14 @@ const Home: NextPage = () => {
 			))}
 
 			<SectionTitleExtended>
-				<BlockQuote headingLevel="h2" title="Not bad, eh?">
-					Reach out for more commercial
-					<br />
-					examples of my work
+				<BlockQuote headingLevel="h2" title="A decade of experience">
+					But I'm not through yet.
 				</BlockQuote>
 			</SectionTitleExtended>
 
 			<AboutContainer>
 				<div className="marqeeContainer">
-					<BigRibbon content={["About", "About", "About"]} />
+					<BigRibbon content="About" />
 				</div>
 				<div className="stack">
 					<Heading headingLevel="h3">Me.</Heading>
@@ -239,14 +237,17 @@ const AboutContainer = styled.section`
 		padding: var(--sitePadding);
 		max-width: 1200px;
 		align-self: center;
-		padding-bottom: 600px;
+		padding-bottom: 200px;
+		@media screen and (min-width: 768px) {
+			padding-bottom: 400px;
+		}
 	}
 
 	& .marqeeContainer {
 		height: calc(100vh - var(--headerH));
 		position: sticky;
 		top: var(--headerH);
-
+		pointer-events: none;
 		width: 100%;
 	}
 `;
@@ -297,7 +298,8 @@ const SectionTitle = styled.section`
 `;
 
 const SectionTitleExtended = styled(SectionTitle)`
-	margin: -200vh 0 -100vh 0;
+	margin: -100vh 0 -100vh 0;
+	height: 200vh;
 `;
 
 export default Home;

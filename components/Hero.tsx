@@ -9,12 +9,7 @@ import Heading from "./Heading";
 import BigRibbon from "./BigRibbon";
 
 const Hero = () => {
-	const marqueeContent = [
-		"UI Design",
-		"Web design",
-		"Branding",
-		"Frontend Dev",
-	];
+	const marqueeContent = "UI Design Web design Branding Frontend Dev";
 
 	return (
 		<Container>

@@ -26,7 +26,7 @@ const Container = styled.div`
 interface Props {
 	children?: ReactNode;
 	title?: string;
-	headingLevel: "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "p";
+	headingLevel: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
 }
 
 export default BlockQuote;
