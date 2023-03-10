@@ -2,21 +2,25 @@ import styled from "styled-components";
 
 //Components
 import BlockQuote from "./blocks/BlockQuote";
-import BigRibbon from "./BigRibbon";
+import Heading from "./Heading";
 
 const Footer = () => {
 	return (
 		<>
 			<Container>
 				<SectionTitle>
-					<BlockQuote headingLevel="h2" title="Reach Out">
+					<BlockQuote
+						title={<Heading headingLevel="h2" children="Reach Out" />}
+					>
 						Starting an exciting project
 						<br />
 						and need a hand? I&apos;m your guy.
 					</BlockQuote>
 				</SectionTitle>
 				<SectionTitleExtended>
-					<BlockQuote headingLevel="h2" title="Reach Out">
+					<BlockQuote
+						title={<Heading headingLevel="h2" children="Reach Out" />}
+					>
 						Contact details here
 						<br />
 						<br />

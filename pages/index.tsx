@@ -107,7 +107,28 @@ const projects = [
 ];
 
 const aboutMe = {
-	bio: "<p>I'm constantly learning new ways to express my creativity and exploring new tools to help me get there.</p><p>I'm a strong believer in the power of collaboration and I strive to create an environment that encourages open dialogue and creative problem solving. I'm eager to work with a variety of people to develop ideas and bring them to life.</p><p>I have a taste for animation on the web and I'm learning to bring more vibrant user experiences to the table.</p><p>In my spare time, I'm passionate about foraging and learning about fungi. I love being outdoors burying my soul in nature and discovering interesting species.</p><p>Ask me about fungi, I dare you.</p>",
+	bio: {
+		title: "Me",
+		content:
+			"<p>I&apos;m a strong believer in the power of collaboration and I strive to create an environment that encourages open dialogue and creative problem solving. I&apos;m eager to work with a variety of people to develop ideas and bring them to life.</p><p>I have a taste for animation on the web and I&apos;m learning to bring more vibrant user experiences to the table.</p>",
+	},
+	socialMedia: [
+		{
+			platform: "Facebook",
+			url: "#",
+			fontawesomeIcon: "faFacebookF",
+		},
+		{
+			platform: "Instagram",
+			url: "#",
+			fontawesomeIcon: "faInstagram",
+		},
+		{
+			platform: "Dribbble",
+			url: "#",
+			fontawesomeIcon: "faDribbble",
+		},
+	],
 	design: [
 		{
 			title: "Software",
@@ -128,7 +149,6 @@ const aboutMe = {
 			title: "Code",
 			list: ["HTML5", "CSS3", "JavaScript", "SVG"],
 		},
-
 		{
 			title: "Libraries",
 			list: ["React Js", "Framer Motion", "GSAP", "Chakra UI"],
@@ -154,10 +174,11 @@ const Home: NextPage = () => {
 			<Hero />
 
 			<SectionTitle>
-				<BlockQuote headingLevel="h2" title="Projects">
-					I find visual solutions, then build them using current web
-					technologies.
-				</BlockQuote>
+				<BlockQuote
+					title={<Heading headingLevel="h2" children="Projects" />}
+					children="I find visual solutions, then build them using current web
+					technologies."
+				/>
 			</SectionTitle>
 
 			{projects.map((item, index) => (
@@ -180,37 +201,28 @@ const Home: NextPage = () => {
 			))}
 
 			<SectionTitleExtended>
-				<BlockQuote headingLevel="h2" title="Not bad, eh?">
-					Reach out for more commercial
-					<br />
-					examples of my work
-				</BlockQuote>
+				<BlockQuote
+					title={
+						<Heading headingLevel="h2" children="A decade of experience" />
+					}
+					children="But I'm not through yet."
+				/>
 			</SectionTitleExtended>
 
 			<AboutContainer>
 				<div className="marqeeContainer">
-					<BigRibbon content={["About", "About", "About"]} />
+					<BigRibbon content="About" />
 				</div>
 				<div className="stack">
-					<Heading headingLevel="h3">Me.</Heading>
-					<p>
-						I&apos;m a strong believer in the power of collaboration and I
-						strive to create an environment that encourages open dialogue and
-						creative problem solving. I&apos;m eager to work with a variety of
-						people to develop ideas and bring them to life.
-					</p>
-					<p>
-						I have a taste for animation on the web and I&apos;m learning to
-						bring more vibrant user experiences to the table.
-					</p>
-
-					<Heading headingLevel="h4">Designer</Heading>
+					<Heading headingLevel="h3" children={aboutMe.bio.title} />
+					<div dangerouslySetInnerHTML={{ __html: aboutMe.bio.content }} />
+					<Heading headingLevel="h4" children="Designer" children2={<span />} />
 					<Grid>
 						{aboutMe.design.map((item, index) => (
 							<Table key={index} data={item} />
 						))}
 					</Grid>
-					<Heading headingLevel="h4">Developer</Heading>
+					<Heading headingLevel="h4" children="Developer" />
 					<Grid>
 						{aboutMe.developer.map((item, index) => (
 							<Table key={index} data={item} />
@@ -239,14 +251,17 @@ const AboutContainer = styled.section`
 		padding: var(--sitePadding);
 		max-width: 1200px;
 		align-self: center;
-		padding-bottom: 600px;
+		padding-bottom: 200px;
+		@media screen and (min-width: 768px) {
+			padding-bottom: 400px;
+		}
 	}
 
 	& .marqeeContainer {
 		height: calc(100vh - var(--headerH));
 		position: sticky;
 		top: var(--headerH);
-
+		pointer-events: none;
 		width: 100%;
 	}
 `;
@@ -271,7 +286,7 @@ const Grid = styled.div`
 const SectionTitle = styled.section`
 	z-index: 1;
 	width: 100%;
-	height: 300vh;
+	height: 200vh;
 	top: 0;
 	left: 0;
 	display: flex;
@@ -297,7 +312,7 @@ const SectionTitle = styled.section`
 `;
 
 const SectionTitleExtended = styled(SectionTitle)`
-	margin: -200vh 0 -100vh 0;
+	margin: -100vh 0 -100vh 0;
 `;
 
 export default Home;

@@ -3,13 +3,7 @@ import type { AppProps } from "next/app";
 import { AnimatePresence, motion } from "framer-motion";
 
 //Fonts
-import { Open_Sans, Modak, Raleway } from "@next/font/google";
-
-const openSans = Raleway({
-	subsets: ["latin"],
-	weight: ["300", "400", "700", "800"],
-	display: "swap",
-});
+import { contentFont } from "@components/utils/Fonts";
 
 //Components
 import Layout from "@components/components/Layout";
@@ -17,7 +11,7 @@ import Layout from "@components/components/Layout";
 export default function App({ Component, pageProps, router }: AppProps) {
 	return (
 		<>
-			<div className={openSans.className}>
+			<div className={contentFont.className}>
 				<Layout>
 					<AnimatePresence
 						mode="wait"

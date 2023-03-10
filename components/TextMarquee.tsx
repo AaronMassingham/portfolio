@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { ReactNode } from "react";
 
 interface ContentProps {
 	content: string[];
@@ -35,10 +34,12 @@ const TextMarquee = ({ content }: ContentProps) => {
 
 	return (
 		<Marquee variants={marqueeVariants} animate="animate">
-			<Track variants={trackVariants}>{mappedData}</Track>
-			<Track aria-hidden="true" variants={trackVariants}>
-				{mappedData}
-			</Track>
+			<Track variants={trackVariants} children={mappedData} />
+			<Track
+				aria-hidden="true"
+				variants={trackVariants}
+				children={mappedData}
+			/>
 		</Marquee>
 	);
 };
