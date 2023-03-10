@@ -1,15 +1,23 @@
 import React from "react";
-import { motion } from "framer-motion";
 
-const Heading = ({ headingLevel = "h1", children }: HeadingProps) => {
+const Heading = ({
+	headingLevel = "h1",
+	children,
+	children2,
+}: HeadingProps) => {
 	const Heading = ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) =>
-		React.createElement(headingLevel, props, <span>{children}</span>);
+		React.createElement(headingLevel, props, children);
 
-	return <Heading>{children}</Heading>;
+	return (
+		<Heading>
+			{children2} {children}
+		</Heading>
+	);
 };
 
 interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 	headingLevel: "h1" | "h2" | "h3" | "h4" | "h5" | "h6";
+	children2?: any;
 }
 
 export default Heading;

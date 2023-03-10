@@ -1,14 +1,8 @@
-import {
-	Modak,
-	Comfortaa,
-	Shrikhand,
-	Lilita_One,
-	Bungee,
-} from "@next/font/google";
+import { Raleway, Shrikhand } from "@next/font/google";
 
-export const modakFont = Modak({
+export const contentFont = Raleway({
 	subsets: ["latin"],
-	weight: ["400"],
+	weight: ["300", "400", "700", "800"],
 	display: "swap",
 });
 export const ShrikhandFont = Shrikhand({

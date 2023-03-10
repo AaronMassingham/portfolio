@@ -9,7 +9,7 @@ import Heading from "./Heading";
 import BigRibbon from "./BigRibbon";
 
 const Hero = () => {
-	const marqueeContent = "UI Design Web design Branding Frontend Dev";
+	const marqueeContent = "UI Design Web Design Branding Frontend Dev";
 
 	return (
 		<Container>
@@ -48,9 +48,6 @@ const Headline = styled.div`
 	margin: auto 0;
 	@media screen and (max-width: 768px) {
 		text-align: center;
-	}
-	@media screen and (min-width: 768px) {
-		//max-width: 60%;
 	}
 `;
 

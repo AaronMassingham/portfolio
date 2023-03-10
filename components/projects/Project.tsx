@@ -59,16 +59,17 @@ const Project = ({
 			height={setContainerHeight}
 		>
 			<OverFlowPanel />
-			<Sticky variants={childVariants} transition={transitionOptions}>
-				{children}
-			</Sticky>
-			<Static>
-				<StaticContent>{staticChildren}</StaticContent>
-			</Static>
+			<Sticky
+				variants={childVariants}
+				transition={transitionOptions}
+				children={children}
+			/>
+			<Static children={<StaticContent>{staticChildren}</StaticContent>} />
 			<BorderBottom
-				whileInView={{ scaleX: [0, 1] }}
+				initial={{ opacity: 0, scaleX: 0 }}
+				whileInView={{ opacity: 1, scaleX: 1 }}
 				transition={{ duration: 1, ease: "easeInOut" }}
-				viewport={{ margin: "-5% 0% -5% 0%" }}
+				viewport={{ margin: "0% 0% -5% 0%" }}
 			/>
 		</Container>
 	);

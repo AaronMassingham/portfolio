@@ -4,19 +4,14 @@ import styled from "styled-components";
 //Components
 import Logo from "./Logo";
 import Social from "./Social";
-import Drips from "./_bin/visuals/Drips";
 
 const Header = () => {
 	return (
 		<Container>
 			<Logo />
-
 			<Social />
 			<HireMe>
 				<Link href="">Hire Me</Link>
-				{/* <DripContainer>
-					<Drips color="var(--pink)" />
-				</DripContainer> */}
 			</HireMe>
 		</Container>
 	);
@@ -35,15 +30,6 @@ const Container = styled.div`
 	right: 0;
 	z-index: 11;
 `;
-
-// const DripContainer = styled.div`
-// 	position: absolute;
-// 	height: 50px;
-// 	top: 100%;
-// 	right: calc(50% - 25px);
-// 	pointer-events: none;
-// 	margin-top: -0.5px;
-// `;
 
 const HireMe = styled.div`
 	position: relative;

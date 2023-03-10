@@ -7,7 +7,7 @@ const RotatingBadge = ({ children }: Props) => {
 		animate: {
 			rotate: -360,
 			transition: {
-				duration: 20,
+				duration: 60,
 				repeat: Infinity,
 				ease: "linear",
 			},

@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
-import { motion, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import styled from "styled-components";
-import { ShrikhandFont } from "@components/utils/FancyFont";
+import { ShrikhandFont } from "@components/utils/Fonts";
 
 import { useContainerDimensions } from "@components/lib/useContainerDimensions";
 
@@ -61,8 +61,6 @@ const BigRibbon = ({ content }: ContentProps) => {
 			{item}
 		</motion.div>
 	));
-
-	console.log(mappedData);
 
 	return (
 		<Container
