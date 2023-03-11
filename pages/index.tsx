@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Head from "next/head";
 import styled from "styled-components";
+import useSWR from "swr";
 
 //Components
 import Hero from "@components/components/Hero";
@@ -11,155 +12,18 @@ import Table from "@components/components/Table";
 import BlockQuote from "@components/components/blocks/BlockQuote";
 import BigRibbon from "@components/components/BigRibbon";
 import Heading from "@components/components/Heading";
+import { Key } from "react";
 
-const projects = [
-	{
-		id: 1,
-		projectTitle: "Graft Haus",
-		link: "https://www.grafthaus.co.uk",
-		testimonial: "Aaron is pretty good",
-		testimonialAuthor: "Tony",
-		services: ["wireframing", "Web design", "Web development", "WordPress CMS"],
-		tech: ["PHP", "Advanced Custom Fields"],
-		details: [
-			{
-				id: 1,
-				component: "colors",
-				colors: ["red", "blue", "green"],
-			},
-			{
-				id: 2,
-				component: "image",
-				imageUrl:
-					"https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-1.jpg",
-			},
-			{
-				id: 3,
-				component: "text",
-				content: "This is how I did this bit",
-			},
-		],
-	},
-	{
-		id: 2,
-		projectTitle: "Vitfor",
-		link: "https://www.vitfor.com",
-		testimonial: "Aaron is pretty good",
-		testimonialAuthor: "Tamsin",
-		services: [
-			"Brand modernisation",
-			"wireframing",
-			"App UI Design",
-			"Web design",
-		],
-		tech: ["Next Js", "Chakra UI", "TypeScript", "Framer Motion"],
-		details: [
-			{
-				id: 1,
-				component: "colors",
-				colors: ["orange", "pink", "cyan"],
-			},
-			{
-				id: 2,
-				component: "image",
-				imageUrl:
-					"https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-2.jpg",
-			},
-			{
-				id: 3,
-				component: "text",
-				content: "This is how I did this bit",
-			},
-		],
-	},
-	{
-		id: 3,
-		projectTitle: "Wayne Anthony",
-		link: "https://www.wayneanthonys.co.uk",
-		testimonial: "Yeah ZEN MATE",
-		testimonialAuthor: "Wayne",
-		services: ["Web design", "Web development", "WordPress CMS"],
-		tech: [
-			"Gatsby Js",
-			"SnipCart Js",
-			"Framer Motion",
-			"Advanced Custom Fields",
-		],
-		details: [
-			{
-				id: 1,
-				component: "colors",
-				colors: ["purple", "gray", "yellow"],
-			},
-			{
-				id: 2,
-				component: "image",
-				imageUrl:
-					"https://www.grafthaus.co.uk/wp-content/uploads/2021/05/Untitled-3.jpg",
-			},
-			{
-				id: 3,
-				component: "text",
-				content: "This is how I did this bit",
-			},
-		],
-	},
-];
+const fetcher = (url: RequestInfo | URL) =>
+	fetch(url).then((res) => res.json());
 
-const aboutMe = {
-	bio: {
-		title: "Me",
-		content:
-			"<p>I&apos;m a strong believer in the power of collaboration and I strive to create an environment that encourages open dialogue and creative problem solving. I&apos;m eager to work with a variety of people to develop ideas and bring them to life.</p><p>I have a taste for animation on the web and I&apos;m learning to bring more vibrant user experiences to the table.</p>",
-	},
-	socialMedia: [
-		{
-			platform: "Facebook",
-			url: "#",
-			fontawesomeIcon: "faFacebookF",
-		},
-		{
-			platform: "Instagram",
-			url: "#",
-			fontawesomeIcon: "faInstagram",
-		},
-		{
-			platform: "Dribbble",
-			url: "#",
-			fontawesomeIcon: "faDribbble",
-		},
-	],
-	design: [
-		{
-			title: "Software",
-			list: ["Adobe Illustrator", "Adobe Photoshop", "Figma"],
-		},
-		{
-			title: "Competencies",
-			list: ["Branding", "Wireframing", "UI Design", "Web Design", "Graphics"],
-		},
-	],
+export default function NextPage() {
+	const { data, error } = useSWR("/api/staticdata", fetcher);
 
-	developer: [
-		{
-			title: "Software",
-			list: ["VS Code", " Adobe Dreamweaver"],
-		},
-		{
-			title: "Code",
-			list: ["HTML5", "CSS3", "JavaScript", "SVG"],
-		},
-		{
-			title: "Libraries",
-			list: ["React Js", "Framer Motion", "GSAP", "Chakra UI"],
-		},
-		{ title: "Styling", list: ["CSS Modules", "Styled-components"] },
-		{ title: "Frameworks", list: ["Next Js", "Gatsby Js"] },
-		{ title: "VC", list: ["GitHub"] },
-	],
-};
+	if (error) return <div>Failed to load</div>;
+	//Handle the loading state
+	if (!data) return <div>Loading...</div>;
 
-const Home: NextPage = () => {
 	return (
 		<>
 			<Head>
@@ -174,39 +38,50 @@ const Home: NextPage = () => {
 			<Hero />
 
 			<SectionTitle>
-				<BlockQuote
-					title={<Heading headingLevel="h2" children="Projects" />}
-					children="I find visual solutions, then build them using current web
-					technologies."
-				/>
+				<BlockQuote title={<Heading headingLevel="h2">Projects</Heading>}>
+					I find visual solutions, then build them using current web
+					technologies.
+				</BlockQuote>
 			</SectionTitle>
 
-			{projects.map((item, index) => (
-				<Project
-					key={item.id}
-					itemNumber={index}
-					itemsTotal={projects.length - 1}
-					staticChildren={<ProjectBlocks data={item.details} />}
-					numberOfProjectBlocks={item.details.length}
-				>
-					<ProjectDetails
-						link={item.link}
-						index={index + 1}
-						testimonial={item.testimonial}
-						testimonialAuthor={item.testimonialAuthor}
-						projectTitle={item.projectTitle}
-						services={item.services}
-					/>
-				</Project>
-			))}
+			{data.projects.map(
+				(
+					item: {
+						id: Key | null | undefined;
+						details: Array<any>;
+						link: string;
+						testimonial: string;
+						testimonialAuthor: string;
+						projectTitle: string;
+						services: string[];
+					},
+					index: number
+				) => (
+					<Project
+						key={item.id}
+						itemNumber={index}
+						itemsTotal={data.projects.length - 1}
+						staticChildren={<ProjectBlocks data={item.details} />}
+						numberOfProjectBlocks={item.details.length}
+					>
+						<ProjectDetails
+							link={item.link}
+							index={index + 1}
+							testimonial={item.testimonial}
+							testimonialAuthor={item.testimonialAuthor}
+							projectTitle={item.projectTitle}
+							services={item.services}
+						/>
+					</Project>
+				)
+			)}
 
 			<SectionTitleExtended>
 				<BlockQuote
-					title={
-						<Heading headingLevel="h2" children="A decade of experience" />
-					}
-					children="But I'm not through yet."
-				/>
+					title={<Heading headingLevel="h2">A decade of experience</Heading>}
+				>
+					But I&apos;m not through yet.
+				</BlockQuote>
 			</SectionTitleExtended>
 
 			<AboutContainer>
@@ -214,25 +89,32 @@ const Home: NextPage = () => {
 					<BigRibbon content="About" />
 				</div>
 				<div className="stack">
-					<Heading headingLevel="h3" children={aboutMe.bio.title} />
-					<div dangerouslySetInnerHTML={{ __html: aboutMe.bio.content }} />
-					<Heading headingLevel="h4" children="Designer" children2={<span />} />
+					<Heading headingLevel="h3">{data.aboutMe.bio.title}</Heading>
+					<div dangerouslySetInnerHTML={{ __html: data.aboutMe.bio.content }} />
+					<Heading headingLevel="h4" children2={<span />}>
+						I find visual solutions, then build them using current web
+						technologies.
+					</Heading>
 					<Grid>
-						{aboutMe.design.map((item, index) => (
-							<Table key={index} data={item} />
-						))}
+						{data.aboutMe.design.map(
+							(item: { title: string; list: String[] }, index: Key) => (
+								<Table key={index} data={item} />
+							)
+						)}
 					</Grid>
-					<Heading headingLevel="h4" children="Developer" />
+					<Heading headingLevel="h4">Developer</Heading>
 					<Grid>
-						{aboutMe.developer.map((item, index) => (
-							<Table key={index} data={item} />
-						))}
+						{data.aboutMe.developer.map(
+							(item: { title: string; list: String[] }, index: Key) => (
+								<Table key={index} data={item} />
+							)
+						)}
 					</Grid>
 				</div>
 			</AboutContainer>
 		</>
 	);
-};
+}
 
 const AboutContainer = styled.section`
 	position: relative;
@@ -314,5 +196,3 @@ const SectionTitle = styled.section`
 const SectionTitleExtended = styled(SectionTitle)`
 	margin: -100vh 0 -100vh 0;
 `;
-
-export default Home;

@@ -9,18 +9,14 @@ const Footer = () => {
 		<>
 			<Container>
 				<SectionTitle>
-					<BlockQuote
-						title={<Heading headingLevel="h2" children="Reach Out" />}
-					>
+					<BlockQuote title={<Heading headingLevel="h2">Reach Out</Heading>}>
 						Starting an exciting project
 						<br />
 						and need a hand? I&apos;m your guy.
 					</BlockQuote>
 				</SectionTitle>
 				<SectionTitleExtended>
-					<BlockQuote
-						title={<Heading headingLevel="h2" children="Reach Out" />}
-					>
+					<BlockQuote title={<Heading headingLevel="h2">Reach Out</Heading>}>
 						Contact details here
 						<br />
 						<br />

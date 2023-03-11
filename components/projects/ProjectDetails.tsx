@@ -24,48 +24,31 @@ const ProjectDetails = ({
 		<>
 			<Container>
 				<Content>
-					<Heading
-						headingLevel="h3"
-						children={
-							<>
-								{" "}
-								<Number className={`${ShrikhandFont.className} strokedLightBg`}>
-									0{index}
-								</Number>
-								<a
-									href={link}
-									target="_blank"
-									rel="noreferrer"
-									aria-label="Vist Graft Haus website (opens in a new tab)"
-								>
-									{projectTitle}
-								</a>
-							</>
-						}
-					/>
+					<Heading headingLevel="h3">
+						<Number className={`${ShrikhandFont.className} strokedLightBg`}>
+							0{index}
+						</Number>
+						<a
+							href={link}
+							target="_blank"
+							rel="noreferrer"
+							aria-label="Vist Graft Haus website (opens in a new tab)"
+						>
+							{projectTitle}
+						</a>
+					</Heading>
 
-					<List
-						children={
-							<>
-								<button onClick={() => setModalToggle(true)}>
-									testimonial
-								</button>
-								<TextMarquee content={services} />
-							</>
-						}
-					/>
+					<List>
+						<button onClick={() => setModalToggle(true)}>testimonial</button>
+						<TextMarquee content={services} />
+					</List>
 				</Content>
 			</Container>
 			{modalToggle && (
-				<Modal
-					setModalToggle={setModalToggle}
-					children={
-						<>
-							<div>{testimonial}</div>
-							<div>{testimonialAuthor}</div>
-						</>
-					}
-				/>
+				<Modal setModalToggle={setModalToggle}>
+					<div>{testimonial}</div>
+					<div>{testimonialAuthor}</div>
+				</Modal>
 			)}
 		</>
 	);
