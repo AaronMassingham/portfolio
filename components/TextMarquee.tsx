@@ -34,12 +34,10 @@ const TextMarquee = ({ content }: ContentProps) => {
 
 	return (
 		<Marquee variants={marqueeVariants} animate="animate">
-			<Track variants={trackVariants} children={mappedData} />
-			<Track
-				aria-hidden="true"
-				variants={trackVariants}
-				children={mappedData}
-			/>
+			<Track variants={trackVariants}>{mappedData}</Track>
+			<Track aria-hidden="true" variants={trackVariants}>
+				{mappedData}
+			</Track>
 		</Marquee>
 	);
 };

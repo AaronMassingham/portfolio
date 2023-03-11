@@ -59,12 +59,12 @@ const Project = ({
 			height={setContainerHeight}
 		>
 			<OverFlowPanel />
-			<Sticky
-				variants={childVariants}
-				transition={transitionOptions}
-				children={children}
-			/>
-			<Static children={<StaticContent>{staticChildren}</StaticContent>} />
+			<Sticky variants={childVariants} transition={transitionOptions}>
+				{children}
+			</Sticky>
+			<Static>
+				<StaticContent>{staticChildren}</StaticContent>
+			</Static>
 			<BorderBottom
 				initial={{ opacity: 0, scaleX: 0 }}
 				whileInView={{ opacity: 1, scaleX: 1 }}

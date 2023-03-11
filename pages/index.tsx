@@ -38,11 +38,10 @@ export default function NextPage() {
 			<Hero />
 
 			<SectionTitle>
-				<BlockQuote
-					title={<Heading headingLevel="h2" children="Projects" />}
-					children="I find visual solutions, then build them using current web
-					technologies."
-				/>
+				<BlockQuote title={<Heading headingLevel="h2">Projects</Heading>}>
+					I find visual solutions, then build them using current web
+					technologies.
+				</BlockQuote>
 			</SectionTitle>
 
 			{data.projects.map(
@@ -79,11 +78,10 @@ export default function NextPage() {
 
 			<SectionTitleExtended>
 				<BlockQuote
-					title={
-						<Heading headingLevel="h2" children="A decade of experience" />
-					}
-					children="But I'm not through yet."
-				/>
+					title={<Heading headingLevel="h2">A decade of experience</Heading>}
+				>
+					But I&apos;m not through yet.
+				</BlockQuote>
 			</SectionTitleExtended>
 
 			<AboutContainer>
@@ -91,9 +89,12 @@ export default function NextPage() {
 					<BigRibbon content="About" />
 				</div>
 				<div className="stack">
-					<Heading headingLevel="h3" children={data.aboutMe.bio.title} />
+					<Heading headingLevel="h3">{data.aboutMe.bio.title}</Heading>
 					<div dangerouslySetInnerHTML={{ __html: data.aboutMe.bio.content }} />
-					<Heading headingLevel="h4" children="Designer" children2={<span />} />
+					<Heading headingLevel="h4" children2={<span />}>
+						I find visual solutions, then build them using current web
+						technologies.
+					</Heading>
 					<Grid>
 						{data.aboutMe.design.map(
 							(item: { title: string; list: String[] }, index: Key) => (
@@ -101,7 +102,7 @@ export default function NextPage() {
 							)
 						)}
 					</Grid>
-					<Heading headingLevel="h4" children="Developer" />
+					<Heading headingLevel="h4">Developer</Heading>
 					<Grid>
 						{data.aboutMe.developer.map(
 							(item: { title: string; list: String[] }, index: Key) => (
