@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 //Components
-import BlockQuote from "./blocks/BlockQuote";
+import BlockQuote from "./BlockQuote";
 import Heading from "./Heading";
 
 const Footer = () => {

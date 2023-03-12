@@ -9,7 +9,7 @@ import Project from "@components/components/projects/Project";
 import ProjectDetails from "@components/components/projects/ProjectDetails";
 import ProjectBlocks from "@components/components/projects/ProjectBlocks";
 import Table from "@components/components/Table";
-import BlockQuote from "@components/components/blocks/BlockQuote";
+import BlockQuote from "@components/components/BlockQuote";
 import BigRibbon from "@components/components/BigRibbon";
 import Heading from "@components/components/Heading";
 import { Key } from "react";

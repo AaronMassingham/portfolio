@@ -8,21 +8,7 @@ const ProjectBlocks = ({ data }: Props) => {
 	return (
 		<>
 			{data.map((block) => (
-				<Container
-					key={block.id}
-					initial={{ opacity: 0, scale: 0.9 }}
-					whileInView={{
-						opacity: 1,
-						scale: 1,
-					}}
-					viewport={{ amount: 0.5 }}
-					transition={{
-						duration: 1,
-						ease: [0.25, 0.85, 0.19, 1],
-					}}
-				>
-					{Components(block)}
-				</Container>
+				<Container key={block.id}>{Components(block)}</Container>
 			))}
 		</>
 	);
@@ -39,12 +25,15 @@ type Props = {
 };
 
 const Container = styled(motion.div)`
-	min-height: 70vh;
-	width: 80%;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 3rem;
+	overflow: clip;
+	@media screen and (min-width: 768px) {
+		width: 80%;
+		min-height: 70vh;
+	}
 `;
 
 export default ProjectBlocks;

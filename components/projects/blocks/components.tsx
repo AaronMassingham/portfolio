@@ -1,6 +1,7 @@
 import React from "react";
 
-import ImageBlock from "@components/components/projects/blocks/ImageBlock";
+import ImageBlockDesktop from "@components/components/projects/blocks/ImageBlockDesktop";
+import ImageBlockMobile from "@components/components/projects/blocks/ImageBlockMobile";
 import ColorsBlock from "@components/components/projects/blocks/ColorsBlock";
 import TextBlock from "@components/components/projects/blocks/TextBlock";
 interface Block {
@@ -12,7 +13,8 @@ interface Block {
 }
 
 const Components: { [key: string]: React.ComponentType<any> } = {
-	image: ImageBlock,
+	imageMobile: ImageBlockMobile,
+	imageDesktop: ImageBlockDesktop,
 	colors: ColorsBlock,
 	text: TextBlock,
 };
@@ -25,7 +27,9 @@ const renderBlock = (block: Block): JSX.Element => {
 		});
 	}
 	return React.createElement(
-		() => <div>The component {block.component} has not been created yet.</div>,
+		() => (
+			<div>The component "{block.component}" has not been created yet.</div>
+		),
 		{ key: block.id }
 	);
 };

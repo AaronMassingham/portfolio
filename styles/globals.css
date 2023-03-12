@@ -1,5 +1,5 @@
 :root {
-	--darkestGrey: #eae4ea;
+	--darkestGrey: #1e1e1d;
 	--primaryBackground: #161615;
 
 	--fs-xlDisplay: clamp(4rem, 3vw + 3rem, 6rem);
@@ -23,6 +23,13 @@
 	:root {
 		--sitePadding: 8rem;
 	}
+}
+
+::selection {
+	background: var(--pink);
+}
+::-moz-selection {
+	background: var(--pink);
 }
 
 * {

@@ -3,7 +3,7 @@ import styled from "styled-components";
 import { motion, useScroll } from "framer-motion";
 
 //Components
-import BlockQuote from "../blocks/BlockQuote";
+import BlockQuote from "../BlockQuote";
 
 const Project = ({
 	children,
@@ -69,7 +69,7 @@ const Project = ({
 				initial={{ opacity: 0, scaleX: 0 }}
 				whileInView={{ opacity: 1, scaleX: 1 }}
 				transition={{ duration: 1, ease: "easeInOut" }}
-				viewport={{ margin: "0% 0% -5% 0%" }}
+				viewport={{ margin: "-5% 0% -5% 0%" }}
 			/>
 		</Container>
 	);
@@ -100,6 +100,7 @@ const OverFlowPanel = styled(motion.div)`
 	position: absolute;
 	width: 100%;
 	top: -100vh;
+	pointer-events: none;
 `;
 
 const Container = styled(motion.section)<ContainerProps>`
@@ -118,31 +119,41 @@ const Sticky = styled(motion.div)`
 	position: sticky;
 	top: 0;
 	z-index: 3;
+
 	padding: calc(var(--headerH) + 2rem) var(--sitePadding) 2rem
 		var(--sitePadding);
-	@media screen and (min-width: 768px) {
-		width: 50%;
-		padding: calc(var(--headerH) + 2rem) 0 4rem var(--sitePadding);
-	}
+
+	// pointer-events: none;
+	// & > * {
+	// 	pointer-events: initial;
+	// }
+	// @media screen and (min-width: 768px) {
+	// 	width: 50%;
+	// 	padding: calc(var(--headerH) + 2rem) var(--sitePadding) 4rem
+	// 		var(--sitePadding);
+	// }
 `;
 
 const Static = styled(motion.div)`
-	position: relative;
+	position: absolute;
 	z-index: 2;
 	height: 100%;
+	width: 100%;
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
-	@media screen and (max-width: 768px) {
-		position: absolute;
-		width: 100%;
-		bottom: 0;
-		top: 0;
-	}
+	bottom: 0;
+	top: 0;
+	// @media screen and (max-width: 768px) {
+	// 	position: absolute;
+	// 	width: 100%;
+	// 	bottom: 0;
+	// 	top: 0;
+	// }
 
-	@media screen and (min-width: 768px) {
-		width: 50%;
-	}
+	// @media screen and (min-width: 768px) {
+	// 	width: 50%;
+	// }
 `;
 
 const Content = styled(motion.div)`

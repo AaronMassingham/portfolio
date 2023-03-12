@@ -14,9 +14,9 @@ const Hero = () => {
 	return (
 		<Container>
 			<Headline>
-				<Strapline>
+				<PreTitle>
 					I&apos;m Aaron <span>&#128075;</span>
-				</Strapline>
+				</PreTitle>
 				<Heading headingLevel="h1">
 					I help build visual frontend experiences.
 				</Heading>
@@ -51,7 +51,7 @@ const Headline = styled.div`
 	}
 `;
 
-const Strapline = styled.div`
+const PreTitle = styled.div`
 	text-transform: uppercase;
 	font-weight: 300;
 	font-size: 1.5rem;

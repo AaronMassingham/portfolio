@@ -64,7 +64,6 @@ type Props = {
 };
 
 const Number = styled.span`
-	width: 100%;
 	bottom: 0;
 	left: 0;
 	line-height: 0.7;
