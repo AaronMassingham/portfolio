@@ -1,25 +1,21 @@
 import styled from "styled-components";
 
 //Components
-import ScrollPrompt from "./ScrollPrompt";
-import WorkCircle from "./wrappers/RotatingBadge";
-import Heading from "./Heading";
-
-//Fonts
-import BigRibbon from "./BigRibbon";
+import ScrollPrompt from "@components/ScrollPrompt";
+import WorkCircle from "@components/wrappers/RotatingBadge";
+import Heading from "@components/Heading";
+import BigRibbon from "@components/BigRibbon";
 
 const Hero = () => {
-	const marqueeContent = "UI Design Web Design Branding Frontend Dev";
+	const marqueeContent = "UI / Web Design / Branding / Frontend Dev /";
 
 	return (
 		<Container>
 			<Headline>
-				<Strapline>
+				<PreTitle>
 					I&apos;m Aaron <span>&#128075;</span>
-				</Strapline>
-				<Heading headingLevel="h1">
-					I help build visual frontend experiences.
-				</Heading>
+				</PreTitle>
+				<Heading headingLevel="h1">I help create frontend experiences.</Heading>
 			</Headline>
 			<PromptContainer>
 				<WorkCircle>
@@ -51,7 +47,7 @@ const Headline = styled.div`
 	}
 `;
 
-const Strapline = styled.div`
+const PreTitle = styled.div`
 	text-transform: uppercase;
 	font-weight: 300;
 	font-size: 1.5rem;

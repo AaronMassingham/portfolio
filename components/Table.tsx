@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { simpleFadeIn } from "@constants/FramerConstants";
 
 const Table = ({ data }: Props) => {
 	const viewportOptions = { margin: "-20% 0% -350px 0%" };
@@ -8,19 +9,9 @@ const Table = ({ data }: Props) => {
 		when: "beforeChildren",
 	};
 
-	const variants = {
-		hidden: {
-			opacity: 0,
-		},
-		animate: {
-			opacity: 1,
-			y: 0,
-		},
-	};
-
 	return (
 		<Container
-			variants={variants}
+			variants={simpleFadeIn}
 			initial="hidden"
 			whileInView="animate"
 			viewport={viewportOptions}

@@ -5,27 +5,10 @@ import { motion } from "framer-motion";
 import Components from "./blocks/components";
 
 const ProjectBlocks = ({ data }: Props) => {
-	return (
-		<>
-			{data.map((block) => (
-				<Container
-					key={block.id}
-					initial={{ opacity: 0, scale: 0.9 }}
-					whileInView={{
-						opacity: 1,
-						scale: 1,
-					}}
-					viewport={{ amount: 0.5 }}
-					transition={{
-						duration: 1,
-						ease: [0.25, 0.85, 0.19, 1],
-					}}
-				>
-					{Components(block)}
-				</Container>
-			))}
-		</>
-	);
+	const mappedData = data.map((block) => (
+		<Container key={block.id}>{Components(block)}</Container>
+	));
+	return <>{mappedData}</>;
 };
 
 type Props = {
@@ -39,12 +22,20 @@ type Props = {
 };
 
 const Container = styled(motion.div)`
-	min-height: 70vh;
-	width: 80%;
+	width: 100%;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	border-radius: 3rem;
+	overflow: clip;
+
+	@media screen and (max-width: 768px) {
+		margin-left: auto;
+		width: calc(100% - (var(--sitePadding) + 4rem));
+	}
+	@media screen and (min-width: 768px) {
+		min-height: 70vh;
+		max-width: 1200px;
+	}
 `;
 
 export default ProjectBlocks;

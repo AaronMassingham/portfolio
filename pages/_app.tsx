@@ -3,10 +3,10 @@ import type { AppProps } from "next/app";
 import { AnimatePresence, motion } from "framer-motion";
 
 //Fonts
-import { contentFont } from "@components/utils/Fonts";
+import { contentFont } from "@utils/Fonts";
 
 //Components
-import Layout from "@components/components/Layout";
+import Layout from "@components/Layout";
 
 export default function App({ Component, pageProps, router }: AppProps) {
 	return (

@@ -2,13 +2,15 @@ import React, { useState } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-//Fonts
-import { ShrikhandFont } from "@components/utils/Fonts";
-
 //Components
-import Modal from "@components/components/Modal";
-import TextMarquee from "../TextMarquee";
-import Heading from "../Heading";
+import Modal from "@components/Modal";
+import TextMarquee from "@components/TextMarquee";
+
+//Constants
+import {
+	simpleFadeInSlideUp,
+	defaultTransition,
+} from "@constants/FramerConstants";
 
 const ProjectDetails = ({
 	testimonial,
@@ -16,30 +18,39 @@ const ProjectDetails = ({
 	projectTitle,
 	services,
 	link,
-	index,
 }: Props) => {
 	const [modalToggle, setModalToggle] = useState(false);
+
+	const viewportOptions = { margin: "-50% 0% 0% 0%" };
 
 	return (
 		<>
 			<Container>
 				<Content>
-					<Heading headingLevel="h3">
-						<Number className={`${ShrikhandFont.className} strokedLightBg`}>
-							0{index}
-						</Number>
-						<a
-							href={link}
-							target="_blank"
-							rel="noreferrer"
-							aria-label="Vist Graft Haus website (opens in a new tab)"
-						>
-							{projectTitle}
-						</a>
-					</Heading>
-
-					<List>
-						<button onClick={() => setModalToggle(true)}>testimonial</button>
+					<HeadingStyle>
+						<h3>
+							{link ? (
+								<a
+									href={link}
+									target="_blank"
+									rel="noreferrer"
+									aria-label="Vist website (opens in a new tab)"
+								>
+									{projectTitle}
+								</a>
+							) : (
+								projectTitle
+							)}
+						</h3>
+					</HeadingStyle>
+					<List
+						variants={simpleFadeInSlideUp}
+						initial="hidden"
+						whileInView="animate"
+						transition={defaultTransition}
+						viewport={viewportOptions}
+					>
+						<button onClick={() => setModalToggle(true)}>Testimonial</button>
 						<TextMarquee content={services} />
 					</List>
 				</Content>
@@ -63,40 +74,38 @@ type Props = {
 	link: string;
 };
 
-const Number = styled.span`
-	width: 100%;
-	bottom: 0;
-	left: 0;
-	line-height: 0.7;
-	font-size: 3rem;
-	opacity: 0.1;
-	pointer-events: none;
-	padding-right: 1rem;
-	@media screen and (min-width: 768px) {
-		padding-right: 2rem;
-		font-size: inherit;
-	}
-`;
-
 const Container = styled(motion.div)`
 	width: 100%;
 	height: 100%;
 	height: -webkit-fill-available;
 	display: flex;
-	justify-content: space-between;
+	justify-content: flex-end;
 	align-items: flex-start;
 	flex-direction: column;
 	position: relative;
 `;
 
-const Content = styled(motion.div)`
-	& h3 {
+const HeadingStyle = styled(motion.div)`
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
+		@media screen and (max-width: 768px) {
+			position: absolute;
+			writing-mode: vertical-rl;
+			text-orientation: mixed;
+			top: 0;
+			left: 0;
+			width: 4rem;
+			place-items: center;
+		}
+		@media screen and (min-width: 768px) {
+			margin-bottom: 3rem;
+		}
 	}
+`;
 
+const Content = styled(motion.div)`
 	& button {
 		background-color: var(--primaryBackground);
 		color: var(--pink);
@@ -110,7 +119,7 @@ const Content = styled(motion.div)`
 	}
 `;
 
-const List = styled.div`
+const List = styled(motion.div)`
 	position: absolute;
 	width: 100%;
 	display: flex;
