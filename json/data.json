@@ -61,25 +61,16 @@
             "tech": ["PHP", "Advanced Custom Fields"],
             "details": [
                 {
-                    "id": 1,
-                    "component": "colors",
-                    "colors": ["purple", "gray", "yellow"]
-                },
-                {
                     "id": 2,
                     "component": "imageMobile",
                     "imageUrls":["vercel.svg", "next.svg", "next.svg"]
                 },
                 {
                     "id": 3,
-                    "component": "imageDesktop",
-                    "imageUrl":"vercel.svg"
-                },
-                {
-                    "id": 4,
-                    "component": "text",
-                    "content": "This is how I did this bit"
+                    "component": "imageMobile",
+                    "imageUrls":["vercel.svg", "next.svg", "next.svg"]
                 }
+               
             ]
         },
         {
@@ -97,20 +88,10 @@
             "tech": ["Next Js", "Chakra UI", "TypeScript", "Framer Motion"],
             "details": [
                 {
-                    "id": 1,
-                    "component": "colors",
-                    "colors": ["orange", "pink", "cyan"]
-                },
-                {
                     "id": 2,
                     "component": "imageMobile",
                     "imageUrls":["vercel.svg", "next.svg"]
                     
-                },
-                {
-                    "id": 3,
-                    "component": "text",
-                    "content": "This is how I did this bit"
                 }
             ]
         },
@@ -129,24 +110,9 @@
             ],
             "details": [
                 {
-                    "id": 1,
-                    "component": "colors",
-                    "colors": ["purple", "gray", "yellow"]
-                },
-                {
                     "id": 2,
                     "component": "imageMobile",
                     "imageUrls":["vercel.svg", "next.svg"]
-                },
-                {
-                    "id": 3,
-                    "component": "imageDesktop",
-                    "imageUrls":"vercel.svg"
-                },
-                {
-                    "id": 4,
-                    "component": "text",
-                    "content": "This is how I did this bit"
                 }
             ]
         }

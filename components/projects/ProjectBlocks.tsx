@@ -5,13 +5,10 @@ import { motion } from "framer-motion";
 import Components from "./blocks/components";
 
 const ProjectBlocks = ({ data }: Props) => {
-	return (
-		<>
-			{data.map((block) => (
-				<Container key={block.id}>{Components(block)}</Container>
-			))}
-		</>
-	);
+	const mappedData = data.map((block) => (
+		<Container key={block.id}>{Components(block)}</Container>
+	));
+	return <>{mappedData}</>;
 };
 
 type Props = {
@@ -30,9 +27,14 @@ const Container = styled(motion.div)`
 	justify-content: center;
 	align-items: center;
 	overflow: clip;
+
+	@media screen and (max-width: 768px) {
+		margin-left: auto;
+		width: calc(100% - (var(--sitePadding) + 4rem));
+	}
 	@media screen and (min-width: 768px) {
-		width: 80%;
 		min-height: 70vh;
+		max-width: 1200px;
 	}
 `;
 

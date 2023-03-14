@@ -1,20 +1,24 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import Image from "next/image";
 
-const DeviceFrame = ({ children, deviceType }: Props) => {
+import { simpleFadeIn } from "@constants/FramerConstants";
+
+const DeviceFrame = ({ children, deviceType, elementIndex }: Props) => {
+	const transitionOptions = {
+		duration: 0.75,
+		delay: elementIndex ? elementIndex / 5 : 0,
+		ease: "easeOut",
+	};
+	const viewportOptions = { margin: "-10% 0% -10% 0%" };
+
 	return (
 		<Frame
-			deviceType={deviceType}
-			initial={{ opacity: 0 }}
-			whileInView={{
-				opacity: 1,
-			}}
-			viewport={{ margin: "0% 0% -30% 0%" }}
-			transition={{
-				duration: 1,
-				ease: [0.25, 0.85, 0.19, 1],
-			}}
+			type={deviceType}
+			variants={simpleFadeIn}
+			initial="hidden"
+			whileInView="animate"
+			transition={transitionOptions}
+			viewport={viewportOptions}
 		>
 			<Content>{children}</Content>
 		</Frame>
@@ -24,18 +28,23 @@ const DeviceFrame = ({ children, deviceType }: Props) => {
 type Props = {
 	children: React.ReactNode;
 	deviceType?: "landscape" | "portrait";
+	elementIndex?: number;
 };
 
-const Frame = styled(motion.div)<Props>`
+type FrameProps = {
+	type?: string;
+};
+
+const Frame = styled(motion.div)<FrameProps>`
 	position: relative;
 	height: auto;
 	background-color: var(--primaryBackground);
-	border-radius: 2rem;
-	padding: 0.75rem;
+	border-radius: 1.5rem;
+	padding: 0.5rem;
 	box-shadow: var(--shadow);
 
 	${(props) => {
-		switch (props.deviceType) {
+		switch (props.type) {
 			case "landscape":
 				return `
 					aspect-ratio: 1360/768;
@@ -45,40 +54,20 @@ const Frame = styled(motion.div)<Props>`
 				return `
 					aspect-ratio: 7 / 13;
 					width: min(350px, 100%);
+					margin:auto;
+					@media screen and (min-width: 768px) {
+						width:100%;
+					}
                 `;
 		}
 	}}
 `;
 const Content = styled(motion.div)`
-	border-radius: 1.25rem;
+	border-radius: 1rem;
 	width: 100%;
 	height: 100%;
 	background-color: var(--darkestGrey);
 	position: relative;
-`;
-
-const FrameDetails = styled.div`
-	position: absolute;
-	top: 0;
-	left: 0;
-	width: 100%;
-	height: 1.75rem;
-	display: flex;
-	flex-direction: row;
-	justify-content: center;
-	align-items: center;
-	gap: 0.5rem;
-	&:before,
-	:after {
-		height: 5px;
-		width: 5px;
-		content: " ";
-		border: 1px solid var(--pink);
-		border-radius: 1rem;
-	}
-	&:after {
-		width: 75px;
-	}
 `;
 
 export default DeviceFrame;

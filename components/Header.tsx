@@ -2,8 +2,8 @@ import Link from "next/link";
 import styled from "styled-components";
 
 //Components
-import Logo from "./Logo";
-import Social from "./Social";
+import Logo from "@components/Logo";
+import Social from "@components/Social";
 
 const Header = () => {
 	return (
@@ -22,13 +22,17 @@ const Container = styled.div`
 	flex-direction: row;
 	justify-content: space-between;
 	align-items: center;
-	padding: 2rem calc(var(--sitePadding) / 3);
+	padding: 2rem var(--sitePadding);
 	height: var(--headerH);
 	position: fixed;
 	top: 0;
 	left: 0;
 	right: 0;
 	z-index: 11;
+
+	@media screen and (min-width: 768px) {
+		padding: 2rem calc(var(--sitePadding) / 3);
+	}
 `;
 
 const HireMe = styled.div`

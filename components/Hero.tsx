@@ -1,15 +1,13 @@
 import styled from "styled-components";
 
 //Components
-import ScrollPrompt from "./ScrollPrompt";
-import WorkCircle from "./wrappers/RotatingBadge";
-import Heading from "./Heading";
-
-//Fonts
-import BigRibbon from "./BigRibbon";
+import ScrollPrompt from "@components/ScrollPrompt";
+import WorkCircle from "@components/wrappers/RotatingBadge";
+import Heading from "@components/Heading";
+import BigRibbon from "@components/BigRibbon";
 
 const Hero = () => {
-	const marqueeContent = "UI Design Web Design Branding Frontend Dev";
+	const marqueeContent = "UI / Web Design / Branding / Frontend Dev /";
 
 	return (
 		<Container>
@@ -17,9 +15,7 @@ const Hero = () => {
 				<PreTitle>
 					I&apos;m Aaron <span>&#128075;</span>
 				</PreTitle>
-				<Heading headingLevel="h1">
-					I help build visual frontend experiences.
-				</Heading>
+				<Heading headingLevel="h1">I help create frontend experiences.</Heading>
 			</Headline>
 			<PromptContainer>
 				<WorkCircle>

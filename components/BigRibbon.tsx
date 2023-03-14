@@ -1,90 +1,62 @@
 import React, { useRef } from "react";
 import { motion } from "framer-motion";
 import styled from "styled-components";
-import { ShrikhandFont } from "@components/utils/Fonts";
 
-import { useContainerDimensions } from "@components/lib/useContainerDimensions";
+//Fonts
+import { ShrikhandFont } from "@utils/Fonts";
 
-interface ContentProps {
-	content: string;
-}
+//Hooks
+import { useContainerDimensions } from "@lib/useContainerDimensions";
+
+//Framer Variants
+import {
+	ribbonVariants,
+	ribbonChildVariants,
+} from "@constants/FramerConstants";
 
 const BigRibbon = ({ content }: ContentProps) => {
 	const containerRef = useRef(null);
 	const { width } = useContainerDimensions(containerRef);
 
-	const variants = {
-		hidden: {
-			opacity: 0,
-			y: -290,
-		},
-		animate: {
-			opacity: 1,
-			y: 0,
-			transition: {
-				duration: 0.5,
-				when: "beforeChildren",
-				staggerChildren: 0.05,
-			},
-		},
-	};
-	const childVariants = {
-		hidden: {
-			opacity: 0,
-			y: 290,
-		},
-		animate: {
-			opacity: 1,
-			y: 0,
-			transition: {
-				duration: 1,
-				ease: "easeOut",
-			},
-		},
-	};
-
+	//Calculate duration of marquee based on it's overall width
 	const calculatedDuration = width / 100;
 
-	var array = `${content} ${content}`;
+	const viewportOptions = {
+		margin: "0% 10% 0% 10%",
+	};
 
-	var arrayNew = array.split("");
+	const calculatedTransitionValues = {
+		duration: calculatedDuration,
+		repeat: Infinity,
+		ease: "linear",
+	};
 
-	const mappedData = arrayNew.map((item, index) => (
-		<motion.div
-			style={{
-				overflow: "visible",
-				whiteSpace: "pre",
-			}}
-			variants={childVariants}
-			key={index}
-		>
+	var newArrayFromContent = `${content} ${content}`.split("");
+	const mappedLetters = newArrayFromContent.map((item, index) => (
+		<Letter variants={ribbonChildVariants} key={index}>
 			{item}
-		</motion.div>
+		</Letter>
 	));
 
 	return (
 		<Container
-			variants={variants}
+			variants={ribbonVariants}
 			initial="hidden"
 			whileInView="animate"
-			viewport={{ margin: "0% 10% 0% 10%" }}
+			viewport={viewportOptions}
 		>
 			<LoopContainer
 				animate={{ x: [0, -width] }}
-				transition={{
-					duration: calculatedDuration,
-					repeat: Infinity,
-					ease: "linear",
-				}}
+				transition={calculatedTransitionValues}
 			>
 				<Content ref={containerRef}>
 					<Text className={`${ShrikhandFont.className} strokedLightBg`}>
-						{mappedData}
+						{mappedLetters}
 					</Text>
 				</Content>
 				<ContentAlt offset={width} aria-hidden="true">
 					<Text className={`${ShrikhandFont.className} strokedLightBg`}>
-						{mappedData}
+						{mappedLetters}
 					</Text>
 				</ContentAlt>
 			</LoopContainer>
@@ -92,11 +64,13 @@ const BigRibbon = ({ content }: ContentProps) => {
 	);
 };
 
+type ContentProps = {
+	content: string;
+};
+
 type ContentAltProps = {
 	offset: number;
 };
-
-//variants={variants} animate="animate"
 
 const Container = styled(motion.div)`
 	width: 100vw;
@@ -126,6 +100,11 @@ const Text = styled.div`
 	padding: 0 2rem;
 	display: flex;
 	flex-direction: row;
+`;
+
+const Letter = styled(motion.span)`
+	overflow: visible;
+	white-space: pre;
 `;
 
 const Content = styled.div`

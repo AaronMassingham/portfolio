@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Heading from "./Heading";
 
 const BlockQuote = ({ children, title }: Props) => {
 	return (
@@ -15,6 +14,7 @@ const Container = styled.div`
 		font-size: var(--fs-lg);
 	}
 	& > div {
+		padding-top: 1rem;
 		width: clamp(200px, 400px, 100%);
 		text-transform: uppercase;
 	}

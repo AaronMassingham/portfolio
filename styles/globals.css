@@ -9,7 +9,7 @@
 	--fs-sm: clamp(2rem, 2vw + 1rem, 2rem);
 	--fs-xs: clamp(1.1rem, 2vw + 1rem, 1.5rem);
 	--headerH: 6rem;
-	--sitePadding: 2rem;
+	--sitePadding: 1rem;
 	--border: 2px solid var(--darkestGrey);
 	--borderWidth: 2px;
 

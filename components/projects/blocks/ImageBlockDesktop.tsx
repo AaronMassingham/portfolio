@@ -2,7 +2,7 @@ import Image from "next/image";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import DeviceFrame from "@components/components/wrappers/DeviceFrame";
+import DeviceFrame from "@components/wrappers/DeviceFrame";
 
 const ImageBlockDesktop = ({ block }: Props) => {
 	return (

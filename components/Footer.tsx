@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 //Components
-import BlockQuote from "./BlockQuote";
-import Heading from "./Heading";
+import BlockQuote from "@components/BlockQuote";
+import Heading from "@components/Heading";
 
 const Footer = () => {
 	return (
@@ -26,6 +26,8 @@ const Footer = () => {
 		</>
 	);
 };
+
+export default Footer;
 
 const Container = styled.div`
 	width: stretch;
@@ -87,5 +89,3 @@ const SectionTitleExtended = styled(SectionTitle)`
 		color: var(--primaryBackground);
 	}
 `;
-
-export default Footer;

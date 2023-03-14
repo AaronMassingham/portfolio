@@ -1,16 +1,10 @@
 import React from "react";
 
-import ImageBlockDesktop from "@components/components/projects/blocks/ImageBlockDesktop";
-import ImageBlockMobile from "@components/components/projects/blocks/ImageBlockMobile";
-import ColorsBlock from "@components/components/projects/blocks/ColorsBlock";
-import TextBlock from "@components/components/projects/blocks/TextBlock";
-interface Block {
-	id: number;
-	component: string;
-	url?: string;
-	content?: string;
-	colors?: Array<String>;
-}
+//Components
+import ImageBlockDesktop from "@components/projects/blocks/ImageBlockDesktop";
+import ImageBlockMobile from "@components/projects/blocks/ImageBlockMobile";
+import ColorsBlock from "@components/projects/blocks/ColorsBlock";
+import TextBlock from "@components/projects/blocks/TextBlock";
 
 const Components: { [key: string]: React.ComponentType<any> } = {
 	imageMobile: ImageBlockMobile,
@@ -28,10 +22,18 @@ const renderBlock = (block: Block): JSX.Element => {
 	}
 	return React.createElement(
 		() => (
-			<div>The component "{block.component}" has not been created yet.</div>
+			<div>The component &quot;{block.component}&quot; doesn&quot;t exist!</div>
 		),
 		{ key: block.id }
 	);
 };
+
+interface Block {
+	id: number;
+	component: string;
+	url?: string;
+	content?: string;
+	colors?: Array<String>;
+}
 
 export default renderBlock;

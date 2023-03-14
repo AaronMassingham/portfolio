@@ -1,45 +1,29 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-interface ContentProps {
-	content: string[];
-}
+//Constants
+import {
+	listMarqueeVariants,
+	listMarqueeChildVariants,
+} from "@constants/FramerConstants";
 
 const TextMarquee = ({ content }: ContentProps) => {
-	const marqueeVariants = {
-		animate: {
-			transition: {
-				staggerChildren: 10,
-			},
-		},
-	};
-
-	let trackVariants = {
-		animate: {
-			x: ["100%", "-100%"],
-			transition: {
-				x: {
-					repeat: Infinity,
-					repeatType: "loop",
-					duration: 20,
-					ease: "linear",
-				},
-			},
-		},
-	};
-
 	const mappedData = content.map((item, index) => (
 		<Text key={index}>{item}</Text>
 	));
 
 	return (
-		<Marquee variants={marqueeVariants} animate="animate">
-			<Track variants={trackVariants}>{mappedData}</Track>
-			<Track aria-hidden="true" variants={trackVariants}>
+		<Marquee variants={listMarqueeVariants} animate="animate">
+			<Track variants={listMarqueeChildVariants}>{mappedData}</Track>
+			<Track aria-hidden="true" variants={listMarqueeChildVariants}>
 				{mappedData}
 			</Track>
 		</Marquee>
 	);
+};
+
+type ContentProps = {
+	content: string[];
 };
 
 const Text = styled(motion.div)`
@@ -83,6 +67,7 @@ const Marquee = styled(motion.div)`
 		width: 300px;
 	}
 `;
+
 const Track = styled(motion.div)`
 	position: absolute;
 	right: -150px;

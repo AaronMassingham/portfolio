@@ -31,6 +31,7 @@ const Container = styled(motion.div)`
 	height: 50px;
 	padding: 1px;
 `;
+
 const Dot = styled(motion.div)`
 	background-color: var(--pink);
 	width: 4px;

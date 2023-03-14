@@ -4,15 +4,14 @@ import styled from "styled-components";
 import useSWR from "swr";
 
 //Components
-import Hero from "@components/components/Hero";
-import Project from "@components/components/projects/Project";
-import ProjectDetails from "@components/components/projects/ProjectDetails";
-import ProjectBlocks from "@components/components/projects/ProjectBlocks";
-import Table from "@components/components/Table";
-import BlockQuote from "@components/components/BlockQuote";
-import BigRibbon from "@components/components/BigRibbon";
-import Heading from "@components/components/Heading";
-import { Key } from "react";
+import Hero from "@components/Hero";
+import Project from "@components/projects/Project";
+import ProjectDetails from "@components/projects/ProjectDetails";
+import ProjectBlocks from "@components/projects/ProjectBlocks";
+import Table from "@components/Table";
+import BlockQuote from "@components/BlockQuote";
+import BigRibbon from "@components/BigRibbon";
+import Heading from "@components/Heading";
 
 const fetcher = (url: RequestInfo | URL) =>
 	fetch(url).then((res) => res.json());
@@ -36,7 +35,6 @@ export default function NextPage() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Hero />
-
 			<SectionTitle>
 				<BlockQuote title={<Heading headingLevel="h2">Projects</Heading>}>
 					I find visual solutions, then build them using current web
@@ -47,7 +45,7 @@ export default function NextPage() {
 			{data.projects.map(
 				(
 					item: {
-						id: Key | null | undefined;
+						id: number;
 						details: Array<any>;
 						link: string;
 						testimonial: string;
@@ -91,13 +89,10 @@ export default function NextPage() {
 				<div className="stack">
 					<Heading headingLevel="h3">{data.aboutMe.bio.title}</Heading>
 					<div dangerouslySetInnerHTML={{ __html: data.aboutMe.bio.content }} />
-					<Heading headingLevel="h4" children2={<span />}>
-						I find visual solutions, then build them using current web
-						technologies.
-					</Heading>
+					<Heading headingLevel="h4">Designer</Heading>
 					<Grid>
 						{data.aboutMe.design.map(
-							(item: { title: string; list: String[] }, index: Key) => (
+							(item: { title: string; list: String[] }, index: number) => (
 								<Table key={index} data={item} />
 							)
 						)}
@@ -105,7 +100,7 @@ export default function NextPage() {
 					<Heading headingLevel="h4">Developer</Heading>
 					<Grid>
 						{data.aboutMe.developer.map(
-							(item: { title: string; list: String[] }, index: Key) => (
+							(item: { title: string; list: String[] }, index: number) => (
 								<Table key={index} data={item} />
 							)
 						)}
@@ -123,17 +118,21 @@ const AboutContainer = styled.section`
 	min-height: calc(200vh + 300px);
 
 	& h3 {
-		padding-top: 2rem;
+		padding: 0.25rem 0;
 	}
 	& h4 {
-		padding-top: 5rem;
+		padding: 0.25rem 0;
 	}
 
 	& .stack {
-		padding: var(--sitePadding);
 		max-width: 1200px;
 		align-self: center;
 		padding-bottom: 200px;
+
+		@media screen and (max-width: 768px) {
+			padding-left: var(--sitePadding);
+			padding-right: var(--sitePadding);
+		}
 		@media screen and (min-width: 768px) {
 			padding-bottom: 400px;
 		}
@@ -174,7 +173,7 @@ const SectionTitle = styled.section`
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	margin: 0 0 -200vh 0;
+	margin: 0 0 -100vh 0;
 
 	& > div {
 		position: sticky;
@@ -189,7 +188,6 @@ const SectionTitle = styled.section`
 	& div > * {
 		margin: 0 auto;
 		text-align: center;
-		padding: 1rem 0;
 	}
 `;
 

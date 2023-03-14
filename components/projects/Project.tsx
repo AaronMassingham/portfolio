@@ -1,9 +1,7 @@
-import React, { useRef } from "react";
+import React from "react";
 import styled from "styled-components";
-import { motion, useScroll } from "framer-motion";
-
-//Components
-import BlockQuote from "../BlockQuote";
+import { motion } from "framer-motion";
+import PinkBorder from "../motion-elements/PinkBorder";
 
 const Project = ({
 	children,
@@ -12,40 +10,24 @@ const Project = ({
 	itemNumber,
 	itemsTotal,
 }: Props) => {
-	//Check
 	const checkIndexIsFirst = itemNumber === 0;
-	// const checkIndexIsLast = itemNumber === itemsTotal;
+	const checkIndexIsLast = itemNumber === itemsTotal;
 
-	let setContainerHeight;
-	if (itemNumber === 0) {
-		setContainerHeight = numberOfProjectBlocks * 100 + 100;
-	} else if (itemNumber === itemsTotal) {
-		setContainerHeight = numberOfProjectBlocks * 100 + 100;
-	} else {
-		setContainerHeight = numberOfProjectBlocks * 100;
-	}
+	//Padding is adjusted for projects with less than 2 panels
+	const ProjectHasLessThan2Panels = numberOfProjectBlocks < 2 ? true : false;
 
-	const viewportOptions = { margin: "100% 0% -100% 0%" };
+	const viewportOptions = { margin: "0% 0% -50% 0%" };
 	const transitionOptions = {
 		duration: 0.5,
+		ease: "easeOut",
 		when: "beforeChildren",
 	};
 	const variants = {
 		hidden: {
-			opacity: 0,
+			opacity: checkIndexIsLast ? 1 : 0,
 		},
 		animate: {
 			opacity: 1,
-		},
-	};
-	const childVariants = {
-		hidden: {
-			opacity: 0,
-			x: -30,
-		},
-		animate: {
-			opacity: 1,
-			x: 0,
 		},
 	};
 
@@ -56,21 +38,15 @@ const Project = ({
 			whileInView="animate"
 			viewport={viewportOptions}
 			transition={transitionOptions}
-			height={setContainerHeight}
 		>
-			<OverFlowPanel />
-			<Sticky variants={childVariants} transition={transitionOptions}>
-				{children}
-			</Sticky>
+			{checkIndexIsFirst && <OverFlowPanel />}
+			<Sticky>{children}</Sticky>
 			<Static>
-				<StaticContent>{staticChildren}</StaticContent>
+				<StaticContent $setPadding={ProjectHasLessThan2Panels}>
+					{staticChildren}
+				</StaticContent>
 			</Static>
-			<BorderBottom
-				initial={{ opacity: 0, scaleX: 0 }}
-				whileInView={{ opacity: 1, scaleX: 1 }}
-				transition={{ duration: 1, ease: "easeInOut" }}
-				viewport={{ margin: "-5% 0% -5% 0%" }}
-			/>
+			<PinkBorder align="bottom" />
 		</Container>
 	);
 };
@@ -83,17 +59,12 @@ type Props = {
 	staticChildren: React.ReactNode;
 };
 
-type ContainerProps = {
-	height: number;
+type ContentProps = {
+	$setPadding: boolean;
 };
 
-const BorderBottom = styled(motion.div)`
-	position: absolute;
-	bottom: -1px;
-	width: 100%;
-	height: 2px;
-	background-color: var(--pink);
-`;
+export default Project;
+
 const OverFlowPanel = styled(motion.div)`
 	height: 100vh;
 	background: var(--primaryBackground);
@@ -103,14 +74,18 @@ const OverFlowPanel = styled(motion.div)`
 	pointer-events: none;
 `;
 
-const Container = styled(motion.section)<ContainerProps>`
-	height: ${(props) => (props.height ? props.height + "vh" : "auto")};
+const Container = styled(motion.section)`
+	height: auto;
 	width: 100%;
-	display: flex;
-	flex-direction: row;
+	display: grid;
+
 	position: relative;
 	z-index: 4;
 	background: var(--primaryBackground);
+	& > * {
+		grid-column: 1 / -1;
+		grid-row: 1 / -1;
+	}
 `;
 
 const Sticky = styled(motion.div)`
@@ -119,57 +94,34 @@ const Sticky = styled(motion.div)`
 	position: sticky;
 	top: 0;
 	z-index: 3;
-
-	padding: calc(var(--headerH) + 2rem) var(--sitePadding) 2rem
-		var(--sitePadding);
-
-	// pointer-events: none;
-	// & > * {
-	// 	pointer-events: initial;
-	// }
-	// @media screen and (min-width: 768px) {
-	// 	width: 50%;
-	// 	padding: calc(var(--headerH) + 2rem) var(--sitePadding) 4rem
-	// 		var(--sitePadding);
-	// }
+	padding: var(--headerH) var(--sitePadding) 2rem;
+	@media screen and (min-width: 768px) {
+		padding: var(--headerH) calc(var(--sitePadding) / 3)
+			calc(var(--sitePadding) / 3);
+	}
 `;
 
 const Static = styled(motion.div)`
-	position: absolute;
 	z-index: 2;
-	height: 100%;
+	height: auto;
 	width: 100%;
 	display: flex;
 	justify-content: flex-start;
 	align-items: flex-start;
-	bottom: 0;
 	top: 0;
-	// @media screen and (max-width: 768px) {
-	// 	position: absolute;
-	// 	width: 100%;
-	// 	bottom: 0;
-	// 	top: 0;
-	// }
-
-	// @media screen and (min-width: 768px) {
-	// 	width: 50%;
-	// }
 `;
 
-const Content = styled(motion.div)`
+const StaticContent = styled(motion.div)<ContentProps>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
 	height: 100%;
-	padding: 0 var(--sitePadding);
-`;
-
-const StaticContent = styled(Content)`
 	flex-direction: column;
 	justify-content: center;
-	padding: 0 var(--sitePadding);
 	gap: 5vh;
+	padding: ${(props) =>
+		props.$setPadding
+			? "0 var(--sitePadding) 150px"
+			: "150px var(--sitePadding)"};
 `;
-
-export default Project;

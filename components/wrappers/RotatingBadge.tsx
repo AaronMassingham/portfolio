@@ -1,23 +1,15 @@
-import { ReactNode } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
+//Constants
+import { rotate360 } from "@constants/FramerConstants";
+
 const RotatingBadge = ({ children }: Props) => {
-	const variants = {
-		animate: {
-			rotate: -360,
-			transition: {
-				duration: 60,
-				repeat: Infinity,
-				ease: "linear",
-			},
-		},
-	};
 	return (
 		<Container>
 			<Svg
 				viewBox="0 0 115 115"
-				variants={variants}
+				variants={rotate360}
 				animate="animate"
 				aria-label="Scroll down to view my work"
 			>
@@ -26,6 +18,10 @@ const RotatingBadge = ({ children }: Props) => {
 			{children}
 		</Container>
 	);
+};
+
+type Props = {
+	children?: React.ReactNode;
 };
 
 const Container = styled.div`
@@ -55,9 +51,5 @@ const Svg = styled(motion.svg)`
 		fill: var(--pink);
 	}
 `;
-
-interface Props {
-	children?: ReactNode;
-}
 
 export default RotatingBadge;
