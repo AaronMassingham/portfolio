@@ -6,9 +6,9 @@ import { motion } from "framer-motion";
 import Modal from "@components/Modal";
 import TextMarquee from "@components/TextMarquee";
 
-//Constants
+//Framer Motion Variants
 import {
-	simpleFadeInSlideUp,
+	fadeInSlideUpVariants,
 	defaultTransition,
 } from "@constants/FramerConstants";
 
@@ -18,6 +18,7 @@ const ProjectDetails = ({
 	projectTitle,
 	services,
 	link,
+	color,
 }: Props) => {
 	const [modalToggle, setModalToggle] = useState(false);
 
@@ -27,7 +28,7 @@ const ProjectDetails = ({
 		<>
 			<Container>
 				<Content>
-					<HeadingStyle>
+					<HeadingStyle $textColor={color}>
 						<h3>
 							{link ? (
 								<a
@@ -44,7 +45,7 @@ const ProjectDetails = ({
 						</h3>
 					</HeadingStyle>
 					<List
-						variants={simpleFadeInSlideUp}
+						variants={fadeInSlideUpVariants}
 						initial="hidden"
 						whileInView="animate"
 						transition={defaultTransition}
@@ -72,6 +73,11 @@ type Props = {
 	testimonialAuthor: string;
 	services: Array<string>;
 	link: string;
+	color?: string;
+};
+
+type ContentProps = {
+	$textColor?: string;
 };
 
 const Container = styled(motion.div)`
@@ -85,31 +91,34 @@ const Container = styled(motion.div)`
 	position: relative;
 `;
 
-const HeadingStyle = styled(motion.div)`
+const HeadingStyle = styled(motion.div)<ContentProps>`
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		@media screen and (max-width: 768px) {
-			position: absolute;
-			writing-mode: vertical-rl;
-			text-orientation: mixed;
-			top: 0;
-			left: 0;
-			width: 4rem;
-			place-items: center;
-		}
+		position: absolute;
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+		top: 0;
+		left: 0;
+		width: 4rem;
+		place-items: center;
 		@media screen and (min-width: 768px) {
 			margin-bottom: 3rem;
 		}
-	}
+
+		& h3 {color: ${(props) =>
+			props.$textColor ? props.$textColor : "var(--white)"};}
+		}
+
 `;
 
 const Content = styled(motion.div)`
 	& button {
 		background-color: var(--primaryBackground);
 		color: var(--pink);
-		border: 2px solid var(--pink);
+		//border: 2px solid var(--pink);
+		border: 0;
 		text-transform: uppercase;
 		border-radius: 100px;
 		height: 2rem;

@@ -31,7 +31,7 @@ const Container = styled.div`
 	z-index: 11;
 
 	@media screen and (min-width: 768px) {
-		padding: 2rem calc(var(--sitePadding) / 3);
+		padding: 2rem;
 	}
 `;
 
@@ -42,14 +42,14 @@ const HireMe = styled.div`
 	top: 0;
 	width: auto;
 	padding: 0 1rem;
-	color: var(--pink);
+	color: var(--green);
 	height: 2rem;
 	border-radius: 4rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	background-color: var(--primaryBackground);
-	border: 2px solid var(--pink);
+	border: 2px solid var(--green);
 	margin-left: 1rem;
 	box-shadow: var(--shadow);
 `;

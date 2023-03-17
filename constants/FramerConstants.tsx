@@ -75,7 +75,7 @@ export const listMarqueeChildVariants = {
 };
 
 //Simple default Variants
-export const simpleFadeIn = {
+export const fadeInVariants = {
 	hidden: {
 		opacity: 0,
 	},
@@ -84,7 +84,7 @@ export const simpleFadeIn = {
 	},
 };
 
-export const simpleFadeInSlideUp = {
+export const fadeInSlideUpVariants = {
 	hidden: {
 		opacity: 0,
 		y: 30,
@@ -95,7 +95,7 @@ export const simpleFadeInSlideUp = {
 	},
 };
 
-export const rotate360 = {
+export const rotate360Variants = {
 	animate: {
 		rotate: -360,
 		transition: {

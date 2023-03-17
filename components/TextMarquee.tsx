@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-//Constants
+//Framer Motion Variants
 import {
 	listMarqueeVariants,
 	listMarqueeChildVariants,
@@ -37,7 +37,7 @@ const Marquee = styled(motion.div)`
 	overflow: clip;
 	background-color: var(--primaryBackground);
 	color: var(--white);
-	border: 2px solid var(--white);
+	//border: 2px solid var(--white);
 	text-transform: uppercase;
 	border-radius: 100px;
 	height: 2rem;

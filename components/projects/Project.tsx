@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
-import PinkBorder from "../motion-elements/PinkBorder";
+import { motion, useInView } from "framer-motion";
+
+//Hooks
+import useMediaQuery from "@lib/useMediaQuery";
 
 const Project = ({
 	children,
@@ -9,9 +11,18 @@ const Project = ({
 	numberOfProjectBlocks,
 	itemNumber,
 	itemsTotal,
+	color,
+	background,
 }: Props) => {
+	const isMobile = useMediaQuery();
+
+	const ref = useRef(null);
+	const isInView = useInView(ref);
+
 	const checkIndexIsFirst = itemNumber === 0;
 	const checkIndexIsLast = itemNumber === itemsTotal;
+
+	console.log(color);
 
 	//Padding is adjusted for projects with less than 2 panels
 	const ProjectHasLessThan2Panels = numberOfProjectBlocks < 2 ? true : false;
@@ -24,7 +35,7 @@ const Project = ({
 	};
 	const variants = {
 		hidden: {
-			opacity: checkIndexIsLast ? 1 : 0,
+			opacity: checkIndexIsFirst ? 1 : 1,
 		},
 		animate: {
 			opacity: 1,
@@ -34,19 +45,45 @@ const Project = ({
 	return (
 		<Container
 			variants={variants}
-			initial="hidden"
-			whileInView="animate"
 			viewport={viewportOptions}
 			transition={transitionOptions}
+			initial="hidden"
+			animate={isInView ? "animate" : "hidden"}
+			ref={ref}
 		>
-			{checkIndexIsFirst && <OverFlowPanel />}
+			{/* {checkIndexIsFirst && (
+				<>
+
+					<OverFlowPanel
+						initial={{ y: "100%" }}
+						animate={{ y: isInView ? 0 : isMobile ? 0 : "100%" }}
+						transition={{ duration: 1, ease: "easeInOut" }}
+						$backgroundColor={background}
+					>
+						<SectionTitle>
+							<BlockQuote
+								invertColor
+								title={<Heading headingLevel="h2">Projects</Heading>}
+							>
+								I find visual solutions, then build them using current web
+								technologies.
+							</BlockQuote>
+						</SectionTitle>
+					</OverFlowPanel>
+				</>
+			)} 
+		*/}
 			<Sticky>{children}</Sticky>
 			<Static>
-				<StaticContent $setPadding={ProjectHasLessThan2Panels}>
+				<StaticContent
+					$setPadding={ProjectHasLessThan2Panels}
+					$textColor={color}
+					$backgroundColor={background}
+				>
 					{staticChildren}
 				</StaticContent>
 			</Static>
-			<PinkBorder align="bottom" />
+			{/* <PinkBorder align="bottom" /> */}
 		</Container>
 	);
 };
@@ -57,20 +94,54 @@ type Props = {
 	itemsTotal?: number;
 	numberOfProjectBlocks: number;
 	staticChildren: React.ReactNode;
+	color: string;
+	background: string;
 };
 
 type ContentProps = {
-	$setPadding: boolean;
+	$setPadding?: boolean;
+	$textColor?: string;
+	$backgroundColor?: string;
 };
 
 export default Project;
 
-const OverFlowPanel = styled(motion.div)`
+const SectionTitle = styled.section`
+	z-index: 1;
+	width: 100%;
 	height: 100vh;
-	background: var(--primaryBackground);
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin: 0 0 -100vh 0;
+
+	& > div {
+		position: sticky;
+		top: calc(var(--headerH) - 4px);
+		height: 50vh;
+		width: 100%;
+		display: flex;
+		flex-direction: column;
+		justify-content: center;
+		align-items: center;
+	}
+	& div > * {
+		margin: 0 auto;
+		text-align: center;
+	}
+`;
+
+const OverFlowPanel = styled(motion.div)<ContentProps>`
+	height: 100vh;
+	background-color: ${(props) =>
+		props.$backgroundColor
+			? props.$backgroundColor
+			: "var(--primaryBackground)"};
 	position: absolute;
 	width: 100%;
-	top: -100vh;
+	top: calc(-100vh + 1px);
 	pointer-events: none;
 `;
 
@@ -78,10 +149,9 @@ const Container = styled(motion.section)`
 	height: auto;
 	width: 100%;
 	display: grid;
-
 	position: relative;
 	z-index: 4;
-	background: var(--primaryBackground);
+
 	& > * {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
@@ -96,8 +166,7 @@ const Sticky = styled(motion.div)`
 	z-index: 3;
 	padding: var(--headerH) var(--sitePadding) 2rem;
 	@media screen and (min-width: 768px) {
-		padding: var(--headerH) calc(var(--sitePadding) / 3)
-			calc(var(--sitePadding) / 3);
+		padding: var(--headerH) 2rem 2rem;
 	}
 `;
 
@@ -117,11 +186,14 @@ const StaticContent = styled(motion.div)<ContentProps>`
 	align-items: center;
 	width: 100%;
 	height: 100%;
+
 	flex-direction: column;
 	justify-content: center;
 	gap: 5vh;
-	padding: ${(props) =>
-		props.$setPadding
-			? "0 var(--sitePadding) 150px"
-			: "150px var(--sitePadding)"};
+	background-color: ${(props) =>
+		props.$backgroundColor
+			? props.$backgroundColor
+			: "var(--primaryBackground)"};
+	color: ${(props) => (props.$textColor ? props.$textColor : "var(--white)")};
+	padding: var(--headerH) var(--sitePadding) var(--headerH);
 `;

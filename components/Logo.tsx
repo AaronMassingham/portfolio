@@ -18,7 +18,7 @@ const Container = styled.div`
 	border-radius: 100%;
 	background-color: var(--primaryBackground);
 	box-shadow: var(--shadow);
-	border: 2px solid var(--pink);
+	//border: 2px solid var(--pink);
 `;
 
 const Svg = styled.svg`
@@ -34,7 +34,7 @@ const Svg = styled.svg`
 		fill: none;
 		stroke: var(--pink);
 
-		stroke-width: 1px;
+		stroke-width: 2px;
 		stroke-linecap: round;
 		stroke-miterlimit: 10;
 	}

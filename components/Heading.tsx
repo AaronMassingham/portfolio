@@ -1,6 +1,8 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import styled from "styled-components";
+
+//Framer Motion Variants
 import {
 	headingVariants,
 	headingChildVariants,

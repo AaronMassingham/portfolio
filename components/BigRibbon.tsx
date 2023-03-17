@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import styled from "styled-components";
 
 //Fonts
@@ -8,7 +8,7 @@ import { ShrikhandFont } from "@utils/Fonts";
 //Hooks
 import { useContainerDimensions } from "@lib/useContainerDimensions";
 
-//Framer Variants
+//Framer Motion Variants
 import {
 	ribbonVariants,
 	ribbonChildVariants,
@@ -16,13 +16,17 @@ import {
 
 const BigRibbon = ({ content }: ContentProps) => {
 	const containerRef = useRef(null);
+
+	const ref = useRef(null);
+	const isInView = useInView(ref);
+
 	const { width } = useContainerDimensions(containerRef);
 
 	//Calculate duration of marquee based on it's overall width
 	const calculatedDuration = width / 100;
 
 	const viewportOptions = {
-		margin: "0% 10% 0% 10%",
+		margin: "0% -10% 0% -10%",
 	};
 
 	const calculatedTransitionValues = {
@@ -38,16 +42,27 @@ const BigRibbon = ({ content }: ContentProps) => {
 		</Letter>
 	));
 
+	const variants = {
+		hidden: {
+			x: 0,
+		},
+		animate: {
+			x: [0, -width],
+			transition: calculatedTransitionValues,
+		},
+	};
+
 	return (
 		<Container
 			variants={ribbonVariants}
 			initial="hidden"
-			whileInView="animate"
-			viewport={viewportOptions}
+			animate="animate"
+			ref={ref}
 		>
 			<LoopContainer
-				animate={{ x: [0, -width] }}
-				transition={calculatedTransitionValues}
+				variants={variants}
+				initial="hidden"
+				animate={isInView ? "animate" : "hidden"}
 			>
 				<Content ref={containerRef}>
 					<Text className={`${ShrikhandFont.className} strokedLightBg`}>
@@ -80,7 +95,7 @@ const Container = styled(motion.div)`
 	bottom: 0;
 	overflow: hidden;
 	@media screen and (min-width: 768px) {
-		height: 300px;
+		height: 250px;
 	}
 `;
 const LoopContainer = styled(motion.div)`

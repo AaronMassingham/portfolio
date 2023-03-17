@@ -1,15 +1,15 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-//Constants
-import { rotate360 } from "@constants/FramerConstants";
+//Framer Motion Variants
+import { rotate360Variants } from "@constants/FramerConstants";
 
 const RotatingBadge = ({ children }: Props) => {
 	return (
 		<Container>
 			<Svg
 				viewBox="0 0 115 115"
-				variants={rotate360}
+				variants={rotate360Variants}
 				animate="animate"
 				aria-label="Scroll down to view my work"
 			>
@@ -28,7 +28,7 @@ const Container = styled.div`
 	background-color: var(--primaryBackground);
 	border-radius: 100%;
 	overflow: visible;
-	z-index: 5;
+	z-index: 2;
 	display: grid;
 	place-items: center;
 	padding: 5px;
@@ -36,7 +36,7 @@ const Container = styled.div`
 	aspect-ratio: 1/1;
 	overflow: hidden;
 	box-shadow: var(--shadow);
-	border: 2px solid var(--pink);
+	//border: 2px solid var(--pink);
 	& > * {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;

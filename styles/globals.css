@@ -1,7 +1,4 @@
 :root {
-	--darkestGrey: #1e1e1d;
-	--primaryBackground: #161615;
-
 	--fs-xlDisplay: clamp(4rem, 3vw + 3rem, 6rem);
 	--fs-xl: clamp(3rem, 5vw + 2rem, 4rem);
 	--fs-lg: clamp(4rem, 4vw + 1rem, 5rem);
@@ -15,13 +12,22 @@
 
 	--shadow: 0px 12px 15px -6px rgba(0, 0, 0, 0.35);
 
-	--pink: #ff4ad0;
+	--darkestGrey: #1e1e1d;
+	--primaryBackground: #161615;
+	--green: #5edba0;
+	--pink: #f1efec;
 	--white: #e9e4ea;
 }
 
 @media screen and (min-width: 768px) {
 	:root {
 		--sitePadding: 8rem;
+	}
+}
+
+@media screen and (min-width: 1400px) {
+	:root {
+		--sitePadding: 2rem;
 	}
 }
 
@@ -45,6 +51,7 @@ html {
 html,
 body {
 	overflow-x: clip;
+
 	/* overscroll-behavior: none; */
 }
 

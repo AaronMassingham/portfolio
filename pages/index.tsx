@@ -35,13 +35,7 @@ export default function NextPage() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Hero />
-			<SectionTitle>
-				<BlockQuote title={<Heading headingLevel="h2">Projects</Heading>}>
-					I find visual solutions, then build them using current web
-					technologies.
-				</BlockQuote>
-			</SectionTitle>
-
+			{/* <Spacer /> */}
 			{data.projects.map(
 				(
 					item: {
@@ -52,6 +46,8 @@ export default function NextPage() {
 						testimonialAuthor: string;
 						projectTitle: string;
 						services: string[];
+						color: string;
+						background: string;
 					},
 					index: number
 				) => (
@@ -61,6 +57,8 @@ export default function NextPage() {
 						itemsTotal={data.projects.length - 1}
 						staticChildren={<ProjectBlocks data={item.details} />}
 						numberOfProjectBlocks={item.details.length}
+						color={item.color}
+						background={item.background}
 					>
 						<ProjectDetails
 							link={item.link}
@@ -69,6 +67,7 @@ export default function NextPage() {
 							testimonialAuthor={item.testimonialAuthor}
 							projectTitle={item.projectTitle}
 							services={item.services}
+							color={item.color}
 						/>
 					</Project>
 				)
@@ -86,9 +85,12 @@ export default function NextPage() {
 				<div className="marqeeContainer">
 					<BigRibbon content="About" />
 				</div>
-				<div className="stack">
+				<AboutContent className="stack">
 					<Heading headingLevel="h3">{data.aboutMe.bio.title}</Heading>
-					<div dangerouslySetInnerHTML={{ __html: data.aboutMe.bio.content }} />
+					<div
+						className="stack"
+						dangerouslySetInnerHTML={{ __html: data.aboutMe.bio.content }}
+					/>
 					<Heading headingLevel="h4">Designer</Heading>
 					<Grid>
 						{data.aboutMe.design.map(
@@ -105,12 +107,18 @@ export default function NextPage() {
 							)
 						)}
 					</Grid>
-				</div>
+				</AboutContent>
 			</AboutContainer>
 		</>
 	);
 }
 
+const Spacer = styled.section`
+	height: 100vh;
+	@media screen and (min-width: 768px) {
+		height: 50vh;
+	}
+`;
 const AboutContainer = styled.section`
 	position: relative;
 	display: flex;
@@ -118,24 +126,10 @@ const AboutContainer = styled.section`
 	min-height: calc(200vh + 300px);
 
 	& h3 {
-		padding: 0.25rem 0;
+		padding: 0 0 1rem 0 !important;
 	}
 	& h4 {
-		padding: 0.25rem 0;
-	}
-
-	& .stack {
-		max-width: 1200px;
-		align-self: center;
-		padding-bottom: 200px;
-
-		@media screen and (max-width: 768px) {
-			padding-left: var(--sitePadding);
-			padding-right: var(--sitePadding);
-		}
-		@media screen and (min-width: 768px) {
-			padding-bottom: 400px;
-		}
+		padding: 3rem 0 0 0;
 	}
 
 	& .marqeeContainer {
@@ -147,6 +141,23 @@ const AboutContainer = styled.section`
 	}
 `;
 
+const AboutContent = styled.div`
+	max-width: 1200px;
+	align-self: center;
+	padding: 0 2rem 200px 2rem;
+
+	@media screen and (min-width: 768px) {
+		padding-bottom: 400px;
+	}
+
+	& .stack {
+		padding-bottom: 20vh;
+		@media screen and (min-width: 768px) {
+			columns: 2;
+			column-gap: 2rem;
+		}
+	}
+`;
 const Grid = styled.div`
 	display: grid;
 	place-items: start;
@@ -183,11 +194,6 @@ const SectionTitle = styled.section`
 		display: flex;
 		flex-direction: column;
 		justify-content: center;
-		align-items: center;
-	}
-	& div > * {
-		margin: 0 auto;
-		text-align: center;
 	}
 `;
 

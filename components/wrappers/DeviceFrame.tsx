@@ -1,20 +1,21 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-import { simpleFadeIn } from "@constants/FramerConstants";
+//Framer Motion Variants
+import { fadeInSlideUpVariants } from "@constants/FramerConstants";
 
 const DeviceFrame = ({ children, deviceType, elementIndex }: Props) => {
 	const transitionOptions = {
 		duration: 0.75,
 		delay: elementIndex ? elementIndex / 5 : 0,
-		ease: "easeOut",
+		ease: "easeIn",
 	};
 	const viewportOptions = { margin: "-10% 0% -10% 0%" };
 
 	return (
 		<Frame
 			type={deviceType}
-			variants={simpleFadeIn}
+			variants={fadeInSlideUpVariants}
 			initial="hidden"
 			whileInView="animate"
 			transition={transitionOptions}
@@ -54,9 +55,11 @@ const Frame = styled(motion.div)<FrameProps>`
 				return `
 					aspect-ratio: 7 / 13;
 					width: min(350px, 100%);
-					margin:auto;
+					
 					@media screen and (min-width: 768px) {
 						width:100%;
+						max-width:350px;
+						margin:auto;
 					}
                 `;
 		}
@@ -68,6 +71,8 @@ const Content = styled(motion.div)`
 	height: 100%;
 	background-color: var(--darkestGrey);
 	position: relative;
+	overflow: clip;
+	border: 1px solid var(--darkestGrey);
 `;
 
 export default DeviceFrame;
