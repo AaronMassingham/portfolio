@@ -72,12 +72,12 @@
                 {
                     "id": 2,
                     "component": "imageMobile",
-                    "imageUrls":["portfolio/grafthaus/home.jpg", "portfolio/grafthaus/grafthausnav_optimised.mp4", "portfolio/grafthaus/membership.png"]
+                    "imageUrls":["portfolio/grafthaus/home.webp", "portfolio/grafthaus/grafthausnav_optimised.mp4", "portfolio/grafthaus/membership.webp"]
                 },
                 {
                     "id": 3,
                     "component": "imageDesktop",
-                    "imageUrl":"portfolio/grafthaus/membership.png"
+                    "imageUrl":"portfolio/grafthaus/membership.webp"
                 }
                
             ]
