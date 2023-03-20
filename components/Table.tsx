@@ -38,7 +38,7 @@ const Container = styled(motion.div)`
 		text-transform: uppercase;
 		font-weight: bold;
 		padding: 3rem 0 1rem 0;
-		color: var(--pink);
+		color: var(--white);
 		position: relative;
 		display: flex;
 		flex-direction: row;
@@ -47,7 +47,6 @@ const Container = styled(motion.div)`
 
 		@media screen and (min-width: 768px) {
 			padding: 2rem 0 1rem 0;
-			//border-bottom: 2px solid var(--pink);
 		}
 		&:after {
 			content: " ";
@@ -55,7 +54,7 @@ const Container = styled(motion.div)`
 			width: 100%;
 			top: 0;
 			left: 0;
-			background: var(--pink);
+			background: var(--white);
 			border-radius: 2px;
 		}
 		& span {
@@ -74,7 +73,7 @@ const Container = styled(motion.div)`
 			justify-content: center;
 			align-items: center;
 			background-color: var(--primaryBackground);
-			border: 2px solid var(--pink);
+			border: 2px solid var(--white);
 		}
 	}
 	& ul {

@@ -2,10 +2,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 const transition = {
-	duration: 1,
-	when: "beforeChildren",
 	staggerChildren: 0.25,
-	ease: "easeInOut",
 };
 
 const variants = {
@@ -24,7 +21,7 @@ const childVariants = {
 		pathLength: 0,
 		transition: {
 			ease: "easeInOut",
-			duration: 1.25,
+			duration: 0.25,
 		},
 	},
 	visible: {
@@ -32,7 +29,7 @@ const childVariants = {
 		pathLength: 1,
 		transition: {
 			ease: "easeInOut",
-			duration: 1.25,
+			duration: 0.25,
 		},
 	},
 };
@@ -63,8 +60,6 @@ const Container = styled(motion.div)`
 	height: 4rem;
 	border-radius: 100%;
 	background-color: var(--primaryBackground);
-	box-shadow: var(--shadow);
-	//border: 2px solid var(--pink);
 `;
 
 const Svg = styled.svg`
@@ -78,7 +73,7 @@ const Svg = styled.svg`
 	path,
 	polyline {
 		fill: none;
-		stroke: var(--pink);
+		stroke: var(--white);
 
 		stroke-width: 2px;
 		stroke-linecap: round;

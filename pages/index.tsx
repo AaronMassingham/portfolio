@@ -14,6 +14,7 @@ import Table from "@components/Table";
 import BlockQuote from "@components/BlockQuote";
 import BigRibbon from "@components/BigRibbon";
 import Heading from "@components/Heading";
+import Logo from "@components/Logo";
 
 import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
@@ -27,41 +28,10 @@ export default function NextPage() {
 
 	if (error) return <div>Failed to load</div>;
 	//Handle the loading state
-	if (!data)
-		return (
-			<div
-				style={{
-					position: "fixed",
-					top: 0,
-					left: 0,
-					right: 0,
-					bottom: 0,
-					backgroundColor: "red",
-					zIndex: 100,
-				}}
-			>
-				Loading...
-			</div>
-		);
+	if (!data) return <LoadContainer>Loading...</LoadContainer>;
 
 	return (
 		<>
-			<motion.div
-				initial={{ opacity: 1 }}
-				animate={{ opacity: 0 }}
-				transition={{ duration: 0.75, delay: 1 }}
-				style={{
-					position: "fixed",
-					top: 0,
-					left: 0,
-					right: 0,
-					bottom: 0,
-					backgroundColor: "red",
-					zIndex: 100,
-				}}
-			>
-				Loading...
-			</motion.div>
 			<Head>
 				<title>Aaron Massingham | Online Portfolio 2023</title>
 				<meta
@@ -71,6 +41,20 @@ export default function NextPage() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+			<LoadContainer
+				initial={{ opacity: 1 }}
+				animate={{
+					opacity: 0,
+					transitionEnd: {
+						display: "none",
+					},
+				}}
+				transition={{ duration: 0.5, delay: 1.25 }}
+			>
+				<Logo />
+				Loading...
+			</LoadContainer>
+
 			<Hero />
 
 			{data.projects.map(
@@ -151,6 +135,23 @@ export default function NextPage() {
 	);
 }
 
+const LoadContainer = styled(motion.div)`
+	position: fixed;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: var(--primaryBackground);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 100;
+	flex-direction: column;
+	gap: 2rem;
+	& > div {
+		height: 8rem;
+	}
+`;
 const AboutContainer = styled.section`
 	position: relative;
 	display: flex;

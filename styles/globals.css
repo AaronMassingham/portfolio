@@ -9,13 +9,9 @@
 	--sitePadding: 1rem;
 	--border: 2px solid var(--darkestGrey);
 	--borderWidth: 2px;
-
-	--shadow: none;
-
 	--darkestGrey: #1e1e1d;
 	--primaryBackground: #161615;
 	--green: #5edba0;
-	--pink: #f1efec;
 	--white: #e9e4ea;
 }
 
