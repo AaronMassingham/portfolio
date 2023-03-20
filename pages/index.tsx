@@ -37,6 +37,7 @@ export default function NextPage() {
 					right: 0,
 					bottom: 0,
 					backgroundColor: "red",
+					zIndex: 100,
 				}}
 			>
 				Loading...
@@ -45,6 +46,22 @@ export default function NextPage() {
 
 	return (
 		<>
+			<motion.div
+				initial={{ opacity: 1 }}
+				animate={{ opacity: 0 }}
+				transition={{ duration: 0.75, delay: 1 }}
+				style={{
+					position: "fixed",
+					top: 0,
+					left: 0,
+					right: 0,
+					bottom: 0,
+					backgroundColor: "red",
+					zIndex: 100,
+				}}
+			>
+				Loading...
+			</motion.div>
 			<Head>
 				<title>Aaron Massingham | Online Portfolio 2023</title>
 				<meta
@@ -55,7 +72,7 @@ export default function NextPage() {
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
 			<Hero />
-			{/* <Spacer /> */}
+
 			{data.projects.map(
 				(
 					item: {
