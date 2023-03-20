@@ -28,10 +28,10 @@ const BigRibbon = ({ content }: ContentProps) => {
 		ease: "linear",
 	};
 
-	var newArrayFromContent = `${content} ${content}`.split("");
-	const mappedLetters = newArrayFromContent.map((item, index) => (
-		<Letter key={index}>{item}</Letter>
-	));
+	var newArrayFromContent = `${content} ${content}`;
+	// const mappedLetters = newArrayFromContent.map((item, index) => (
+	// 	<Letter key={index}>{item}</Letter>
+	// ));
 
 	const variants = {
 		hidden: {
@@ -52,12 +52,12 @@ const BigRibbon = ({ content }: ContentProps) => {
 			>
 				<Content ref={containerRef}>
 					<Text className={`${ShrikhandFont.className} strokedLightBg`}>
-						{mappedLetters}
+						{newArrayFromContent}
 					</Text>
 				</Content>
 				<ContentAlt offset={width} aria-hidden="true">
 					<Text className={`${ShrikhandFont.className} strokedLightBg`}>
-						{mappedLetters}
+						{newArrayFromContent}
 					</Text>
 				</ContentAlt>
 			</LoopContainer>
