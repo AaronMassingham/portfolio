@@ -1,9 +1,6 @@
-//Components
-// import Header from "@components/Header";
-// import Footer from "@components/Footer";
-
 import dynamic from "next/dynamic";
 
+//Dynamic Components
 const DynamicHeader = dynamic(() => import("@components/Header"));
 const DynamicFooter = dynamic(() => import("@components/Footer"));
 
