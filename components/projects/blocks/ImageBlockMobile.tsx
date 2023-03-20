@@ -5,6 +5,30 @@ import { motion } from "framer-motion";
 //Components
 import DeviceFrame from "@components/wrappers/DeviceFrame";
 
+const ImageBlockMobile = ({ block }: Props) => {
+	const numOfItems = block.imageUrls.length;
+
+	const RenderImageOrVideo = block.imageUrls.map((item, index) => (
+		<DeviceFrame key={item} deviceType="portrait" elementIndex={index + 1}>
+			{item.includes("mp4") ? (
+				<video autoPlay muted loop style={{ width: "100%", height: "auto" }}>
+					<source src={`/${item}`} type="video/mp4" />
+				</video>
+			) : (
+				<Image
+					src={`/${item}`}
+					alt="Background Image"
+					placeholder="empty"
+					quality={75}
+					fill
+				/>
+			)}
+		</DeviceFrame>
+	));
+
+	return <Container width={numOfItems}>{RenderImageOrVideo}</Container>;
+};
+
 type Props = {
 	block: {
 		id: number;
@@ -12,39 +36,23 @@ type Props = {
 	};
 };
 
-const ImageBlockMobile = ({ block }: Props) => {
-	const numOfItems = block.imageUrls.length;
-
-	return (
-		<Container width={numOfItems}>
-			{block.imageUrls.map((item, index) => (
-				<DeviceFrame key={index} deviceType="portrait" elementIndex={index + 1}>
-					<Image
-						src={`/${item}`}
-						alt="Background Image"
-						placeholder="empty"
-						quality={75}
-						fill
-					/>
-				</DeviceFrame>
-			))}
-		</Container>
-	);
-};
-
 type ContainerProps = {
 	width: number;
 };
 
-const Container = styled(motion.div)<ContainerProps>`
+const Container = styled.div<ContainerProps>`
 	display: grid;
 	width: 100%;
 	padding: 2rem 0;
 	gap: 3rem;
-
+	max-width: 1200px;
+	margin: auto;
 	grid-template-columns: repeat(1, 1fr);
 	@media screen and (min-width: 768px) {
 		grid-template-columns: repeat(3, 1fr);
+	}
+	@media screen and (min-width: 1200px) {
+		padding: var(--sitePadding);
 	}
 `;
 

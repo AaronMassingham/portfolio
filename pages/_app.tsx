@@ -1,6 +1,7 @@
-import "@components/styles/globals.css";
+import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { AnimatePresence, motion } from "framer-motion";
+import styled from "styled-components";
 
 //Fonts
 import { contentFont } from "@utils/Fonts";
@@ -26,3 +27,16 @@ export default function App({ Component, pageProps, router }: AppProps) {
 		</>
 	);
 }
+
+export function reportWebVitals(metric: any) {
+	console.log(metric);
+}
+
+const Test = styled.section`
+	height: 100vh;
+	width: 100%;
+	background: red;
+	top: 0;
+	left: 0;
+	z-index: 30;
+`;

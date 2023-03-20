@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 //Components
 import ScrollPrompt from "@components/ScrollPrompt";
@@ -6,16 +7,19 @@ import WorkCircle from "@components/wrappers/RotatingBadge";
 import Heading from "@components/Heading";
 import BigRibbon from "@components/BigRibbon";
 
+// Framer Const
+import { fadeInUpMotionVariants } from "@constants/FramerConstants";
+
 const Hero = () => {
-	const marqueeContent = "UI / Web Design / Branding / Frontend Dev /";
+	const marqueeContent = "UI - Web Design - Branding - Frontend Dev - ";
 
 	return (
 		<Container>
 			<Headline>
-				<PreTitle>
+				<PreTitle {...fadeInUpMotionVariants}>
 					I&apos;m Aaron <span>&#128075;</span>
 				</PreTitle>
-				<Heading headingLevel="h1">I help create frontend experiences.</Heading>
+				<Heading headingLevel="h2">I help create frontend experiences.</Heading>
 			</Headline>
 			<PromptContainer>
 				<WorkCircle>
@@ -31,37 +35,35 @@ const Container = styled.section`
 	display: flex;
 	height: 100vh;
 	align-items: flex-start;
-	justify-content: center;
+	justify-content: flex-start;
 	flex-direction: column;
-	padding: 2rem var(--sitePadding) 25vh var(--sitePadding);
+	max-width: 1200px;
+	margin: auto;
+	padding: calc(var(--headerH) + 2rem) 2rem 0 2rem;
 `;
 
 const Headline = styled.div`
 	position: relative;
 	padding: 3rem 0 0 0;
+	margin: 0 0 5rem 0;
 	max-width: 100%;
-	text-align: left;
-	margin: auto 0;
-	@media screen and (max-width: 768px) {
-		text-align: center;
+	@media screen and (min-width: 768px) {
+		max-width: 50vw;
 	}
 `;
 
-const PreTitle = styled.div`
+const PreTitle = styled(motion.div)`
 	text-transform: uppercase;
 	font-weight: 300;
 	font-size: 1.5rem;
-	position: absolute;
-	top: 0;
-	left: 0;
 	justify-content: center;
 	width: 100%;
 	align-items: center;
 	color: var(--pink);
 	padding-left: 3px;
 	& span {
-		-webkit-filter: hue-rotate(-75deg);
-		filter: hue-rotate(-75deg);
+		-webkit-filter: grayscale(100%);
+		filter: grayscale(100%);
 	}
 `;
 
@@ -73,7 +75,7 @@ const PromptContainer = styled.div`
 	justify-content: center;
 	align-items: center;
 	display: flex;
-	height: 25vh;
+	height: 250px;
 	width: 100%;
 	display: grid;
 	place-items: center;

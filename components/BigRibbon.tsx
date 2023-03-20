@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import styled from "styled-components";
 
 //Fonts
@@ -8,22 +8,19 @@ import { ShrikhandFont } from "@utils/Fonts";
 //Hooks
 import { useContainerDimensions } from "@lib/useContainerDimensions";
 
-//Framer Variants
-import {
-	ribbonVariants,
-	ribbonChildVariants,
-} from "@constants/FramerConstants";
+//Framer Motion Variants
+import { bigRibbonVariants } from "@constants/FramerConstants";
 
 const BigRibbon = ({ content }: ContentProps) => {
 	const containerRef = useRef(null);
+
+	const ref = useRef(null);
+	const isInView = useInView(ref);
+
 	const { width } = useContainerDimensions(containerRef);
 
 	//Calculate duration of marquee based on it's overall width
 	const calculatedDuration = width / 100;
-
-	const viewportOptions = {
-		margin: "0% 10% 0% 10%",
-	};
 
 	const calculatedTransitionValues = {
 		duration: calculatedDuration,
@@ -33,21 +30,25 @@ const BigRibbon = ({ content }: ContentProps) => {
 
 	var newArrayFromContent = `${content} ${content}`.split("");
 	const mappedLetters = newArrayFromContent.map((item, index) => (
-		<Letter variants={ribbonChildVariants} key={index}>
-			{item}
-		</Letter>
+		<Letter key={index}>{item}</Letter>
 	));
 
+	const variants = {
+		hidden: {
+			x: 0,
+		},
+		visible: {
+			x: [0, -width],
+			transition: calculatedTransitionValues,
+		},
+	};
+
 	return (
-		<Container
-			variants={ribbonVariants}
-			initial="hidden"
-			whileInView="animate"
-			viewport={viewportOptions}
-		>
+		<Container {...bigRibbonVariants} ref={ref}>
 			<LoopContainer
-				animate={{ x: [0, -width] }}
-				transition={calculatedTransitionValues}
+				variants={variants}
+				initial="hidden"
+				animate={isInView ? "visible" : "hidden"}
 			>
 				<Content ref={containerRef}>
 					<Text className={`${ShrikhandFont.className} strokedLightBg`}>
@@ -80,13 +81,13 @@ const Container = styled(motion.div)`
 	bottom: 0;
 	overflow: hidden;
 	@media screen and (min-width: 768px) {
-		height: 300px;
+		height: 250px;
 	}
 `;
 const LoopContainer = styled(motion.div)`
 	width: auto;
 	position: relative;
-	font-size: 150px;
+	font-size: 175px;
 	display: flex;
 	@media screen and (min-width: 768px) {
 		font-size: 300px;
@@ -107,11 +108,14 @@ const Letter = styled(motion.span)`
 	white-space: pre;
 `;
 
-const Content = styled.div`
-	height: 300px;
+const Content = styled(motion.div)`
+	height: 150px;
 	width: max-content;
 	white-space: nowrap;
 	line-height: 1;
+	@media screen and (min-width: 768px) {
+		height: 250px;
+	}
 `;
 const ContentAlt = styled(Content)<ContentAltProps>`
 	width: 100%;

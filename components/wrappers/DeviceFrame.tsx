@@ -1,29 +1,25 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
+import useMediaQuery from "@lib/useMediaQuery";
 
-import { simpleFadeIn } from "@constants/FramerConstants";
+//Framer Motion Variants
+import {
+	deviceMotionVariants,
+	deviceMotionChildVariants,
+} from "@constants/FramerConstants";
 
-const DeviceFrame = ({ children, deviceType, elementIndex }: Props) => {
-	const transitionOptions = {
-		duration: 0.75,
-		delay: elementIndex ? elementIndex / 5 : 0,
-		ease: "easeOut",
-	};
-	const viewportOptions = { margin: "-10% 0% -10% 0%" };
-
+export default function DeviceFrame({
+	children,
+	deviceType,
+	elementIndex,
+}: Props) {
+	const isMobile = useMediaQuery();
 	return (
-		<Frame
-			type={deviceType}
-			variants={simpleFadeIn}
-			initial="hidden"
-			whileInView="animate"
-			transition={transitionOptions}
-			viewport={viewportOptions}
-		>
-			<Content>{children}</Content>
+		<Frame type={deviceType} {...deviceMotionVariants}>
+			<Content {...deviceMotionChildVariants}>{children}</Content>
 		</Frame>
 	);
-};
+}
 
 type Props = {
 	children: React.ReactNode;
@@ -52,11 +48,13 @@ const Frame = styled(motion.div)<FrameProps>`
                 `;
 			case "portrait":
 				return `
-					aspect-ratio: 7 / 13;
+					aspect-ratio: 900 / 1670;
 					width: min(350px, 100%);
-					margin:auto;
+					
 					@media screen and (min-width: 768px) {
 						width:100%;
+						max-width:350px;
+						margin:auto;
 					}
                 `;
 		}
@@ -68,6 +66,6 @@ const Content = styled(motion.div)`
 	height: 100%;
 	background-color: var(--darkestGrey);
 	position: relative;
+	overflow: clip;
+	border: 1px solid var(--darkestGrey);
 `;
-
-export default DeviceFrame;

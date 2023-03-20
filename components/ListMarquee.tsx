@@ -1,21 +1,21 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-//Constants
+//Framer Motion Variants
 import {
 	listMarqueeVariants,
 	listMarqueeChildVariants,
 } from "@constants/FramerConstants";
 
-const TextMarquee = ({ content }: ContentProps) => {
+const ListMarquee = ({ content }: ContentProps) => {
 	const mappedData = content.map((item, index) => (
 		<Text key={index}>{item}</Text>
 	));
 
 	return (
-		<Marquee variants={listMarqueeVariants} animate="animate">
-			<Track variants={listMarqueeChildVariants}>{mappedData}</Track>
-			<Track aria-hidden="true" variants={listMarqueeChildVariants}>
+		<Marquee {...listMarqueeVariants}>
+			<Track {...listMarqueeChildVariants}>{mappedData}</Track>
+			<Track aria-hidden="true" {...listMarqueeChildVariants}>
 				{mappedData}
 			</Track>
 		</Marquee>
@@ -37,7 +37,7 @@ const Marquee = styled(motion.div)`
 	overflow: clip;
 	background-color: var(--primaryBackground);
 	color: var(--white);
-	border: 2px solid var(--white);
+	//border: 2px solid var(--white);
 	text-transform: uppercase;
 	border-radius: 100px;
 	height: 2rem;
@@ -76,4 +76,4 @@ const Track = styled(motion.div)`
 	justify-content: center;
 `;
 
-export default TextMarquee;
+export default ListMarquee;

@@ -15,15 +15,18 @@ type Props = {
 };
 
 const ModalContainer = styled.div`
-	position: absolute;
+	position: fixed;
 	z-index: 20;
-	background: var(--darkGrey);
-	color: var(--primaryBackground);
+	background: var(--primaryBackground);
+	color: var(--white);
 	top: 0;
 	left: 0;
 	bottom: 0;
 	right: 0;
 	padding: var(--headerH) 2rem 0 2rem;
+	overscroll-behavior: none;
+	overflow: scroll;
+	height: 100%;
 `;
 
 export default Modal;

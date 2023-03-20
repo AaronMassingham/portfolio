@@ -4,13 +4,10 @@ import { motion } from "framer-motion";
 
 //Components
 import Modal from "@components/Modal";
-import TextMarquee from "@components/TextMarquee";
+import TextMarquee from "@components/ListMarquee";
 
-//Constants
-import {
-	simpleFadeInSlideUp,
-	defaultTransition,
-} from "@constants/FramerConstants";
+//Framer Motion Variants
+import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
 const ProjectDetails = ({
 	testimonial,
@@ -18,6 +15,7 @@ const ProjectDetails = ({
 	projectTitle,
 	services,
 	link,
+	color,
 }: Props) => {
 	const [modalToggle, setModalToggle] = useState(false);
 
@@ -27,7 +25,11 @@ const ProjectDetails = ({
 		<>
 			<Container>
 				<Content>
-					<HeadingStyle>
+					<HeadingStyle
+						{...fadeInUpMotionVariants}
+						viewport={{ margin: "0% 0% -80% 0%" }}
+						$textColor={color}
+					>
 						<h3>
 							{link ? (
 								<a
@@ -43,13 +45,7 @@ const ProjectDetails = ({
 							)}
 						</h3>
 					</HeadingStyle>
-					<List
-						variants={simpleFadeInSlideUp}
-						initial="hidden"
-						whileInView="animate"
-						transition={defaultTransition}
-						viewport={viewportOptions}
-					>
+					<List {...fadeInUpMotionVariants}>
 						<button onClick={() => setModalToggle(true)}>Testimonial</button>
 						<TextMarquee content={services} />
 					</List>
@@ -72,9 +68,14 @@ type Props = {
 	testimonialAuthor: string;
 	services: Array<string>;
 	link: string;
+	color?: string;
 };
 
-const Container = styled(motion.div)`
+type ContentProps = {
+	$textColor?: string;
+};
+
+const Container = styled.div`
 	width: 100%;
 	height: 100%;
 	height: -webkit-fill-available;
@@ -85,37 +86,40 @@ const Container = styled(motion.div)`
 	position: relative;
 `;
 
-const HeadingStyle = styled(motion.div)`
+const HeadingStyle = styled(motion.div)<ContentProps>`
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		@media screen and (max-width: 768px) {
-			position: absolute;
-			writing-mode: vertical-rl;
-			text-orientation: mixed;
-			top: 0;
-			left: 0;
-			width: 4rem;
-			place-items: center;
-		}
+		position: absolute;
+		writing-mode: vertical-rl;
+		text-orientation: mixed;
+		top: 0;
+		left: 0;
+		width: 4rem;
+		place-items: center;
 		@media screen and (min-width: 768px) {
 			margin-bottom: 3rem;
 		}
-	}
+
+		& h3 {color: ${(props) =>
+			props.$textColor ? props.$textColor : "var(--white)"};}
+		}
+
 `;
 
-const Content = styled(motion.div)`
+const Content = styled.div`
 	& button {
 		background-color: var(--primaryBackground);
 		color: var(--pink);
-		border: 2px solid var(--pink);
+		//border: 2px solid var(--pink);
+		border: 0;
 		text-transform: uppercase;
 		border-radius: 100px;
 		height: 2rem;
 		padding: 0 1rem;
 		font-size: inherit;
-		font-weight: 300;
+		font-weight: 400;
 	}
 `;
 
@@ -127,6 +131,7 @@ const List = styled(motion.div)`
 	justify-content: space-between;
 	bottom: 0;
 	right: 0;
+	font-weight: 400;
 `;
 
 export default ProjectDetails;
