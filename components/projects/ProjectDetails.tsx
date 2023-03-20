@@ -4,13 +4,10 @@ import { motion } from "framer-motion";
 
 //Components
 import Modal from "@components/Modal";
-import TextMarquee from "@components/TextMarquee";
+import TextMarquee from "@components/ListMarquee";
 
 //Framer Motion Variants
-import {
-	fadeInSlideUpVariants,
-	defaultTransition,
-} from "@constants/FramerConstants";
+import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
 const ProjectDetails = ({
 	testimonial,
@@ -28,7 +25,11 @@ const ProjectDetails = ({
 		<>
 			<Container>
 				<Content>
-					<HeadingStyle $textColor={color}>
+					<HeadingStyle
+						{...fadeInUpMotionVariants}
+						viewport={{ margin: "0% 0% -80% 0%" }}
+						$textColor={color}
+					>
 						<h3>
 							{link ? (
 								<a
@@ -44,13 +45,7 @@ const ProjectDetails = ({
 							)}
 						</h3>
 					</HeadingStyle>
-					<List
-						variants={fadeInSlideUpVariants}
-						initial="hidden"
-						whileInView="animate"
-						transition={defaultTransition}
-						viewport={viewportOptions}
-					>
+					<List {...fadeInUpMotionVariants}>
 						<button onClick={() => setModalToggle(true)}>Testimonial</button>
 						<TextMarquee content={services} />
 					</List>
@@ -80,7 +75,7 @@ type ContentProps = {
 	$textColor?: string;
 };
 
-const Container = styled(motion.div)`
+const Container = styled.div`
 	width: 100%;
 	height: 100%;
 	height: -webkit-fill-available;
@@ -113,7 +108,7 @@ const HeadingStyle = styled(motion.div)<ContentProps>`
 
 `;
 
-const Content = styled(motion.div)`
+const Content = styled.div`
 	& button {
 		background-color: var(--primaryBackground);
 		color: var(--pink);
@@ -124,7 +119,7 @@ const Content = styled(motion.div)`
 		height: 2rem;
 		padding: 0 1rem;
 		font-size: inherit;
-		font-weight: 300;
+		font-weight: 400;
 	}
 `;
 
@@ -136,6 +131,7 @@ const List = styled(motion.div)`
 	justify-content: space-between;
 	bottom: 0;
 	right: 0;
+	font-weight: 400;
 `;
 
 export default ProjectDetails;

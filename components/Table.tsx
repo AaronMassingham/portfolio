@@ -2,23 +2,13 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 //Framer Motion Variants
-import { fadeInVariants } from "@constants/FramerConstants";
+import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
 const Table = ({ data }: Props) => {
 	const viewportOptions = { margin: "-20% 0% -350px 0%" };
-	const transitionOptions = {
-		duration: 0.5,
-		when: "beforeChildren",
-	};
 
 	return (
-		<Container
-			variants={fadeInVariants}
-			initial="hidden"
-			whileInView="animate"
-			viewport={viewportOptions}
-			transition={transitionOptions}
-		>
+		<Container {...fadeInUpMotionVariants} viewport={viewportOptions}>
 			<motion.h5>
 				<span>{data.title}</span>
 			</motion.h5>

@@ -9,10 +9,7 @@ import { ShrikhandFont } from "@utils/Fonts";
 import { useContainerDimensions } from "@lib/useContainerDimensions";
 
 //Framer Motion Variants
-import {
-	ribbonVariants,
-	ribbonChildVariants,
-} from "@constants/FramerConstants";
+import { bigRibbonVariants } from "@constants/FramerConstants";
 
 const BigRibbon = ({ content }: ContentProps) => {
 	const containerRef = useRef(null);
@@ -25,10 +22,6 @@ const BigRibbon = ({ content }: ContentProps) => {
 	//Calculate duration of marquee based on it's overall width
 	const calculatedDuration = width / 100;
 
-	const viewportOptions = {
-		margin: "0% -10% 0% -10%",
-	};
-
 	const calculatedTransitionValues = {
 		duration: calculatedDuration,
 		repeat: Infinity,
@@ -37,32 +30,25 @@ const BigRibbon = ({ content }: ContentProps) => {
 
 	var newArrayFromContent = `${content} ${content}`.split("");
 	const mappedLetters = newArrayFromContent.map((item, index) => (
-		<Letter variants={ribbonChildVariants} key={index}>
-			{item}
-		</Letter>
+		<Letter key={index}>{item}</Letter>
 	));
 
 	const variants = {
 		hidden: {
 			x: 0,
 		},
-		animate: {
+		visible: {
 			x: [0, -width],
 			transition: calculatedTransitionValues,
 		},
 	};
 
 	return (
-		<Container
-			variants={ribbonVariants}
-			initial="hidden"
-			animate="animate"
-			ref={ref}
-		>
+		<Container {...bigRibbonVariants} ref={ref}>
 			<LoopContainer
 				variants={variants}
 				initial="hidden"
-				animate={isInView ? "animate" : "hidden"}
+				animate={isInView ? "visible" : "hidden"}
 			>
 				<Content ref={containerRef}>
 					<Text className={`${ShrikhandFont.className} strokedLightBg`}>
@@ -101,7 +87,7 @@ const Container = styled(motion.div)`
 const LoopContainer = styled(motion.div)`
 	width: auto;
 	position: relative;
-	font-size: 150px;
+	font-size: 175px;
 	display: flex;
 	@media screen and (min-width: 768px) {
 		font-size: 300px;
@@ -122,11 +108,14 @@ const Letter = styled(motion.span)`
 	white-space: pre;
 `;
 
-const Content = styled.div`
-	height: 300px;
+const Content = styled(motion.div)`
+	height: 150px;
 	width: max-content;
 	white-space: nowrap;
 	line-height: 1;
+	@media screen and (min-width: 768px) {
+		height: 250px;
+	}
 `;
 const ContentAlt = styled(Content)<ContentAltProps>`
 	width: 100%;

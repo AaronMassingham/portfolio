@@ -1,12 +1,9 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import styled from "styled-components";
-
-//Framer Motion Variants
 import {
 	headingVariants,
 	headingChildVariants,
-	defaultTransition,
 } from "@constants/FramerConstants";
 
 const Heading = ({ headingLevel = "h1", children }: HeadingProps) => {
@@ -14,25 +11,15 @@ const Heading = ({ headingLevel = "h1", children }: HeadingProps) => {
 		React.createElement(headingLevel, props, children);
 
 	const ref = useRef(null);
-	const isInView = useInView(ref);
-
-	const variantViewportOptions = {
-		margin: "-10% 0% -10% 0%",
-	};
+	const isInView = useInView(ref, {
+		margin: "10px 0px -300px 0px",
+	});
 
 	return (
-		<Container
-			variants={headingVariants}
-			initial="hidden"
-			whileInView={isInView ? "animate" : "hidden"}
-			viewport={variantViewportOptions}
-			transition={defaultTransition}
-			ref={ref}
-		>
+		<Container ref={ref}>
 			<motion.span
-				variants={headingChildVariants}
+				{...headingChildVariants}
 				animate={isInView ? "animate" : "hidden"}
-				transition={defaultTransition}
 			>
 				<Heading>{children}</Heading>
 			</motion.span>
@@ -47,11 +34,11 @@ interface HeadingProps extends React.HTMLAttributes<HTMLHeadingElement> {
 
 export default Heading;
 
-const Container = styled(motion.span)`
-	display:inline-block;
-	overflow:clip;
-	& span {
-		height:100%;
-		display:inline-block;
+const Container = styled.div`
+	display: inline-block;
+	overflow: clip;
+	& > span {
+		height: 100%;
+		display: inline-block;
 	}
-}`;
+`;

@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styled from "styled-components";
 import { motion } from "framer-motion";
+import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
 const TextBlock = ({ block }: Props) => {
 	//color={block.color} background={block.background}
@@ -18,6 +19,8 @@ const TextBlock = ({ block }: Props) => {
 				</ImageContainer>
 			)}
 			<Content
+				{...fadeInUpMotionVariants}
+				viewport={{ margin: "0% 0% 10% 0%" }}
 				className="stack"
 				dangerouslySetInnerHTML={{ __html: `${block.content}` }}
 			/>
@@ -48,11 +51,11 @@ const Container = styled.div`
 	}
 	@media screen and (min-width: 1200px) {
 		flex-direction: row;
-		align-items: center;
+		align-items: flex-start;
 		padding: var(--sitePadding);
 	}
 `;
-const Content = styled.div`
+const Content = styled(motion.div)`
 	flex: 1;
 `;
 const ImageContainer = styled.div`

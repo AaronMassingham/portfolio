@@ -2,16 +2,22 @@ import type { NextPage } from "next";
 import Head from "next/head";
 import styled from "styled-components";
 import useSWR from "swr";
+import { motion } from "framer-motion";
+import dynamic from "next/dynamic";
 
 //Components
 import Hero from "@components/Hero";
-import Project from "@components/projects/Project";
+//import Project from "@components/projects/Project";
 import ProjectDetails from "@components/projects/ProjectDetails";
 import ProjectBlocks from "@components/projects/ProjectBlocks";
 import Table from "@components/Table";
 import BlockQuote from "@components/BlockQuote";
 import BigRibbon from "@components/BigRibbon";
 import Heading from "@components/Heading";
+
+import { fadeInUpMotionVariants } from "@constants/FramerConstants";
+
+const DynamicPortfolio = dynamic(() => import("@components/projects/Project"));
 
 const fetcher = (url: RequestInfo | URL) =>
 	fetch(url).then((res) => res.json());
@@ -21,7 +27,21 @@ export default function NextPage() {
 
 	if (error) return <div>Failed to load</div>;
 	//Handle the loading state
-	if (!data) return <div>Loading...</div>;
+	if (!data)
+		return (
+			<div
+				style={{
+					position: "fixed",
+					top: 0,
+					left: 0,
+					right: 0,
+					bottom: 0,
+					backgroundColor: "red",
+				}}
+			>
+				Loading...
+			</div>
+		);
 
 	return (
 		<>
@@ -51,7 +71,7 @@ export default function NextPage() {
 					},
 					index: number
 				) => (
-					<Project
+					<DynamicPortfolio
 						key={item.id}
 						itemNumber={index}
 						itemsTotal={data.projects.length - 1}
@@ -69,25 +89,26 @@ export default function NextPage() {
 							services={item.services}
 							color={item.color}
 						/>
-					</Project>
+					</DynamicPortfolio>
 				)
 			)}
 
-			<SectionTitleExtended>
-				<BlockQuote
-					title={<Heading headingLevel="h2">A decade of experience</Heading>}
-				>
-					But I&apos;m not through yet.
-				</BlockQuote>
-			</SectionTitleExtended>
-
 			<AboutContainer>
-				<div className="marqeeContainer">
-					<BigRibbon content="About" />
-				</div>
+				<SectionTitle>
+					<BlockQuote
+						title={<Heading headingLevel="h2">A decade of experience</Heading>}
+					>
+						But I&apos;m not through yet.
+					</BlockQuote>
+				</SectionTitle>
+				<Marquee>
+					<BigRibbon content="About Me" />
+				</Marquee>
 				<AboutContent className="stack">
 					<Heading headingLevel="h3">{data.aboutMe.bio.title}</Heading>
-					<div
+					<motion.div
+						{...fadeInUpMotionVariants}
+						viewport={{ margin: "0% 0% -500px 0%" }}
 						className="stack"
 						dangerouslySetInnerHTML={{ __html: data.aboutMe.bio.content }}
 					/>
@@ -113,17 +134,10 @@ export default function NextPage() {
 	);
 }
 
-const Spacer = styled.section`
-	height: 100vh;
-	@media screen and (min-width: 768px) {
-		height: 50vh;
-	}
-`;
 const AboutContainer = styled.section`
 	position: relative;
 	display: flex;
 	flex-direction: column;
-	min-height: calc(200vh + 300px);
 
 	& h3 {
 		padding: 0 0 1rem 0 !important;
@@ -131,13 +145,38 @@ const AboutContainer = styled.section`
 	& h4 {
 		padding: 3rem 0 0 0;
 	}
+`;
 
-	& .marqeeContainer {
-		height: calc(100vh - var(--headerH));
+const SectionTitle = styled.div`
+	z-index: 1;
+
+	height: 200vh;
+	top: 0;
+	left: 0;
+	display: flex;
+	justify-content: center;
+	align-items: flex-start;
+	margin: -100vh 0 0 0;
+	& > div {
 		position: sticky;
-		top: var(--headerH);
-		pointer-events: none;
-		width: 100%;
+		top: 0;
+		height: 100vh;
+	}
+`;
+
+const Marquee = styled(motion.div)`
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 100%;
+	& > div {
+		height: 100vh;
+		position: sticky;
+		top: 0;
+		display: grid;
+		place-items: end;
 	}
 `;
 
@@ -145,9 +184,8 @@ const AboutContent = styled.div`
 	max-width: 1200px;
 	align-self: center;
 	padding: 0 2rem 200px 2rem;
-
 	@media screen and (min-width: 768px) {
-		padding-bottom: 400px;
+		padding: 0 var(--sitePadding) 300px var(--sitePadding);
 	}
 
 	& .stack {
@@ -155,6 +193,12 @@ const AboutContent = styled.div`
 		@media screen and (min-width: 768px) {
 			columns: 2;
 			column-gap: 2rem;
+		}
+	}
+
+	& p {
+		@media screen and (min-width: 768px) {
+			display: inline;
 		}
 	}
 `;
@@ -173,30 +217,4 @@ const Grid = styled.div`
 			minmax(min(100%/1, max(100%/3)), 1fr)
 		);
 	}
-`;
-
-const SectionTitle = styled.section`
-	z-index: 1;
-	width: 100%;
-	height: 200vh;
-	top: 0;
-	left: 0;
-	display: flex;
-	justify-content: center;
-	align-items: flex-start;
-	margin: 0 0 -100vh 0;
-
-	& > div {
-		position: sticky;
-		top: calc(var(--headerH) - 4px);
-		height: calc(100vh - var(--headerH));
-		width: 100%;
-		display: flex;
-		flex-direction: column;
-		justify-content: center;
-	}
-`;
-
-const SectionTitleExtended = styled(SectionTitle)`
-	margin: -100vh 0 -100vh 0;
 `;

@@ -1,113 +1,188 @@
+import { MotionProps } from "framer-motion";
+
+//Default Variant Titles
+const defaultMotionProps = {
+	initial: "hidden",
+	whileInView: "visible",
+	exit: "hidden",
+};
+
+// Default Transition
+const defaultTransitionValues = {
+	duration: 1,
+	ease: "easeOut",
+};
+
+export const header: MotionProps = {
+	variants: {
+		hidden: {
+			pathLength: 0,
+		},
+		visible: {
+			pathLength: 1,
+		},
+	},
+	...defaultMotionProps,
+	transition: defaultTransitionValues,
+};
+
+//Simple default Variants
+export const fadeInMotionVariants: MotionProps = {
+	variants: {
+		hidden: {
+			opacity: 0,
+		},
+		visible: {
+			opacity: 1,
+		},
+	},
+	...defaultMotionProps,
+	transition: defaultTransitionValues,
+};
+
+export const fadeInUpMotionVariants: MotionProps = {
+	variants: {
+		hidden: { opacity: 0, y: 30 },
+		visible: { opacity: 1, y: 0 },
+	},
+	...defaultMotionProps,
+	transition: defaultTransitionValues,
+};
+
 //Heading component variants
 export const headingVariants = {
-	hidden: {
-		y: "-2rem",
-		opacity: 0,
+	variants: {
+		hidden: { y: "-2rem", opacity: 0 },
+		animate: { y: 0, opacity: 1 },
 	},
-	animate: {
-		y: 0,
-		opacity: 1,
-	},
+	transition: defaultTransitionValues,
 };
 export const headingChildVariants = {
-	hidden: {
-		y: "8rem",
-		opacity: 0,
+	variants: {
+		hidden: {
+			y: "2rem",
+			opacity: 0,
+		},
+		animate: {
+			y: 0,
+			opacity: 1,
+		},
 	},
-	animate: {
-		y: 0,
-		opacity: 1,
+	viewport: {
+		margin: "0px 0px 100px 0px",
 	},
+	transition: defaultTransitionValues,
 };
 
 //BigRibbon
-export const ribbonVariants = {
-	hidden: {
-		opacity: 0,
-		y: -290,
-	},
-	animate: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			duration: 0.5,
-			when: "beforeChildren",
-			staggerChildren: 0.05,
+export const bigRibbonVariants = {
+	variants: {
+		hidden: {
+			opacity: 0,
+			y: 200,
+			transition: {
+				duration: 2,
+			},
+		},
+		visible: {
+			opacity: 1,
+			y: 0,
+			transition: {
+				duration: 2,
+			},
 		},
 	},
-};
-export const ribbonChildVariants = {
-	hidden: {
-		opacity: 0,
-		y: 290,
-	},
-	animate: {
-		opacity: 1,
-		y: 0,
-		transition: {
-			duration: 1,
-			ease: "easeOut",
-		},
-	},
+	...defaultMotionProps,
 };
 
 //ListMarquee
 export const listMarqueeVariants = {
-	animate: {
-		transition: {
-			staggerChildren: 10,
-		},
+	transition: {
+		staggerChildren: 10,
 	},
+	...defaultMotionProps,
 };
 
 export const listMarqueeChildVariants = {
-	animate: {
-		x: ["100%", "-100%"],
-		transition: {
-			x: {
-				repeat: Infinity,
-				repeatType: "loop",
-				duration: 20,
-				ease: "linear",
+	variants: {
+		visible: {
+			x: ["100%", "-100%"],
+			transition: {
+				x: {
+					repeat: Infinity,
+					repeatType: "loop",
+					duration: 20,
+					ease: "linear",
+				},
 			},
 		},
 	},
 };
 
-//Simple default Variants
-export const fadeInVariants = {
-	hidden: {
-		opacity: 0,
-	},
-	animate: {
-		opacity: 1,
-	},
-};
+//Persistent Rotation Variants
 
-export const fadeInSlideUpVariants = {
-	hidden: {
-		opacity: 0,
-		y: 30,
-	},
-	animate: {
-		opacity: 1,
-		y: 0,
-	},
-};
-
-export const rotate360Variants = {
-	animate: {
-		rotate: -360,
-		transition: {
-			duration: 60,
-			repeat: Infinity,
-			ease: "linear",
+export const rotate360Variants: MotionProps = {
+	variants: {
+		hidden: {
+			opacity: 0,
+			scale: 0.9,
+		},
+		rotate: {
+			rotate: -360,
+			transition: {
+				duration: 60,
+				repeat: Infinity,
+				ease: "linear",
+			},
+		},
+		immediateAnimations: {
+			opacity: 1,
+			scale: 1,
+			transition: {
+				duration: 1,
+			},
 		},
 	},
+	initial: "hidden",
+	whileInView: ["rotate", "immediateAnimations"],
+	exit: "hidden",
+	viewport: {
+		margin: "20% 0% 20% 0%",
+	},
 };
 
-//Transition
-export const defaultTransition = {
-	duration: 1,
-	ease: "easeOut",
+//Device Variants
+
+export const deviceMotionVariants: MotionProps = {
+	initial: "hidden",
+	whileInView: "visible",
+	exit: "hidden",
+	variants: {
+		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round 1.5rem)" },
+		visible: { opacity: 1, clipPath: "inset(0 0% 0 0 round 1.5rem)" },
+	},
+	viewport: {
+		margin: "-10% 0% -10% 0%",
+	},
+	transition: { type: "spring", duration: 1, bounce: 0, delayChildren: 0.5 },
 };
+
+export const deviceMotionChildVariants: MotionProps = {
+	initial: "hidden",
+	whileInView: "visible",
+	exit: "hidden",
+	variants: {
+		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round 1.1rem)" },
+		visible: {
+			opacity: 1,
+			clipPath: "inset(0 0% 0 0 round 1.1rem)",
+		},
+	},
+	viewport: {
+		margin: "-10% 0% -10% 0%",
+	},
+	transition: { type: "spring", duration: 1, bounce: 0 },
+};
+
+// onViewportEnter: () => console.log("enter"),
+// onViewportLeave: () => console.log("leave"),

@@ -43,14 +43,7 @@ const Project = ({
 	};
 
 	return (
-		<Container
-			variants={variants}
-			viewport={viewportOptions}
-			transition={transitionOptions}
-			initial="hidden"
-			animate={isInView ? "animate" : "hidden"}
-			ref={ref}
-		>
+		<Container>
 			{/* {checkIndexIsFirst && (
 				<>
 
@@ -145,7 +138,7 @@ const OverFlowPanel = styled(motion.div)<ContentProps>`
 	pointer-events: none;
 `;
 
-const Container = styled(motion.section)`
+const Container = styled.div`
 	height: auto;
 	width: 100%;
 	display: grid;
@@ -170,7 +163,7 @@ const Sticky = styled(motion.div)`
 	}
 `;
 
-const Static = styled(motion.div)`
+const Static = styled.div`
 	z-index: 2;
 	height: auto;
 	width: 100%;
@@ -180,7 +173,7 @@ const Static = styled(motion.div)`
 	top: 0;
 `;
 
-const StaticContent = styled(motion.div)<ContentProps>`
+const StaticContent = styled.div<ContentProps>`
 	display: flex;
 	justify-content: center;
 	align-items: center;

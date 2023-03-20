@@ -3,7 +3,7 @@
         "bio": {
             "title": "About Me",
             "content":
-                "<p>I have a decade of experience in the industry behind me and I&apos;m well-versed in a variety of disciplines, but I&apos;m continuously striving to develop my skills and push my boundaries as much as possible. I&apos;m passionate about exploring new tools to give me the best outcomes and how to express myself in a creative work environment. I&apos;m a strong believer in the power of collaboration and I&apos;m always seeking an environment that encourages open dialogue and creative problem solving. I&apos;m always eager to work with a variety of people to develop ideas and bring them to life. In my spare time I like to get out in nature, and over the past few years have become something of a fungi fanatic.</p>"
+                "<p>I have a decade of experience in the industry behind me and I&apos;m well-versed in a variety of disciplines, but I&apos;m continuously striving to develop my skills and push my boundaries as much as possible.</p><p>I&apos;m passionate about exploring new tools to give me the best outcomes and how to express myself in a creative work environment. I&apos;m a strong believer in the power of collaboration and I&apos;m always seeking an environment that encourages open dialogue and creative problem solving. I&apos;m always eager to work with a variety of people to develop ideas and bring them to life.</p><p>In my spare time I like to get out in nature, and over the past few years have become a bit of a fungi fanatic.</p>"
         },
         "socialMedia": [
             {
@@ -34,7 +34,7 @@
         ],
         "developer": [
             {
-                "title": "Software",
+                "title": "code Editor",
                 "list": ["VS Code", " Adobe Dreamweaver"]
             },
             {
@@ -73,6 +73,11 @@
                     "id": 2,
                     "component": "imageMobile",
                     "imageUrls":["portfolio/grafthaus/home.jpg", "portfolio/grafthaus/grafthausnav.mp4", "portfolio/grafthaus/membership.png"]
+                },
+                {
+                    "id": 3,
+                    "component": "imageDesktop",
+                    "imageUrl":"portfolio/grafthaus/membership.png"
                 }
                
             ]

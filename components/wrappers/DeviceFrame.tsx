@@ -1,30 +1,25 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, MotionProps } from "framer-motion";
+import useMediaQuery from "@lib/useMediaQuery";
 
 //Framer Motion Variants
-import { fadeInSlideUpVariants } from "@constants/FramerConstants";
+import {
+	deviceMotionVariants,
+	deviceMotionChildVariants,
+} from "@constants/FramerConstants";
 
-const DeviceFrame = ({ children, deviceType, elementIndex }: Props) => {
-	const transitionOptions = {
-		duration: 0.75,
-		delay: elementIndex ? elementIndex / 5 : 0,
-		ease: "easeIn",
-	};
-	const viewportOptions = { margin: "-10% 0% -10% 0%" };
-
+export default function DeviceFrame({
+	children,
+	deviceType,
+	elementIndex,
+}: Props) {
+	const isMobile = useMediaQuery();
 	return (
-		<Frame
-			type={deviceType}
-			variants={fadeInSlideUpVariants}
-			initial="hidden"
-			whileInView="animate"
-			transition={transitionOptions}
-			viewport={viewportOptions}
-		>
-			<Content>{children}</Content>
+		<Frame type={deviceType} {...deviceMotionVariants}>
+			<Content {...deviceMotionChildVariants}>{children}</Content>
 		</Frame>
 	);
-};
+}
 
 type Props = {
 	children: React.ReactNode;
@@ -53,7 +48,7 @@ const Frame = styled(motion.div)<FrameProps>`
                 `;
 			case "portrait":
 				return `
-					aspect-ratio: 7 / 13;
+					aspect-ratio: 900 / 1670;
 					width: min(350px, 100%);
 					
 					@media screen and (min-width: 768px) {
@@ -74,5 +69,3 @@ const Content = styled(motion.div)`
 	overflow: clip;
 	border: 1px solid var(--darkestGrey);
 `;
-
-export default DeviceFrame;

@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 const BlockQuote = ({ children, title, invertColor }: Props) => {
 	return (
-		<Container $invert={invertColor}>
+		<Container className="stack" $invert={invertColor}>
 			{title}
 			<div>{children}</div>
 		</Container>
@@ -11,10 +11,15 @@ const BlockQuote = ({ children, title, invertColor }: Props) => {
 
 const Container = styled.div<ContainerProps>`
 	max-width: 1200px;
-	margin: auto;
+	margin: 0 auto;
+	width: 100%;
 	padding: 0 2rem 200px 2rem;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	@media screen and (min-width: 768px) {
-		padding: 0 var(--sitePadding) 25vh var(--sitePadding);
+		padding: 0 var(--sitePadding) 0 var(--sitePadding);
 	}
 
 	& h2 {
@@ -23,8 +28,7 @@ const Container = styled.div<ContainerProps>`
 			props.$invert ? "var(--primaryBackground)" : "var(--white)"};
 	}
 	& > div {
-		padding-top: 1rem;
-		width: clamp(200px, 400px, 100%);
+		width: clamp(200px, 1200px, 100%);
 		text-transform: uppercase;
 		color: ${(props) =>
 			props.$invert ? "var(--primaryBackground)" : "var(--white)"};

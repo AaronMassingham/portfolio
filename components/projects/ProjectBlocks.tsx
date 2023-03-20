@@ -22,7 +22,7 @@ type Props = {
 	}>;
 };
 
-const Container = styled(motion.div)`
+const Container = styled.div`
 	width: 100%;
 	display: flex;
 

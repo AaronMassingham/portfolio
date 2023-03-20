@@ -34,6 +34,9 @@ const Container = styled(motion.div)`
 	place-items: start;
 	gap: 1rem;
 	grid-template-columns: 1fr;
+	@media screen and (min-width: 1200px) {
+		padding: var(--sitePadding);
+	}
 `;
 
 export default ImageBlockDesktop;

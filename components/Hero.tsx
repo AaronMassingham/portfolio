@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 //Components
 import ScrollPrompt from "@components/ScrollPrompt";
@@ -6,13 +7,16 @@ import WorkCircle from "@components/wrappers/RotatingBadge";
 import Heading from "@components/Heading";
 import BigRibbon from "@components/BigRibbon";
 
+// Framer Const
+import { fadeInUpMotionVariants } from "@constants/FramerConstants";
+
 const Hero = () => {
-	const marqueeContent = "UI . Web Design . Branding . Frontend Dev .";
+	const marqueeContent = "UI - Web Design - Branding - Frontend Dev - ";
 
 	return (
 		<Container>
 			<Headline>
-				<PreTitle>
+				<PreTitle {...fadeInUpMotionVariants}>
 					I&apos;m Aaron <span>&#128075;</span>
 				</PreTitle>
 				<Heading headingLevel="h2">I help create frontend experiences.</Heading>
@@ -48,7 +52,7 @@ const Headline = styled.div`
 	}
 `;
 
-const PreTitle = styled.div`
+const PreTitle = styled(motion.div)`
 	text-transform: uppercase;
 	font-weight: 300;
 	font-size: 1.5rem;
@@ -65,7 +69,7 @@ const PreTitle = styled.div`
 
 const PromptContainer = styled.div`
 	position: absolute;
-	bottom: 250px;
+	bottom: 7rem;
 	right: 0;
 	align-self: center;
 	justify-content: center;

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 //Components
 import Logo from "@components/Logo";
@@ -7,7 +8,11 @@ import Social from "@components/Social";
 
 const Header = () => {
 	return (
-		<Container>
+		<Container
+			initial={{ y: -200 }}
+			animate={{ y: 0 }}
+			transition={{ duration: 1 }}
+		>
 			<Logo />
 			<Social />
 			<HireMe>
@@ -17,7 +22,7 @@ const Header = () => {
 	);
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
@@ -35,10 +40,11 @@ const Container = styled.div`
 	}
 `;
 
-const HireMe = styled.div`
+const HireMe = styled.button`
 	position: relative;
 	text-transform: uppercase;
 	font-weight: 400;
+	font-size: inherit;
 	top: 0;
 	width: auto;
 	padding: 0 1rem;
@@ -49,7 +55,7 @@ const HireMe = styled.div`
 	justify-content: center;
 	align-items: center;
 	background-color: var(--primaryBackground);
-	border: 2px solid var(--green);
+	border: 0;
 	margin-left: 1rem;
 	box-shadow: var(--shadow);
 `;

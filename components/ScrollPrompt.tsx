@@ -27,13 +27,13 @@ const ScrollPrompt = () => {
 const Container = styled(motion.div)`
 	width: 10px;
 	border-radius: 10px;
-	border: 1px solid var(--pink);
+	background-color: var(--green);
 	height: 50px;
 	padding: 1px;
 `;
 
 const Dot = styled(motion.div)`
-	background-color: var(--pink);
+	background-color: var(--primaryBackground);
 	width: 4px;
 	aspect-ratio: 1/1;
 	height: auto;

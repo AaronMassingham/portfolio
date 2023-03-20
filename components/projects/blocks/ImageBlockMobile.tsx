@@ -9,17 +9,17 @@ const ImageBlockMobile = ({ block }: Props) => {
 	const numOfItems = block.imageUrls.length;
 
 	const RenderImageOrVideo = block.imageUrls.map((item, index) => (
-		<DeviceFrame key={index} deviceType="portrait" elementIndex={index + 1}>
+		<DeviceFrame key={item} deviceType="portrait" elementIndex={index + 1}>
 			{item.includes("mp4") ? (
 				<video autoPlay muted loop style={{ width: "100%", height: "auto" }}>
-					<source src={`/${item}`} />
+					<source src={`/${item}`} type="video/mp4" />
 				</video>
 			) : (
 				<Image
 					src={`/${item}`}
 					alt="Background Image"
 					placeholder="empty"
-					quality={100}
+					quality={75}
 					fill
 				/>
 			)}
@@ -40,7 +40,7 @@ type ContainerProps = {
 	width: number;
 };
 
-const Container = styled(motion.div)<ContainerProps>`
+const Container = styled.div<ContainerProps>`
 	display: grid;
 	width: 100%;
 	padding: 2rem 0;

@@ -7,15 +7,15 @@ import {
 	listMarqueeChildVariants,
 } from "@constants/FramerConstants";
 
-const TextMarquee = ({ content }: ContentProps) => {
+const ListMarquee = ({ content }: ContentProps) => {
 	const mappedData = content.map((item, index) => (
 		<Text key={index}>{item}</Text>
 	));
 
 	return (
-		<Marquee variants={listMarqueeVariants} animate="animate">
-			<Track variants={listMarqueeChildVariants}>{mappedData}</Track>
-			<Track aria-hidden="true" variants={listMarqueeChildVariants}>
+		<Marquee {...listMarqueeVariants}>
+			<Track {...listMarqueeChildVariants}>{mappedData}</Track>
+			<Track aria-hidden="true" {...listMarqueeChildVariants}>
 				{mappedData}
 			</Track>
 		</Marquee>
@@ -76,4 +76,4 @@ const Track = styled(motion.div)`
 	justify-content: center;
 `;
 
-export default TextMarquee;
+export default ListMarquee;

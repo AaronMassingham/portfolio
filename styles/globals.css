@@ -10,7 +10,7 @@
 	--border: 2px solid var(--darkestGrey);
 	--borderWidth: 2px;
 
-	--shadow: 0px 12px 15px -6px rgba(0, 0, 0, 0.35);
+	--shadow: none;
 
 	--darkestGrey: #1e1e1d;
 	--primaryBackground: #161615;
@@ -46,7 +46,7 @@
 }
 
 html {
-	background-color: var(--pink);
+	background-color: var(--green);
 }
 html,
 body {
@@ -58,6 +58,7 @@ body {
 body {
 	background: var(--primaryBackground);
 	font-weight: 400;
+	min-height: 100vh;
 }
 body,
 section {
