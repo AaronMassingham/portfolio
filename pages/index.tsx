@@ -32,6 +32,15 @@ export default function NextPage() {
 
 	return (
 		<>
+			<Head>
+				<title>Aaron Massingham | Online Portfolio 2023</title>
+				<meta
+					name="description"
+					content="I help create frontend experiences."
+				/>
+				<meta name="viewport" content="width=device-width, initial-scale=1" />
+				<link rel="icon" href="/favicon.ico" />
+			</Head>
 			<LoadContainer
 				initial={{ opacity: 1 }}
 				animate={{
@@ -45,15 +54,7 @@ export default function NextPage() {
 				<Logo />
 				Loading...
 			</LoadContainer>
-			<Head>
-				<title>Aaron Massingham | Online Portfolio 2023</title>
-				<meta
-					name="description"
-					content="I help create frontend experiences."
-				/>
-				<meta name="viewport" content="width=device-width, initial-scale=1" />
-				<link rel="icon" href="/favicon.ico" />
-			</Head>
+
 			<Hero />
 
 			{data.projects.map(
