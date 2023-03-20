@@ -1,6 +1,6 @@
 //Components
-import Header from "@components/Header";
-import Footer from "@components/Footer";
+// import Header from "@components/Header";
+// import Footer from "@components/Footer";
 
 import dynamic from "next/dynamic";
 

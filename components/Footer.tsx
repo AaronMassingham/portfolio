@@ -1,15 +1,11 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 //Components
-import BlockQuote from "@components/BlockQuote";
 import Heading from "@components/Heading";
 import Social from "./Social";
 
 //Framer Animations
-import {
-	headingVariants,
-	headingChildVariants,
-} from "@constants/FramerConstants";
+import { headingChildVariants } from "@constants/FramerConstants";
 
 //Fonts
 import { ShrikhandFont } from "@utils/Fonts";

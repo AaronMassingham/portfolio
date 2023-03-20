@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { motion, MotionProps } from "framer-motion";
+import { motion } from "framer-motion";
 import useMediaQuery from "@lib/useMediaQuery";
 
 //Framer Motion Variants
@@ -8,11 +8,7 @@ import {
 	deviceMotionChildVariants,
 } from "@constants/FramerConstants";
 
-export default function DeviceFrame({
-	children,
-	deviceType,
-	elementIndex,
-}: Props) {
+export default function DeviceFrame({ children, deviceType }: Props) {
 	const isMobile = useMediaQuery();
 	return (
 		<Frame type={deviceType} {...deviceMotionVariants}>
