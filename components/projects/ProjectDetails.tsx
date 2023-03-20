@@ -19,8 +19,6 @@ const ProjectDetails = ({
 }: Props) => {
 	const [modalToggle, setModalToggle] = useState(false);
 
-	const viewportOptions = { margin: "-50% 0% 0% 0%" };
-
 	return (
 		<>
 			<Container>

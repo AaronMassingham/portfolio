@@ -1,10 +1,7 @@
 import React, { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import styled from "styled-components";
-import {
-	headingVariants,
-	headingChildVariants,
-} from "@constants/FramerConstants";
+import { headingChildVariants } from "@constants/FramerConstants";
 
 const Heading = ({ headingLevel = "h1", children }: HeadingProps) => {
 	const Heading = ({ ...props }: React.HTMLAttributes<HTMLHeadingElement>) =>

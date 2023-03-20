@@ -1,6 +1,5 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
 //Components
 import DeviceFrame from "@components/wrappers/DeviceFrame";
@@ -13,6 +12,12 @@ const ImageBlockMobile = ({ block }: Props) => {
 			{item.includes("mp4") ? (
 				<video autoPlay muted loop style={{ width: "100%", height: "auto" }}>
 					<source src={`/${item}`} type="video/mp4" />
+					<track
+						src="captions_es.vtt"
+						kind="captions"
+						srcLang="en"
+						label="spanish_captions"
+					/>
 				</video>
 			) : (
 				<Image
