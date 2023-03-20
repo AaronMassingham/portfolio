@@ -43,7 +43,6 @@ const Container = styled.ul`
 	& > li {
 		width: 2rem;
 		height: 2rem;
-		box-shadow: var(--shadow);
 		background:var(--primaryBackground);
 		border-radius: 100%;
 		& a {

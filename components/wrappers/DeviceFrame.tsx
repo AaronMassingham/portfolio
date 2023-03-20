@@ -33,7 +33,6 @@ const Frame = styled(motion.div)<FrameProps>`
 	background-color: var(--primaryBackground);
 	border-radius: 1.5rem;
 	padding: 0.5rem;
-	box-shadow: var(--shadow);
 
 	${(props) => {
 		switch (props.type) {

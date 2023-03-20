@@ -57,7 +57,6 @@ const HireMe = styled.button`
 	background-color: var(--primaryBackground);
 	border: 0;
 	margin-left: 1rem;
-	box-shadow: var(--shadow);
 `;
 
 export default Header;

@@ -28,10 +28,6 @@ export default function App({ Component, pageProps, router }: AppProps) {
 	);
 }
 
-export function reportWebVitals(metric: any) {
-	console.log(metric);
-}
-
 const Test = styled.section`
 	height: 100vh;
 	width: 100%;

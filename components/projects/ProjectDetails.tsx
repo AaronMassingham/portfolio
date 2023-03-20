@@ -100,8 +100,9 @@ const HeadingStyle = styled(motion.div)<ContentProps>`
 			margin-bottom: 3rem;
 		}
 
-		& h3 {color: ${(props) =>
-			props.$textColor ? props.$textColor : "var(--white)"};}
+		& h3 {
+				color: ${(props) => (props.$textColor ? props.$textColor : "var(--white)")}
+			}
 		}
 
 `;
@@ -109,8 +110,7 @@ const HeadingStyle = styled(motion.div)<ContentProps>`
 const Content = styled.div`
 	& button {
 		background-color: var(--primaryBackground);
-		color: var(--pink);
-		//border: 2px solid var(--pink);
+		color: var(--white);
 		border: 0;
 		text-transform: uppercase;
 		border-radius: 100px;

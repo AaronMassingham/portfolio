@@ -34,7 +34,6 @@ const Container = styled.div`
 	height: 10rem;
 	aspect-ratio: 1/1;
 	overflow: hidden;
-	box-shadow: var(--shadow);
 	& > * {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;

@@ -59,7 +59,7 @@ const PreTitle = styled(motion.div)`
 	justify-content: center;
 	width: 100%;
 	align-items: center;
-	color: var(--pink);
+	color: var(--white);
 	padding-left: 3px;
 	& span {
 		-webkit-filter: grayscale(100%);
