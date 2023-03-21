@@ -1,10 +1,10 @@
 :root {
-	--fs-xlDisplay: clamp(4rem, 3vw + 3rem, 6rem);
-	--fs-xl: clamp(3rem, 5vw + 2rem, 4rem);
-	--fs-lg: clamp(4rem, 4vw + 1rem, 5rem);
-	--fs-md: clamp(2.5rem, 2vw + 1rem, 4rem);
-	--fs-sm: clamp(2rem, 2vw + 1rem, 2rem);
-	--fs-xs: clamp(1.1rem, 2vw + 1rem, 1.5rem);
+	--fs-xlDisplay: clamp(4rem, 5vw, 6rem);
+	--fs-xl: clamp(3rem, 4vw, 5rem);
+	--fs-lg: clamp(3rem, 4vw, 5rem);
+	--fs-md: clamp(2.5rem, 3vw, 5rem);
+	--fs-sm: clamp(2.5rem, 2vw, 5rem);
+	--fs-sm: clamp(2rem, 1.5vw, 4rem);
 	--headerH: 6rem;
 	--sitePadding: 1rem;
 	--border: 2px solid var(--darkestGrey);
@@ -13,8 +13,13 @@
 	--primaryBackground: #161615;
 	--green: #5edba0;
 	--white: #e9e4ea;
-}
 
+	--gradient: linear-gradient(
+		0deg,
+		rgba(22, 22, 21, 1) 10%,
+		rgba(22, 22, 21, 0.1) 100%
+	);
+}
 @media screen and (min-width: 768px) {
 	:root {
 		--sitePadding: 8rem;
@@ -28,10 +33,10 @@
 }
 
 ::selection {
-	background: var(--pink);
+	background: var(--green);
 }
 ::-moz-selection {
-	background: var(--pink);
+	background: var(--green);
 }
 
 * {
@@ -55,6 +60,7 @@ body {
 	background: var(--primaryBackground);
 	font-weight: 400;
 	min-height: 100vh;
+	font-size: 16px;
 }
 body,
 section {

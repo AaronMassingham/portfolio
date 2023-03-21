@@ -74,10 +74,7 @@ export default function NextPage() {
 				) => (
 					<DynamicPortfolio
 						key={item.id}
-						itemNumber={index}
-						itemsTotal={data.projects.length - 1}
 						staticChildren={<ProjectBlocks data={item.details} />}
-						numberOfProjectBlocks={item.details.length}
 						color={item.color}
 						background={item.background}
 					>

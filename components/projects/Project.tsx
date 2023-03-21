@@ -1,25 +1,12 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
-const Project = ({
-	children,
-	staticChildren,
-	numberOfProjectBlocks,
-	color,
-	background,
-}: Props) => {
-	//Padding is adjusted for projects with less than 2 panels
-	const ProjectHasLessThan2Panels = numberOfProjectBlocks < 2 ? true : false;
-
+const Project = ({ children, staticChildren, color, background }: Props) => {
 	return (
 		<Container>
 			<Sticky>{children}</Sticky>
 			<Static>
-				<StaticContent
-					$setPadding={ProjectHasLessThan2Panels}
-					$textColor={color}
-					$backgroundColor={background}
-				>
+				<StaticContent $textColor={color} $backgroundColor={background}>
 					{staticChildren}
 				</StaticContent>
 			</Static>
@@ -29,16 +16,12 @@ const Project = ({
 
 type Props = {
 	children: React.ReactNode;
-	itemNumber?: number;
-	itemsTotal?: number;
-	numberOfProjectBlocks: number;
 	staticChildren: React.ReactNode;
 	color: string;
 	background: string;
 };
 
 type ContentProps = {
-	$setPadding?: boolean;
 	$textColor?: string;
 	$backgroundColor?: string;
 };

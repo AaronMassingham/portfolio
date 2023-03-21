@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { AnimatePresence, motion } from "framer-motion";
 
 //Components
 import Modal from "@components/Modal";
@@ -34,7 +34,7 @@ const ProjectDetails = ({
 									href={link}
 									target="_blank"
 									rel="noreferrer"
-									aria-label="Vist website (opens in a new tab)"
+									aria-label="Visit website (opens in a new tab)"
 								>
 									{projectTitle}
 								</a>
@@ -44,17 +44,21 @@ const ProjectDetails = ({
 						</h3>
 					</HeadingStyle>
 					<List {...fadeInUpMotionVariants}>
-						<button onClick={() => setModalToggle(true)}>Testimonial</button>
+						{testimonial && (
+							<button onClick={() => setModalToggle(true)}>Testimonial</button>
+						)}
 						<TextMarquee content={services} />
 					</List>
 				</Content>
 			</Container>
-			{modalToggle && (
-				<Modal setModalToggle={setModalToggle}>
-					<div>{testimonial}</div>
-					<div>{testimonialAuthor}</div>
-				</Modal>
-			)}
+			<AnimatePresence mode="wait">
+				{modalToggle && (
+					<Modal setModalToggle={setModalToggle}>
+						<div>{testimonial}</div>
+						<div>{testimonialAuthor}</div>
+					</Modal>
+				)}
+			</AnimatePresence>
 		</>
 	);
 };

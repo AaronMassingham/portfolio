@@ -19,7 +19,7 @@ const Hero = () => {
 				<PreTitle {...fadeInUpMotionVariants}>
 					I&apos;m Aaron <span>&#128075;</span>
 				</PreTitle>
-				<Heading headingLevel="h2">I help create frontend experiences.</Heading>
+				<Heading headingLevel="h1">I help create frontend experiences.</Heading>
 			</Headline>
 			<PromptContainer>
 				<WorkCircle>
@@ -39,23 +39,23 @@ const Container = styled.section`
 	flex-direction: column;
 	max-width: 1200px;
 	margin: auto;
-	padding: calc(var(--headerH) + 2rem) 2rem 0 2rem;
+	padding: calc(var(--headerH) + 2rem) var(--sitePadding) 0 var(--sitePadding);
 `;
 
 const Headline = styled.div`
 	position: relative;
 	padding: 3rem 0 0 0;
-	margin: 0 0 5rem 0;
 	max-width: 100%;
 	@media screen and (min-width: 768px) {
 		max-width: 50vw;
+		margin: 0 0 5rem 0;
 	}
 `;
 
 const PreTitle = styled(motion.div)`
 	text-transform: uppercase;
 	font-weight: 300;
-	font-size: 1.5rem;
+
 	justify-content: center;
 	width: 100%;
 	align-items: center;

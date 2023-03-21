@@ -55,6 +55,7 @@ const Container = styled.ul`
 		& svg {
 			color: white;
 			height: 1rem;
+
 		}
 `;
 
