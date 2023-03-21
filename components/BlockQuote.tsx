@@ -9,8 +9,19 @@ const BlockQuote = ({ children, title, invertColor }: Props) => {
 	);
 };
 
+type Props = {
+	children?: React.ReactNode;
+	title?: React.ReactNode;
+	invertColor?: boolean;
+};
+
+type ContainerProps = {
+	$invert?: boolean;
+};
+
 const Container = styled.div<ContainerProps>`
 	max-width: 1200px;
+	min-height: 50vh;
 	margin: 0 auto;
 	width: 100%;
 	padding: 0 2rem 200px 2rem;
@@ -34,15 +45,5 @@ const Container = styled.div<ContainerProps>`
 			props.$invert ? "var(--primaryBackground)" : "var(--white)"};
 	}
 `;
-
-type Props = {
-	children?: React.ReactNode;
-	title?: React.ReactNode;
-	invertColor?: boolean;
-};
-
-type ContainerProps = {
-	$invert?: boolean;
-};
 
 export default BlockQuote;
