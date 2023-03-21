@@ -11,7 +11,7 @@ import { headingChildVariants } from "@constants/FramerConstants";
 import { ShrikhandFont } from "@utils/Fonts";
 
 const Footer = () => {
-	const numberOfLayers = 10;
+	const numberOfLayers = 6;
 	let textEffect = [];
 	for (let i = 0; i < numberOfLayers; i++) {
 		textEffect.push(
@@ -33,22 +33,23 @@ const Footer = () => {
 							snug fit then get in touch.
 						</p>
 					</div>
-
-					<Details>
-						<div>
-							<motion.a
-								{...headingChildVariants}
-								href="mailto:hello@arnm.co.uk"
-							>
-								hello<span>@</span>arnm.co.uk
-							</motion.a>
+					<Spacer>
+						<Details>
 							<div>
-								<a href="tel:07920443496">07920 44 34 56</a>
-								<Social />
+								<motion.a
+									{...headingChildVariants}
+									href="mailto:hello@arnm.co.uk"
+								>
+									hello<span>@</span>arnm.co.uk
+								</motion.a>
+								<div>
+									<Social />
+									<a href="tel:07920443496">07920 44 34 56</a>
+								</div>
 							</div>
-						</div>
-						<Copy className={`${ShrikhandFont.className}`}>{textEffect}</Copy>
-					</Details>
+							<Copy className={`${ShrikhandFont.className}`}>{textEffect}</Copy>
+						</Details>
+					</Spacer>
 				</Content>
 			</Container>
 		</>
@@ -57,13 +58,16 @@ const Footer = () => {
 
 export default Footer;
 
+const Spacer = styled.div`
+	overflow: clip;
+	clip-path: inset(0 -100vmax);
+`;
 const Copy = styled.div`
 	position: absolute;
-	font-size: 100px;
+	font-size: var(--fs-lg);
 	font-weight: 900;
-	bottom: 2rem;
+	bottom: 5rem;
 	left: 0;
-	height: 100px;
 	width: 100%;
 	& span {
 		position: absolute;
@@ -77,13 +81,10 @@ const Copy = styled.div`
 `;
 
 const Container = styled.section`
-	padding: 0 2rem;
 	max-width: 1200px;
 	margin: auto;
 	position: relative;
-	& > @media screen and (min-width: 768px) {
-		padding: 0 var(--sitePadding);
-	}
+	padding: 0 var(--sitePadding);
 `;
 
 const Content = styled.div`
@@ -92,9 +93,6 @@ const Content = styled.div`
 		height: 50vh;
 		align-items: start;
 		flex-direction: column;
-		& h2 {
-			margin-left: -5px;
-		}
 		&:first-of-type {
 			justify-content: center;
 		}
@@ -113,16 +111,19 @@ const Details = styled.div`
 	color: var(--primaryBackground);
 	box-shadow: 0 0 0 100vmax var(--green);
 	clip-path: inset(0 -100vmax);
-
+	position: fixed;
+	bottom: 0;
+	height: 50vh;
 	& > div {
 		& > a {
-			font-size: clamp(5rem, 2vw + 1rem, 7rem);
+			font-size: var(--fs-sm);
 			font-weight: 800;
 			text-transform: uppercase;
-			margin-left: -5px;
 			position: relative;
 			isolation: isolate;
-
+			@media screen and (min-width: 768px) {
+				font-size: var(--fs-xl);
+			}
 			& span {
 				display: inline-block;
 				color: var(--white);
@@ -149,10 +150,20 @@ const Details = styled.div`
 		}
 		& > div {
 			display: flex;
-			justify-content: flex-start;
-			align-items: center;
+			justify-content: space-between;
+			flex-direction: column;
+			align-items: flex-start;
 			gap: 2rem;
 			padding-top: 2rem;
+
+			ul {
+				margin: unset;
+			}
+
+			@media screen and (min-width: 768px) {
+				flex-direction: row;
+				align-items: center;
+			}
 		}
 	}
 `;

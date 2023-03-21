@@ -1,10 +1,13 @@
 import styled from "styled-components";
+import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faFacebookF,
 	faInstagram,
 	faDribbble,
 } from "@fortawesome/free-brands-svg-icons";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+config.autoAddCss = false;
 
 const Social = () => {
 	return (
@@ -45,6 +48,7 @@ const Container = styled.ul`
 		height: 2rem;
 		background:var(--primaryBackground);
 		border-radius: 100%;
+		overflow:hidden;
 		& a {
 			width: 100%;
 			height: 100%;
@@ -55,6 +59,7 @@ const Container = styled.ul`
 		& svg {
 			color: white;
 			height: 1rem;
+			display:block
 		}
 `;
 

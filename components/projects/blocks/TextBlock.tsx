@@ -63,6 +63,9 @@ const ImageContainer = styled.div`
 	width: 120px;
 	aspect-ratio: 1/1;
 	@media screen and (min-width: 768px) {
+		width: 150px;
+	}
+	@media screen and (min-width: 1200px) {
 		width: 200px;
 	}
 `;

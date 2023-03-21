@@ -37,7 +37,6 @@ const Marquee = styled(motion.div)`
 	overflow: clip;
 	background-color: var(--primaryBackground);
 	color: var(--white);
-	//border: 2px solid var(--white);
 	text-transform: uppercase;
 	border-radius: 100px;
 	height: 2rem;
@@ -70,10 +69,13 @@ const Marquee = styled(motion.div)`
 
 const Track = styled(motion.div)`
 	position: absolute;
-	right: -150px;
 	white-space: nowrap;
 	display: flex;
+	right: -250px;
 	justify-content: center;
+	@media screen and (min-width: 768px) {
+		right: -300px;
+	}
 `;
 
 export default ListMarquee;

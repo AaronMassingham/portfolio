@@ -92,31 +92,55 @@ export const bigRibbonVariants = {
 			},
 		},
 	},
+	viewport: {
+		margin: "0px 0px 200px 0px",
+	},
 	...defaultMotionProps,
 };
 
 //ListMarquee
 export const listMarqueeVariants = {
 	transition: {
-		staggerChildren: 10,
+		staggerChildren: 20,
 	},
-	...defaultMotionProps,
+	initial: "hidden",
+	animate: "visible",
+	exit: "hidden",
 };
 
 export const listMarqueeChildVariants = {
 	variants: {
 		visible: {
-			x: ["100%", "-100%"],
+			x: ["-100%", "100%"],
 			transition: {
 				x: {
 					repeat: Infinity,
 					repeatType: "loop",
-					duration: 20,
+					duration: 40,
 					ease: "linear",
 				},
 			},
 		},
 	},
+};
+
+export const loadingContainerVariants: MotionProps = {
+	variants: {
+		initial: { opacity: 1 },
+		visible: {
+			opacity: 0,
+			transitionEnd: {
+				display: "none",
+			},
+		},
+	},
+	transition: {
+		duration: 0.5,
+		delay: 1.5,
+	},
+	initial: "hidden",
+	animate: "visible",
+	exit: "hidden",
 };
 
 //Persistent Rotation Variants

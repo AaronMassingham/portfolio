@@ -14,10 +14,10 @@ type Props = {
 	data: Array<{
 		id: number;
 		component: string;
-		imageUrl?: string;
-		title?: string;
-		content?: string;
-		colors?: Array<String>;
+		imageUrl: string;
+		title: string;
+		content: string;
+		colors: Array<String>;
 	}>;
 };
 
@@ -34,9 +34,11 @@ const Container = styled.div`
 		padding-left: 6rem;
 	}
 	@media screen and (min-width: 768px) {
-		min-height: 70vh;
 		max-width: 1200px;
 		justify-content: center;
+	}
+	@media screen and (min-width: 1200px) {
+		min-height: 70vh;
 	}
 `;
 
