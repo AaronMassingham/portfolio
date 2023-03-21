@@ -16,7 +16,10 @@ import BigRibbon from "@components/BigRibbon";
 import Heading from "@components/Heading";
 import Logo from "@components/Logo";
 
-import { fadeInUpMotionVariants } from "@constants/FramerConstants";
+import {
+	fadeInUpMotionVariants,
+	loadingContainerVariants,
+} from "@constants/FramerConstants";
 
 const DynamicPortfolio = dynamic(() => import("@components/projects/Project"));
 
@@ -26,7 +29,7 @@ const fetcher = (url: RequestInfo | URL) =>
 export default function NextPage() {
 	const { data, error } = useSWR("/api/staticdata", fetcher);
 
-	if (error) return <div>Failed to load</div>;
+	if (error) return <LoadContainer>S**t, something went wrong.</LoadContainer>;
 	//Handle the loading state
 	if (!data) return <LoadContainer>Loading...</LoadContainer>;
 
@@ -41,16 +44,7 @@ export default function NextPage() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<LoadContainer
-				initial={{ opacity: 1 }}
-				animate={{
-					opacity: 0,
-					transitionEnd: {
-						display: "none",
-					},
-				}}
-				transition={{ duration: 0.5, delay: 0.75 }}
-			>
+			<LoadContainer {...loadingContainerVariants}>
 				<Logo />
 				Loading...
 			</LoadContainer>
@@ -145,6 +139,8 @@ const LoadContainer = styled(motion.div)`
 	z-index: 100;
 	flex-direction: column;
 	gap: 2rem;
+	text-transform: uppercase;
+	color: var(--green);
 	& > div {
 		height: 8rem;
 	}

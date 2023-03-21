@@ -124,6 +124,25 @@ export const listMarqueeChildVariants = {
 	},
 };
 
+export const loadingContainerVariants: MotionProps = {
+	variants: {
+		initial: { opacity: 1 },
+		visible: {
+			opacity: 0,
+			transitionEnd: {
+				display: "none",
+			},
+		},
+	},
+	transition: {
+		duration: 0.5,
+		delay: 1.5,
+	},
+	initial: "hidden",
+	animate: "visible",
+	exit: "hidden",
+};
+
 //Persistent Rotation Variants
 
 export const rotate360Variants: MotionProps = {
