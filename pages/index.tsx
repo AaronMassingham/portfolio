@@ -14,11 +14,10 @@ import BlockQuote from "@components/BlockQuote";
 import BigRibbon from "@components/BigRibbon";
 import Heading from "@components/Heading";
 import Logo from "@components/Logo";
+import LoadContainer from "@components/wrappers/LoadContainer";
 
-import {
-	fadeInUpMotionVariants,
-	loadingContainerVariants,
-} from "@constants/FramerConstants";
+//Framer Variants
+import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
 const DynamicPortfolio = dynamic(() => import("@components/projects/Project"));
 const DynamicAboutContainer = dynamic(
@@ -33,7 +32,7 @@ export default function NextPage() {
 
 	if (error) return <LoadContainer>S**t, something went wrong.</LoadContainer>;
 	//Handle the loading state
-	if (!data) return <LoadContainer>Loading...</LoadContainer>;
+	if (!data) return <LoadContainer />;
 
 	return (
 		<>
@@ -46,7 +45,7 @@ export default function NextPage() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<LoadContainer {...loadingContainerVariants}>
+			<LoadContainer>
 				<Logo />
 				Loading...
 			</LoadContainer>
@@ -127,26 +126,6 @@ export default function NextPage() {
 		</>
 	);
 }
-
-const LoadContainer = styled(motion.div)`
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: var(--primaryBackground);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 100;
-	flex-direction: column;
-	gap: 2rem;
-	text-transform: uppercase;
-	color: var(--green);
-	& > div {
-		height: 8rem;
-	}
-`;
 
 const SectionTitle = styled.div`
 	z-index: 1;

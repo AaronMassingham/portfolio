@@ -1,5 +1,6 @@
+import React, { useRef } from "react";
 import styled from "styled-components";
-import { motion } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 //Components
 import Heading from "@components/Heading";
 import Social from "./Social";
@@ -11,15 +12,26 @@ import { headingChildVariants } from "@constants/FramerConstants";
 import { ShrikhandFont } from "@utils/Fonts";
 
 const Footer = () => {
-	const numberOfLayers = 6;
-	let textEffect = [];
-	for (let i = 0; i < numberOfLayers; i++) {
-		textEffect.push(
-			<span key={i} style={{ top: `-${i + i * 2}px` }}>
-				&copy;2023
-			</span>
-		);
-	}
+	const ref = useRef(null);
+	const isInView = useInView(ref);
+
+	const transition = {
+		duration: 1,
+		ease: "easeInOut",
+	};
+
+	const variants = {
+		hidden: {
+			y: -100,
+			opacity: 0,
+			transition: transition,
+		},
+		visible: {
+			y: 0,
+			opacity: 1,
+			transition: transition,
+		},
+	};
 
 	return (
 		<>
@@ -32,13 +44,14 @@ const Footer = () => {
 						snug fit then get in touch.
 					</p>
 				</div>
-				<Spacer>
-					<Details>
+				<Spacer ref={ref}>
+					<Details
+						variants={variants}
+						initial="hidden"
+						animate={isInView ? "visible" : "hidden"}
+					>
 						<div>
-							<motion.a
-								{...headingChildVariants}
-								href="mailto:hello@arnm.co.uk"
-							>
+							<motion.a href="mailto:hello@arnm.co.uk">
 								hello<span>@</span>arnm.co.uk
 							</motion.a>
 							<div>
@@ -46,7 +59,7 @@ const Footer = () => {
 								<a href="tel:07920443496">07920 44 34 56</a>
 							</div>
 						</div>
-						<Copy className={`${ShrikhandFont.className}`}>{textEffect}</Copy>
+						<Copy className={`${ShrikhandFont.className}`}>&copy;2023</Copy>
 					</Details>
 				</Spacer>
 			</Container>
@@ -80,7 +93,7 @@ const Spacer = styled.div`
 const Copy = styled.div`
 	position: absolute;
 	font-size: var(--fs-lg);
-	bottom: 5rem;
+	bottom: 0;
 	left: 0;
 	& span {
 		position: absolute;
@@ -92,7 +105,7 @@ const Copy = styled.div`
 	}
 `;
 
-const Details = styled.div`
+const Details = styled(motion.div)`
 	gap: 2rem;
 	padding-top: 2rem;
 	background-color: var(--green);
