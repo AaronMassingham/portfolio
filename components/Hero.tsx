@@ -39,23 +39,28 @@ const Container = styled.section`
 	flex-direction: column;
 	max-width: 1200px;
 	margin: auto;
-	padding: calc(var(--headerH) + 2rem) var(--sitePadding) 0 var(--sitePadding);
+	padding: var(--headerH) var(--sitePadding) 7rem var(--sitePadding);
 `;
 
 const Headline = styled.div`
 	position: relative;
-	padding: 3rem 0 0 0;
-	max-width: 100%;
+	height: calc(100% - 150px);
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	@media screen and (max-width: 768px) {
+		text-align: center;
+	}
 	@media screen and (min-width: 768px) {
 		max-width: 50vw;
-		margin: 0 0 5rem 0;
+		height: calc(100% - 250px);
 	}
 `;
 
 const PreTitle = styled(motion.div)`
 	text-transform: uppercase;
 	font-weight: 300;
-
+	margin-bottom: 1rem;
 	justify-content: center;
 	width: 100%;
 	align-items: center;
@@ -69,19 +74,12 @@ const PreTitle = styled(motion.div)`
 
 const PromptContainer = styled.div`
 	position: absolute;
+	left: 0;
 	bottom: 7rem;
-	right: 0;
-	align-self: center;
-	justify-content: center;
-	align-items: center;
-	display: flex;
 	height: 250px;
 	width: 100%;
 	display: grid;
 	place-items: center;
-	@media screen and (max-width: 768px) {
-		bottom: 7rem;
-	}
 `;
 
 export default Hero;
