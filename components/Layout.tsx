@@ -8,7 +8,7 @@ const Layout = ({ children }: Props) => {
 	return (
 		<>
 			<DynamicHeader />
-			<main style={{ minHeight: "100vh" }}>{children}</main>
+			{children}
 			<DynamicFooter />
 		</>
 	);

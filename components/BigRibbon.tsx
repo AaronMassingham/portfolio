@@ -71,19 +71,16 @@ type ContentAltProps = {
 };
 
 const Container = styled(motion.div)`
-	width: 100vw;
 	right: 0;
-	height: 150px;
 	position: absolute;
 	bottom: 0;
-	overflow: hidden;
+	height: 150px;
+	overflow: clip;
 	@media screen and (min-width: 768px) {
 		height: 250px;
 	}
 `;
 const LoopContainer = styled(motion.div)`
-	width: auto;
-	position: relative;
 	font-size: 175px;
 	display: flex;
 	@media screen and (min-width: 768px) {
@@ -93,7 +90,6 @@ const LoopContainer = styled(motion.div)`
 
 const Text = styled.div`
 	opacity: 0.1;
-	display: inline;
 	text-transform: uppercase;
 	padding: 0 2rem;
 	display: flex;
@@ -110,7 +106,6 @@ const Content = styled.div`
 	}
 `;
 const ContentAlt = styled(Content)<ContentAltProps>`
-	width: 100%;
 	position: absolute;
 	right: ${(props) => (props.offset ? `-${props.offset}px` : "")};
 `;

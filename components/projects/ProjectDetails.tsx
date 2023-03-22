@@ -78,30 +78,22 @@ type ContentProps = {
 };
 
 const Container = styled.div`
-	width: 100%;
+	position: relative;
 	height: 100%;
 	height: -webkit-fill-available;
-	display: flex;
-	justify-content: flex-end;
-	align-items: flex-start;
-	flex-direction: column;
-	position: relative;
 	pointer-events: none;
 `;
 
 const HeadingStyle = styled(motion.div)<ContentProps>`
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 4rem;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
 		align-items: center;
-		position: absolute;
 		writing-mode: vertical-rl;
-		text-orientation: mixed;
-		top: 0;
-		left: 0;
-		width: 4rem;
-		place-items: center;
-		
 		@media screen and (min-width: 768px) {
 			margin-bottom: 3rem;
 		}
@@ -118,15 +110,7 @@ const Content = styled.div`
 		pointer-events: visible;
 	}
 	& button {
-		background-color: var(--primaryBackground);
 		color: var(--white);
-		border: 0;
-		text-transform: uppercase;
-		border-radius: 100px;
-		height: 2rem;
-		padding: 0 1rem;
-		font-size: inherit;
-		font-weight: 400;
 	}
 `;
 
@@ -138,7 +122,6 @@ const List = styled(motion.div)`
 	justify-content: space-between;
 	bottom: 0;
 	right: 0;
-	font-weight: 400;
 `;
 
 export default ProjectDetails;

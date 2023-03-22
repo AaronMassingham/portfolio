@@ -64,9 +64,6 @@ const Container = styled(motion.div)`
 
 const Svg = styled.svg`
 	height: 100%;
-	display: block;
-	position: relative;
-	z-index: 1;
 	circle {
 		fill: none;
 	}
@@ -74,7 +71,6 @@ const Svg = styled.svg`
 	polyline {
 		fill: none;
 		stroke: var(--white);
-
 		stroke-width: 2px;
 		stroke-linecap: round;
 		stroke-miterlimit: 10;

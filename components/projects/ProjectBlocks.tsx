@@ -24,12 +24,9 @@ type Props = {
 const Container = styled.div`
 	width: 100%;
 	display: flex;
-
 	align-items: center;
-
 	@media screen and (max-width: 768px) {
 		margin-left: auto;
-		width: 100%;
 		justify-content: flex-start;
 		padding-left: 6rem;
 	}

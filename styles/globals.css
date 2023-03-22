@@ -60,7 +60,7 @@ body {
 	background: var(--primaryBackground);
 	font-weight: 400;
 	min-height: 100vh;
-	font-size: 18px;
+	font-size: 16px;
 }
 body,
 section {
@@ -78,7 +78,7 @@ h3,
 h4,
 h5 {
 	color: var(--white);
-	font-weight: 900;
+	font-weight: 200;
 	text-transform: uppercase;
 }
 
@@ -128,6 +128,17 @@ h5 {
 	margin-block-start: 1.25rem;
 }
 
+button {
+	border: 0;
+	font-weight: 200;
+	background-color: var(--primaryBackground);
+	border-radius: 100px;
+	height: 2rem;
+	padding: 0 1rem;
+	text-transform: uppercase;
+	font-size: inherit;
+}
+
 @media screen and (min-width: 768px) {
 	h1,
 	h2 {
@@ -136,6 +147,9 @@ h5 {
 }
 
 @media screen and (min-width: 1200px) {
+	body {
+		font-size: 18px;
+	}
 	h1 {
 		font-size: var(--fs-xlDisplay);
 	}

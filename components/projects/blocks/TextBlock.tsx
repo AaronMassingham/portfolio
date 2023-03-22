@@ -39,16 +39,12 @@ type Props = {
 const Container = styled.div`
 	display: flex;
 	flex-direction: column;
-
 	justify-content: space-around;
 	gap: 4rem;
-
 	@media screen and (max-width: 768px) {
 		padding-right: 2rem;
 	}
-	@media screen and (min-width: 768px) {
-		width: 100%;
-	}
+
 	@media screen and (min-width: 1200px) {
 		flex-direction: row;
 		align-items: flex-start;

@@ -36,7 +36,6 @@ const Dot = styled(motion.div)`
 	background-color: var(--primaryBackground);
 	width: 4px;
 	aspect-ratio: 1/1;
-	height: auto;
 	border-radius: 100%;
 	margin: auto;
 `;

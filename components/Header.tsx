@@ -34,19 +34,15 @@ const Container = styled(motion.div)`
 	left: 0;
 	right: 0;
 	z-index: 11;
-
 	@media screen and (min-width: 768px) {
 		padding: 2rem;
 	}
 `;
 
 const HireMe = styled.button`
-	position: relative;
 	text-transform: uppercase;
-	font-weight: 400;
+	font-weight: 200;
 	font-size: inherit;
-	top: 0;
-	width: auto;
 	padding: 0 1rem;
 	color: var(--green);
 	height: 2rem;

@@ -19,7 +19,10 @@ const Hero = () => {
 				<PreTitle {...fadeInUpMotionVariants}>
 					I&apos;m Aaron <span>&#128075;</span>
 				</PreTitle>
-				<Heading headingLevel="h1">I help create frontend experiences.</Heading>
+				<Heading headingLevel="h1">
+					I help create <span style={{ color: "var(--green)" }}>frontend</span>{" "}
+					experiences.
+				</Heading>
 			</Headline>
 			<PromptContainer>
 				<WorkCircle>
@@ -34,6 +37,7 @@ const Hero = () => {
 const Container = styled.section`
 	display: flex;
 	height: 100vh;
+	height: 100dvh;
 	align-items: flex-start;
 	justify-content: flex-start;
 	flex-direction: column;
@@ -58,14 +62,10 @@ const Headline = styled.div`
 `;
 
 const PreTitle = styled(motion.div)`
-	text-transform: uppercase;
-	font-weight: 300;
 	margin-bottom: 1rem;
-	justify-content: center;
-	width: 100%;
-	align-items: center;
 	color: var(--white);
-	padding-left: 3px;
+	font-size: var(--fs-sm);
+	font-weight: 800;
 	& span {
 		-webkit-filter: grayscale(100%);
 		filter: grayscale(100%);
