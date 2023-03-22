@@ -7,7 +7,6 @@ import dynamic from "next/dynamic";
 
 //Components
 import Hero from "@components/Hero";
-//import Project from "@components/projects/Project";
 import ProjectDetails from "@components/projects/ProjectDetails";
 import ProjectBlocks from "@components/projects/ProjectBlocks";
 import Table from "@components/Table";
@@ -15,13 +14,15 @@ import BlockQuote from "@components/BlockQuote";
 import BigRibbon from "@components/BigRibbon";
 import Heading from "@components/Heading";
 import Logo from "@components/Logo";
+import LoadContainer from "@components/wrappers/LoadContainer";
 
-import {
-	fadeInUpMotionVariants,
-	loadingContainerVariants,
-} from "@constants/FramerConstants";
+//Framer Variants
+import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
 const DynamicPortfolio = dynamic(() => import("@components/projects/Project"));
+const DynamicAboutContainer = dynamic(
+	() => import("@components/wrappers/AboutContainer")
+);
 
 const fetcher = (url: RequestInfo | URL) =>
 	fetch(url).then((res) => res.json());
@@ -31,7 +32,7 @@ export default function NextPage() {
 
 	if (error) return <LoadContainer>S**t, something went wrong.</LoadContainer>;
 	//Handle the loading state
-	if (!data) return <LoadContainer>Loading...</LoadContainer>;
+	if (!data) return <LoadContainer />;
 
 	return (
 		<>
@@ -44,7 +45,7 @@ export default function NextPage() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<LoadContainer {...loadingContainerVariants}>
+			<LoadContainer>
 				<Logo />
 				Loading...
 			</LoadContainer>
@@ -85,7 +86,7 @@ export default function NextPage() {
 				)
 			)}
 
-			<AboutContainer>
+			<DynamicAboutContainer>
 				<SectionTitle>
 					<BlockQuote
 						title={<Heading headingLevel="h2">A decade of experience</Heading>}
@@ -121,42 +122,10 @@ export default function NextPage() {
 						)}
 					</Grid>
 				</AboutContent>
-			</AboutContainer>
+			</DynamicAboutContainer>
 		</>
 	);
 }
-
-const LoadContainer = styled(motion.div)`
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-	background-color: var(--primaryBackground);
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	z-index: 100;
-	flex-direction: column;
-	gap: 2rem;
-	text-transform: uppercase;
-	color: var(--green);
-	& > div {
-		height: 8rem;
-	}
-`;
-const AboutContainer = styled.section`
-	position: relative;
-	display: flex;
-	flex-direction: column;
-
-	& h3 {
-		padding: 0 0 1rem 0 !important;
-	}
-	& h4 {
-		padding: 3rem 0 0 0;
-	}
-`;
 
 const SectionTitle = styled.div`
 	z-index: 1;

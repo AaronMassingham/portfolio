@@ -10,7 +10,7 @@ const defaultMotionProps = {
 // Default Transition
 const defaultTransitionValues = {
 	duration: 1,
-	ease: "easeOut",
+	ease: "easeInOut",
 };
 
 export const header: MotionProps = {
@@ -81,14 +81,16 @@ export const bigRibbonVariants = {
 			opacity: 0,
 			y: 200,
 			transition: {
-				duration: 2,
+				duration: 1,
+				delay: 2,
 			},
 		},
 		visible: {
 			opacity: 1,
 			y: 0,
 			transition: {
-				duration: 2,
+				duration: 1,
+				delay: 2,
 			},
 		},
 	},
@@ -164,6 +166,7 @@ export const rotate360Variants: MotionProps = {
 			scale: 1,
 			transition: {
 				duration: 1,
+				delay: 2,
 			},
 		},
 	},

@@ -11,7 +11,7 @@ const Header = () => {
 		<Container
 			initial={{ y: -200 }}
 			animate={{ y: 0 }}
-			transition={{ duration: 1 }}
+			transition={{ duration: 1, delay: 2 }}
 		>
 			<Logo />
 			<Social />
