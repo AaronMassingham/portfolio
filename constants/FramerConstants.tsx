@@ -82,7 +82,7 @@ export const bigRibbonVariants = {
 			y: 200,
 			transition: {
 				duration: 1,
-				delay: 2,
+				delay: 1.25,
 			},
 		},
 		visible: {
@@ -90,7 +90,7 @@ export const bigRibbonVariants = {
 			y: 0,
 			transition: {
 				duration: 1,
-				delay: 2,
+				delay: 1.25,
 			},
 		},
 	},
@@ -137,8 +137,8 @@ export const loadingContainerVariants: MotionProps = {
 		},
 	},
 	transition: {
-		duration: 0.5,
-		delay: 1.5,
+		duration: 0.25,
+		delay: 1.25,
 	},
 	initial: "hidden",
 	animate: "visible",
@@ -166,7 +166,7 @@ export const rotate360Variants: MotionProps = {
 			scale: 1,
 			transition: {
 				duration: 1,
-				delay: 2,
+				delay: 1.25,
 			},
 		},
 	},

@@ -15,14 +15,15 @@ import BigRibbon from "@components/BigRibbon";
 import Heading from "@components/Heading";
 import Logo from "@components/Logo";
 import LoadContainer from "@components/wrappers/LoadContainer";
+import AboutContainer from "@components/wrappers/AboutContainer";
 
 //Framer Variants
 import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
 const DynamicPortfolio = dynamic(() => import("@components/projects/Project"));
-const DynamicAboutContainer = dynamic(
-	() => import("@components/wrappers/AboutContainer")
-);
+// const DynamicAboutContainer = dynamic(
+// 	() => import("@components/wrappers/AboutContainer")
+// );
 
 const fetcher = (url: RequestInfo | URL) =>
 	fetch(url).then((res) => res.json());
@@ -86,7 +87,7 @@ export default function NextPage() {
 				)
 			)}
 
-			<DynamicAboutContainer>
+			<AboutContainer>
 				<SectionTitle>
 					<BlockQuote
 						title={<Heading headingLevel="h2">A decade of experience</Heading>}
@@ -122,7 +123,7 @@ export default function NextPage() {
 						)}
 					</Grid>
 				</AboutContent>
-			</DynamicAboutContainer>
+			</AboutContainer>
 		</>
 	);
 }
