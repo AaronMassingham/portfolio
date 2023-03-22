@@ -5,11 +5,10 @@ const Project = ({ children, staticChildren, color, background }: Props) => {
 	return (
 		<Container>
 			<Sticky>{children}</Sticky>
-			<Static>
-				<StaticContent $textColor={color} $backgroundColor={background}>
-					{staticChildren}
-				</StaticContent>
-			</Static>
+
+			<StaticContent $textColor={color} $backgroundColor={background}>
+				{staticChildren}
+			</StaticContent>
 		</Container>
 	);
 };
@@ -27,12 +26,10 @@ type ContentProps = {
 };
 
 const Container = styled.div`
-	height: auto;
 	width: 100%;
 	display: grid;
 	position: relative;
 	z-index: 4;
-
 	& > * {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
@@ -52,22 +49,11 @@ const Sticky = styled(motion.div)`
 	}
 `;
 
-const Static = styled.div`
-	z-index: 2;
-	height: auto;
-	width: 100%;
-	display: flex;
-	justify-content: flex-start;
-	align-items: flex-start;
-	top: 0;
-`;
-
 const StaticContent = styled.div<ContentProps>`
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-	height: 100%;
 
 	flex-direction: column;
 	justify-content: center;

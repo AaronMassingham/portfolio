@@ -29,11 +29,12 @@ type ContentProps = {
 const Text = styled(motion.div)`
 	padding: 0 1rem;
 	opacity: 0.5;
+	font-weight: 200;
 `;
 
 const Marquee = styled(motion.div)`
 	position: relative;
-	width: 250px;
+	width: 230px;
 	overflow: clip;
 	background-color: var(--primaryBackground);
 	color: var(--white);
@@ -42,26 +43,6 @@ const Marquee = styled(motion.div)`
 	height: 2rem;
 	display: flex;
 	align-items: center;
-	&:before,
-	&:after {
-		pointer-events: none;
-		top: 0;
-		position: absolute;
-		width: 2rem;
-		height: 100%;
-		z-index: 3;
-		content: " ";
-		@media (min-width: 768px) {
-			width: 4rem;
-		}
-	}
-	&:before {
-		left: 0;
-	}
-	&:after {
-		right: 0;
-	}
-
 	@media screen and (min-width: 768px) {
 		width: 300px;
 	}
@@ -72,7 +53,6 @@ const Track = styled(motion.div)`
 	white-space: nowrap;
 	display: flex;
 	right: -250px;
-	justify-content: center;
 	@media screen and (min-width: 768px) {
 		right: -300px;
 	}

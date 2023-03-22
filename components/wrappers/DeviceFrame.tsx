@@ -28,8 +28,6 @@ type FrameProps = {
 };
 
 const Frame = styled(motion.div)<FrameProps>`
-	position: relative;
-	height: auto;
 	background-color: var(--primaryBackground);
 	border-radius: 1.5rem;
 	padding: 0.5rem;
@@ -62,5 +60,4 @@ const Content = styled(motion.div)`
 	background-color: var(--darkestGrey);
 	position: relative;
 	overflow: clip;
-	border: 1px solid var(--darkestGrey);
 `;

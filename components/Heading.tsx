@@ -9,7 +9,7 @@ const Heading = ({ headingLevel = "h1", children }: HeadingProps) => {
 
 	const ref = useRef(null);
 	const isInView = useInView(ref, {
-		margin: "10px 0px -300px 0px",
+		margin: "0px 0px -300px 0px",
 	});
 
 	return (
@@ -35,7 +35,6 @@ const Container = styled.div`
 	display: inline-block;
 	overflow: clip;
 	& > span {
-		height: 100%;
 		display: inline-block;
 	}
 `;

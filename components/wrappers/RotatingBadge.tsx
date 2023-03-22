@@ -26,14 +26,10 @@ type Props = {
 const Container = styled.div`
 	background-color: var(--primaryBackground);
 	border-radius: 100%;
-	overflow: visible;
-	z-index: 2;
 	display: grid;
 	place-items: center;
-	padding: 5px;
 	height: 10rem;
 	aspect-ratio: 1/1;
-	overflow: hidden;
 	& > * {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
@@ -41,9 +37,7 @@ const Container = styled.div`
 `;
 
 const Svg = styled(motion.svg)`
-	width: auto;
 	height: 100%;
-	pointer-events: none;
 	path {
 		fill: var(--green);
 	}

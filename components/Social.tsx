@@ -33,22 +33,18 @@ const Social = () => {
 
 const Container = styled.ul`
 	list-style: none;
-	justify-self:flex-end;
-	margin: 0;
-	width: auto;
 	height: 100%;
 	display: flex;
 	justify-content: space-between;
 	flex-direction: row;
 	gap: .5rem;
 	margin-left: auto;
-	
 	& > li {
 		width: 2rem;
 		height: 2rem;
 		background:var(--primaryBackground);
+		color:var(--white);
 		border-radius: 100%;
-		overflow:hidden;
 		& a {
 			width: 100%;
 			height: 100%;
@@ -57,7 +53,6 @@ const Container = styled.ul`
 			place-items: center;
 		}
 		& svg {
-			color: white;
 			height: 1rem;
 			display:block
 		}
