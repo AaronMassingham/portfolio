@@ -55,7 +55,7 @@ const ModalContainer = styled(motion.div)`
 	bottom: -1px;
 	right: 0;
 	padding: var(--headerH) 2rem 2rem 2rem;
-
+	pointer-events: visible;
 	& > div {
 		position: relative;
 

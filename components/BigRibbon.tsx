@@ -29,9 +29,6 @@ const BigRibbon = ({ content }: ContentProps) => {
 	};
 
 	var newArrayFromContent = `${content} ${content}`;
-	// const mappedLetters = newArrayFromContent.map((item, index) => (
-	// 	<Letter key={index}>{item}</Letter>
-	// ));
 
 	const variants = {
 		hidden: {
@@ -103,12 +100,7 @@ const Text = styled.div`
 	flex-direction: row;
 `;
 
-const Letter = styled(motion.span)`
-	overflow: visible;
-	white-space: pre;
-`;
-
-const Content = styled(motion.div)`
+const Content = styled.div`
 	height: 150px;
 	width: max-content;
 	white-space: nowrap;

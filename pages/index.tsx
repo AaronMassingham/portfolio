@@ -160,7 +160,6 @@ const AboutContainer = styled.section`
 
 const SectionTitle = styled.div`
 	z-index: 1;
-
 	height: 200vh;
 	top: 0;
 	left: 0;
