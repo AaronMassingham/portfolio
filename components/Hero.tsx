@@ -41,6 +41,7 @@ const Container = styled.section`
 	align-items: flex-start;
 	justify-content: flex-start;
 	flex-direction: column;
+	position: relative;
 	max-width: 1200px;
 	margin: auto;
 	padding: var(--headerH) var(--sitePadding) 7rem var(--sitePadding);

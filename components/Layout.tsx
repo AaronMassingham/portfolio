@@ -1,13 +1,14 @@
 import dynamic from "next/dynamic";
 
 //Dynamic Components
-const DynamicHeader = dynamic(() => import("@components/Header"));
 const DynamicFooter = dynamic(() => import("@components/Footer"));
+
+import Header from "@components/Header";
 
 const Layout = ({ children }: Props) => {
 	return (
 		<>
-			<DynamicHeader />
+			<Header />
 			{children}
 			<DynamicFooter />
 		</>

@@ -28,7 +28,7 @@ const ProjectDetails = ({
 						viewport={{ margin: "0% 0% -80% 0%" }}
 						$textColor={color}
 					>
-						<h3>
+						<h2>
 							{link ? (
 								<a
 									href={link}
@@ -41,7 +41,7 @@ const ProjectDetails = ({
 							) : (
 								projectTitle
 							)}
-						</h3>
+						</h2>
 					</HeadingStyle>
 					<List {...fadeInUpMotionVariants}>
 						{testimonial && (
@@ -98,8 +98,9 @@ const HeadingStyle = styled(motion.div)<ContentProps>`
 			margin-bottom: 3rem;
 		}
 
-		& h3 {
-				color: ${(props) => (props.$textColor ? props.$textColor : "var(--white)")}
+		& h2 {
+				color: ${(props) => (props.$textColor ? props.$textColor : "var(--white)")};
+				font-size:var(--fs-md)
 			}
 		}
 

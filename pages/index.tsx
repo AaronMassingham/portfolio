@@ -7,7 +7,6 @@ import dynamic from "next/dynamic";
 
 //Components
 import Hero from "@components/Hero";
-//import Project from "@components/projects/Project";
 import ProjectDetails from "@components/projects/ProjectDetails";
 import ProjectBlocks from "@components/projects/ProjectBlocks";
 import Table from "@components/Table";
@@ -22,6 +21,9 @@ import {
 } from "@constants/FramerConstants";
 
 const DynamicPortfolio = dynamic(() => import("@components/projects/Project"));
+const DynamicAboutContainer = dynamic(
+	() => import("@components/wrappers/AboutContainer")
+);
 
 const fetcher = (url: RequestInfo | URL) =>
 	fetch(url).then((res) => res.json());
@@ -85,7 +87,7 @@ export default function NextPage() {
 				)
 			)}
 
-			<AboutContainer>
+			<DynamicAboutContainer>
 				<SectionTitle>
 					<BlockQuote
 						title={<Heading headingLevel="h2">A decade of experience</Heading>}
@@ -121,7 +123,7 @@ export default function NextPage() {
 						)}
 					</Grid>
 				</AboutContent>
-			</AboutContainer>
+			</DynamicAboutContainer>
 		</>
 	);
 }
@@ -143,18 +145,6 @@ const LoadContainer = styled(motion.div)`
 	color: var(--green);
 	& > div {
 		height: 8rem;
-	}
-`;
-const AboutContainer = styled.section`
-	position: relative;
-	display: flex;
-	flex-direction: column;
-
-	& h3 {
-		padding: 0 0 1rem 0 !important;
-	}
-	& h4 {
-		padding: 3rem 0 0 0;
 	}
 `;
 
