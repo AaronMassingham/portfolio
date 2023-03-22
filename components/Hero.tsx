@@ -15,7 +15,11 @@ const Hero = () => {
 
 	return (
 		<Container>
-			<Headline>
+			<Headline
+				initial={{ opacity: 0, y: 50 }}
+				animate={{ opacity: 1, y: 0 }}
+				transition={{ duration: 1, delay: 2, ease: "easeInOut" }}
+			>
 				<PreTitle {...fadeInUpMotionVariants}>
 					I&apos;m Aaron <span>&#128075;</span>
 				</PreTitle>
@@ -41,13 +45,13 @@ const Container = styled.section`
 	align-items: flex-start;
 	justify-content: flex-start;
 	flex-direction: column;
-	position: relative;
+
 	max-width: 1200px;
 	margin: auto;
 	padding: var(--headerH) var(--sitePadding) 7rem var(--sitePadding);
 `;
 
-const Headline = styled.div`
+const Headline = styled(motion.div)`
 	position: relative;
 	height: calc(100% - 150px);
 	display: flex;
