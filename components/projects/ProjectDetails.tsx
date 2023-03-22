@@ -86,6 +86,7 @@ const Container = styled.div`
 	align-items: flex-start;
 	flex-direction: column;
 	position: relative;
+	pointer-events: none;
 `;
 
 const HeadingStyle = styled(motion.div)<ContentProps>`
@@ -100,6 +101,7 @@ const HeadingStyle = styled(motion.div)<ContentProps>`
 		left: 0;
 		width: 4rem;
 		place-items: center;
+		
 		@media screen and (min-width: 768px) {
 			margin-bottom: 3rem;
 		}
@@ -112,6 +114,9 @@ const HeadingStyle = styled(motion.div)<ContentProps>`
 `;
 
 const Content = styled.div`
+	> * {
+		pointer-events: visible;
+	}
 	& button {
 		background-color: var(--primaryBackground);
 		color: var(--white);

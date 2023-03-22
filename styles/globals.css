@@ -60,7 +60,7 @@ body {
 	background: var(--primaryBackground);
 	font-weight: 400;
 	min-height: 100vh;
-	font-size: 16px;
+	font-size: 18px;
 }
 body,
 section {
@@ -107,7 +107,7 @@ p {
 }
 
 h1 {
-	font-size: var(--fs-xl);
+	font-size: var(--fs-xlDisplay);
 }
 
 h2 {

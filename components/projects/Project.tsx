@@ -46,6 +46,7 @@ const Sticky = styled(motion.div)`
 	top: 0;
 	z-index: 3;
 	padding: var(--headerH) var(--sitePadding) 2rem;
+	pointer-events: none;
 	@media screen and (min-width: 768px) {
 		padding: var(--headerH) 2rem 2rem;
 	}
