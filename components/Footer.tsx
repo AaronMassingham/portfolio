@@ -5,9 +5,6 @@ import { motion, useInView } from "framer-motion";
 import Heading from "@components/Heading";
 import Social from "./Social";
 
-//Framer Animations
-import { headingChildVariants } from "@constants/FramerConstants";
-
 //Fonts
 import { ShrikhandFont } from "@utils/Fonts";
 

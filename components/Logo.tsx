@@ -57,9 +57,12 @@ const Logo = () => {
 };
 
 const Container = styled(motion.div)`
-	height: 4rem;
+	height: 3rem;
 	border-radius: 100%;
 	background-color: var(--primaryBackground);
+	@media screen and (min-width: 768px) {
+		height: 4rem;
+	}
 `;
 
 const Svg = styled.svg`

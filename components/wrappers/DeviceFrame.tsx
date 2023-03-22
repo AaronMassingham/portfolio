@@ -42,7 +42,7 @@ const Frame = styled(motion.div)<FrameProps>`
 			case "portrait":
 				return `
 					aspect-ratio: 900 / 1670;
-					width: min(350px, 100%);
+					width:calc(100% - var(--sitePadding));
 					
 					@media screen and (min-width: 768px) {
 						width:100%;

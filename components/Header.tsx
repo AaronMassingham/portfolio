@@ -11,7 +11,7 @@ const Header = () => {
 		<Container
 			initial={{ y: -200 }}
 			animate={{ y: 0 }}
-			transition={{ duration: 1, delay: 2 }}
+			transition={{ duration: 0.5, delay: 1.25, ease: "easeInOut" }}
 		>
 			<Logo />
 			<Social />
@@ -40,18 +40,10 @@ const Container = styled(motion.div)`
 `;
 
 const HireMe = styled.button`
-	text-transform: uppercase;
-	font-weight: 200;
-	font-size: inherit;
-	padding: 0 1rem;
 	color: var(--green);
-	height: 2rem;
-	border-radius: 4rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	background-color: var(--primaryBackground);
-	border: 0;
 	margin-left: 1rem;
 `;
 
