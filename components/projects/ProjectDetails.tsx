@@ -88,7 +88,7 @@ const HeadingStyle = styled(motion.div)<ContentProps>`
 		position: absolute;
 		top: 0;
 		left: 0;
-		width: 4rem;
+		width: 3rem;
 		display: flex;
 		flex-direction: row;
 		justify-content: space-between;
@@ -102,6 +102,10 @@ const HeadingStyle = styled(motion.div)<ContentProps>`
 				color: ${(props) => (props.$textColor ? props.$textColor : "var(--white)")};
 				font-size:var(--fs-md)
 			}
+		}
+
+		@media screen and (min-width: 768px) {
+			width: 4rem;
 		}
 
 `;

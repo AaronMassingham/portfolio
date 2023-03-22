@@ -16,9 +16,9 @@ const Hero = () => {
 	return (
 		<Container>
 			<Headline
-				initial={{ opacity: 0, y: 50 }}
+				initial={{ opacity: 0, y: 30 }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.75, delay: 1.25, ease: "easeInOut" }}
+				transition={{ duration: 0.5, delay: 1.25, ease: "easeInOut" }}
 			>
 				<PreTitle {...fadeInUpMotionVariants}>
 					I&apos;m Aaron <span>&#128075;</span>
@@ -41,7 +41,7 @@ const Hero = () => {
 const Container = styled.section`
 	display: flex;
 	height: 100vh;
-	height: 100dvh;
+
 	align-items: flex-start;
 	justify-content: flex-start;
 	flex-direction: column;

@@ -43,8 +43,11 @@ const Marquee = styled(motion.div)`
 	height: 2rem;
 	display: flex;
 	align-items: center;
+	font-size: 0.9rem;
+	font-weight: 200;
 	@media screen and (min-width: 768px) {
 		width: 300px;
+		font-size: initial;
 	}
 `;
 

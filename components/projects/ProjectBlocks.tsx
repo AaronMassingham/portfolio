@@ -28,7 +28,7 @@ const Container = styled.div`
 	@media screen and (max-width: 768px) {
 		margin-left: auto;
 		justify-content: flex-start;
-		padding-left: 6rem;
+		padding-left: 5rem;
 	}
 	@media screen and (min-width: 768px) {
 		max-width: 1200px;
