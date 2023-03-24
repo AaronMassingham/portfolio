@@ -9,14 +9,16 @@ import Social from "@components/Social";
 const Header = () => {
 	return (
 		<Container
-			initial={{ y: -200 }}
-			animate={{ y: 0 }}
-			transition={{ duration: 0.5, delay: 1.25, ease: "easeInOut" }}
+			initial={{ y: -30, opacity: 0 }}
+			animate={{ y: 0, opacity: 1 }}
+			transition={{ duration: 1, delay: 1.75, ease: "easeInOut" }}
 		>
 			<Logo />
 			<Social />
 			<HireMe>
-				<Link href="">Hire Me</Link>
+				<Link scroll={false} href="hire">
+					Hire Me
+				</Link>
 			</HireMe>
 		</Container>
 	);

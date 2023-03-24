@@ -51,6 +51,10 @@
 	/* outline: 1px solid orange; */
 }
 
+.noOverflow {
+	overflow: hidden;
+}
+
 html {
 	background-color: var(--green);
 }

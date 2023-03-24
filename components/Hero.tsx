@@ -11,17 +11,17 @@ import BigRibbon from "@components/BigRibbon";
 import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
 const Hero = () => {
-	const marqueeContent = "UI - Web Design - Branding - Frontend Dev - ";
+	const marqueeContent = "UI Design Web Design Branding Frontend Dev";
 
 	return (
 		<Container>
 			<Headline
 				initial={{ opacity: 0, y: 30 }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.5, delay: 1.25, ease: "easeInOut" }}
+				transition={{ duration: 1, delay: 1.75, ease: "easeInOut" }}
 			>
 				<PreTitle {...fadeInUpMotionVariants}>
-					I&apos;m Aaron <span>&#128075;</span>
+					I&apos;m Aaron <span aria-hidden="true">&#128075;</span>
 				</PreTitle>
 				<Heading headingLevel="h1">
 					I help create <span style={{ color: "var(--green)" }}>frontend</span>{" "}
@@ -71,6 +71,8 @@ const PreTitle = styled(motion.div)`
 	color: var(--white);
 	font-size: var(--fs-sm);
 	font-weight: 800;
+	text-transform: uppercase;
+	padding-left: 0.2rem;
 	& span {
 		-webkit-filter: grayscale(100%);
 		filter: grayscale(100%);

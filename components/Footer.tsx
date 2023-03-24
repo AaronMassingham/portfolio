@@ -32,7 +32,12 @@ const Footer = () => {
 
 	return (
 		<>
-			<Container>
+			<Container
+				initial={{ opacity: 0 }}
+				animate={{ opacity: 1 }}
+				exit={{ opacity: 0 }}
+				transition={{ duration: 1 }}
+			>
 				<div className="stack">
 					<Heading headingLevel="h2">Reach Out</Heading>
 					<p>
@@ -64,8 +69,7 @@ const Footer = () => {
 	);
 };
 
-export default Footer;
-const Container = styled.section`
+const Container = styled(motion.section)`
 	max-width: 1200px;
 	margin: auto;
 	position: relative;
@@ -164,3 +168,5 @@ const Details = styled(motion.div)`
 		}
 	}
 `;
+
+export default Footer;

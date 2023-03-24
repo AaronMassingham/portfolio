@@ -1,16 +1,16 @@
-import dynamic from "next/dynamic";
-
-//Dynamic Components
-const DynamicFooter = dynamic(() => import("@components/Footer"));
-
 import Header from "@components/Header";
+import LoadContainer from "./wrappers/LoadContainer";
+import Logo from "./Logo";
 
 const Layout = ({ children }: Props) => {
 	return (
 		<>
+			<LoadContainer>
+				<Logo />
+				Loading...
+			</LoadContainer>
 			<Header />
 			{children}
-			<DynamicFooter />
 		</>
 	);
 };

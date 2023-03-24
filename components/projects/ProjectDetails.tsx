@@ -5,6 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 //Components
 import Modal from "@components/Modal";
 import TextMarquee from "@components/ListMarquee";
+import DefaultButton from "@components/DefaultButton";
 
 //Framer Motion Variants
 import { fadeInUpMotionVariants } from "@constants/FramerConstants";
@@ -16,6 +17,7 @@ const ProjectDetails = ({
 	services,
 	link,
 	color,
+	background,
 }: Props) => {
 	const [modalToggle, setModalToggle] = useState(false);
 
@@ -45,7 +47,10 @@ const ProjectDetails = ({
 					</HeadingStyle>
 					<List {...fadeInUpMotionVariants}>
 						{testimonial && (
-							<button onClick={() => setModalToggle(true)}>Testimonial</button>
+							<DefaultButton
+								onClick={() => setModalToggle((current) => !current)}
+								buttonText="Testimonial"
+							/>
 						)}
 						<TextMarquee content={services} />
 					</List>
@@ -53,7 +58,16 @@ const ProjectDetails = ({
 			</Container>
 			<AnimatePresence mode="wait">
 				{modalToggle && (
-					<Modal setModalToggle={setModalToggle}>
+					<Modal
+						children2={
+							<DefaultButton
+								onClick={() => setModalToggle((current) => !current)}
+								buttonText="Close"
+							/>
+						}
+						backgroundColor={background}
+						setModalToggle={setModalToggle}
+					>
 						<div>{testimonial}</div>
 						<div>{testimonialAuthor}</div>
 					</Modal>
@@ -71,6 +85,7 @@ type Props = {
 	services: Array<string>;
 	link: string;
 	color?: string;
+	background?: string;
 };
 
 type ContentProps = {
@@ -121,12 +136,12 @@ const Content = styled.div`
 
 const List = styled(motion.div)`
 	position: absolute;
+	bottom: 0;
+	right: 0;
 	width: 100%;
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
-	bottom: 0;
-	right: 0;
 `;
 
 export default ProjectDetails;

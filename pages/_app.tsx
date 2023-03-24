@@ -1,20 +1,32 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
-
+import { motion, AnimatePresence } from "framer-motion";
 //Fonts
 import { contentFont } from "@utils/Fonts";
 
 //Components
 import Layout from "@components/Layout";
-import { AnimatePresence } from "framer-motion";
+import Footer from "@components/Footer";
 
-export default function App({ Component, pageProps }: AppProps) {
+export default function App({ Component, pageProps, router }: AppProps) {
 	return (
 		<>
 			<div className={contentFont.className}>
 				<Layout>
-					<AnimatePresence mode="wait">
-						<Component {...pageProps} />
+					<AnimatePresence
+						mode="wait"
+						onExitComplete={() => window.scrollTo(0, 0)}
+					>
+						<motion.div
+							initial={{ opacity: 0 }}
+							animate={{ opacity: 1 }}
+							exit={{ opacity: 0 }}
+							transition={{ duration: 0.25 }}
+							key={router.route}
+						>
+							<Component {...pageProps} />
+							<Footer />
+						</motion.div>
 					</AnimatePresence>
 				</Layout>
 			</div>

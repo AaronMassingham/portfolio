@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import Link from "next/link";
 import { motion } from "framer-motion";
 
 const transition = {
@@ -20,7 +21,7 @@ const childVariants = {
 		opacity: 0,
 		pathLength: 0,
 		transition: {
-			ease: "easeInOut",
+			ease: "easeOut",
 			duration: 0.25,
 		},
 	},
@@ -28,8 +29,8 @@ const childVariants = {
 		opacity: 1,
 		pathLength: 1,
 		transition: {
-			ease: "easeInOut",
-			duration: 0.25,
+			ease: "easeIn",
+			duration: 0.35,
 		},
 	},
 };
@@ -37,21 +38,23 @@ const childVariants = {
 const Logo = () => {
 	return (
 		<Container variants={variants} initial="hidden" animate="visible">
-			<Svg viewBox="0 0 60 60">
-				<circle cx="30" cy="30" r="30" />
-				<motion.path
-					variants={childVariants}
-					d="M53.7,17.8H11.9c-1,0-2,0.6-2.4,1.6L3.6,34.8"
-				/>
-				<motion.polyline
-					variants={childVariants}
-					points="56.6,31.7 12.3,31.7 14.3,25.9 16.8,31.7"
-				/>
-				<motion.path
-					variants={childVariants}
-					d="M27.9,56.7l-7.7-17.5c-0.4-0.9-1.3-1.5-2.3-1.5h-5.7c-1,0-2,0.6-2.3,1.6l-2.2,5.4"
-				/>
-			</Svg>
+			<Link href="/" scroll={false}>
+				<Svg viewBox="0 0 60 60">
+					<circle cx="30" cy="30" r="30" />
+					<motion.path
+						variants={childVariants}
+						d="M53.7,17.8H11.9c-1,0-2,0.6-2.4,1.6L3.6,34.8"
+					/>
+					<motion.polyline
+						variants={childVariants}
+						points="56.6,31.7 12.3,31.7 14.3,25.9 16.8,31.7"
+					/>
+					<motion.path
+						variants={childVariants}
+						d="M27.9,56.7l-7.7-17.5c-0.4-0.9-1.3-1.5-2.3-1.5h-5.7c-1,0-2,0.6-2.3,1.6l-2.2,5.4"
+					/>
+				</Svg>
+			</Link>
 		</Container>
 	);
 };

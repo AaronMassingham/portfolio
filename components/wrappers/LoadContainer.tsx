@@ -21,7 +21,7 @@ const Container = styled(motion.div)`
 	display: flex;
 	justify-content: center;
 	align-items: center;
-	z-index: 100;
+	z-index: 1000;
 	flex-direction: column;
 	gap: 2rem;
 	text-transform: uppercase;

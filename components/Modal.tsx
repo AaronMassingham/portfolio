@@ -1,19 +1,30 @@
+import React, { useEffect } from "react";
+import { createPortal } from "react-dom";
 import styled from "styled-components";
 import { motion } from "framer-motion";
-const Modal = ({ children, setModalToggle }: Props) => {
+
+//Fonts
+import { contentFont } from "@utils/Fonts";
+
+const Modal = ({ children, children2, backgroundColor }: Props) => {
+	useEffect(() => {
+		document.documentElement.classList.add("noOverflow");
+		return () => document.documentElement.classList.remove("noOverflow");
+	}, []);
+
 	const transition = {
-		duration: 0.5,
+		duration: 0.75,
 		ease: "easeInOut",
 	};
 
 	const variants = {
 		initial: {
-			scaleY: 0,
-			originY: "bottom",
+			opacity: 0,
+			originX: "left",
 			transition: { ...transition, when: "afterChildren" },
 		},
 		animate: {
-			scaleY: 1,
+			opacity: 1,
 			transition: { ...transition, when: "beforeChildren" },
 		},
 	};
@@ -23,78 +34,106 @@ const Modal = ({ children, setModalToggle }: Props) => {
 	};
 
 	return (
-		<ModalContainer
-			variants={variants}
-			initial="initial"
-			animate="animate"
-			exit="initial"
-		>
-			<motion.div variants={childVariants}>
-				<button onClick={() => setModalToggle(false)}>Close</button>
-				<div>{children}</div>
-			</motion.div>
-		</ModalContainer>
+		<>
+			{createPortal(
+				<ModalContainer
+					className={contentFont.className}
+					variants={variants}
+					initial="initial"
+					animate="animate"
+					exit="initial"
+					$modalBackground={backgroundColor}
+				>
+					<motion.div variants={childVariants}>
+						<div>{children}</div>
+					</motion.div>
+					{children2}
+				</ModalContainer>,
+				document.body
+			)}
+		</>
 	);
 };
 
 type Props = {
 	children: React.ReactNode;
 	setModalToggle: React.Dispatch<React.SetStateAction<boolean>>;
+	backgroundColor?: string;
+	children2: React.ReactNode;
 };
 
-const ModalContainer = styled(motion.div)`
-	position: absolute;
-	z-index: 20;
-	background-color: var(--primaryBackground);
-	color: var(--white);
-	padding: var(--headerH) 2rem 0 2rem;
-	overscroll-behavior: none;
-	overflow: clip;
+type ModalContainerProps = {
+	$modalBackground?: string;
+};
+
+const ModalContainer = styled(motion.div)<ModalContainerProps>`
+	position: fixed;
+	z-index: 0;
+	backdrop-filter: blur(5px);
 	top: 0;
 	left: 0;
-	bottom: -1px;
+	bottom: 0;
 	right: 0;
-	padding: var(--headerH) 2rem 2rem 2rem;
 	pointer-events: visible;
+	padding: var(--headerH) var(--sitePadding) 6rem;
+	overflow: hidden;
+
 	& > div {
 		position: relative;
-
-		height: 100%;
+		color: var(--white);
+		background: var(--primaryBackground);
 		border-radius: 1rem;
-		padding: 2rem 0;
-		& > div {
+		overflow: hidden;
+		height: -webkit-fill-available;
+		@media screen and (min-width: 768px) {
 			max-width: 1200px;
-			height: 100%;
 			margin: auto;
-			overflow: scroll;
-			font-size: var(--fs-lg);
-			padding-bottom: 150px;
 		}
 		&:before {
 			position: absolute;
 			content: "";
-			bottom: 2rem;
+			bottom: 0;
 			left: 0;
 			width: 100%;
-			height: 200px;
+			height: 100px;
 			background: transparent;
 			background: var(--gradient);
 			pointer-events: none;
+			border-radius: 0 0 1rem 1rem;
+		}
+		& > div {
+			overflow: scroll;
+			height: -webkit-fill-available;
+			font-size: var(--fs-md);
+			& > div {
+				padding: 2rem 2rem 1rem 2rem;
+				&:last-of-type {
+					padding-bottom: 100px;
+				}
+			}
 		}
 	}
+
 	& button {
 		position: absolute;
-		bottom: 0;
-		left: 0;
+		bottom: 2rem;
+		left: 2rem;
 		background-color: var(--primaryBackground);
 		color: var(--white);
-		border: 0;
-		text-transform: uppercase;
-		border-radius: 100px;
-		height: 2rem;
-		padding: 0 1rem;
-		font-size: inherit;
-		font-weight: 400;
+	}
+
+	&:before {
+		position: absolute;
+		content: "";
+		left: 0;
+		top: 0;
+		right: 0;
+		height: calc(100% + 5px);
+		pointer-events: none;
+		border-radius: 0 0 1rem 1rem;
+		background: ${(props) =>
+			props.$modalBackground ? props.$modalBackground : "var(--white)"};
+		opacity: 0.9;
 	}
 `;
 

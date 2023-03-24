@@ -3,32 +3,26 @@ import Head from "next/head";
 import styled from "styled-components";
 import useSWR from "swr";
 import { motion } from "framer-motion";
-import dynamic from "next/dynamic";
 
 //Components
 import Hero from "@components/Hero";
+import Project from "@components/projects/Project";
 import ProjectDetails from "@components/projects/ProjectDetails";
 import ProjectBlocks from "@components/projects/ProjectBlocks";
 import Table from "@components/Table";
 import BlockQuote from "@components/BlockQuote";
 import BigRibbon from "@components/BigRibbon";
 import Heading from "@components/Heading";
-import Logo from "@components/Logo";
 import LoadContainer from "@components/wrappers/LoadContainer";
 import AboutContainer from "@components/wrappers/AboutContainer";
 
 //Framer Variants
 import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
-const DynamicPortfolio = dynamic(() => import("@components/projects/Project"));
-// const DynamicAboutContainer = dynamic(
-// 	() => import("@components/wrappers/AboutContainer")
-// );
-
 const fetcher = (url: RequestInfo | URL) =>
 	fetch(url).then((res) => res.json());
 
-export default function NextPage() {
+const Index: NextPage = () => {
 	const { data, error } = useSWR("/api/staticdata", fetcher);
 
 	if (error) return <LoadContainer>S**t, something went wrong.</LoadContainer>;
@@ -46,10 +40,6 @@ export default function NextPage() {
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
-			<LoadContainer>
-				<Logo />
-				Loading...
-			</LoadContainer>
 
 			<Hero />
 
@@ -68,7 +58,7 @@ export default function NextPage() {
 					},
 					index: number
 				) => (
-					<DynamicPortfolio
+					<Project
 						key={item.id}
 						staticChildren={<ProjectBlocks data={item.details} />}
 						color={item.color}
@@ -82,8 +72,9 @@ export default function NextPage() {
 							projectTitle={item.projectTitle}
 							services={item.services}
 							color={item.color}
+							background={item.background}
 						/>
-					</DynamicPortfolio>
+					</Project>
 				)
 			)}
 
@@ -126,17 +117,18 @@ export default function NextPage() {
 			</AboutContainer>
 		</>
 	);
-}
+};
 
 const SectionTitle = styled.div`
 	z-index: 1;
-	height: 200vh;
+	height: 100vh;
+
 	top: 0;
 	left: 0;
 	display: flex;
 	justify-content: center;
 	align-items: flex-start;
-	margin: -100vh 0 0 0;
+	margin: 0;
 	& > div {
 		position: sticky;
 		top: 0;
@@ -198,3 +190,5 @@ const Grid = styled.div`
 		);
 	}
 `;
+
+export default Index;
