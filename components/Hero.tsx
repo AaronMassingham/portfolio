@@ -18,7 +18,7 @@ const Hero = () => {
 			<Headline
 				initial={{ opacity: 0.1, y: 30 }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 1, delay: 1.75, ease: "easeInOut" }}
+				transition={{ duration: 1, delay: 1, ease: "easeInOut" }}
 			>
 				<PreTitle {...fadeInUpMotionVariants}>
 					I&apos;m Aaron <span aria-hidden="true">&#128075;</span>
