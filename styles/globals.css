@@ -116,7 +116,7 @@ p {
 }
 
 h1 {
-	font-size: var(--fs-xlDisplay);
+	font-size: var(--fs-xl);
 }
 
 h2 {

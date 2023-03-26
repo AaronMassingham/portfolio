@@ -34,7 +34,7 @@ const Text = styled(motion.div)`
 
 const Marquee = styled(motion.div)`
 	position: relative;
-	width: 230px;
+	width: 175px;
 	overflow: clip;
 	background-color: var(--primaryBackground);
 	color: var(--white);
@@ -45,6 +45,9 @@ const Marquee = styled(motion.div)`
 	align-items: center;
 	font-size: 0.9rem;
 	font-weight: 200;
+	@media screen and (min-width: 400px) {
+		width: 250px;
+	}
 	@media screen and (min-width: 768px) {
 		width: 300px;
 		font-size: initial;
