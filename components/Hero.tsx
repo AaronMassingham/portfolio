@@ -82,10 +82,12 @@ const PromptContainer = styled.div`
 	position: absolute;
 	left: 0;
 	bottom: 7rem;
-	height: 250px;
 	width: 100%;
 	display: grid;
 	place-items: center;
+	@media screen and (min-width: 768px) {
+		bottom: 7rem;
+	}
 `;
 
 export default Hero;

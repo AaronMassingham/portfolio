@@ -28,11 +28,14 @@ const Container = styled.div`
 	border-radius: 100%;
 	display: grid;
 	place-items: center;
-	height: 10rem;
+	height: 8rem;
 	aspect-ratio: 1/1;
 	& > * {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
+	}
+	@media screen and (min-width: 768px) {
+		height: 10rem;
 	}
 `;
 
