@@ -17,6 +17,8 @@ const Heading = ({ headingLevel = "h1", children }: HeadingProps) => {
 			<motion.span
 				{...headingChildVariants}
 				animate={isInView ? "animate" : "hidden"}
+				initial={{ opacity: 0 }}
+				exit={{ opacity: 0 }}
 			>
 				<Heading>{children}</Heading>
 			</motion.span>

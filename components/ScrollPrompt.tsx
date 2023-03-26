@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 const ScrollPrompt = () => {
 	const dotAnimation = {
 		animate: {
-			y: [2, 38],
+			y: [2, 42],
 		},
 	};
 

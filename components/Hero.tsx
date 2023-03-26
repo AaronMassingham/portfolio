@@ -11,21 +11,24 @@ import BigRibbon from "@components/BigRibbon";
 import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 
 const Hero = () => {
-	const marqueeContent = "UI - Web Design - Branding - Frontend Dev - ";
+	const marqueeContent = "UI Design Web Design Branding Frontend Dev";
 
 	return (
 		<Container>
 			<Headline
 				initial={{ opacity: 0, y: 30 }}
 				animate={{ opacity: 1, y: 0 }}
-				transition={{ duration: 0.5, delay: 1.25, ease: "easeInOut" }}
+				transition={{ duration: 1, delay: 1.75, ease: "easeInOut" }}
 			>
 				<PreTitle {...fadeInUpMotionVariants}>
-					I&apos;m Aaron <span>&#128075;</span>
+					I&apos;m Aaron <span aria-hidden="true">&#128075;</span>
 				</PreTitle>
 				<Heading headingLevel="h1">
-					I help create <span style={{ color: "var(--green)" }}>frontend</span>{" "}
-					experiences.
+					I Help Create
+					<br />
+					<span style={{ color: "var(--green)" }}>Visual Web Based</span>
+					<br />
+					Experiences.
 				</Heading>
 			</Headline>
 			<PromptContainer>
@@ -42,9 +45,11 @@ const Container = styled.section`
 	display: flex;
 	height: 100vh;
 
-	align-items: flex-start;
-	justify-content: flex-start;
+	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 
 	max-width: 1200px;
 	margin: auto;
@@ -54,14 +59,8 @@ const Container = styled.section`
 const Headline = styled(motion.div)`
 	position: relative;
 	height: calc(100% - 150px);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	@media screen and (max-width: 768px) {
-		text-align: center;
-	}
+
 	@media screen and (min-width: 768px) {
-		max-width: 50vw;
 		height: calc(100% - 250px);
 	}
 `;
@@ -71,6 +70,8 @@ const PreTitle = styled(motion.div)`
 	color: var(--white);
 	font-size: var(--fs-sm);
 	font-weight: 800;
+	text-transform: uppercase;
+	padding-left: 0.2rem;
 	& span {
 		-webkit-filter: grayscale(100%);
 		filter: grayscale(100%);

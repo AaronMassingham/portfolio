@@ -1,6 +1,5 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import useMediaQuery from "@lib/useMediaQuery";
 
 //Framer Motion Variants
 import {
@@ -8,30 +7,49 @@ import {
 	deviceMotionChildVariants,
 } from "@constants/FramerConstants";
 
-export default function DeviceFrame({ children, deviceType }: Props) {
-	const isMobile = useMediaQuery();
+export default function DeviceFrame({
+	children,
+	deviceType,
+	background,
+}: Props) {
 	return (
-		<Frame type={deviceType} {...deviceMotionVariants}>
-			<Content {...deviceMotionChildVariants}>{children}</Content>
+		<Frame {...deviceMotionVariants}>
+			<Content
+				bgColor={background}
+				type={deviceType}
+				{...deviceMotionChildVariants}
+			>
+				{children}
+			</Content>
 		</Frame>
 	);
 }
 
 type Props = {
 	children: React.ReactNode;
-	deviceType?: "landscape" | "portrait";
+	deviceType?: "landscape" | "portrait" | "logo";
+	background?: string;
 	elementIndex?: number;
 };
 
 type FrameProps = {
 	type?: string;
+	bgColor?: string;
 };
 
-const Frame = styled(motion.div)<FrameProps>`
+const Frame = styled(motion.div)`
 	background-color: var(--primaryBackground);
-	border-radius: 1.5rem;
 	padding: 0.5rem;
-
+	position: relative;
+	z-index: 2;
+`;
+const Content = styled(motion.div)<FrameProps>`
+	width: 100%;
+	height: 100%;
+	background-color: ${(props) =>
+		props.bgColor ? props.bgColor : "var(--primaryBackground)"};
+	position: relative;
+	overflow: clip;
 	${(props) => {
 		switch (props.type) {
 			case "landscape":
@@ -42,22 +60,18 @@ const Frame = styled(motion.div)<FrameProps>`
 			case "portrait":
 				return `
 					aspect-ratio: 900 / 1670;
-					width:calc(100% - var(--sitePadding));
-					
+					width:auto;
+					height:auto;
 					@media screen and (min-width: 768px) {
 						width:100%;
-						max-width:350px;
 						margin:auto;
 					}
                 `;
+			case "logo":
+				return `
+					aspect-ratio: 2/1;
+					width: 100%;
+				`;
 		}
 	}}
-`;
-const Content = styled(motion.div)`
-	border-radius: 1rem;
-	width: 100%;
-	height: 100%;
-	background-color: var(--darkestGrey);
-	position: relative;
-	overflow: clip;
 `;

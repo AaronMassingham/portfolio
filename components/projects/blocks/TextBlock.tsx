@@ -6,7 +6,10 @@ import { fadeInUpMotionVariants } from "@constants/FramerConstants";
 const TextBlock = ({ block }: Props) => {
 	//color={block.color} background={block.background}
 	return (
-		<Container>
+		<Container
+			{...fadeInUpMotionVariants}
+			viewport={{ margin: "0% 0% 10% 0%" }}
+		>
 			{block.logo && (
 				<ImageContainer>
 					<Image
@@ -18,12 +21,15 @@ const TextBlock = ({ block }: Props) => {
 					/>
 				</ImageContainer>
 			)}
-			<Content
-				{...fadeInUpMotionVariants}
-				viewport={{ margin: "0% 0% 10% 0%" }}
-				className="stack"
-				dangerouslySetInnerHTML={{ __html: `${block.content}` }}
-			/>
+			<Content className="stack">
+				{block.title && <h3>{block.title}</h3>}
+				{block.content && (
+					<div
+						className="stack"
+						dangerouslySetInnerHTML={{ __html: `${block.content}` }}
+					/>
+				)}
+			</Content>
 		</Container>
 	);
 };
@@ -31,27 +37,29 @@ const TextBlock = ({ block }: Props) => {
 type Props = {
 	block: {
 		id: number;
+		title?: string;
 		content?: string;
 		logo: string;
 	};
 };
 
-const Container = styled.div`
+const Container = styled(motion.div)`
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
 	gap: 4rem;
-	@media screen and (max-width: 768px) {
-		padding-right: 2rem;
+	width: 100%;
+	& h3 {
+		color: var(--primaryBackground);
+		font-size: var(--fs-sm);
+		padding-top: 3rem;
 	}
-
 	@media screen and (min-width: 1200px) {
 		flex-direction: row;
-		align-items: flex-start;
-		padding: var(--sitePadding);
+		align-items: center;
 	}
 `;
-const Content = styled(motion.div)`
+const Content = styled.div`
 	flex: 1;
 `;
 const ImageContainer = styled.div`

@@ -1,10 +1,17 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
+import { fadeInMotionVariants } from "@constants/FramerConstants";
 
 const BlockQuote = ({ children, title, invertColor }: Props) => {
 	return (
 		<Container className="stack" $invert={invertColor}>
 			{title}
-			<p>{children}</p>
+			<motion.p
+				{...fadeInMotionVariants}
+				viewport={{ margin: "0px 0px -300px 0px" }}
+			>
+				{children}
+			</motion.p>
 		</Container>
 	);
 };

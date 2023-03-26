@@ -1,12 +1,5 @@
 import { MotionProps } from "framer-motion";
 
-//Default Variant Titles
-const defaultMotionProps = {
-	initial: "hidden",
-	whileInView: "visible",
-	exit: "hidden",
-};
-
 // Default Transition
 const defaultTransitionValues = {
 	duration: 1,
@@ -14,6 +7,9 @@ const defaultTransitionValues = {
 };
 
 export const header: MotionProps = {
+	initial: "hidden",
+	whileInView: "visible",
+
 	variants: {
 		hidden: {
 			pathLength: 0,
@@ -22,12 +18,14 @@ export const header: MotionProps = {
 			pathLength: 1,
 		},
 	},
-	...defaultMotionProps,
+
 	transition: defaultTransitionValues,
 };
 
 //Simple default Variants
 export const fadeInMotionVariants: MotionProps = {
+	initial: "hidden",
+	whileInView: "visible",
 	variants: {
 		hidden: {
 			opacity: 0,
@@ -36,16 +34,16 @@ export const fadeInMotionVariants: MotionProps = {
 			opacity: 1,
 		},
 	},
-	...defaultMotionProps,
 	transition: defaultTransitionValues,
 };
 
 export const fadeInUpMotionVariants: MotionProps = {
+	initial: "hidden",
+	whileInView: "visible",
 	variants: {
 		hidden: { opacity: 0, y: 30 },
 		visible: { opacity: 1, y: 0 },
 	},
-	...defaultMotionProps,
 	transition: defaultTransitionValues,
 };
 
@@ -76,44 +74,37 @@ export const headingChildVariants = {
 
 //BigRibbon
 export const bigRibbonVariants = {
+	initial: "hidden",
+	whileInView: "visible",
 	variants: {
 		hidden: {
 			opacity: 0,
-			y: 200,
-			transition: {
-				duration: 1,
-				delay: 1.25,
-			},
+			y: 100,
 		},
 		visible: {
 			opacity: 1,
 			y: 0,
-			transition: {
-				duration: 1,
-				delay: 1.25,
-			},
 		},
 	},
 	viewport: {
-		margin: "0px 0px 200px 0px",
+		margin: "0px 0px 50px 0px",
 	},
-	...defaultMotionProps,
+	transition: { delay: 1.75, duration: 1, ease: "easeInOut" },
 };
 
 //ListMarquee
 export const listMarqueeVariants = {
+	initial: "hidden",
+	animate: "visible",
 	transition: {
 		staggerChildren: 20,
 	},
-	initial: "hidden",
-	animate: "visible",
-	exit: "hidden",
 };
 
 export const listMarqueeChildVariants = {
 	variants: {
 		visible: {
-			x: ["-100%", "100%"],
+			x: ["100%", "-100%"],
 			transition: {
 				x: {
 					repeat: Infinity,
@@ -126,28 +117,30 @@ export const listMarqueeChildVariants = {
 	},
 };
 
+//Loading Container
 export const loadingContainerVariants: MotionProps = {
 	variants: {
 		initial: { opacity: 1 },
 		visible: {
-			opacity: 0,
+			opacity: [1, 0],
 			transitionEnd: {
 				display: "none",
 			},
 		},
 	},
 	transition: {
-		duration: 0.25,
-		delay: 1.25,
+		duration: 0.5,
+		delay: 2,
 	},
-	initial: "hidden",
+	initial: "initial",
 	animate: "visible",
-	exit: "hidden",
 };
 
 //Persistent Rotation Variants
 
 export const rotate360Variants: MotionProps = {
+	initial: "hidden",
+	whileInView: ["rotate", "immediateAnimations"],
 	variants: {
 		hidden: {
 			opacity: 0,
@@ -164,15 +157,9 @@ export const rotate360Variants: MotionProps = {
 		immediateAnimations: {
 			opacity: 1,
 			scale: 1,
-			transition: {
-				duration: 1,
-				delay: 1.25,
-			},
+			transition: { delay: 1.25, duration: 1, ease: "easeInOut" },
 		},
 	},
-	initial: "hidden",
-	whileInView: ["rotate", "immediateAnimations"],
-	exit: "hidden",
 	viewport: {
 		margin: "20% 0% 20% 0%",
 	},
@@ -183,32 +170,30 @@ export const rotate360Variants: MotionProps = {
 export const deviceMotionVariants: MotionProps = {
 	initial: "hidden",
 	whileInView: "visible",
-	exit: "hidden",
 	variants: {
-		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round 1.5rem)" },
-		visible: { opacity: 1, clipPath: "inset(0 0% 0 0 round 1.5rem)" },
+		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round 1rem)" },
+		visible: { opacity: 1, clipPath: "inset(0 0% 0 0 round 1rem)" },
 	},
 	viewport: {
-		margin: "-10% 0% -10% 0%",
+		margin: "0% 0% -10% 0%",
 	},
-	transition: { type: "spring", duration: 1, bounce: 0, delayChildren: 0.5 },
+	transition: { duration: 1, ease: "easeInOut", delayChildren: 0.5 },
 };
 
 export const deviceMotionChildVariants: MotionProps = {
 	initial: "hidden",
 	whileInView: "visible",
-	exit: "hidden",
 	variants: {
-		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round 1.1rem)" },
+		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round .75rem)" },
 		visible: {
 			opacity: 1,
-			clipPath: "inset(0 0% 0 0 round 1.1rem)",
+			clipPath: "inset(0 0% 0 0 round .5rem)",
 		},
 	},
 	viewport: {
-		margin: "-10% 0% -10% 0%",
+		margin: "0% 0% -10% 0%",
 	},
-	transition: { type: "spring", duration: 1, bounce: 0 },
+	transition: defaultTransitionValues,
 };
 
 // onViewportEnter: () => console.log("enter"),
