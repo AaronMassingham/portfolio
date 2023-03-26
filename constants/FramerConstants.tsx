@@ -129,8 +129,8 @@ export const loadingContainerVariants: MotionProps = {
 		},
 	},
 	transition: {
-		duration: 0.5,
-		delay: 2,
+		duration: 0.25,
+		delay: 1.25,
 	},
 	initial: "initial",
 	animate: "visible",

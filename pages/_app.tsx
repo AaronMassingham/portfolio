@@ -1,12 +1,18 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { motion, AnimatePresence } from "framer-motion";
+import dynamic from "next/dynamic";
+
 //Fonts
 import { contentFont } from "@utils/Fonts";
 
 //Components
 import Layout from "@components/Layout";
-import Footer from "@components/Footer";
+//import Footer from "@components/Footer";
+
+const DynamicFooter = dynamic(() => import("@components/Footer"), {
+	loading: () => <p>Loading...</p>,
+});
 
 export default function App({ Component, pageProps, router }: AppProps) {
 	return (
@@ -25,7 +31,7 @@ export default function App({ Component, pageProps, router }: AppProps) {
 							key={router.route}
 						>
 							<Component {...pageProps} />
-							<Footer />
+							<DynamicFooter />
 						</motion.div>
 					</AnimatePresence>
 				</Layout>
