@@ -89,7 +89,7 @@ export const bigRibbonVariants = {
 	viewport: {
 		margin: "0px 0px 50px 0px",
 	},
-	transition: { delay: 1.75, duration: 1, ease: "easeInOut" },
+	transition: { delay: 1, duration: 1, ease: "easeInOut" },
 };
 
 //ListMarquee
