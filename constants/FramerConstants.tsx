@@ -104,7 +104,7 @@ export const listMarqueeVariants = {
 export const listMarqueeChildVariants = {
 	variants: {
 		visible: {
-			x: ["-100%", "100%"],
+			x: ["100%", "-100%"],
 			transition: {
 				x: {
 					repeat: Infinity,
@@ -171,8 +171,8 @@ export const deviceMotionVariants: MotionProps = {
 	initial: "hidden",
 	whileInView: "visible",
 	variants: {
-		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round 1.5rem)" },
-		visible: { opacity: 1, clipPath: "inset(0 0% 0 0 round 1.5rem)" },
+		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round 1rem)" },
+		visible: { opacity: 1, clipPath: "inset(0 0% 0 0 round 1rem)" },
 	},
 	viewport: {
 		margin: "0% 0% -10% 0%",
@@ -184,10 +184,10 @@ export const deviceMotionChildVariants: MotionProps = {
 	initial: "hidden",
 	whileInView: "visible",
 	variants: {
-		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round 1.1rem)" },
+		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round .75rem)" },
 		visible: {
 			opacity: 1,
-			clipPath: "inset(0 0% 0 0 round 1.1rem)",
+			clipPath: "inset(0 0% 0 0 round .5rem)",
 		},
 	},
 	viewport: {

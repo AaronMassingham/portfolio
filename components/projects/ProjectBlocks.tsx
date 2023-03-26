@@ -34,9 +34,6 @@ const Container = styled.div`
 		max-width: 1200px;
 		justify-content: center;
 	}
-	@media screen and (min-width: 1200px) {
-		min-height: 70vh;
-	}
 `;
 
 export default ProjectBlocks;

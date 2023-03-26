@@ -30,6 +30,7 @@ const Container = styled.section`
 	display: grid;
 	position: relative;
 	z-index: 4;
+
 	& > * {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
@@ -63,7 +64,20 @@ const StaticContent = styled.div<ContentProps>`
 			? props.$backgroundColor
 			: "var(--primaryBackground)"};
 	color: ${(props) => (props.$textColor ? props.$textColor : "var(--white)")};
-	padding: var(--headerH) var(--sitePadding) var(--headerH);
+	padding: var(--headerH) calc(var(--sitePadding) + 1rem) var(--headerH)
+		var(--sitePadding);
+	@media screen and (min-width: 600px) {
+		padding: var(--headerH) var(--sitePadding) var(--headerH)
+			calc(var(--sitePadding) + 3rem);
+	}
+	& > div:first-of-type {
+		padding-top: 0;
+		padding-bottom: 10vh;
+		@media screen and (min-width: 1200px) {
+			padding-top: 25vh;
+			padding-bottom: 25vh;
+		}
+	}
 `;
 
 export default Project;

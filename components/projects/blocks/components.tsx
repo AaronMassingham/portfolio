@@ -4,11 +4,13 @@ import React from "react";
 import ImageBlockDesktop from "@components/projects/blocks/ImageBlockDesktop";
 import ImageBlockMobile from "@components/projects/blocks/ImageBlockMobile";
 import ColorsBlock from "@components/projects/blocks/ColorsBlock";
+import LogoBlockComparison from "@components/projects/blocks/LogoBlockComparison";
 import TextBlock from "@components/projects/blocks/TextBlock";
 
 const Components: { [key: string]: React.ComponentType<any> } = {
 	imageMobile: ImageBlockMobile,
 	imageDesktop: ImageBlockDesktop,
+	logoComparison: LogoBlockComparison,
 	colors: ColorsBlock,
 	text: TextBlock,
 };

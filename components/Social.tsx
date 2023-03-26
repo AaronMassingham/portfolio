@@ -5,6 +5,7 @@ import {
 	faFacebookF,
 	faInstagram,
 	faDribbble,
+	faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
 import "@fortawesome/fontawesome-svg-core/styles.css";
 config.autoAddCss = false;
@@ -13,18 +14,33 @@ const Social = () => {
 	return (
 		<Container>
 			<li>
-				<a href="#" target="_blank" rel="noopener" aria-label="Facebook">
+				<a
+					href="https://www.linkedin.com/in/aaron-massingham-99511747/"
+					target="_blank"
+					rel="noreferrer"
+					aria-label="LinkedIn"
+				>
+					<FontAwesomeIcon icon={faLinkedinIn} />
+				</a>
+			</li>
+			<li>
+				<a
+					href="https://www.facebook.com/arnmMultimedia"
+					target="_blank"
+					rel="noreferrer"
+					aria-label="Facebook"
+				>
 					<FontAwesomeIcon icon={faFacebookF} />
 				</a>
 			</li>
 			<li>
-				<a href="#" target="_blank" rel="noopener" aria-label="Instagram">
+				<a
+					href="https://www.instagram.com/arnm_multimedia/"
+					target="_blank"
+					rel="noreferrer"
+					aria-label="Instagram"
+				>
 					<FontAwesomeIcon icon={faInstagram} />
-				</a>
-			</li>
-			<li>
-				<a href="#" target="_blank" rel="noopener" aria-label="Dribbble">
-					<FontAwesomeIcon icon={faDribbble} />
 				</a>
 			</li>
 		</Container>

@@ -5,25 +5,23 @@ import styled from "styled-components";
 import DeviceFrame from "@components/wrappers/DeviceFrame";
 import ImageCaption from "@components/ImageCaption";
 
-const ImageBlockMobile = ({ block }: Props) => {
+const LogoBlockComparison = ({ block }: Props) => {
 	const numOfItems = block.imageUrls.length;
 
 	const RenderImageOrVideo = block.imageUrls.map((block, index) => (
 		<div key={index}>
-			<DeviceFrame deviceType="portrait" elementIndex={index + 1}>
-				{block.path.includes("mp4") ? (
-					<video autoPlay muted loop>
-						<source src={`/${block.path}`} type="video/mp4" />
-					</video>
-				) : (
-					<Image
-						src={`/${block.path}`}
-						alt={block.caption}
-						placeholder="empty"
-						quality={100}
-						fill
-					/>
-				)}
+			<DeviceFrame
+				background={block.background}
+				deviceType="logo"
+				elementIndex={index + 1}
+			>
+				<Image
+					src={`/${block.path}`}
+					alt={block.caption}
+					placeholder="empty"
+					quality={100}
+					fill
+				/>
 			</DeviceFrame>
 			<ImageCaption text={block.caption} />
 		</div>
@@ -38,6 +36,7 @@ type Props = {
 		imageUrls: Array<{
 			caption: string;
 			path: string;
+			background?: string;
 		}>;
 	};
 };
@@ -55,7 +54,7 @@ const Container = styled.div<ContainerProps>`
 	margin: auto;
 	grid-template-columns: repeat(1, 1fr);
 	@media screen and (min-width: 768px) {
-		grid-template-columns: repeat(3, 1fr);
+		grid-template-columns: repeat(2, 1fr);
 	}
 	& video {
 		width: 100%;
@@ -63,4 +62,4 @@ const Container = styled.div<ContainerProps>`
 	}
 `;
 
-export default ImageBlockMobile;
+export default LogoBlockComparison;

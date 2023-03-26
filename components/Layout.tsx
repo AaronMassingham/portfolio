@@ -7,7 +7,7 @@ const Layout = ({ children }: Props) => {
 		<>
 			<LoadContainer>
 				<Logo />
-				Loading...
+				Stick with me...
 			</LoadContainer>
 			<Header />
 			{children}

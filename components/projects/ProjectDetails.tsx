@@ -69,7 +69,7 @@ const ProjectDetails = ({
 						setModalToggle={setModalToggle}
 					>
 						<div>{testimonial}</div>
-						<div>{testimonialAuthor}</div>
+						<Author>{testimonialAuthor}</Author>
 					</Modal>
 				)}
 			</AnimatePresence>
@@ -92,10 +92,13 @@ type ContentProps = {
 	$textColor?: string;
 };
 
+const Author = styled.div`
+	color: var(--green);
+	font-size: var(--fs-sm);
+`;
 const Container = styled.div`
 	position: relative;
 	height: 100%;
-	height: -webkit-fill-available;
 	pointer-events: none;
 `;
 

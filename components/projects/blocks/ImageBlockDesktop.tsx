@@ -1,8 +1,9 @@
 import Image from "next/image";
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
+//Components
 import DeviceFrame from "@components/wrappers/DeviceFrame";
+import ImageCaption from "@components/ImageCaption";
 
 const ImageBlockDesktop = ({ block }: Props) => {
 	return (
@@ -10,12 +11,13 @@ const ImageBlockDesktop = ({ block }: Props) => {
 			<DeviceFrame deviceType="landscape">
 				<Image
 					src={`/${block.imageUrl}`}
-					alt="Background Image"
+					alt={`${block.caption}`}
 					placeholder="empty"
-					quality={75}
+					quality={100}
 					fill
 				/>
 			</DeviceFrame>
+			<ImageCaption text={block.caption} />
 		</Container>
 	);
 };
@@ -24,19 +26,15 @@ type Props = {
 	block: {
 		id: number;
 		imageUrl: string;
+		caption?: string;
 	};
 };
 
-const Container = styled(motion.div)`
-	display: grid;
+const Container = styled.div`
 	width: 100%;
 	padding: 2rem 0;
-	place-items: start;
-	gap: 1rem;
-	grid-template-columns: 1fr;
-	@media screen and (min-width: 1200px) {
-		padding: var(--sitePadding);
-	}
+	max-width: 1200px;
+	margin: auto;
 `;
 
 export default ImageBlockDesktop;

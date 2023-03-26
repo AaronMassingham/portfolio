@@ -24,8 +24,11 @@ const Hero = () => {
 					I&apos;m Aaron <span aria-hidden="true">&#128075;</span>
 				</PreTitle>
 				<Heading headingLevel="h1">
-					I help create <span style={{ color: "var(--green)" }}>frontend</span>{" "}
-					experiences.
+					I Help Create
+					<br />
+					<span style={{ color: "var(--green)" }}>Visual Web Based</span>
+					<br />
+					Experiences.
 				</Heading>
 			</Headline>
 			<PromptContainer>
@@ -42,9 +45,11 @@ const Container = styled.section`
 	display: flex;
 	height: 100vh;
 
-	align-items: flex-start;
-	justify-content: flex-start;
+	display: flex;
 	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
 
 	max-width: 1200px;
 	margin: auto;
@@ -54,14 +59,8 @@ const Container = styled.section`
 const Headline = styled(motion.div)`
 	position: relative;
 	height: calc(100% - 150px);
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	@media screen and (max-width: 768px) {
-		text-align: center;
-	}
+
 	@media screen and (min-width: 768px) {
-		max-width: 50vw;
 		height: calc(100% - 250px);
 	}
 `;

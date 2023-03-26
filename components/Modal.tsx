@@ -81,7 +81,6 @@ const ModalContainer = styled(motion.div)<ModalContainerProps>`
 	& > div {
 		position: relative;
 		color: var(--white);
-		background: var(--primaryBackground);
 		border-radius: 1rem;
 		overflow: hidden;
 		height: -webkit-fill-available;
@@ -131,9 +130,7 @@ const ModalContainer = styled(motion.div)<ModalContainerProps>`
 		height: calc(100% + 5px);
 		pointer-events: none;
 		border-radius: 0 0 1rem 1rem;
-		background: ${(props) =>
-			props.$modalBackground ? props.$modalBackground : "var(--white)"};
-		opacity: 0.9;
+		background: var(--primaryBackground);
 	}
 `;
 

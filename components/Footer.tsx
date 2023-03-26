@@ -7,6 +7,7 @@ import Social from "./Social";
 
 //Fonts
 import { ShrikhandFont } from "@utils/Fonts";
+import { fadeInMotionVariants } from "@constants/FramerConstants";
 
 const Footer = () => {
 	const ref = useRef(null);
@@ -40,11 +41,11 @@ const Footer = () => {
 			>
 				<div className="stack">
 					<Heading headingLevel="h2">Reach Out</Heading>
-					<p>
+					<motion.p {...fadeInMotionVariants}>
 						I&apos;m all about working with interesting people on interesting
 						projects. Long term or short term, if you think we&apos;d make a
 						snug fit then get in touch.
-					</p>
+					</motion.p>
 				</div>
 				<Spacer ref={ref}>
 					<Details
@@ -53,12 +54,11 @@ const Footer = () => {
 						animate={isInView ? "visible" : "hidden"}
 					>
 						<div>
-							<motion.a href="mailto:hello@arnm.co.uk">
-								hello<span>@</span>arnm.co.uk
+							<motion.a href="&#109;ailto&#58;%68%6&#53;ll%6&#70;&#64;a&#114;&#110;m%2&#69;%6&#51;o&#46;uk">
+								hell&#111;<span>&#64;</span>arnm&#46;co&#46;&#117;k
 							</motion.a>
 							<div>
 								<Social />
-								<a href="tel:07920443496">07920 44 34 56</a>
 							</div>
 						</div>
 						<Copy className={`${ShrikhandFont.className}`}>&copy;2023</Copy>

@@ -3,7 +3,7 @@
         "bio": {
             "title": "About Me",
             "content":
-                "<p>I have a decade of experience in the industry behind me and I&apos;m well-versed in a variety of disciplines, but I&apos;m continuously striving to develop my skills and push my boundaries as much as possible.</p><p>I&apos;m passionate about exploring new tools to give me the best outcomes and how to express myself in a creative work environment. I&apos;m a strong believer in the power of collaboration and I&apos;m always seeking an environment that encourages open dialogue and creative problem solving. I&apos;m always eager to work with a variety of people to develop ideas and bring them to life.</p><p>In my spare time I like to get out in nature, and over the past few years have become a bit of a fungi fanatic.</p>"
+                "<p>I&apos;m a designer and jamstack developer working towards a skillset in frontend development. I&apos;ve been a designer since 2012 when I started working as part of a team of five for an agency in North Yorkshire, Wonder Media. During this time I established myself as a designer, learned a bunch and fine tuned my creative flow to accommodate for commercial projects.</p> <p>Around 2016 I took on a role as multimedia specialist at Pemco Creative, a company that specialised in corporate onboarding and eLearning for large construction companies like Morgan Sindall, Vinci Construction, and I&apos;Anson. My employment at Pemco helped me grow a broader understanding of UI design and UX principles including an interest in development. Soon enough I was converting my designs into clean, responsive front end code with other developers within the company. </p> <p>In 2019 I became a freelancer and went back to my roots, working with smaller businesses to produce clean user friendly content managed websites. This was about the same time that JavaScript grabbed hold of me and I have been building my understanding of JavaScript as a programming language ever since. My skillset now allows me to design high fidelity, wireframes, websites and UI designs then build them into scalable and performant static sites with React JS and JavaScript frameworks.</p>"
         },
         "socialMedia": [
             {
@@ -65,19 +65,40 @@
                 {
                     "id": 1,
                     "component": "text",
-                    "title": "Graft Haus",
-                    "content":"<p>Graft Haus gym in Leeds needed a more bespoke website solution after their pre-bought theme became too limiting for the design styles they were going for. I created a new Wordpress theme from scratch, utilising my favourite plugin Advanced Custom Fields, which would give the client more control over adding content without the need for understanding design principles through the wysiwyg editor. The new site, which was designed and built in 2020 is fully responsive and sits neatly within the Graft Haus brand.</p><p>This was one of the last SSR websites that I built before looking more seriously into JavaScript and React. Although the client is currently very pleased with the website, I&apos;m hoping to get the opportunity to rebuild the frontend with Next JS and use WordPress as a headless CMS in the future to improve performance and security.</p>",
+                    
+                    "content":"<p>The guys over at Graft Haus gym in Leeds had pushed their off-the-shelf WordPress template website to the limit and needed something more bespoke to their needs. The old site was starting to show some display issues and the endless ream of plugins was beginning to cause some security concerns.</p><p>Tony handed the reigns over to me and I spend some time reviewing what aspects and functionality the current site had that was of value, plus new features could be useful going forward. Once a comprehensive list was made, I got to work producing wireframes and designs for their review. We had a couple of meetings to discuss any alterations and I moved swiftly on to the development phase. The new site (launched in 2020) is fully responsive and utilises Advanced Custom Fields to give the team more granular control over their content without worrying about fiddling around with display issues.</p>",
                     "logo": "portfolio/grafthaus/logo.svg"
                 },
                 {
                     "id": 2,
                     "component": "imageMobile",
-                    "imageUrls":["portfolio/grafthaus/home.webp", "portfolio/grafthaus/grafthausnav_optimised.mp4", "portfolio/grafthaus/membership.webp"]
+                    "imageUrls":[
+                        {
+                            "path": "portfolio/grafthaus/home_m.webp",
+                            "caption":"M - Homepage Hero"
+                        }, 
+                        {
+                            "path": "portfolio/grafthaus/nav_m_vid.mp4",
+                            "caption":"M - Nav Behaviour"
+                        },
+                        {
+                            "path": "portfolio/grafthaus/membership_m.webp",
+                            "caption":"M - Membership Component"
+                        }
+                    ]
                 },
+                
                 {
                     "id": 3,
                     "component": "imageDesktop",
-                    "imageUrl":"portfolio/grafthaus/membership.webp"
+                    "imageUrl":"portfolio/grafthaus/reviews_d.webp",
+                    "caption":"D - Reviews Component"
+                },
+                {
+                    "id": 4,
+                    "component": "imageDesktop",
+                    "imageUrl":"portfolio/grafthaus/trainers_d.webp",
+                    "caption":"D - Personal Trainers"
                 }
                
             ]
@@ -101,15 +122,105 @@
                 {
                     "id": 1,
                     "component": "text",
-                    "title": "Vitfor",
-                    "content":"<p>Vitfor were in the process of planning a complete redesign and rebuild of their web app and site in the latest web technologies when they brought me on board to assist with the design aspect of the project. Throughout the initial stages I collaborated with other members of the team and reviewed market research to help me produce user flow sheets, wireframes and design sprints. Mapping every aspect of the design ready for handover to the dev team taught me a great deal about the value of exhaustive planning before executing a project of this scale.</p><p>Overall I modernised the Vitfor logo, established a new colour scheme, designed the UI for the web app, then designed and built the point-of-sale website using the same tech stack as the web app so that everything sat nicely within the project ecosystem. This was my first major leap from Gatsby JS to Next JS and also a first for me working with TypeScript, Chakra UI and Styled-components. One library I did bring to the table was Framer Motion, which I used to implement page transitions as well as scroll-based and SVG animations for a more fluid UX.</p><p>This was my first time working on such an extensive project and collaborating with a team as a freelancer, meaning this has easily become one of the most fulfilling projects I&apos;ve ever worked on. I look forward to lending my hand with further development on this project in the future.</p>",
+                    "content":"<p>Vitfor were planning a complete redesign and rebuild of their web app and site when they brought me on board to assist with the design aspect of the project.</p><p>This was my first time working on such an extensive project and collaborating with a team as a freelancer, and has easily become one of the most fulfilling projects I&apos;ve ever worked on. I look forward to lending my hand with further development on this project in the future.</p>",
                     "logo": "portfolio/vitfor/logo.svg"
                 },
                 {
-                    "id": 2,
+                    "id": 100,
+                    "component": "text",
+                    "title": "The Logo"
+                },
+                {
+                    "id": 101,
+                    "component": "logoComparison",
+                    "imageUrls":[
+                        {
+                            "path": "portfolio/vitfor/logo/logo_old.svg",
+                            "caption":"Old",
+                            "background":"#FFFFFF"
+                        }, 
+                        {
+                            "path": "portfolio/vitfor/logo/logo_new.svg",
+                            "caption":"Modernised"
+                        }
+                    ]
+                },
+                {
+                    "id": 200,
+                    "component": "text",
+                    "title": "The App"
+                },
+
+                {
+                    "id": 201,
                     "component": "imageMobile",
-                    "imageUrls":["vercel.svg", "next.svg"]
+                    "imageUrls":[
+                        {
+                            "path": "portfolio/vitfor/app/dashboard_m.webp",
+                            "caption":"M - Dashboard"
+                        }, 
+                        {
+                            "path": "portfolio/vitfor/app/trainingweek_m.webp",
+                            "caption":"M - Training Week"
+                        },
+                        {
+                            "path": "portfolio/vitfor/app/program_m.webp",
+                            "caption":"M - Program"
+                        }
+                    ]
                     
+                },
+
+                {
+                    "id": 202,
+                    "component": "imageDesktop",
+                    "imageUrl":"portfolio/vitfor/app/trainingavailability_d.webp",
+                    "caption":"D - Training Availability"
+                },
+
+                {
+                    "id": 203,
+                    "component": "imageDesktop",
+                    "imageUrl":"portfolio/vitfor/app/seshfeedback_d.webp",
+                    "caption":"D - Session Feedback"
+                },
+
+                {
+                    "id": 300,
+                    "component": "text",
+                    "title": "The Website"
+                },
+                {
+                    "id": 301,
+                    "component": "imageMobile",
+                    "imageUrls":[
+                        {
+                            "path": "portfolio/vitfor/home_m.webp",
+                            "caption":"M - Hero Component"
+                        }, 
+                        {
+                            "path": "portfolio/vitfor/nav_m.webp",
+                            "caption":"M - Nav Component"
+                        },
+                        {
+                            "path": "portfolio/vitfor/faq_m.webp",
+                            "caption":"M - FAQ Component"
+                        }
+                    ]
+                    
+                },
+                {
+                    "id": 302,
+                    "component": "imageDesktop",
+                    "imageUrl":"portfolio/vitfor/home_d.webp",
+                    "caption":"D - Hero Component"
+                },
+
+                {
+                    "id": 303,
+                    "component": "imageDesktop",
+                    "imageUrl":"portfolio/vitfor/prices_d.webp",
+                    "caption":"D - Pricing Page"
                 }
             ]
         },
@@ -117,7 +228,7 @@
             "id": 3,
             "projectTitle": "Wayne Anthony",
             "link": "https://www.wayneanthonys.co.uk",
-            "testimonial": "Yeah ZEN MATE",
+            "testimonial": "My old website was looking a bit ratty and something had happened to my WordPress which broke it completely at one point, leaving me without a site at all. Aaron helped where he could with the issue and eventually managed to get it back online for me. He suggested that I separated the website from WordPress to stop issues like this happening in the future and I decided to go for a full rebuild because the old site was getting pretty old. I already knew that Aaron had what it takes to help me out because he'd worked with me on a couple of other side projects in the past, so I knew I could trust his judgement. Aaron worked his butt off and didn't disappoint! The new website is far better than my old one and it fits nicely with the style of my barbershop. I'd highly recommend him to anyone when it comes to any design work. Great lad!",
             "testimonialAuthor": "Wayne",
             "services": ["Web design", "Web development", "WordPress CMS"],
             "tech": [
@@ -133,14 +244,26 @@
                 {
                     "id": 1,
                     "component": "text",
-                    "title": "Wayne Anthony&apos;s Barbershop",
-                    "content":"<p>Wayne Anthony is a entrepreneur and close friend of mine who I&apos;ve worked with on a few occasions in the past on small web projects. Wayne likes cheap and cheerful but I always try to go above and beyond for him as I love his passion for ideas and his aesthetic. I generally use these little projects as opportunities to grow my tech stack or experiment with my own ideas; generally Wayne is all for it, so long as I don&apos;t break the bank!</p><p>Wayne&apos;s barbershop website had been live almost as long as I&apos;d been working in the creative industry; that should give you an idea of just how old his website was. The website was just another heavily bloated, off-the-shelf theme with lighthouse scores that made my eyes water. I had some discussion with Wayne about my ideas before making a start. The website was designed and signed off within a week and I got to work building the website in Gatsby JS and hooking up his WordPress as a headless CMS. The result is a website with a premium feel that performs well and even has shopping cart functionality (SnipCart JS). Not bad for a £1200 budget.</p>",
+                    "content":"<p>Wayne&apos;s barbershop website had been live almost as long as I&apos;d been working in the creative industry. The website was just another heavily bloated, off-the-shelf theme with lighthouse scores that made my eyes water. Wayne prides himself on offering an exclusive experience to his clients and wanted to achieve a similar feel to his website. Within the modest budget I'd been given, I went above an beyond to bring that vibe to his online presence, adding quriks and visual appeal where I could without deterring from it's main purpose.</p>",
                     "logo": "portfolio/wayneanthony/logo.svg"
                 },
                 {
-                    "id": 2,
-                    "component": "imageMobile",
-                    "imageUrls":["vercel.svg", "next.svg"]
+                    "id": 4,
+                    "component": "imageDesktop",
+                    "imageUrl":"portfolio/wayneanthony/cutsandshaves_d.webp",
+                    "caption":"D - Cuts & Shaves Page"
+                },
+                {
+                    "id": 5,
+                    "component": "imageDesktop",
+                    "imageUrl":"portfolio/wayneanthony/shop_d.webp",
+                    "caption":"D - Shop Page"
+                },
+                {
+                    "id": 5,
+                    "component": "imageDesktop",
+                    "imageUrl":"portfolio/wayneanthony/experience_d.webp",
+                    "caption":"D - Poker Nights Component"
                 }
             ]
         }
