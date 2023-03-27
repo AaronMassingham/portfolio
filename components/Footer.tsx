@@ -10,6 +10,7 @@ import { ShrikhandFont } from "@utils/Fonts";
 
 //Framer Consts
 import { fadeInMotionVariants } from "@constants/FramerConstants";
+import Logo from "./Logo";
 
 const Footer = () => {
 	const ref = useRef(null);
@@ -56,13 +57,17 @@ const Footer = () => {
 						animate={isInView ? "visible" : "hidden"}
 					>
 						<div>
-							<motion.a href="&#109;ailto&#58;%68%6&#53;ll%6&#70;&#64;a&#114;&#110;m%2&#69;%6&#51;o&#46;uk">
+							<motion.a
+								href="&#109;ailto&#58;%68%6&#53;ll%6&#70;&#64;a&#114;&#110;m%2&#69;%6&#51;o&#46;uk"
+								aria-label="Email Me"
+							>
 								hell&#111;<span>&#64;</span>arnm&#46;co&#46;&#117;k
 							</motion.a>
 							<div>
 								<Social />
 							</div>
 						</div>
+
 						<Copy className={`${ShrikhandFont.className}`}>&copy;2023</Copy>
 					</Details>
 				</Spacer>
@@ -70,7 +75,6 @@ const Footer = () => {
 		</>
 	);
 };
-
 const Container = styled(motion.section)`
 	max-width: 1200px;
 	margin: auto;
@@ -79,6 +83,7 @@ const Container = styled(motion.section)`
 	& > div {
 		display: flex;
 		height: 50vh;
+		height: 50dvh;
 		align-items: start;
 		flex-direction: column;
 		&:first-of-type {
@@ -110,7 +115,7 @@ const Copy = styled.div`
 
 const Details = styled(motion.div)`
 	gap: 2rem;
-	padding-top: 2rem;
+	padding-top: 4rem;
 	background-color: var(--green);
 	color: var(--primaryBackground);
 	box-shadow: 0 0 0 100vmax var(--green);

@@ -41,7 +41,7 @@ export const fadeInUpMotionVariants: MotionProps = {
 	initial: "hidden",
 	whileInView: "visible",
 	variants: {
-		hidden: { opacity: 0.1, y: 30 },
+		hidden: { opacity: 0, y: 30 },
 		visible: { opacity: 1, y: 0 },
 	},
 	transition: defaultTransitionValues,
@@ -184,16 +184,15 @@ export const deviceMotionChildVariants: MotionProps = {
 	initial: "hidden",
 	whileInView: "visible",
 	variants: {
-		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round .75rem)" },
+		hidden: { opacity: 0 },
 		visible: {
 			opacity: 1,
-			clipPath: "inset(0 0% 0 0 round .5rem)",
 		},
 	},
 	viewport: {
 		margin: "0% 0% -10% 0%",
 	},
-	transition: defaultTransitionValues,
+	transition: { duration: 0.75, ease: "easeInOut", delay: 1 },
 };
 
 // onViewportEnter: () => console.log("enter"),

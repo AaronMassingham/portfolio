@@ -7,13 +7,15 @@ import {
 	listMarqueeChildVariants,
 } from "@constants/FramerConstants";
 
-const ListMarquee = ({ content }: ContentProps) => {
+const ListMarquee = ({ content, borderColor }: ContentProps) => {
 	const mappedData = content.map((item, index) => (
-		<Text key={index}>{item}</Text>
+		<Text $color={borderColor} key={index}>
+			{item}
+		</Text>
 	));
 
 	return (
-		<Marquee {...listMarqueeVariants}>
+		<Marquee $color={borderColor} {...listMarqueeVariants}>
 			<Track {...listMarqueeChildVariants}>{mappedData}</Track>
 			<Track aria-hidden="true" {...listMarqueeChildVariants}>
 				{mappedData}
@@ -24,20 +26,24 @@ const ListMarquee = ({ content }: ContentProps) => {
 
 type ContentProps = {
 	content: string[];
+	borderColor?: string;
 };
 
-const Text = styled(motion.div)`
+type SetColors = {
+	$color?: string;
+};
+
+const Text = styled(motion.div)<SetColors>`
 	padding: 0 1rem;
-	opacity: 0.5;
 	font-weight: 200;
+	color: ${(props) => (props.$color ? props.$color : "var(--white)")};
 `;
 
-const Marquee = styled(motion.div)`
+const Marquee = styled(motion.div)<SetColors>`
 	position: relative;
 	width: 175px;
 	overflow: clip;
 	background-color: var(--primaryBackground);
-	color: var(--white);
 	text-transform: uppercase;
 	border-radius: 100px;
 	height: 2rem;
@@ -45,6 +51,7 @@ const Marquee = styled(motion.div)`
 	align-items: center;
 	font-size: 0.9rem;
 	font-weight: 200;
+	border: 2px solid ${(props) => (props.$color ? props.$color : "unset")};
 	@media screen and (min-width: 400px) {
 		width: 250px;
 	}

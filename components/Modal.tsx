@@ -68,8 +68,7 @@ type ModalContainerProps = {
 
 const ModalContainer = styled(motion.div)<ModalContainerProps>`
 	position: fixed;
-	z-index: 0;
-	backdrop-filter: blur(5px);
+	z-index: 5;
 	top: 0;
 	left: 0;
 	bottom: 0;
@@ -81,7 +80,6 @@ const ModalContainer = styled(motion.div)<ModalContainerProps>`
 	& > div {
 		position: relative;
 		color: var(--white);
-		border-radius: 1rem;
 		overflow: hidden;
 		height: -webkit-fill-available;
 		@media screen and (min-width: 768px) {
@@ -130,7 +128,7 @@ const ModalContainer = styled(motion.div)<ModalContainerProps>`
 		height: calc(100% + 5px);
 		pointer-events: none;
 		border-radius: 0 0 1rem 1rem;
-		background: var(--primaryBackground);
+		background-color: var(--primaryBackground);
 	}
 `;
 

@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 //Components
-// import Modal from "@components/Modal";
+import Modal from "@components/Modal";
 import TextMarquee from "@components/ListMarquee";
 import DefaultButton from "@components/DefaultButton";
 
@@ -22,7 +22,6 @@ const ProjectDetails = ({
 	projectTitle,
 	services,
 	link,
-	color,
 	background,
 }: Props) => {
 	const [modalToggle, setModalToggle] = useState(false);
@@ -34,7 +33,6 @@ const ProjectDetails = ({
 					<HeadingStyle
 						{...fadeInUpMotionVariants}
 						viewport={{ margin: "0% 0% -80% 0%" }}
-						$textColor={color}
 					>
 						<h2>
 							{link ? (
@@ -56,15 +54,16 @@ const ProjectDetails = ({
 							<DefaultButton
 								onClick={() => setModalToggle((current) => !current)}
 								buttonText="Testimonial"
+								borderColor={background}
 							/>
 						)}
-						<TextMarquee content={services} />
+						<TextMarquee borderColor={background} content={services} />
 					</List>
 				</Content>
 			</Container>
 			<AnimatePresence mode="wait">
 				{modalToggle && (
-					<DynamicModal
+					<Modal
 						children2={
 							<DefaultButton
 								onClick={() => setModalToggle((current) => !current)}
@@ -76,7 +75,7 @@ const ProjectDetails = ({
 					>
 						<div>{testimonial}</div>
 						<Author>{testimonialAuthor}</Author>
-					</DynamicModal>
+					</Modal>
 				)}
 			</AnimatePresence>
 		</>
@@ -90,12 +89,7 @@ type Props = {
 	testimonialAuthor: string;
 	services: Array<string>;
 	link: string;
-	color?: string;
 	background?: string;
-};
-
-type ContentProps = {
-	$textColor?: string;
 };
 
 const Author = styled.div`
@@ -108,7 +102,7 @@ const Container = styled.div`
 	pointer-events: none;
 `;
 
-const HeadingStyle = styled(motion.div)<ContentProps>`
+const HeadingStyle = styled(motion.div)`
 		position: absolute;
 		top: 0;
 		left: 0;
@@ -123,7 +117,7 @@ const HeadingStyle = styled(motion.div)<ContentProps>`
 		}
 
 		& h2 {
-				color: ${(props) => (props.$textColor ? props.$textColor : "var(--white)")};
+				color: var(--primaryBackground);
 				font-size:var(--fs-md)
 			}
 		}
@@ -138,9 +132,6 @@ const Content = styled.div`
 	> * {
 		pointer-events: visible;
 	}
-	& button {
-		color: var(--white);
-	}
 `;
 
 const List = styled(motion.div)`
@@ -151,6 +142,9 @@ const List = styled(motion.div)`
 	display: flex;
 	flex-direction: row;
 	justify-content: space-between;
+	& > div {
+		margin-left: auto;
+	}
 `;
 
 export default ProjectDetails;

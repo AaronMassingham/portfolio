@@ -6,7 +6,7 @@ const ImageCaption = ({ text }: Props) => {
 	return (
 		<Container
 			initial={{ opacity: 0, y: -50 }}
-			whileInView={{ opacity: 0.5, y: 0 }}
+			whileInView={{ opacity: 1, y: 0 }}
 			transition={{ duration: 1, delay: 1 }}
 		>
 			{text}

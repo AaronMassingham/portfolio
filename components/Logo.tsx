@@ -38,7 +38,7 @@ const childVariants = {
 const Logo = () => {
 	return (
 		<Container variants={variants} initial="hidden" animate="visible">
-			<Link href="/" scroll={false}>
+			<Link href="/" scroll={false} aria-label="Link to homepage">
 				<Svg viewBox="0 0 60 60">
 					<circle cx="30" cy="30" r="30" />
 					<motion.path
