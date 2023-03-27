@@ -53,7 +53,7 @@ const Index: NextPage = () => {
 						testimonialAuthor: string;
 						projectTitle: string;
 						services: string[];
-						color: string;
+
 						background: string;
 					},
 					index: number
@@ -61,7 +61,6 @@ const Index: NextPage = () => {
 					<Project
 						key={item.id}
 						staticChildren={<ProjectBlocks data={item.details} />}
-						color={item.color}
 						background={item.background}
 					>
 						<ProjectDetails
@@ -71,7 +70,6 @@ const Index: NextPage = () => {
 							testimonialAuthor={item.testimonialAuthor}
 							projectTitle={item.projectTitle}
 							services={item.services}
-							color={item.color}
 							background={item.background}
 						/>
 					</Project>

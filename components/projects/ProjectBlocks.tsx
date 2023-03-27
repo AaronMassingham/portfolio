@@ -2,11 +2,16 @@ import styled from "styled-components";
 
 //Components
 import Components from "./blocks/components";
+import useMediaQuery from "@lib/useMediaQuery";
 
 const ProjectBlocks = ({ data }: Props) => {
-	const mappedData = data.map((block) => (
-		<Container key={block.id}>{Components(block)}</Container>
-	));
+	const isMobile = useMediaQuery();
+
+	const mappedData = data.map((block) =>
+		isMobile && block.component === "imageDesktop" ? null : (
+			<Container key={block.id}>{Components(block)}</Container>
+		)
+	);
 	return <>{mappedData}</>;
 };
 

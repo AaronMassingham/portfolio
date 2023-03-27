@@ -10,6 +10,7 @@ import { ShrikhandFont } from "@utils/Fonts";
 
 //Framer Consts
 import { fadeInMotionVariants } from "@constants/FramerConstants";
+import Logo from "./Logo";
 
 const Footer = () => {
 	const ref = useRef(null);
@@ -66,6 +67,7 @@ const Footer = () => {
 								<Social />
 							</div>
 						</div>
+
 						<Copy className={`${ShrikhandFont.className}`}>&copy;2023</Copy>
 					</Details>
 				</Spacer>
@@ -73,7 +75,6 @@ const Footer = () => {
 		</>
 	);
 };
-
 const Container = styled(motion.section)`
 	max-width: 1200px;
 	margin: auto;
@@ -82,6 +83,7 @@ const Container = styled(motion.section)`
 	& > div {
 		display: flex;
 		height: 50vh;
+		height: 50dvh;
 		align-items: start;
 		flex-direction: column;
 		&:first-of-type {

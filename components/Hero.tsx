@@ -4,7 +4,6 @@ import { motion } from "framer-motion";
 //Components
 import ScrollPrompt from "@components/ScrollPrompt";
 import WorkCircle from "@components/wrappers/RotatingBadge";
-import Heading from "@components/Heading";
 import BigRibbon from "@components/BigRibbon";
 
 const Hero = () => {
@@ -20,13 +19,13 @@ const Hero = () => {
 				<PreTitle>
 					I&apos;m Aaron <span aria-hidden="true">&#128075;</span>
 				</PreTitle>
-				<Heading headingLevel="h1">
+				<h1>
 					I Help Create
 					<br />
 					<span style={{ color: "var(--green)" }}>Visual Web Based</span>
 					<br />
 					Experiences.
-				</Heading>
+				</h1>
 			</Headline>
 			<PromptContainer>
 				<WorkCircle>
@@ -41,24 +40,39 @@ const Hero = () => {
 const Container = styled.section`
 	display: flex;
 	height: 100vh;
-
+	height: 100svh;
+	width: 100%;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	justify-content: center;
 	text-align: center;
-
+	gap: 4rem;
 	max-width: 1200px;
 	margin: auto;
-	padding: var(--headerH) var(--sitePadding) 7rem var(--sitePadding);
+	@media screen and (max-width: 768px) {
+		padding: calc(var(--headerH) + 2rem) var(--sitePadding) 0 var(--sitePadding);
+	}
+	@media screen and (min-width: 768px) {
+		gap: 4rem;
+	}
+	@media screen and (min-width: 1200px) {
+		gap: 6rem;
+	}
 `;
 
 const Headline = styled(motion.div)`
 	position: relative;
-	height: calc(100% - 150px);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
 
-	@media screen and (min-width: 768px) {
-		height: calc(100% - 250px);
+	& h1 {
+		font-size: var(--fs-xl);
+		@media screen and (min-width: 400px) {
+			font-size: var(--fs-xlDisplay);
+		}
 	}
 `;
 
@@ -73,18 +87,15 @@ const PreTitle = styled.div`
 		-webkit-filter: grayscale(100%);
 		filter: grayscale(100%);
 	}
+	@media screen and (min-width: 768px) {
+		font-size: var(--fs-md);
+	}
 `;
 
 const PromptContainer = styled.div`
-	position: absolute;
-	left: 0;
-	bottom: 7rem;
 	width: 100%;
 	display: grid;
 	place-items: center;
-	@media screen and (min-width: 768px) {
-		bottom: 7rem;
-	}
 `;
 
 export default Hero;

@@ -49,6 +49,7 @@ const Content = styled(motion.div)<FrameProps>`
 	background-color: ${(props) =>
 		props.$bgColor ? props.$bgColor : "var(--primaryBackground)"};
 	position: relative;
+	clip-path: inset(0 0% 0 0 round 0.5rem);
 	overflow: clip;
 	${(props) => {
 		switch (props.type) {

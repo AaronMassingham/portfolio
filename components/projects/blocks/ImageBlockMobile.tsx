@@ -23,7 +23,7 @@ const ImageBlockMobile = ({ block }: Props) => {
 						quality={100}
 						fill
 						sizes="
-						50vw,
+						50vw
 						(min-width: 768px) 33vw"
 					/>
 				)}

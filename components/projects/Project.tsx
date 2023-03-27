@@ -1,11 +1,10 @@
 import styled from "styled-components";
 
-const Project = ({ children, staticChildren, color, background }: Props) => {
+const Project = ({ children, staticChildren, background }: Props) => {
 	return (
 		<Container>
 			<Sticky>{children}</Sticky>
-
-			<StaticContent $textColor={color} $backgroundColor={background}>
+			<StaticContent $backgroundColor={background}>
 				{staticChildren}
 			</StaticContent>
 		</Container>
@@ -15,12 +14,10 @@ const Project = ({ children, staticChildren, color, background }: Props) => {
 type Props = {
 	children: React.ReactNode;
 	staticChildren: React.ReactNode;
-	color: string;
 	background: string;
 };
 
 type ContentProps = {
-	$textColor?: string;
 	$backgroundColor?: string;
 };
 
@@ -29,7 +26,6 @@ const Container = styled.section`
 	display: grid;
 	position: relative;
 	z-index: 4;
-
 	& > * {
 		grid-column: 1 / -1;
 		grid-row: 1 / -1;
@@ -42,10 +38,10 @@ const Sticky = styled.div`
 	position: sticky;
 	top: 0;
 	z-index: 3;
-	padding: var(--headerH) var(--sitePadding) 2rem;
+	padding: var(--headerH) var(--sitePadding) 1rem;
 	pointer-events: none;
 	@media screen and (min-width: 768px) {
-		padding: var(--headerH) 2rem 2rem;
+		padding: var(--headerH) 2rem 1rem;
 	}
 `;
 
@@ -54,7 +50,6 @@ const StaticContent = styled.div<ContentProps>`
 	justify-content: center;
 	align-items: center;
 	width: 100%;
-
 	flex-direction: column;
 	justify-content: center;
 	gap: 5vh;
@@ -62,7 +57,7 @@ const StaticContent = styled.div<ContentProps>`
 		props.$backgroundColor
 			? props.$backgroundColor
 			: "var(--primaryBackground)"};
-	color: ${(props) => (props.$textColor ? props.$textColor : "var(--white)")};
+	color: var(--primaryBackground);
 	padding: var(--headerH) calc(var(--sitePadding) + 1rem) var(--headerH)
 		var(--sitePadding);
 	@media screen and (min-width: 600px) {
