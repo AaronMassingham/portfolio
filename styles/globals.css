@@ -89,6 +89,7 @@ h5 {
 	color: var(--white);
 	font-weight: 200;
 	text-transform: uppercase;
+	font-family: var(--contentFont);
 }
 
 h1,
