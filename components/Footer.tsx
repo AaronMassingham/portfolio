@@ -7,6 +7,8 @@ import Social from "./Social";
 
 //Fonts
 import { ShrikhandFont } from "@utils/Fonts";
+
+//Framer Consts
 import { fadeInMotionVariants } from "@constants/FramerConstants";
 
 const Footer = () => {

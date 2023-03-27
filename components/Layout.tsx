@@ -5,8 +5,12 @@ import LoadContainer from "./wrappers/LoadContainer";
 import Logo from "./Logo";
 
 //DynamicComponents
-const DynamicFooter = dynamic(() => import("@components/Footer"));
-const DynamicHeader = dynamic(() => import("@components/Header"));
+const DynamicFooter = dynamic(() => import("@components/Footer"), {
+	ssr: false,
+});
+const DynamicHeader = dynamic(() => import("@components/Header"), {
+	ssr: false,
+});
 
 const Layout = ({ children }: Props) => {
 	return (
