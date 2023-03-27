@@ -4,7 +4,6 @@ import { AnimatePresence, motion } from "framer-motion";
 import dynamic from "next/dynamic";
 
 //Components
-import Modal from "@components/Modal";
 import TextMarquee from "@components/ListMarquee";
 import DefaultButton from "@components/DefaultButton";
 
@@ -63,7 +62,7 @@ const ProjectDetails = ({
 			</Container>
 			<AnimatePresence mode="wait">
 				{modalToggle && (
-					<Modal
+					<DynamicModal
 						children2={
 							<DefaultButton
 								onClick={() => setModalToggle((current) => !current)}
@@ -75,7 +74,7 @@ const ProjectDetails = ({
 					>
 						<div>{testimonial}</div>
 						<Author>{testimonialAuthor}</Author>
-					</Modal>
+					</DynamicModal>
 				)}
 			</AnimatePresence>
 		</>

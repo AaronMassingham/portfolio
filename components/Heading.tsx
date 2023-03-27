@@ -16,7 +16,7 @@ const Heading = ({ headingLevel = "h1", children }: HeadingProps) => {
 		<Container ref={ref}>
 			<motion.span
 				{...headingChildVariants}
-				animate={isInView ? "animate" : "hidden"}
+				animate={isInView ? "visible" : "hidden"}
 				initial={{ opacity: 0 }}
 				exit={{ opacity: 0 }}
 			>
