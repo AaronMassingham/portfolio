@@ -61,7 +61,6 @@ html {
 html,
 body {
 	overflow-x: clip;
-
 	/* overscroll-behavior: none; */
 }
 
