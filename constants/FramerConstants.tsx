@@ -41,7 +41,7 @@ export const fadeInUpMotionVariants: MotionProps = {
 	initial: "hidden",
 	whileInView: "visible",
 	variants: {
-		hidden: { opacity: 0.1, y: 30 },
+		hidden: { opacity: 0, y: 30 },
 		visible: { opacity: 1, y: 0 },
 	},
 	transition: defaultTransitionValues,
