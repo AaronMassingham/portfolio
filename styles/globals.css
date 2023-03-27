@@ -69,7 +69,6 @@ body {
 	font-weight: 400;
 	min-height: 100vh;
 	font-size: 16px;
-	font-family: var(--contentFont);
 }
 body,
 section {
@@ -89,7 +88,6 @@ h5 {
 	color: var(--white);
 	font-weight: 200;
 	text-transform: uppercase;
-	font-family: var(--contentFont);
 }
 
 h1,
