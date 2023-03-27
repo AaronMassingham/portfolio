@@ -7,10 +7,12 @@ export default function Document() {
 	return (
 		<Html lang="en">
 			<Head />
-			<body className={contentFont.className}>
+			<body className={contentFont.variable}>
 				<Main />
 				<NextScript />
 			</body>
 		</Html>
 	);
 }
+
+//className={contentFont.className}
