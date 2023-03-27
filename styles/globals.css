@@ -13,7 +13,6 @@
 	--primaryBackground: #161615;
 	--green: #5edba0;
 	--white: #e9e4ea;
-
 	--gradient: linear-gradient(
 		0deg,
 		rgba(22, 22, 21, 1) 10%,
@@ -48,7 +47,6 @@
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
-	/* outline: 1px solid orange; */
 }
 
 .noOverflow {
@@ -61,7 +59,6 @@ html {
 html,
 body {
 	overflow-x: clip;
-	/* overscroll-behavior: none; */
 }
 
 body {
@@ -106,12 +103,6 @@ p {
 	color: var(--primaryBackground);
 	text-shadow: 1px 1px 0 var(--white), 2px 2px 0px var(--white);
 	-webkit-text-stroke: calc(var(--borderWidth)) var(--white);
-}
-.strokedDarkBg {
-	color: var(--white);
-	text-shadow: 1px 1px 0 var(--primaryBackground),
-		2px 2px 0px var(--primaryBackground);
-	-webkit-text-stroke: 1px var(--primaryBackground);
 }
 
 h1 {
