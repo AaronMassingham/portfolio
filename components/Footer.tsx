@@ -115,7 +115,7 @@ const Copy = styled.div`
 
 const Details = styled(motion.div)`
 	gap: 2rem;
-	padding-top: 2rem;
+	padding-top: 4rem;
 	background-color: var(--green);
 	color: var(--primaryBackground);
 	box-shadow: 0 0 0 100vmax var(--green);

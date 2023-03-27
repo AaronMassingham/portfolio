@@ -22,9 +22,7 @@ const ImageBlockMobile = ({ block }: Props) => {
 						placeholder="empty"
 						quality={100}
 						fill
-						sizes="
-						50vw
-						(min-width: 768px) 33vw"
+						sizes="(max-width: 768px) 50vw, 33vw"
 					/>
 				)}
 			</DeviceFrame>
