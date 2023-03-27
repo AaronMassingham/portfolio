@@ -1,4 +1,3 @@
-import Link from "next/link";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 
@@ -9,17 +8,13 @@ import Social from "@components/Social";
 const Header = () => {
 	return (
 		<Container
-			initial={{ y: -30, opacity: 0.1 }}
-			animate={{ y: 0, opacity: 1 }}
+			initial={{ opacity: 0.1 }}
+			animate={{ opacity: 1 }}
 			transition={{ duration: 1, delay: 1, ease: "easeInOut" }}
 		>
 			<Logo />
 			<Social />
-			<HireMe>
-				<Link scroll={false} href="hire">
-					Hire Me
-				</Link>
-			</HireMe>
+			<HireMe>Hire Me</HireMe>
 		</Container>
 	);
 };

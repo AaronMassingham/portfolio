@@ -2,16 +2,16 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 //Framer Motion Variants
-import { fadeInUpMotionVariants } from "@constants/FramerConstants";
+import { fadeInMotionVariants } from "@constants/FramerConstants";
 
 const Table = ({ data }: Props) => {
 	const viewportOptions = { margin: "-20% 0% -350px 0%" };
 
 	return (
-		<Container {...fadeInUpMotionVariants} viewport={viewportOptions}>
-			<motion.h5>
+		<Container {...fadeInMotionVariants} viewport={viewportOptions}>
+			<h5>
 				<span>{data.title}</span>
-			</motion.h5>
+			</h5>
 			<ul>
 				{data.list.map((item, index) => (
 					<li key={index}>{item}</li>

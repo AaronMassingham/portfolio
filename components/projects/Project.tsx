@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { motion } from "framer-motion";
 
 const Project = ({ children, staticChildren, color, background }: Props) => {
 	return (
@@ -37,7 +36,7 @@ const Container = styled.section`
 	}
 `;
 
-const Sticky = styled(motion.div)`
+const Sticky = styled.div`
 	width: 100%;
 	height: 100vh;
 	position: sticky;

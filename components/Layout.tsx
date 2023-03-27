@@ -1,6 +1,12 @@
-import Header from "@components/Header";
+import dynamic from "next/dynamic";
+
+//Components
 import LoadContainer from "./wrappers/LoadContainer";
 import Logo from "./Logo";
+
+//DynamicComponents
+const DynamicFooter = dynamic(() => import("@components/Footer"));
+const DynamicHeader = dynamic(() => import("@components/Header"));
 
 const Layout = ({ children }: Props) => {
 	return (
@@ -9,8 +15,9 @@ const Layout = ({ children }: Props) => {
 				<Logo />
 				Stick with me...
 			</LoadContainer>
-			<Header />
+			<DynamicHeader />
 			{children}
+			<DynamicFooter />
 		</>
 	);
 };
