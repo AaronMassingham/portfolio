@@ -1,12 +1,10 @@
 import styled from "styled-components";
-import { config } from "@fortawesome/fontawesome-svg-core";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
 	faFacebookF,
 	faInstagram,
 	faLinkedinIn,
 } from "@fortawesome/free-brands-svg-icons";
-config.autoAddCss = false;
 
 const Social = () => {
 	return (

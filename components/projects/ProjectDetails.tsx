@@ -1,14 +1,20 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 import { AnimatePresence, motion } from "framer-motion";
+import dynamic from "next/dynamic";
 
 //Components
-import Modal from "@components/Modal";
+// import Modal from "@components/Modal";
 import TextMarquee from "@components/ListMarquee";
 import DefaultButton from "@components/DefaultButton";
 
 //Framer Motion Variants
 import { fadeInUpMotionVariants } from "@constants/FramerConstants";
+
+//Dynamic Components
+const DynamicModal = dynamic(() => import("@components/Modal"), {
+	ssr: false,
+});
 
 const ProjectDetails = ({
 	testimonial,
@@ -58,7 +64,7 @@ const ProjectDetails = ({
 			</Container>
 			<AnimatePresence mode="wait">
 				{modalToggle && (
-					<Modal
+					<DynamicModal
 						children2={
 							<DefaultButton
 								onClick={() => setModalToggle((current) => !current)}
@@ -70,7 +76,7 @@ const ProjectDetails = ({
 					>
 						<div>{testimonial}</div>
 						<Author>{testimonialAuthor}</Author>
-					</Modal>
+					</DynamicModal>
 				)}
 			</AnimatePresence>
 		</>
