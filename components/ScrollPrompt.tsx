@@ -24,7 +24,7 @@ const ScrollPrompt = () => {
 	);
 };
 
-const Container = styled(motion.div)`
+const Container = styled.div`
 	width: 10px;
 	border-radius: 10px;
 	background-color: var(--green);

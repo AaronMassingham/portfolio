@@ -38,15 +38,8 @@ const Container = styled.div<ContainerProps>`
 	@media screen and (min-width: 768px) {
 		padding: 0 var(--sitePadding);
 	}
-	& h2 {
-		font-size: var(--fs-lg);
-		color: ${(props) =>
-			props.$invert ? "var(--primaryBackground)" : "var(--white)"};
-	}
 	& > p {
 		width: clamp(200px, 1200px, 100%);
-		color: ${(props) =>
-			props.$invert ? "var(--primaryBackground)" : "var(--white)"};
 	}
 `;
 
