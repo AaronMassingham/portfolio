@@ -157,7 +157,7 @@ const Details = styled(motion.div)`
 			gap: 2rem;
 			padding-top: 2rem;
 
-			ul {
+			div {
 				margin: unset;
 			}
 

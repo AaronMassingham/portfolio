@@ -15,7 +15,7 @@ export default function DeviceFrame({
 	return (
 		<Frame {...deviceMotionVariants}>
 			<Content
-				bgColor={background}
+				$bgColor={background}
 				type={deviceType}
 				{...deviceMotionChildVariants}
 			>
@@ -34,7 +34,7 @@ type Props = {
 
 type FrameProps = {
 	type?: string;
-	bgColor?: string;
+	$bgColor?: string;
 };
 
 const Frame = styled(motion.div)`
@@ -47,7 +47,7 @@ const Content = styled(motion.div)<FrameProps>`
 	width: 100%;
 	height: 100%;
 	background-color: ${(props) =>
-		props.bgColor ? props.bgColor : "var(--primaryBackground)"};
+		props.$bgColor ? props.$bgColor : "var(--primaryBackground)"};
 	position: relative;
 	overflow: clip;
 	${(props) => {

@@ -7,20 +7,17 @@ import WorkCircle from "@components/wrappers/RotatingBadge";
 import Heading from "@components/Heading";
 import BigRibbon from "@components/BigRibbon";
 
-// Framer Const
-import { fadeInUpMotionVariants } from "@constants/FramerConstants";
-
 const Hero = () => {
 	const marqueeContent = "UI Design Web Design Branding Frontend Dev";
 
 	return (
 		<Container>
 			<Headline
-				initial={{ opacity: 0.1, y: 30 }}
-				animate={{ opacity: 1, y: 0 }}
+				initial={{ opacity: 0.1 }}
+				animate={{ opacity: 1 }}
 				transition={{ duration: 1, delay: 1, ease: "easeInOut" }}
 			>
-				<PreTitle {...fadeInUpMotionVariants}>
+				<PreTitle>
 					I&apos;m Aaron <span aria-hidden="true">&#128075;</span>
 				</PreTitle>
 				<Heading headingLevel="h1">
@@ -65,7 +62,7 @@ const Headline = styled(motion.div)`
 	}
 `;
 
-const PreTitle = styled(motion.div)`
+const PreTitle = styled.div`
 	margin-bottom: 1rem;
 	color: var(--white);
 	font-size: var(--fs-sm);
