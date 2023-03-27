@@ -13,7 +13,6 @@ import Table from "@components/Table";
 import BlockQuote from "@components/BlockQuote";
 import BigRibbon from "@components/BigRibbon";
 import Heading from "@components/Heading";
-// import LoadContainer from "@components/wrappers/LoadContainer";
 import AboutContainer from "@components/wrappers/AboutContainer";
 
 //Framer Variants
@@ -120,7 +119,6 @@ const Index: NextPage = () => {
 const SectionTitle = styled.div`
 	z-index: 1;
 	height: 100vh;
-
 	top: 0;
 	left: 0;
 	display: flex;
@@ -134,7 +132,7 @@ const SectionTitle = styled.div`
 	}
 `;
 
-const Marquee = styled(motion.div)`
+const Marquee = styled.div`
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -157,7 +155,6 @@ const AboutContent = styled.div`
 	@media screen and (min-width: 768px) {
 		padding: 0 var(--sitePadding) 300px var(--sitePadding);
 	}
-
 	& .stack {
 		padding-bottom: 20vh;
 		@media screen and (min-width: 768px) {
@@ -165,7 +162,6 @@ const AboutContent = styled.div`
 			column-gap: 2rem;
 		}
 	}
-
 	& p {
 		@media screen and (min-width: 768px) {
 			display: inline;
@@ -175,11 +171,9 @@ const AboutContent = styled.div`
 const Grid = styled.div`
 	display: grid;
 	place-items: start;
-
 	grid-row-gap: 0;
 	grid-column-gap: 2rem;
 	grid-template-columns: 100%;
-
 	@media screen and (min-width: 768px) {
 		grid-column-gap: 2rem;
 		grid-template-columns: repeat(

@@ -33,7 +33,7 @@ type SetColors = {
 	$color?: string;
 };
 
-const Text = styled(motion.div)<SetColors>`
+const Text = styled.div<SetColors>`
 	padding: 0 1rem;
 	font-weight: 200;
 	color: ${(props) => (props.$color ? props.$color : "var(--white)")};
