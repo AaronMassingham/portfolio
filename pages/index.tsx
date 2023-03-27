@@ -13,7 +13,7 @@ import Table from "@components/Table";
 import BlockQuote from "@components/BlockQuote";
 import BigRibbon from "@components/BigRibbon";
 import Heading from "@components/Heading";
-import LoadContainer from "@components/wrappers/LoadContainer";
+// import LoadContainer from "@components/wrappers/LoadContainer";
 import AboutContainer from "@components/wrappers/AboutContainer";
 
 //Framer Variants
@@ -25,9 +25,9 @@ const fetcher = (url: RequestInfo | URL) =>
 const Index: NextPage = () => {
 	const { data, error } = useSWR("/api/staticdata", fetcher);
 
-	if (error) return <LoadContainer>S**t, something went wrong.</LoadContainer>;
+	if (error) return <div>S**t, something went wrong.</div>;
 	//Handle the loading state
-	if (!data) return <LoadContainer />;
+	if (!data) return <div />;
 
 	return (
 		<>

@@ -1,4 +1,5 @@
 import dynamic from "next/dynamic";
+import React, { useState } from "react";
 
 //Components
 import LoadContainer from "./wrappers/LoadContainer";
@@ -13,15 +14,25 @@ const DynamicHeader = dynamic(() => import("@components/Header"), {
 });
 
 const Layout = ({ children }: Props) => {
+	const [LoadContainerLoaded, setLoadContainerLoaded] = useState(false);
+
+	const getLoadContainerLoaded = (LoaderHasLoaded: any) => {
+		setLoadContainerLoaded(LoaderHasLoaded);
+	};
+
 	return (
 		<>
-			<LoadContainer>
+			<LoadContainer getLoadContainerLoaded={getLoadContainerLoaded}>
 				<Logo />
 				Stick with me...
 			</LoadContainer>
-			<DynamicHeader />
-			{children}
-			<DynamicFooter />
+			{LoadContainerLoaded ? (
+				<>
+					<DynamicHeader />
+					{children}
+					<DynamicFooter />
+				</>
+			) : null}
 		</>
 	);
 };

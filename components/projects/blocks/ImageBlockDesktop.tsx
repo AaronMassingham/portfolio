@@ -15,9 +15,9 @@ const ImageBlockDesktop = ({ block }: Props) => {
 					placeholder="empty"
 					quality={100}
 					fill
-					sizes="(max-width: 768px) 50vw,
-					(max-width: 1200px) 75vw,
-					100vw"
+					sizes="
+					50vw,
+					(min-width: 768px) 100vw"
 				/>
 			</DeviceFrame>
 			<ImageCaption text={block.caption} />

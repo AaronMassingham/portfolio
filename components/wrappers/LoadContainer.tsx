@@ -1,12 +1,20 @@
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import { loadingContainerVariants } from "@constants/FramerConstants";
-const LoadContainer = ({ children }: Props) => {
-	return <Container {...loadingContainerVariants}>{children}</Container>;
+const LoadContainer = ({ children, getLoadContainerLoaded }: Props) => {
+	useEffect(() => {
+		getLoadContainerLoaded(true);
+	}, []);
+
+	return (
+		<Container {...loadingContainerVariants}>{children && children}</Container>
+	);
 };
 
 type Props = {
 	children?: React.ReactNode;
+	getLoadContainerLoaded: React.Dispatch<React.SetStateAction<boolean>>;
 };
 
 export default LoadContainer;

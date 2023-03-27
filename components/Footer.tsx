@@ -56,7 +56,10 @@ const Footer = () => {
 						animate={isInView ? "visible" : "hidden"}
 					>
 						<div>
-							<motion.a href="&#109;ailto&#58;%68%6&#53;ll%6&#70;&#64;a&#114;&#110;m%2&#69;%6&#51;o&#46;uk">
+							<motion.a
+								href="&#109;ailto&#58;%68%6&#53;ll%6&#70;&#64;a&#114;&#110;m%2&#69;%6&#51;o&#46;uk"
+								aria-label="Email Me"
+							>
 								hell&#111;<span>&#64;</span>arnm&#46;co&#46;&#117;k
 							</motion.a>
 							<div>
