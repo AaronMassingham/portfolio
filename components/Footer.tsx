@@ -10,7 +10,6 @@ import { ShrikhandFont } from "@utils/Fonts";
 
 //Framer Consts
 import { fadeInMotionVariants } from "@constants/FramerConstants";
-import Logo from "./Logo";
 
 const Footer = () => {
 	const ref = useRef(null);
@@ -40,7 +39,7 @@ const Footer = () => {
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				exit={{ opacity: 0 }}
-				transition={{ duration: 1 }}
+				transition={{ duration: 1, delay: 2 }}
 			>
 				<div className="stack">
 					<Heading headingLevel="h2">Reach Out</Heading>

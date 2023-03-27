@@ -6,22 +6,6 @@ const defaultTransitionValues = {
 	ease: "easeInOut",
 };
 
-export const header: MotionProps = {
-	initial: "hidden",
-	whileInView: "visible",
-
-	variants: {
-		hidden: {
-			pathLength: 0,
-		},
-		visible: {
-			pathLength: 1,
-		},
-	},
-
-	transition: defaultTransitionValues,
-};
-
 //Simple default Variants
 export const fadeInMotionVariants: MotionProps = {
 	initial: "hidden",
@@ -47,21 +31,13 @@ export const fadeInUpMotionVariants: MotionProps = {
 	transition: defaultTransitionValues,
 };
 
-//Heading component variants
-export const headingVariants = {
-	variants: {
-		hidden: { y: "-2rem", opacity: 0 },
-		animate: { y: 0, opacity: 1 },
-	},
-	transition: defaultTransitionValues,
-};
 export const headingChildVariants = {
 	variants: {
 		hidden: {
 			y: "2rem",
 			opacity: 0,
 		},
-		animate: {
+		visible: {
 			y: 0,
 			opacity: 1,
 		},
@@ -194,6 +170,3 @@ export const deviceMotionChildVariants: MotionProps = {
 	},
 	transition: { duration: 0.75, ease: "easeInOut", delay: 1 },
 };
-
-// onViewportEnter: () => console.log("enter"),
-// onViewportLeave: () => console.log("leave"),
