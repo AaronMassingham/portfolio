@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { useRef, forwardRef } from "react";
 import styled from "styled-components";
 import { motion, useInView } from "framer-motion";
 //Components
@@ -11,9 +11,9 @@ import { ShrikhandFont } from "@utils/Fonts";
 //Framer Consts
 import { fadeInMotionVariants } from "@constants/FramerConstants";
 
-const Footer = () => {
-	const ref = useRef(null);
-	const isInView = useInView(ref);
+const Footer = forwardRef<HTMLDivElement>(function Footer(props, ref) {
+	const spacerRef = useRef(null);
+	const isInView = useInView(spacerRef);
 
 	const transition = {
 		duration: 1,
@@ -32,10 +32,12 @@ const Footer = () => {
 			transition: transition,
 		},
 	};
-
+	const { ...otherProps } = props;
 	return (
 		<>
 			<Container
+				{...otherProps}
+				ref={ref}
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				exit={{ opacity: 0 }}
@@ -44,12 +46,12 @@ const Footer = () => {
 				<div className="stack">
 					<Heading headingLevel="h2">Reach Out</Heading>
 					<motion.p {...fadeInMotionVariants}>
-						I&apos;m all about working on exciting projects with interesting
-						businesses. Long or short-term, if you think we&apos;d make a great
-						team, then please get in touch!
+						I&apos;m all about working with interesting people on interesting
+						projects. Long term or short term, if you think we&apos;d make a
+						snug fit then get in touch.
 					</motion.p>
 				</div>
-				<Spacer ref={ref}>
+				<Spacer ref={spacerRef}>
 					<Details
 						variants={variants}
 						initial="hidden"
@@ -73,7 +75,7 @@ const Footer = () => {
 			</Container>
 		</>
 	);
-};
+});
 const Container = styled(motion.section)`
 	max-width: 1200px;
 	margin: auto;
