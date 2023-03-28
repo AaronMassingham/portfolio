@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import Logo from "@components/Logo";
 import Social from "@components/Social";
 
-const Header = () => {
+const Header = ({ iconMenuRefs }: any) => {
 	return (
 		<Container
 			initial={{ opacity: 0.1 }}
@@ -14,7 +14,13 @@ const Header = () => {
 		>
 			<Logo />
 			<Social />
-			{/* <HireMe>Hire Me</HireMe> */}
+			<HireMe
+				onClick={() =>
+					iconMenuRefs.current.scrollIntoView({ behavior: "smooth" })
+				}
+			>
+				Hire Me
+			</HireMe>
 		</Container>
 	);
 };

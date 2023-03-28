@@ -1,9 +1,11 @@
 import dynamic from "next/dynamic";
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 
 //Components
 import LoadContainer from "./wrappers/LoadContainer";
 import Logo from "./Logo";
+
+import Footer from "@components/Footer";
 
 //DynamicComponents
 const DynamicFooter = dynamic(() => import("@components/Footer"), {
@@ -20,6 +22,8 @@ const Layout = ({ children }: Props) => {
 		setLoadContainerLoaded(LoaderHasLoaded);
 	};
 
+	const ref = useRef<HTMLDivElement | null>(null);
+
 	return (
 		<>
 			<LoadContainer getLoadContainerLoaded={getLoadContainerLoaded}>
@@ -28,9 +32,9 @@ const Layout = ({ children }: Props) => {
 			</LoadContainer>
 			{LoadContainerLoaded ? (
 				<>
-					<DynamicHeader />
+					<DynamicHeader iconMenuRefs={ref} />
 					{children}
-					<DynamicFooter />
+					<Footer ref={ref} />
 				</>
 			) : null}
 		</>
