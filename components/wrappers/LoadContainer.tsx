@@ -5,7 +5,7 @@ import { loadingContainerVariants } from "@constants/FramerConstants";
 const LoadContainer = ({ children, getLoadContainerLoaded }: Props) => {
 	useEffect(() => {
 		getLoadContainerLoaded(true);
-	}, []);
+	}, [getLoadContainerLoaded]);
 
 	return (
 		<Container {...loadingContainerVariants}>{children && children}</Container>
