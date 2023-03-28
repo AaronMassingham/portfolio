@@ -14,7 +14,7 @@ const Header = () => {
 		>
 			<Logo />
 			<Social />
-			<HireMe>Hire Me</HireMe>
+			{/* <HireMe>Hire Me</HireMe> */}
 		</Container>
 	);
 };

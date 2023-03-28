@@ -244,6 +244,25 @@
                     "logo": "portfolio/wayneanthony/logo.svg"
                 },
                 {
+                    "id": 301,
+                    "component": "imageMobile",
+                    "imageUrls":[
+                        {
+                            "path": "portfolio/wayneanthony/home_m.webp",
+                            "caption":"M - Hero Component"
+                        }, 
+                        {
+                            "path": "portfolio/wayneanthony/nav_m.webp",
+                            "caption":"M - Nav Component"
+                        },
+                        {
+                            "path": "portfolio/wayneanthony/shop_m.webp",
+                            "caption":"M - FAQ Component"
+                        }
+                    ]
+                    
+                },
+                {
                     "id": 4,
                     "component": "imageDesktop",
                     "imageUrl":"portfolio/wayneanthony/cutsandshaves_d.webp",
