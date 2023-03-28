@@ -44,9 +44,9 @@ const Footer = () => {
 				<div className="stack">
 					<Heading headingLevel="h2">Reach Out</Heading>
 					<motion.p {...fadeInMotionVariants}>
-						I&apos;m all about working with interesting people on interesting
-						projects. Long term or short term, if you think we&apos;d make a
-						snug fit then get in touch.
+						I&apos;m all about working on exciting projects with interesting
+						businesses. Long or short-term, if you think we&apos;d make a great
+						team, then please get in touch!
 					</motion.p>
 				</div>
 				<Spacer ref={ref}>
