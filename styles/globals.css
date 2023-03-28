@@ -1,3 +1,20 @@
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+section {
+	color: var(--white);
+}
+button,
+h1,
+h2,
+h3,
+h4,
+h5 {
+	text-transform: uppercase;
+}
 :root {
 	--fs-xlDisplay: clamp(3rem, 5vw, 6rem);
 	--fs-xl: clamp(2.8rem, 4vw, 5rem);
@@ -29,90 +46,64 @@
 		--sitePadding: 8rem;
 	}
 }
-
 @media screen and (min-width: 1400px) {
 	:root {
 		--sitePadding: 2rem;
 	}
 }
-
 ::selection {
 	background: var(--green);
 }
 ::-moz-selection {
 	background: var(--green);
 }
-
 * {
 	box-sizing: border-box;
 	padding: 0;
 	margin: 0;
 }
-
 .noOverflow {
 	overflow: hidden;
 }
-
 html {
 	background-color: var(--green);
 }
-html,
-body {
+body,
+html {
 	overflow-x: clip;
 }
-
 body {
 	background: var(--primaryBackground);
 	font-weight: 400;
 	min-height: 100vh;
 	font-size: 16px;
 }
-body,
-section {
-	color: var(--white);
-}
-
 a {
 	color: inherit;
 	text-decoration: none;
 }
-
 h1,
 h2,
 h3,
 h4,
 h5 {
-	color: var(--white);
 	font-weight: 200;
-	text-transform: uppercase;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
 	line-height: 1;
 }
-
 p {
 	line-height: 1.5;
 }
-
 .strokedLightBg {
 	color: var(--primaryBackground);
-	text-shadow: 1px 1px 0 var(--white), 2px 2px 0px var(--white);
+	text-shadow: 1px 1px 0 var(--white), 2px 2px 0 var(--white);
 	-webkit-text-stroke: calc(var(--borderWidth)) var(--white);
 }
-
 h1 {
 	font-size: var(--fs-xl);
 }
-
 h2 {
 	font-size: var(--fs-lg);
 }
-
 h3 {
 	font-size: var(--fs-md);
 }
@@ -122,11 +113,9 @@ h4 {
 h5 {
 	font-size: var(--fs-xs);
 }
-
 .stack > * + * {
 	margin-block-start: 1.25rem;
 }
-
 button {
 	border: 0;
 	font-weight: 400;
@@ -134,10 +123,8 @@ button {
 	border-radius: 100px;
 	height: 2rem;
 	padding: 0 1rem;
-	text-transform: uppercase;
 	font-size: 0.9rem;
 }
-
 @media screen and (min-width: 768px) {
 	h1,
 	h2 {
@@ -148,7 +135,6 @@ button {
 		font-weight: 200;
 	}
 }
-
 @media screen and (min-width: 1200px) {
 	body {
 		font-size: 18px;
@@ -160,15 +146,14 @@ button {
 	h2 {
 		line-height: 0.9;
 	}
-
 	.strokedLightkBg {
-		text-shadow: 1px 1px 0 var(--darkGrey), 2px 2px 0px var(--darkGrey),
-			3px 3px 0px var(--darkGrey);
+		text-shadow: 1px 1px 0 var(--darkGrey), 2px 2px 0 var(--darkGrey),
+			3px 3px 0 var(--darkGrey);
 		-webkit-text-stroke: var(--borderWidth) var(--darkGrey);
 	}
 	.strokedDarkBg {
 		text-shadow: 1px 1px 0 var(--primaryBackground),
-			2px 2px 0px var(--primaryBackground), 3px 3px 0px var(--primaryBackground);
+			2px 2px 0 var(--primaryBackground), 3px 3px 0 var(--primaryBackground);
 		-webkit-text-stroke: 1px var(--primaryBackground);
 	}
 }

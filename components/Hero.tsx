@@ -20,10 +20,8 @@ const Hero = () => {
 					I&apos;m Aaron <span aria-hidden="true">&#128075;</span>
 				</PreTitle>
 				<h1>
-					I Help Create
-					<br />
-					<span style={{ color: "var(--green)" }}>Visual Web Based</span>
-					<br />
+					I Help Create{" "}
+					<span style={{ color: "var(--green)" }}>Visual Web Based</span>{" "}
 					Experiences.
 				</h1>
 			</Headline>
