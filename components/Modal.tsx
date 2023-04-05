@@ -4,7 +4,7 @@ import styled from "styled-components";
 import { motion } from "framer-motion";
 
 //Fonts
-import { contentFont } from "@utils/Fonts";
+import { ContentFont } from "@utils/Fonts";
 
 const Modal = ({ children, children2, backgroundColor }: Props) => {
 	useEffect(() => {
@@ -37,7 +37,7 @@ const Modal = ({ children, children2, backgroundColor }: Props) => {
 		<>
 			{createPortal(
 				<ModalContainer
-					className={contentFont.className}
+					className={ContentFont.className}
 					variants={variants}
 					initial="initial"
 					animate="animate"

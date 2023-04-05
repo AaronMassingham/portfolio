@@ -147,8 +147,8 @@ export const deviceMotionVariants: MotionProps = {
 	initial: "hidden",
 	whileInView: "visible",
 	variants: {
-		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round 1rem)" },
-		visible: { opacity: 1, clipPath: "inset(0 0% 0 0 round 1rem)" },
+		hidden: { opacity: 0, clipPath: "inset(0 80% 0 0 round 1.5rem)" },
+		visible: { opacity: 1, clipPath: "inset(0 0% 0 0 round 1.5rem)" },
 	},
 	viewport: {
 		margin: "0% 0% -10% 0%",
