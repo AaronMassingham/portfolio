@@ -1,4 +1,5 @@
 :root {
+<<<<<<< Updated upstream
 	--darkestGrey: #eae4ea;
 	--primaryBackground: #161615;
 
@@ -25,6 +26,32 @@
 	}
 }
 
+=======
+	--grey100: #ffffff;
+	--grey200: #dddddd;
+	--grey500: #6d6d6d;
+	--grey600: #4d4d4d;
+	--grey700: #383838;
+	--grey800: #1a1a1a;
+	--grey900: #000000;
+
+	--turquoise500: #57eace;
+	--violet500: #7a9ffc;
+	--orange500: #fca95e;
+	--green500: #69e29d;
+	--red500: #ed5140;
+
+	--test100: #f00;
+	--test200: #00f;
+}
+
+::selection {
+	background: var(--grey200);
+}
+::-moz-selection {
+	background: var(--grey200);
+}
+>>>>>>> Stashed changes
 * {
 	box-sizing: border-box;
 	padding: 0;
@@ -33,17 +60,36 @@
 }
 
 html {
+<<<<<<< Updated upstream
 	background-color: var(--pink);
 }
 html,
 body {
+=======
+	overscroll-behavior: none;
+	background: linear-gradient(90deg, var(--turquoise500) 0%, var(--orange500) 100%);
+}
+
+body > div {
+	min-height: 100svh;
+	background: linear-gradient(45deg, var(--grey800) 0%, var(--grey900) 100%);
+}
+
+body,
+html {
+	color: var(--grey100);
+>>>>>>> Stashed changes
 	overflow-x: clip;
 	/* overscroll-behavior: none; */
 }
 
 body {
-	background: var(--primaryBackground);
 	font-weight: 400;
+<<<<<<< Updated upstream
+=======
+	min-height: 100svh;
+	font-size: 15px;
+>>>>>>> Stashed changes
 }
 body,
 section {
@@ -55,6 +101,7 @@ a {
 	text-decoration: none;
 }
 
+<<<<<<< Updated upstream
 h1,
 h2,
 h3,
@@ -116,9 +163,17 @@ h5 {
 	h2 {
 		line-height: 0.9;
 	}
+=======
+button {
+	border: 0;
+	background-color: transparent;
+}
+@media screen and (min-width: 768px) {
+>>>>>>> Stashed changes
 }
 
 @media screen and (min-width: 1200px) {
+<<<<<<< Updated upstream
 	h1 {
 		font-size: var(--fs-xlDisplay);
 	}
@@ -137,4 +192,14 @@ h5 {
 			2px 2px 0px var(--primaryBackground), 3px 3px 0px var(--primaryBackground);
 		-webkit-text-stroke: 1px var(--primaryBackground);
 	}
+=======
+>>>>>>> Stashed changes
 }
+
+/* * {
+	outline: 1px solid pink;
+} */
+/* 
+svg * {
+	outline: 1px solid red;
+} */

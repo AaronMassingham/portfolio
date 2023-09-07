@@ -1,5 +1,6 @@
-import type { NextPage } from "next";
+import React, { useEffect } from "react";
 import Head from "next/head";
+<<<<<<< Updated upstream
 import styled from "styled-components";
 import useSWR from "swr";
 
@@ -13,28 +14,42 @@ import BlockQuote from "@components/components/blocks/BlockQuote";
 import BigRibbon from "@components/components/BigRibbon";
 import Heading from "@components/components/Heading";
 import { Key } from "react";
+=======
 
-const fetcher = (url: RequestInfo | URL) =>
-	fetch(url).then((res) => res.json());
+//Components
+import Hero from "@components/Hero";
+import DefaultButton from "@components/Button";
+import Arrow from "@components/icons/Arrow";
 
+//Contexts
+import { useAnimationContext } from "@contexts/AnimationContext";
+>>>>>>> Stashed changes
+
+const Index = () => {
+	const { setAnimation } = useAnimationContext();
+
+<<<<<<< Updated upstream
 export default function NextPage() {
 	const { data, error } = useSWR("/api/staticdata", fetcher);
 
 	if (error) return <div>Failed to load</div>;
 	//Handle the loading state
 	if (!data) return <div>Loading...</div>;
+=======
+	useEffect(() => {
+		setAnimation("home");
+	}, [setAnimation]);
+>>>>>>> Stashed changes
 
 	return (
 		<>
 			<Head>
 				<title>Aaron Massingham | Online Portfolio 2023</title>
-				<meta
-					name="description"
-					content="I help create frontend experiences."
-				/>
+				<meta name="description" content="I help create frontend experiences." />
 				<meta name="viewport" content="width=device-width, initial-scale=1" />
 				<link rel="icon" href="/favicon.ico" />
 			</Head>
+<<<<<<< Updated upstream
 			<Hero />
 
 			<SectionTitle>
@@ -112,10 +127,23 @@ export default function NextPage() {
 					</Grid>
 				</div>
 			</AboutContainer>
+=======
+			<Hero>
+				<h1>
+					Designer &amp;
+					<br />
+					frontend
+					<br />
+					dev.
+				</h1>
+				<DefaultButton linksTo="/projects" text="Latest Projects" icon={<Arrow />} />
+			</Hero>
+>>>>>>> Stashed changes
 		</>
 	);
 }
 
+<<<<<<< Updated upstream
 const AboutContainer = styled.section`
 	position: relative;
 	display: flex;
@@ -196,3 +224,6 @@ const SectionTitle = styled.section`
 const SectionTitleExtended = styled(SectionTitle)`
 	margin: -100vh 0 -100vh 0;
 `;
+=======
+export default Index;
+>>>>>>> Stashed changes
