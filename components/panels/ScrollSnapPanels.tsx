@@ -19,25 +19,25 @@ const sectionComponents: PanelComponents = {
 };
 
 const ScrollSnapPanels = ({ sections }: SectionProps) => {
-	const scrollRef = useRef(null);
+	// const scrollRef = useRef(null);
 
-	const useScrollYProgressRefs = () => {
-		return sections.map(() => useRef());
-	};
-	const scrollYProgressRefs = useScrollYProgressRefs();
+	// const useScrollYProgressRefs = () => {
+	// 	return sections.map(() => useRef());
+	// };
+	// const scrollYProgressRefs = useScrollYProgressRefs();
 
-	console.log(scrollYProgressRefs);
+	// console.log(scrollYProgressRefs);
 
-	const scrollYProgressArray = sections.map((_, index) => {
-		const { scrollYProgress } = useScroll({
-			container: scrollYProgressRefs[index].current,
-		});
-		return scrollYProgress;
-	});
+	// const scrollYProgressArray = sections.map((_, index) => {
+	// 	const { scrollYProgress } = useScroll({
+	// 		container: scrollYProgressRefs[index].current,
+	// 	});
+	// 	return scrollYProgress;
+	// });
 
 	return (
 		<AnimatePresence>
-			<Container key="contentContainer" ref={scrollRef} {...experienceScrollAnimation}>
+			{/* <Container key="contentContainer" ref={scrollRef} {...experienceScrollAnimation}>
 				{sections.map((section, index) => (
 					<SectionContent
 						key={`panel-${index}`}
@@ -58,7 +58,7 @@ const ScrollSnapPanels = ({ sections }: SectionProps) => {
 						progress={scrollYProgressArray[index]}
 					/>
 				))}
-			</ScrollProgressContainer>
+			</ScrollProgressContainer> */}
 		</AnimatePresence>
 	);
 };
