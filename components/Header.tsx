@@ -1,28 +1,12 @@
-<<<<<<< Updated upstream
-import Link from "next/link";
-=======
 import { useState } from "react";
->>>>>>> Stashed changes
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 //Constants
 import { ROUTES } from "@constants/PublicRoutes";
 import { headerAnimation } from "@constants/FramerVariants";
 
 //Components
-<<<<<<< Updated upstream
-import Logo from "./Logo";
-import Social from "./Social";
-
-const Header = () => {
-	return (
-		<Container>
-			<Logo />
-			<Social />
-			<HireMe>
-				<Link href="">Hire Me</Link>
-			</HireMe>
-=======
 import Nav from "@components/Nav";
 import Availability from "@components/Availability";
 import Social from "@components/Social";
@@ -49,44 +33,10 @@ const Header = () => {
 				<Social />
 				<DefaultButton text="CV" />
 			</Other>
->>>>>>> Stashed changes
 		</Container>
 	);
 };
 
-<<<<<<< Updated upstream
-const Container = styled.div`
-	display: flex;
-	flex-direction: row;
-	justify-content: space-between;
-	align-items: center;
-	padding: 2rem calc(var(--sitePadding) / 3);
-	height: var(--headerH);
-	position: fixed;
-	top: 0;
-	left: 0;
-	right: 0;
-	z-index: 11;
-`;
-
-const HireMe = styled.div`
-	position: relative;
-	text-transform: uppercase;
-	font-weight: 400;
-	top: 0;
-	width: auto;
-	padding: 0 1rem;
-	color: var(--pink);
-	height: 2rem;
-	border-radius: 4rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-	background-color: var(--primaryBackground);
-	border: 2px solid var(--pink);
-	margin-left: 1rem;
-	box-shadow: var(--shadow);
-=======
 type NavProps = {
 	$navToggle: boolean;
 };
@@ -182,7 +132,6 @@ const Container = styled(motion.header)`
 	@media only screen and (min-width: 1200px) {
 		flex-direction: row;
 	}
->>>>>>> Stashed changes
 `;
 
 export default Header;

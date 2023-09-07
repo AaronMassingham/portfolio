@@ -18,11 +18,8 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
-    "baseUrl": ".",
+    // "baseUrl": ".",
     "paths": {
-<<<<<<< Updated upstream
-      "@components/*": ["./*"]
-=======
       "@components/*": [
         "./components/*"
       ],
@@ -44,7 +41,6 @@
       "@typescriptTypes/*": [
         "./types/*"
       ],
->>>>>>> Stashed changes
     }
   },
   "include": [
