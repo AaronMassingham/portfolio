@@ -1,0 +1,227 @@
+export const PROJECTS = [
+	{
+		id: 1,
+		slug: "grafthaus",
+		projectTitle: "Graft Haus",
+		link: "https://www.grafthaus.co.uk",
+		testimonial:
+			"We took on Aaron to revamp our gym website which was approaching 3 years old, and needed a complete refresh having originally being built by us. After giving a single page brief, we awaited initial design options, and when they came in, immediately knew we had made the right choice in off loading the project to a professional. We knew we could trust his artistic direction completely, and after we had confirmed our more detailed requirements, we had very little critical input left to do. Aaron hit all the milestones on time, with fabulous attention to detail, and the whole process was a pleasure. We love our new site, it delivers our brand identity effortlessly, and is snappy and responsive across all platforms.",
+		testimonialAuthor: "Tony",
+		services: ["wireframing", "Web design", "Web development", "WordPress CMS"],
+		tech: ["PHP", "Advanced Custom Fields"],
+		background: "#FFFFFF",
+		details: [
+			{
+				id: 1,
+				component: "text",
+
+				content:
+					"<p>The guys over at Graft Haus gym in Leeds had pushed their off-the-shelf WordPress template website to the limit, so they required something more bespoke. The old site was starting to show some display issues, not to mention an endless ream of plugins that were beginning to cause some security concerns.</p> <p>Tony handed me the reigns and I got to work reviewing what aspects and functionality the current site had that were of value, plus new features that would be useful. I got to work producing wireframes and designs for their review. We had a couple of meetings to discuss any alterations before I moved swiftly on to the development phase. The new site (launched in 2020) is fully responsive and utilises Advanced Custom Fields to give the team more granular control over their content without worrying about fiddling around with how the content looks.</p>",
+				logo: "portfolio/grafthaus/logo.svg",
+			},
+			{
+				id: 2,
+				component: "imageMobile",
+				imageUrls: [
+					{
+						path: "portfolio/grafthaus/home_m.webp",
+						caption: "M - Homepage Hero",
+					},
+					{
+						path: "portfolio/grafthaus/nav_m_vid.mp4",
+						caption: "M - Nav Behaviour",
+					},
+					{
+						path: "portfolio/grafthaus/membership_m.webp",
+						caption: "M - Membership Component",
+					},
+				],
+			},
+
+			{
+				id: 3,
+				component: "imageDesktop",
+				imageUrl: "portfolio/grafthaus/reviews_d.webp",
+				caption: "D - Reviews Component",
+			},
+			{
+				id: 4,
+				component: "imageDesktop",
+				imageUrl: "portfolio/grafthaus/trainers_d.webp",
+				caption: "D - Personal Trainers",
+			},
+		],
+	},
+	{
+		id: 2,
+		slug: "vitfor",
+		projectTitle: "Vitfor",
+		link: "https://www.vitfor.com",
+
+		services: ["Brand modernisation", "wireframing", "App UI Design", "Web design"],
+		tech: ["Next Js", "Chakra UI", "TypeScript", "Framer Motion"],
+
+		background: "#f8c110",
+		details: [
+			{
+				id: 1,
+				component: "text",
+				content:
+					"<p>Vitfor were planning a complete redesign and rebuild of their web app and website when they brought me on board to assist with the design aspect of the project, eventually leading to the opportunity to develop the website. Being the lead designer on a web app and having the opportunity to collaborate with a team as a freelancer was a first for me; I look forward to lending my hand with further development with the Vitfor team as the project grows.</p>",
+				logo: "portfolio/vitfor/logo.svg",
+			},
+			{
+				id: 100,
+				component: "text",
+				title: "The Logo",
+			},
+			{
+				id: 101,
+				component: "logoComparison",
+				imageUrls: [
+					{
+						path: "portfolio/vitfor/logo/logo_old.svg",
+						caption: "Old",
+						background: "#FFFFFF",
+					},
+					{
+						path: "portfolio/vitfor/logo/logo_new.svg",
+						caption: "Modernised",
+					},
+				],
+			},
+			{
+				id: 200,
+				component: "text",
+				title: "The App",
+			},
+
+			{
+				id: 201,
+				component: "imageMobile",
+				imageUrls: [
+					{
+						path: "portfolio/vitfor/app/dashboard_m.webp",
+						caption: "M - Dashboard",
+					},
+					{
+						path: "portfolio/vitfor/app/trainingweek_m.webp",
+						caption: "M - Training Week",
+					},
+					{
+						path: "portfolio/vitfor/app/program_m.webp",
+						caption: "M - Program",
+					},
+				],
+			},
+
+			{
+				id: 202,
+				component: "imageDesktop",
+				imageUrl: "portfolio/vitfor/app/trainingavailability_d.webp",
+				caption: "D - Training Availability",
+			},
+
+			{
+				id: 203,
+				component: "imageDesktop",
+				imageUrl: "portfolio/vitfor/app/seshfeedback_d.webp",
+				caption: "D - Session Feedback",
+			},
+
+			{
+				id: 300,
+				component: "text",
+				title: "The Website",
+			},
+			{
+				id: 301,
+				component: "imageMobile",
+				imageUrls: [
+					{
+						path: "portfolio/vitfor/home_m.webp",
+						caption: "M - Hero Component",
+					},
+					{
+						path: "portfolio/vitfor/nav_m.webp",
+						caption: "M - Nav Component",
+					},
+					{
+						path: "portfolio/vitfor/faq_m.webp",
+						caption: "M - FAQ Component",
+					},
+				],
+			},
+			{
+				id: 302,
+				component: "imageDesktop",
+				imageUrl: "portfolio/vitfor/home_d.webp",
+				caption: "D - Hero Component",
+			},
+
+			{
+				id: 303,
+				component: "imageDesktop",
+				imageUrl: "portfolio/vitfor/prices_d.webp",
+				caption: "D - Pricing Page",
+			},
+		],
+	},
+	{
+		id: 3,
+		slug: "wayneanthony",
+		projectTitle: "Wayne Anthony",
+		link: "https://www.wayneanthonys.co.uk",
+		testimonial:
+			"My old website was looking a bit ratty and something had happened to my WordPress which broke it completely at one point, leaving me without a site at all. Aaron helped where he could with the issue and eventually managed to get it back online for me. He suggested that I separated the website from WordPress to stop issues like this happening in the future and I decided to go for a full rebuild because the old site was getting pretty old. I already knew that Aaron had what it takes to help me out because he'd worked with me on a couple of other side projects in the past, so I knew I could trust his judgement. Aaron worked his butt off and didn't disappoint! The new website is far better than my old one and it fits nicely with the style of my barbershop. I'd highly recommend him to anyone when it comes to any design work. Great lad!",
+		testimonialAuthor: "Wayne",
+		services: ["Web design", "Web development", "WordPress CMS"],
+		tech: ["Gatsby Js", "SnipCart Js", "Framer Motion", "Advanced Custom Fields"],
+		background: "#ff6a66",
+		details: [
+			{
+				id: 1,
+				component: "text",
+				content:
+					"<p>Wayne's barbershop website had been active almost as long as I'd been in the creative industry. His old website was a heavily bloated, off-the-shelf theme with lighthouse scores that made my eyes water. And I won't mention the number of times the previous site went offline due to internal errors. Wayne prides himself on offering an exclusive experience to his clients, so it goes without question that the new website followed the same groove. Within the modest budget for this project, I went above and beyond to bring the right vibe to his online presence, and even included some SnipCart functionality while I was at it.</p>",
+				logo: "portfolio/wayneanthony/logo.svg",
+			},
+			{
+				id: 301,
+				component: "imageMobile",
+				imageUrls: [
+					{
+						path: "portfolio/wayneanthony/home_m.webp",
+						caption: "M - Hero Component",
+					},
+					{
+						path: "portfolio/wayneanthony/nav_m.webp",
+						caption: "M - Nav Component",
+					},
+					{
+						path: "portfolio/wayneanthony/shop_m.webp",
+						caption: "M - FAQ Component",
+					},
+				],
+			},
+			{
+				id: 4,
+				component: "imageDesktop",
+				imageUrl: "portfolio/wayneanthony/cutsandshaves_d.webp",
+				caption: "D - Cuts & Shaves Page",
+			},
+			{
+				id: 5,
+				component: "imageDesktop",
+				imageUrl: "portfolio/wayneanthony/shop_d.webp",
+				caption: "D - Shop Page",
+			},
+			{
+				id: 6,
+				component: "imageDesktop",
+				imageUrl: "portfolio/wayneanthony/experience_d.webp",
+				caption: "D - Poker Nights Component",
+			},
+		],
+	},
+];

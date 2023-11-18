@@ -2,10 +2,13 @@ export const EXPERIENCE_CONTENT = [
 	{
 		title: "Journey",
 		panels: [
-			{ sectionName: "Intro", props: { title: "Intro text panel", text: "for Journey section" } },
+			{
+				sectionName: "Intro",
+				sectionContent: { title: "Intro text panel", text: "for Journey section" },
+			},
 			{
 				sectionName: "EmploymentHistory",
-				props: { title: "Employment history", text: "Component1 text", date: "10" },
+				sectionContent: { title: "Employment history", text: "Component1 text", date: "10" },
 			},
 		],
 	},
@@ -14,14 +17,17 @@ export const EXPERIENCE_CONTENT = [
 		panels: [
 			{
 				sectionName: "Intro",
-				props: { title: "Intro text panel", text: "for How I work section" },
+				sectionContent: { title: "Intro text panel", text: "for How I work section" },
 			},
 		],
 	},
 	{
 		title: "Design",
 		panels: [
-			{ sectionName: "Intro", props: { title: "Intro text panel", text: "for Design section" } },
+			{
+				sectionName: "Intro",
+				sectionContent: { title: "Intro text panel", text: "for Design section" },
+			},
 		],
 	},
 	{
@@ -29,7 +35,7 @@ export const EXPERIENCE_CONTENT = [
 		panels: [
 			{
 				sectionName: "Intro",
-				props: { title: "Intro text panel", text: "for Development section" },
+				sectionContent: { title: "Intro text panel", text: "for Development section" },
 			},
 		],
 	},

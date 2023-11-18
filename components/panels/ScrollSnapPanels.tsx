@@ -1,78 +1,33 @@
-import React, { useRef } from "react";
-import { motion, useScroll, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import styled from "styled-components";
 
 //Constants
 import { experienceScrollAnimation } from "@constants/FramerVariants";
 
-//RenderComponents
-import SectionContent from "@components/panels/SectionContentContainer";
-import ScrollProgress from "@components/ScrollProgress";
-import { EmploymentHistory, Intro } from "@components/panels/Index";
+//Components
+import Panel from "@components/panels/Panel";
 
 //Types
-import { PanelComponents, SectionProps } from "@typescriptTypes/ExperiencePanelProps";
-
-const sectionComponents: PanelComponents = {
-	EmploymentHistory,
-	Intro,
-};
+import { SectionProps } from "@typescriptTypes/ExperiencePanelProps2";
 
 const ScrollSnapPanels = ({ sections }: SectionProps) => {
-	// const scrollRef = useRef(null);
-
-	// const useScrollYProgressRefs = () => {
-	// 	return sections.map(() => useRef());
-	// };
-	// const scrollYProgressRefs = useScrollYProgressRefs();
-
-	// console.log(scrollYProgressRefs);
-
-	// const scrollYProgressArray = sections.map((_, index) => {
-	// 	const { scrollYProgress } = useScroll({
-	// 		container: scrollYProgressRefs[index].current,
-	// 	});
-	// 	return scrollYProgress;
-	// });
-
+	const calculatedWidth = 100 / sections.length;
 	return (
 		<AnimatePresence>
-			{/* <Container key="contentContainer" ref={scrollRef} {...experienceScrollAnimation}>
+			<Container {...experienceScrollAnimation}>
 				{sections.map((section, index) => (
-					<SectionContent
-						key={`panel-${index}`}
-						index={index}
+					<Panel
+						key={index}
 						title={section.title}
-						sections={section.panels}
-						scrollYProgressRefs={scrollYProgressRefs}
-						sectionComponents={sectionComponents}
+						panels={section.panels}
+						offset={calculatedWidth * index}
+						width={calculatedWidth}
 					/>
 				))}
 			</Container>
-			<ScrollProgressContainer key="scrollProgressContainer">
-				{sections.map((section, index) => (
-					<ScrollProgress
-						key={`scroll-progress-${index}`}
-						index={index}
-						text={section.title}
-						progress={scrollYProgressArray[index]}
-					/>
-				))}
-			</ScrollProgressContainer> */}
 		</AnimatePresence>
 	);
 };
-
-const ScrollProgressContainer = styled.div`
-	height: 2rem;
-	width: 100%;
-	padding: 0 7.5%;
-	display: flex;
-	flex-direction: row;
-	position: fixed;
-	z-index: 20;
-	bottom: 2rem;
-`;
 
 const Container = styled(motion.div)`
 	position: relative;

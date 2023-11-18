@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import "../styles/globals.css";
 
 //Fonts
-import { TitleFont } from "@utils/Fonts";
+import "@fontsource-variable/montserrat";
 
 //Components
 import Layout from "@components/Layout";
@@ -15,23 +15,21 @@ import { AnimationProvider } from "@contexts/AnimationContext";
 
 export default function App({ Component, pageProps, router }: AppProps) {
 	return (
-		<div className={TitleFont.className}>
-			<AnimationProvider>
-				<Layout>
-					<AnimatePresence mode="wait" initial={false}>
-						<Container
-							key={router.route}
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							transition={{ duration: 0.5 }}
-						>
-							<Component {...pageProps} />
-						</Container>
-					</AnimatePresence>
-				</Layout>
-			</AnimationProvider>
-		</div>
+		<AnimationProvider>
+			<Layout>
+				<AnimatePresence mode="wait" initial={false}>
+					<Container
+						key={router.route}
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						transition={{ duration: 0.5 }}
+					>
+						<Component {...pageProps} />
+					</Container>
+				</AnimatePresence>
+			</Layout>
+		</AnimationProvider>
 	);
 }
 

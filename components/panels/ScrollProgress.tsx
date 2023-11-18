@@ -25,7 +25,6 @@ type ContainerProps = {
 };
 
 const Container = styled.div<ContainerProps>`
-	width: 100%;
 	height: 2rem;
 	position: relative;
 	display: flex;

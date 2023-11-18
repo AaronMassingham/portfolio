@@ -22,7 +22,7 @@ const Container = styled.section<ContainerProps>`
 	gap: 5%;
 	& h1 {
 		text-transform: uppercase;
-		font-weight: 800;
+		font-weight: 900;
 		line-height: clamp(55px, 8vw, 100px);
 
 		word-wrap: balance;
